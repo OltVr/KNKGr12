@@ -4,6 +4,12 @@
 .left-form{
     -fx-background-color: #30343f;
 }
+.second-form{
+    -fx-background-color: #242832;
+}
+.third-form{
+    -fx-background-color: #dcdcdc;
+}
 .textfield {
     -fx-background-color: transparent;
     -fx-border-color: #3f3951;
@@ -20,6 +26,25 @@
 
 .btn:hover {
     -fx-background-color: #3cb0fd;
+}
+.btn3 {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-padding: 10px 20px;
+    -fx-border-color: #fff;
+    -fx-border-width: 0.5px;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-transition: all 0.3s ease;
+}
+.btn3:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.5);
+}
+
+.btn3:pressed {
+    -fx-background-color: rgba(200, 200, 200, 0.7);
+    -fx-text-fill: #000;
 }
 .btn2{
     -fx-background-color: transparent;

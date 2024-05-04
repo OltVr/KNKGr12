@@ -12,9 +12,9 @@
    <children>
       <AnchorPane prefHeight="423.0" prefWidth="637.0">
          <children>
-            <AnchorPane prefHeight="580.0" prefWidth="857.0" styleClass="white-bg" stylesheets="@../../java/css/Login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane prefHeight="580.0" prefWidth="857.0" styleClass="white-bg" stylesheets="@../css/Login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <AnchorPane layoutY="44.0" prefHeight="111.0" prefWidth="879.0" styleClass="left-form" stylesheets="@../../java/css/Login.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                  <AnchorPane layoutY="44.0" prefHeight="111.0" prefWidth="879.0" styleClass="left-form" stylesheets="@../css/Login.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
                         <Text fill="WHITE" layoutX="299.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SIGN UP">
                            <font>
@@ -23,16 +23,16 @@
                         </Text>
                      </children>
                   </AnchorPane>
-                  <TextField layoutX="271.0" layoutY="237.0" prefHeight="35.0" prefWidth="150.0" promptText="First Name" styleClass="textfield" stylesheets="@../../java/css/Login.css" />
-                  <TextField layoutX="450.0" layoutY="237.0" prefHeight="35.0" prefWidth="150.0" promptText="Last Name" styleClass="textfield" stylesheets="@../../java/css/Login.css">
+                  <TextField layoutX="271.0" layoutY="237.0" prefHeight="35.0" prefWidth="150.0" promptText="First Name" styleClass="textfield" stylesheets="@../css/Login.css" />
+                  <TextField layoutX="450.0" layoutY="237.0" prefHeight="35.0" prefWidth="150.0" promptText="Last Name" styleClass="textfield" stylesheets="@../css/Login.css">
                      <font>
                         <Font name="Montserrat Medium" size="12.0" />
                      </font>
                   </TextField>
-                  <TextField layoutX="271.0" layoutY="291.0" prefHeight="35.0" prefWidth="330.0" promptText="Email" styleClass="textfield" stylesheets="@../../java/css/Login.css" />
-                  <PasswordField layoutX="272.0" layoutY="344.0" prefHeight="35.0" prefWidth="150.0" promptText="Passsword" styleClass="textfield" stylesheets="@../../java/css/Login.css" />
-                  <PasswordField layoutX="450.0" layoutY="344.0" prefHeight="35.0" prefWidth="150.0" promptText="Confirm Password" styleClass="textfield" stylesheets="@../../java/css/Login.css" />
-                  <Button layoutX="270.0" layoutY="405.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="330.0" styleClass="btn2" stylesheets="@../../java/css/Login.css" text="Sign Up" />
+                  <TextField layoutX="271.0" layoutY="291.0" prefHeight="35.0" prefWidth="330.0" promptText="Email" styleClass="textfield" stylesheets="@../css/Login.css" />
+                  <PasswordField layoutX="272.0" layoutY="344.0" prefHeight="35.0" prefWidth="150.0" promptText="Passsword" styleClass="textfield" stylesheets="@../css/Login.css" />
+                  <PasswordField layoutX="450.0" layoutY="344.0" prefHeight="35.0" prefWidth="150.0" promptText="Confirm Password" styleClass="textfield" stylesheets="@../css/Login.css" />
+                  <Button layoutX="270.0" layoutY="405.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="330.0" styleClass="btn2" stylesheets="@../css/Login.css" text="Sign Up" />
                   <Text fill="#0089ff" layoutX="356.0" layoutY="482.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account?" underline="true">
                      <font>
                         <Font name="Montserrat Medium" size="12.0" />

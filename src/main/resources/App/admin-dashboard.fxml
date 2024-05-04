@@ -14,7 +14,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="641.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminDashboard">
    <children>
       <StackPane prefHeight="641.0" prefWidth="1020.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
@@ -22,68 +21,68 @@
          <children>
             <BorderPane prefHeight="641.0" prefWidth="1020.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <left>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="left-form" stylesheets="@../../java/css/Login.css" BorderPane.alignment="CENTER">
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="left-form" stylesheets="@../css/Login.css" BorderPane.alignment="CENTER">
                      <children>
                         <Line endX="106.0" layoutX="101.0" startX="-100.0" stroke="WHITE" />
-                        <Button layoutX="-2.0" layoutY="154.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../../java/css/Login.css" text="Users List">
+                        <Button layoutX="-2.0" layoutY="154.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="Users List">
                            <font>
                               <Font name="Montserrat Medium" size="12.0" />
                            </font>
                         </Button>
-                        <Button layoutX="-2.0" layoutY="196.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../../java/css/Login.css" text="Managment">
+                        <Button layoutX="-2.0" layoutY="196.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="Managment">
                            <font>
                               <Font name="Montserrat Medium" size="12.0" />
                            </font>
                         </Button>
-                        <Button layoutX="-2.0" layoutY="238.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../../java/css/Login.css" text="Reservations">
+                        <Button layoutX="-2.0" layoutY="238.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="Reservations">
                            <font>
                               <Font name="Montserrat Medium" size="12.0" />
                            </font>
                         </Button>
-                        <Button layoutX="-2.0" layoutY="278.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../../java/css/Login.css" text="History">
+                        <Button layoutX="-2.0" layoutY="278.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="History">
                            <font>
                               <Font name="Montserrat Medium" size="12.0" />
                            </font>
                         </Button>
                         <ImageView fitHeight="36.0" fitWidth="46.0" layoutX="12.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../java/icons/users.png" />
+                              <Image url="@../icons/users.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="36.0" fitWidth="37.0" layoutX="12.0" layoutY="197.0" preserveRatio="true">
                            <image>
-                              <Image url="@../../java/icons/manag.png" />
+                              <Image url="@../icons/manag.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="16.0" layoutY="245.0" preserveRatio="true">
                            <image>
-                              <Image url="@../../java/icons/dashboard.png" />
+                              <Image url="@../icons/dashboard.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="32.0" fitWidth="33.0" layoutX="13.0" layoutY="283.0" preserveRatio="true">
                            <image>
-                              <Image url="@../../java/icons/history.png" />
+                              <Image url="@../icons/history.png" />
                            </image>
                         </ImageView>
-                        <Button layoutX="-2.0" layoutY="113.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../../java/css/Login.css" text="Dashboard">
+                        <Button layoutX="-2.0" layoutY="113.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="Dashboard">
                            <font>
                               <Font name="Montserrat Medium" size="12.0" />
                            </font>
                         </Button>
                         <ImageView fitHeight="32.0" fitWidth="33.0" layoutX="14.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../java/icons/char.png" />
+                              <Image url="@../icons/char.png" />
                            </image>
                         </ImageView>
                      </children>
                   </AnchorPane>
                </left>
                <top>
-                  <AnchorPane prefHeight="43.0" prefWidth="1020.0" styleClass="second-form" stylesheets="@../../java/css/Login.css" BorderPane.alignment="CENTER">
+                  <AnchorPane prefHeight="43.0" prefWidth="1020.0" styleClass="second-form" stylesheets="@../css/Login.css" BorderPane.alignment="CENTER">
                      <children>
                         <ImageView fitHeight="32.0" fitWidth="35.0" layoutX="15.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../java/icons/admin.png" />
+                              <Image url="@../icons/admin.png" />
                            </image>
                         </ImageView>
                         <Text fill="WHITE" layoutX="55.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome,">
@@ -98,7 +97,7 @@
                         </Text>
                         <ImageView fitHeight="33.0" fitWidth="31.0" layoutX="913.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../java/icons/arrow.png" />
+                              <Image url="@../icons/arrow.png" />
                            </image>
                            <cursor>
                               <Cursor fx:constant="OPEN_HAND" />
@@ -118,7 +117,7 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane layoutX="41.0" layoutY="50.0" prefHeight="499.0" prefWidth="434.0" styleClass="third-form" stylesheets="@../../java/css/Login.css">
+                        <AnchorPane layoutX="41.0" layoutY="50.0" prefHeight="499.0" prefWidth="434.0" styleClass="third-form" stylesheets="@../css/Login.css">
                            <children>
                               <LineChart layoutX="-8.0" layoutY="145.0" prefHeight="370.0" prefWidth="421.0">
                                 <xAxis>
@@ -135,7 +134,7 @@
                               </Text>
                               <ImageView fitHeight="46.0" fitWidth="32.0" layoutX="97.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../java/icons/arrow-up-solid.png" />
+                                    <Image url="@../icons/arrow-up-solid.png" />
                                  </image>
                               </ImageView>
                               <Text layoutX="100.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clients Growth">
@@ -160,13 +159,13 @@
                               </Text>
                               <ImageView fitHeight="46.0" fitWidth="32.0" layoutX="213.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../java/icons/arrow-down-solid.png" />
+                                    <Image url="@../icons/arrow-down-solid.png" />
                                  </image>
                               </ImageView>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="509.0" layoutY="50.0" prefHeight="240.0" prefWidth="262.0" styleClass="third-form" stylesheets="@../../java/css/Login.css" />
-                        <AnchorPane layoutX="509.0" layoutY="309.0" prefHeight="240.0" prefWidth="262.0" styleClass="third-form" stylesheets="@../../java/css/Login.css" />
+                        <AnchorPane layoutX="509.0" layoutY="50.0" prefHeight="240.0" prefWidth="262.0" styleClass="third-form" stylesheets="@../css/Login.css" />
+                        <AnchorPane layoutX="509.0" layoutY="318.0" prefHeight="247.0" prefWidth="262.0" styleClass="third-form" stylesheets="@../css/Login.css" />
                         <Text layoutX="41.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard">
                            <font>
                               <Font name="Montserrat SemiBold" size="18.0" />
