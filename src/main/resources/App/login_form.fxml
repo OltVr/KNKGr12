@@ -1,49 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <children>
       <AnchorPane prefHeight="423.0" prefWidth="637.0">
          <children>
-            <AnchorPane layoutX="-9.0" prefHeight="580.0" prefWidth="364.0" styleClass="left-form" stylesheets="@../../java/css/Login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-9.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane layoutX="-9.0" prefHeight="580.0" prefWidth="364.0" styleClass="left-form" stylesheets="@../css/Login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-9.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Circle fill="WHITE" layoutX="182.0" layoutY="146.0" opacity="0.02" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
                   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="116.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true" smooth="false">
                      <image>
-                        <Image url="@../../java/icons/users-solid.png" />
+                        <Image url="@../icons/users-solid.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="32.0" layoutY="416.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="300.0" styleClass="btn2" stylesheets="@../../java/css/Login.css" text="Admin Mode?">
+                  <Button layoutX="32.0" layoutY="416.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="300.0" styleClass="btn2" stylesheets="@../css/Login.css" text="Admin Mode?">
                      <font>
                         <Font name="Montserrat SemiBold" size="12.0" />
                      </font>
                   </Button>
                </children></AnchorPane>
-            <AnchorPane layoutX="364.0" prefHeight="580.0" prefWidth="515.0" styleClass="white-bg" stylesheets="@../../java/css/Login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane layoutX="355.0" prefHeight="580.0" prefWidth="515.0" styleClass="white-bg" stylesheets="@../css/Login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.1999999999999318" AnchorPane.topAnchor="0.0">
                <children>
-                  <PasswordField layoutX="107.0" layoutY="296.0" prefHeight="35.0" prefWidth="300.0" promptText="Password" styleClass="textfield" stylesheets="@../../java/css/Login.css" />
+                  <PasswordField layoutX="107.0" layoutY="296.0" prefHeight="35.0" prefWidth="300.0" promptText="Password" styleClass="textfield" stylesheets="@../css/Login.css" />
                   <Text fill="#0089ff" layoutX="211.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login">
                      <font>
                         <Font name="Montserrat Medium" size="18.0" />
                      </font>
                   </Text>
-                  <Text fill="#0089ff" layoutX="48.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotel Management System">
+                  <Text fill="#0089ff" layoutX="77.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotel Management System">
                      <font>
                         <Font name="Montserrat SemiBold" size="30.0" />
                      </font>
                   </Text>
-                  <TextField layoutX="108.0" layoutY="238.0" prefHeight="35.0" prefWidth="300.0" promptText="Email" styleClass="textfield" stylesheets="@../../java/css/Login.css" />
-                  <Button layoutX="135.0" layoutY="376.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" styleClass="btn" stylesheets="@../../java/css/Login.css" text="Login">
+                  <TextField layoutX="108.0" layoutY="238.0" prefHeight="35.0" prefWidth="300.0" promptText="Email" styleClass="textfield" stylesheets="@../css/Login.css" />
+                  <Button layoutX="135.0" layoutY="376.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" styleClass="btn" stylesheets="@../css/Login.css" text="Login">
                      <font>
                         <Font name="Montserrat Alternates ExtraBold" size="12.0" />
                      </font>
