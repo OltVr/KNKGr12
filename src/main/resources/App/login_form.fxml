@@ -31,7 +31,7 @@
                </children></AnchorPane>
             <AnchorPane layoutX="364.0" prefHeight="580.0" prefWidth="515.0" styleClass="white-bg" stylesheets="@../../java/css/Login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <PasswordField layoutX="110.0" layoutY="296.0" prefHeight="35.0" prefWidth="300.0" promptText="Password" styleClass="textfield" stylesheets="@../../java/css/Login.css" />
+                  <PasswordField layoutX="107.0" layoutY="296.0" prefHeight="35.0" prefWidth="300.0" promptText="Password" styleClass="textfield" stylesheets="@../../java/css/Login.css" />
                   <Text fill="#0089ff" layoutX="211.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login">
                      <font>
                         <Font name="Montserrat Medium" size="18.0" />
@@ -42,7 +42,7 @@
                         <Font name="Montserrat SemiBold" size="30.0" />
                      </font>
                   </Text>
-                  <TextField layoutX="108.0" layoutY="238.0" prefHeight="35.0" prefWidth="300.0" promptText="Username" styleClass="textfield" stylesheets="@../../java/css/Login.css" />
+                  <TextField layoutX="108.0" layoutY="238.0" prefHeight="35.0" prefWidth="300.0" promptText="Email" styleClass="textfield" stylesheets="@../../java/css/Login.css" />
                   <Button layoutX="135.0" layoutY="376.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" styleClass="btn" stylesheets="@../../java/css/Login.css" text="Login">
                      <font>
                         <Font name="Montserrat Alternates ExtraBold" size="12.0" />
