@@ -8,7 +8,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage){
-        Navigator.navigate(stage, Navigator.HOME_PAGE)
+        Navigator.navigate(stage, Navigator.LOGIN_PAGE)
 
 
         ;
