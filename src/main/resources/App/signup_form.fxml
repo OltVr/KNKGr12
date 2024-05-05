@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignupController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignupController">
    <children>
       <AnchorPane prefHeight="423.0" prefWidth="637.0">
          <children>
@@ -16,24 +12,27 @@
                <children>
                   <AnchorPane layoutY="44.0" prefHeight="111.0" prefWidth="879.0" styleClass="left-form" stylesheets="@../css/Login.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
-                        <Text fill="WHITE" layoutX="299.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SIGN UP">
+                        <Text fill="WHITE" layoutX="311.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SIGN UP">
                            <font>
-                              <Font name="Montserrat SemiBold" size="63.0" />
+                              <Font name="Roboto Light" size="63.0" />
                            </font>
                         </Text>
                      </children>
                   </AnchorPane>
-                  <TextField fx:id="txtSignUpName" layoutX="271.0" layoutY="237.0" prefHeight="35.0" prefWidth="150.0" promptText="First Name" styleClass="textfield" stylesheets="@../css/Login.css" />
-                  <TextField fx:id="txtSignUpLastName" layoutX="450.0" layoutY="237.0" prefHeight="35.0" prefWidth="150.0" promptText="Last Name" styleClass="textfield" stylesheets="@../css/Login.css">
+                  <TextField layoutX="271.0" layoutY="237.0" prefHeight="35.0" prefWidth="150.0" promptText="First Name" styleClass="textfield" stylesheets="@../css/Login.css" />
+                  <TextField layoutX="450.0" layoutY="237.0" prefHeight="35.0" prefWidth="150.0" promptText="Last Name" styleClass="textfield" stylesheets="@../css/Login.css">
                      <font>
                         <Font name="Montserrat Medium" size="12.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="txtSignUpEmail" layoutX="271.0" layoutY="291.0" prefHeight="35.0" prefWidth="330.0" promptText="Email" styleClass="textfield" stylesheets="@../css/Login.css" />
-                  <PasswordField fx:id="pwdSignUpPassword" layoutX="272.0" layoutY="344.0" prefHeight="35.0" prefWidth="150.0" promptText="Passsword" styleClass="textfield" stylesheets="@../css/Login.css" />
-                  <PasswordField fx:id="pwdSignUpConfirmPassword" layoutX="450.0" layoutY="344.0" prefHeight="35.0" prefWidth="150.0" promptText="Confirm Password" styleClass="textfield" stylesheets="@../css/Login.css" />
-                  <Button layoutX="270.0" layoutY="405.0" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="50.0" prefWidth="330.0" styleClass="btn2" stylesheets="@../css/Login.css" text="Sign Up" />
-                  <Text fill="#0089ff" layoutX="356.0" layoutY="482.0" onMouseClicked="#handleHaveAnAccount" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account?" underline="true">
+                  <TextField layoutX="271.0" layoutY="291.0" prefHeight="35.0" prefWidth="330.0" promptText="Email" styleClass="textfield" stylesheets="@../css/Login.css" />
+                  <PasswordField layoutX="272.0" layoutY="344.0" prefHeight="35.0" prefWidth="150.0" promptText="Password" styleClass="textfield" stylesheets="@../css/Login.css" />
+                  <PasswordField layoutX="450.0" layoutY="344.0" prefHeight="35.0" prefWidth="150.0" promptText="Confirm Password" styleClass="textfield" stylesheets="@../css/Login.css" />
+                  <Button layoutX="270.0" layoutY="405.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="330.0" styleClass="btn2" stylesheets="@../css/Login.css" text="Sign Up">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Button>
+                  <Text fill="#0089ff" layoutX="368.0" layoutY="481.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account?" underline="true">
                      <font>
                         <Font name="Montserrat Medium" size="12.0" />
                      </font>
