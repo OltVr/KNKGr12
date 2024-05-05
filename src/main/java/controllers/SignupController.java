@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import model.dto.UserDto;
 import service.UserService;
 
@@ -34,5 +35,9 @@ public class SignupController {
         if (response) {
             Navigator.navigate(ae, Navigator.LOGIN_PAGE);
         }
+    }
+    @FXML
+    private void handleHaveAnAccount(MouseEvent me){
+        Navigator.navigate(me, Navigator.LOGIN_PAGE);
     }
 }
