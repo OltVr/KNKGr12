@@ -64,3 +64,17 @@
     -fx-background-color: #0089ff;
     -fx-text-fill: #ffffff;
 }
+.btn4{
+    -fx-background-color: #30353e;
+    -fx-background-radius: 7px;
+    -fx-border-radius: 7px;
+    -fx-text-fill: #fff;
+
+}
+.btn4:hover {
+    -fx-background-color: #3a404a;
+}
+.btn4:pressed {
+    -fx-background-color: #474957;
+    -fx-text-fill: #d3d3d3;
+}
