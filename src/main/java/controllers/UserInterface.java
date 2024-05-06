@@ -11,10 +11,7 @@ import java.util.ResourceBundle;
 
 
 public class UserInterface implements Initializable {
-    @FXML
-    private  Label firstName= new Label();
-    @FXML
-    private  Label lastName= new Label();
+
     @FXML
     private void handleLogOut(ActionEvent ae) {
         Navigator.navigate(ae,Navigator.LOGIN_PAGE);
