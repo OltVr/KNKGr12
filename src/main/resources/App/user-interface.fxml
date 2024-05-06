@@ -90,7 +90,7 @@
                                     <Font name="Montserrat SemiBold" size="27.0" />
                                  </font>
                               </Text>
-                              <Button layoutX="-1.0" layoutY="425.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="360.0" style="-fx-background-color: #30343f;" styleClass="btn" stylesheets="@../css/Login.css" text="Check For Availability" textAlignment="CENTER" />
+                              <Button layoutX="-1.0" layoutY="425.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="360.0" styleClass="btn4" stylesheets="@../css/Login.css" text="Check For Availability" textAlignment="CENTER" />
                               <ImageView fitHeight="206.0" fitWidth="359.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../icons/pic1.png" />
@@ -159,7 +159,7 @@
                                     <Font name="Montserrat SemiBold" size="27.0" />
                                  </font>
                               </Text>
-                              <Button layoutX="-1.0" layoutY="425.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="360.0" style="-fx-background-color: #30343f;" styleClass="btn" stylesheets="@../css/Login.css" text="Check For Availability" textAlignment="CENTER" />
+                              <Button layoutX="-1.0" layoutY="425.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="360.0" styleClass="btn4" stylesheets="@../css/Login.css" text="Check For Availability" textAlignment="CENTER" />
                               <ImageView fitHeight="206.0" fitWidth="359.0" layoutY="75.0" pickOnBounds="true">
                                  <image>
                                     <Image url="@../icons/premium-sea-view-bed-room-2.jpg" />

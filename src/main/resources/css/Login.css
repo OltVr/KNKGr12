@@ -37,8 +37,6 @@
     -fx-padding: 10px 20px;
     -fx-border-color: #fff;
     -fx-border-width: 0.5px 0 ,0.5px 0;
-    -fx-font-size: 14px;
-    -fx-font-weight: bold;
     -fx-transition: all 0.3s ease;
 }
 .btn3:hover {
