@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnector {
-    private static String URL = "jdbc:mysql://localhost:3306/knk2024";
+    private static String URL = "jdbc:mysql://localhost:3306/Hotel";
     private static String USER = "root";
-    private static String PASSWORD = "root";
+    private static String PASSWORD = "Password";
     private static Connection connection = null;
 
     public static Connection getConnection(){
