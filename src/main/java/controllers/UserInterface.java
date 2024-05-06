@@ -3,10 +3,14 @@ package controllers;
 import App.Navigator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class UserInterface {
+
+public class UserInterface implements Initializable {
     @FXML
     private  Label firstName= new Label();
     @FXML
@@ -17,9 +21,9 @@ public class UserInterface {
 
 
     }
-    public  void updateLabels(String first, String last) {
-        // Assuming you have labels named firstNameLabel and lastNameLabel
-        firstName.setText(first);
-        lastName.setText(last);}
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 }

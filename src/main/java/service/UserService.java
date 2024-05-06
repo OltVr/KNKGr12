@@ -1,6 +1,6 @@
 package service;
 
-import controllers.UserInterface;
+
 import model.User;
 import model.dto.LoginUserDto;
 import repository.UserRepository;
@@ -28,6 +28,8 @@ public class UserService {
     return UserRepository.create(createUserData);
     }
 
+
+
     public static boolean login( LoginUserDto loginData){
         User user = UserRepository.getByEmail(loginData.getEmail());
         if(user == null){
@@ -43,4 +45,5 @@ public class UserService {
                 password, salt, passwordHash
         );
     }
+
 }
