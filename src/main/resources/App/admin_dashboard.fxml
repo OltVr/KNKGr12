@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="641.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminDashboard">
+   <children>
+      <StackPane prefHeight="641.0" prefWidth="1020.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane prefHeight="641.0" prefWidth="1020.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <BorderPane prefHeight="641.0" prefWidth="1020.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <left>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="left-form" stylesheets="@../css/Login.css" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button layoutX="-1.0" layoutY="42.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="Guests">
+                           <font>
+                              <Font name="Montserrat Medium" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="-1.0" layoutY="84.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="Rooms">
+                           <font>
+                              <Font name="Montserrat Medium" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="-1.0" layoutY="126.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="Reservations">
+                           <font>
+                              <Font name="Montserrat Medium" size="12.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="15.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/users.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="31.0" fitWidth="33.0" layoutX="15.0" layoutY="90.0" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/manag.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="28.0" fitWidth="29.0" layoutX="16.0" layoutY="133.0" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/dashboard.png" />
+                           </image>
+                        </ImageView>
+                        <Button layoutX="-1.0" layoutY="1.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="Dashboard">
+                           <font>
+                              <Font name="Roboto Light" size="12.0" />
+                           </font>
+                        </Button>
+                        <ImageView fitHeight="28.0" fitWidth="26.0" layoutX="18.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/char.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </left>
+               <top>
+                  <AnchorPane prefHeight="43.0" prefWidth="1020.0" styleClass="second-form" stylesheets="@../css/Login.css" BorderPane.alignment="CENTER">
+                     <children>
+                        <Text fill="WHITE" layoutX="25.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome,">
+                           <font>
+                              <Font name="Roboto Light" size="22.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="129.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin">
+                           <font>
+                              <Font name="Montserrat SemiBold" size="22.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="30.0" fitWidth="24.0" layoutX="920.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/arrow.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
+                        </ImageView>
+                        <Text fill="WHITE" layoutX="952.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign out" wrappingWidth="72.83200073242188">
+                           <font>
+                              <Font name="Montserrat Alternates SemiBold" size="13.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+               </top>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutX="41.0" layoutY="50.0" prefHeight="499.0" prefWidth="434.0" styleClass="third-form" stylesheets="@../css/Login.css">
+                           <children>
+                              <LineChart layoutX="-8.0" layoutY="145.0" prefHeight="370.0" prefWidth="421.0">
+                                <xAxis>
+                                  <CategoryAxis side="BOTTOM" />
+                                </xAxis>
+                                <yAxis>
+                                  <NumberAxis side="LEFT" />
+                                </yAxis>
+                              </LineChart>
+                              <Text layoutX="145.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Income Stats">
+                                 <font>
+                                    <Font name="Roboto Light" size="24.0" />
+                                 </font>
+                              </Text>
+                              <ImageView fitHeight="46.0" fitWidth="32.0" layoutX="97.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/arrow-up-solid.png" />
+                                 </image>
+                              </ImageView>
+                              <Text layoutX="100.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clients Growth">
+                                 <font>
+                                    <Font name="Montserrat SemiBold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="134.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="25%">
+                                 <font>
+                                    <Font name="Montserrat Medium" size="30.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="215.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Income">
+                                 <font>
+                                    <Font name="Montserrat SemiBold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="249.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="25%">
+                                 <font>
+                                    <Font name="Montserrat Medium" size="30.0" />
+                                 </font>
+                              </Text>
+                              <ImageView fitHeight="46.0" fitWidth="32.0" layoutX="213.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/arrow-down-solid.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="509.0" layoutY="50.0" prefHeight="516.0" prefWidth="262.0" styleClass="third-form" stylesheets="@../css/Login.css" />
+                        <Text layoutX="41.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard">
+                           <font>
+                              <Font name="Roboto Light" size="18.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

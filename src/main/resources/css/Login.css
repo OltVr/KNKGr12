@@ -1,0 +1,66 @@
+.white-bg{
+    -fx-background-color: #fff;
+}
+.left-form{
+    -fx-background-color: #30343f;
+}
+.second-form{
+    -fx-background-color: #242832;
+}
+.testing{
+    -fx-background-color: #494e5d;
+}
+.third-form{
+    -fx-background-color: #dcdcdc;
+}
+.textfield {
+    -fx-background-color: transparent;
+    -fx-border-color: #3f3951;
+    -fx-border-width: 0px 0px .8px 0px;
+    -fx-font-size: 13px;
+}
+.btn {
+    -fx-background-color: #0089ff;
+    -fx-background-radius: 7px;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
+    -fx-padding: 10px 20px;
+}
+
+.btn:hover {
+    -fx-background-color: #3cb0fd;
+}
+.btn3 {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-padding: 10px 20px;
+    -fx-border-color: #fff;
+    -fx-border-width: 0.5px 0 ,0.5px 0;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-transition: all 0.3s ease;
+}
+.btn3:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.5);
+}
+
+.btn3:pressed {
+    -fx-background-color: rgba(200, 200, 200, 0.7);
+    -fx-text-fill: #000;
+}
+.btn2{
+    -fx-background-color: transparent;
+    -fx-border-color: #0089ff;
+    -fx-border-width: 2px;
+    -fx-background-radius: 7px;
+    -fx-border-radius: 7px;
+    -fx-text-fill: #0089ff;
+    -fx-cursor: hand;
+    -fx-padding: 10px 20px;
+}
+
+.btn2:hover {
+    -fx-background-color: #0089ff;
+    -fx-text-fill: #ffffff;
+}
