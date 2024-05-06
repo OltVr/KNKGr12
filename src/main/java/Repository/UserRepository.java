@@ -1,9 +1,9 @@
-package Repository;
+package repository;
 
 import database.DatabaseUtil;
 import model.User;
 import model.dto.CreateUserDto;
-import service.DBConnector;
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 
 public class UserRepository {
     public static boolean create(CreateUserDto userData) {
-        Connection conn = DBConnector.getConnection();
+        Connection conn = DatabaseUtil.getConnection();
         String query = """
                 INSERT INTO USER (firstName, lastName, email, salt, passwordHash)
                 VALUE (?, ?, ?, ?, ?)
@@ -37,7 +37,7 @@ public class UserRepository {
 
     public static User getByEmail(String email) {
         String query = "SELECT * FROM USER WHERE email = ? LIMIT 1";
-        Connection connection = DBConnector.getConnection();
+        Connection connection = DatabaseUtil.getConnection();
         try {
             PreparedStatement pst = connection.prepareStatement(query);
             pst.setString(1, email);
