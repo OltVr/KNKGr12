@@ -53,14 +53,13 @@ public class UserRepository {
 
     private static User getFromResultSet(ResultSet result) {
         try {
-            int id = result.getInt("id");
             String firstName = result.getString("firstName");
             String lastName = result.getString("lastName");
             String email = result.getString("email");
             String salt = result.getString("salt");
             String passwordHash = result.getString("passwordHash");
             return new User(
-                    id, firstName, lastName, email, salt, passwordHash
+                    firstName, lastName, email, salt, passwordHash
             );
         } catch (Exception e) {
             return null;
