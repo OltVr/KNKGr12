@@ -53,7 +53,7 @@
                               <Image url="@../icons/arrow.png" />
                            </image>
                         </ImageView>
-                        <Button layoutY="419.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="Log Out">
+                        <Button layoutY="419.0" mnemonicParsing="false" onAction="#handleLogOut" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="Log Out">
                            <font>
                               <Font name="Montserrat Medium" size="12.0" />
                            </font>
@@ -65,12 +65,12 @@
                                     <Image url="@../icons/icon.png" />
                                  </image>
                               </ImageView>
-                              <Text fill="WHITE" layoutX="56.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+                              <Text fx:id="firstName" fill="WHITE" layoutX="54.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
                                  <font>
                                     <Font name="Montserrat SemiBold" size="18.0" />
                                  </font>
                               </Text>
-                              <Text fill="WHITE" layoutX="117.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last">
+                              <Text fx:id="lastName" fill="WHITE" layoutX="117.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last">
                                  <font>
                                     <Font name="Montserrat SemiBold" size="18.0" />
                                  </font>
@@ -142,7 +142,7 @@
                               <Font name="Montserrat ExtraBold" size="49.0" />
                            </font>
                         </Text>
-                        <Text fill="GREY" layoutX="483.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+                        <Text fx:id="firstName" fill="GREY" layoutX="483.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
                            <font>
                               <Font name="Montserrat ExtraBold" size="49.0" />
                            </font>

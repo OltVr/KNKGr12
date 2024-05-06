@@ -1,5 +1,8 @@
 package service;
 
+import controllers.UserInterface;
+import model.User;
+import model.dto.LoginUserDto;
 import repository.UserRepository;
 import model.dto.CreateUserDto;
 import model.dto.UserDto;
@@ -23,5 +26,21 @@ public class UserService {
                 passwordHash
         );
     return UserRepository.create(createUserData);
+    }
+
+    public static boolean login( LoginUserDto loginData){
+        User user = UserRepository.getByEmail(loginData.getEmail());
+        if(user == null){
+            return false;
+        }
+
+        String password = loginData.getPassword();
+        String salt = user.getSalt();
+        String passwordHash = user.getPasswordHash();
+
+
+        return PasswordHasher.compareSaltedHash(
+                password, salt, passwordHash
+        );
     }
 }
