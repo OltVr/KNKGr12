@@ -17,16 +17,11 @@
          <children>
             <AnchorPane layoutX="-9.0" prefHeight="580.0" prefWidth="364.0" styleClass="left-form" stylesheets="@../css/Login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-9.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ImageView fitHeight="228.0" fitWidth="214.0" layoutX="75.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="449.0" fitWidth="433.0" layoutX="-32.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icons/logowhite.png" />
+                        <Image url="@../icons/logowhitee.png" />
                      </image>
                   </ImageView>
-                  <Text fill="WHITE" layoutX="48.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Royal Rest">
-                     <font>
-                        <Font name="Roboto Regular" size="40.0" />
-                     </font>
-                  </Text>
                </children></AnchorPane>
             <AnchorPane layoutX="355.0" prefHeight="580.0" prefWidth="515.0" styleClass="white-bg" stylesheets="@../css/Login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.1999999999999318" AnchorPane.topAnchor="0.0">
                <children>
