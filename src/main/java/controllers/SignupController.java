@@ -65,7 +65,6 @@ public class SignupController {
         Navigator.navigate(me, Navigator.LOGIN_PAGE);
     }
 
-    // Utility method to show an alert
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle(title);
