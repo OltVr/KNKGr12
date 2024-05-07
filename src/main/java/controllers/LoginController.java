@@ -48,7 +48,7 @@ public class LoginController {
             boolean isLogin = UserService.login(loginUserData);
 
             if (!isLogin) {
-                System.out.println("Wrong login");
+                showAlert("Invalid Login", "Wrong email or password, please try again!");
             } else {
                 Navigator.navigate(ke, Navigator.HOME_PAGE);
             }
