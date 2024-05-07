@@ -8,7 +8,7 @@
     -fx-background-color: #074173;
 }
 .testing{
-    -fx-background-color: #494e5d;
+    -fx-background-color: #074173;
 }
 .third-form{
     -fx-background-color: #dcdcdc;
@@ -77,20 +77,3 @@
     -fx-text-fill: #d3d3d3;
 }
 
-stats-card{
-    -fx-border-color: #00000;
-    -fx-border-width: 1px;
-    -fx-border-radius: 10px;
-}
-
-.stat1{
- -fx-background-color: #4a9aff;
-}
-
-.stat2{
- -fx-background-color: #f3b000;
-}
-
-.stat3{
- -fx-background-color: #dc514f;
-}

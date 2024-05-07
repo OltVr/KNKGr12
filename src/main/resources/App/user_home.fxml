@@ -23,7 +23,7 @@
                               <Font name="Montserrat Medium" size="12.0" />
                            </font>
                         </Button>
-                        <Button layoutY="377.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="History" textAlignment="JUSTIFY">
+                        <Button layoutY="379.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="History" textAlignment="JUSTIFY">
                            <font>
                               <Font name="Montserrat Medium" size="12.0" />
                            </font>
@@ -48,7 +48,7 @@
                               <Image url="@../icons/house-user-solid.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="32.0" fitWidth="33.0" layoutX="15.0" layoutY="424.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="29.0" fitWidth="31.0" layoutX="16.0" layoutY="424.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../icons/arrow.png" />
                            </image>
@@ -67,12 +67,12 @@
                               </ImageView>
                               <Text fx:id="firstName" fill="WHITE" layoutX="54.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
                                  <font>
-                                    <Font name="Montserrat SemiBold" size="18.0" />
+                                    <Font name="Montserrat Light" size="18.0" />
                                  </font>
                               </Text>
                               <Text fx:id="lastName" fill="WHITE" layoutX="117.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last">
                                  <font>
-                                    <Font name="Montserrat SemiBold" size="18.0" />
+                                    <Font name="Montserrat Light" size="18.0" />
                                  </font>
                               </Text>
                            </children>
@@ -85,12 +85,15 @@
                      <children>
                         <AnchorPane layoutX="32.0" layoutY="116.0" prefHeight="480.0" prefWidth="359.0" styleClass="third-form" stylesheets="@../css/Login.css">
                            <children>
-                              <Text layoutX="116.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sea View">
+                              <Text layoutX="118.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sea View">
                                  <font>
-                                    <Font name="Montserrat SemiBold" size="27.0" />
+                                    <Font name="Montserrat Regular" size="27.0" />
                                  </font>
                               </Text>
-                              <Button layoutX="-1.0" layoutY="425.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="360.0" styleClass="btn4" stylesheets="@../css/Login.css" text="Check For Availability" textAlignment="CENTER" />
+                              <Button layoutX="-1.0" layoutY="425.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="360.0" styleClass="btn4" stylesheets="@../css/Login.css" text="Check For Availability" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Montserrat Regular" size="14.0" />
+                                 </font></Button>
                               <ImageView fitHeight="206.0" fitWidth="359.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../icons/pic1.png" />
@@ -98,7 +101,7 @@
                               </ImageView>
                               <Text layoutX="43.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Just 10 minutes from the beach" wrappingWidth="204.228515625">
                                  <font>
-                                    <Font name="Montserrat SemiBold" size="12.0" />
+                                    <Font name="Montserrat Regular" size="12.0" />
                                  </font>
                               </Text>
                               <ImageView fitHeight="37.0" fitWidth="35.0" layoutX="8.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true">
@@ -108,7 +111,7 @@
                               </ImageView>
                               <Text layoutX="46.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2-8 guests" wrappingWidth="204.228515625">
                                  <font>
-                                    <Font name="Montserrat SemiBold" size="12.0" />
+                                    <Font name="Montserrat Regular" size="12.0" />
                                  </font>
                               </Text>
                               <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="11.0" layoutY="323.0" pickOnBounds="true" preserveRatio="true">
@@ -118,7 +121,7 @@
                               </ImageView>
                               <Text layoutX="45.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Minimum 3-night stay, check-in from 3 PM, check-out by 11 AM." wrappingWidth="201.228515625">
                                  <font>
-                                    <Font name="Montserrat SemiBold" size="12.0" />
+                                    <Font name="Montserrat Regular" size="12.0" />
                                  </font>
                               </Text>
                               <ImageView fitHeight="32.0" fitWidth="30.0" layoutX="12.0" layoutY="358.0" pickOnBounds="true" preserveRatio="true">
@@ -128,7 +131,7 @@
                               </ImageView>
                               <Text layoutX="45.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Starting from 99$ a night" wrappingWidth="201.228515625">
                                  <font>
-                                    <Font name="Montserrat SemiBold" size="12.0" />
+                                    <Font name="Montserrat Regular" size="12.0" />
                                  </font>
                               </Text>
                               <ImageView fitHeight="32.0" fitWidth="30.0" layoutX="12.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true">
@@ -137,14 +140,14 @@
                                  </image>
                               </ImageView>
                            </children></AnchorPane>
-                        <Text fill="GREY" layoutX="208.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome,  ">
+                        <Text fill="GREY" layoutX="196.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome,  ">
                            <font>
-                              <Font name="Montserrat ExtraBold" size="49.0" />
+                              <Font name="Montserrat ExtraBold" size="45.0" />
                            </font>
                         </Text>
-                        <Text fx:id="firstName" fill="GREY" layoutX="483.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+                        <Text fx:id="firstName" fill="GREY" layoutX="445.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
                            <font>
-                              <Font name="Montserrat ExtraBold" size="49.0" />
+                              <Font name="Montserrat ExtraBold" size="45.0" />
                            </font>
                         </Text>
                         <Text fill="#808080" layoutX="242.0" layoutY="623.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Looking for your perfect stay? Book your room today!">
@@ -154,12 +157,15 @@
                         </Text>
                         <AnchorPane layoutX="412.0" layoutY="116.0" prefHeight="480.0" prefWidth="359.0" styleClass="third-form" stylesheets="@../css/Login.css">
                            <children>
-                              <Text layoutX="116.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City View">
+                              <Text layoutX="117.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City View">
                                  <font>
-                                    <Font name="Montserrat SemiBold" size="27.0" />
+                                    <Font name="Montserrat Regular" size="27.0" />
                                  </font>
                               </Text>
-                              <Button layoutX="-1.0" layoutY="425.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="360.0" styleClass="btn4" stylesheets="@../css/Login.css" text="Check For Availability" textAlignment="CENTER" />
+                              <Button layoutX="-1.0" layoutY="425.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="360.0" styleClass="btn4" stylesheets="@../css/Login.css" text="Check For Availability" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Montserrat Regular" size="14.0" />
+                                 </font></Button>
                               <ImageView fitHeight="206.0" fitWidth="359.0" layoutY="75.0" pickOnBounds="true">
                                  <image>
                                     <Image url="@../icons/premium-sea-view-bed-room-2.jpg" />
@@ -167,7 +173,7 @@
                               </ImageView>
                               <Text layoutX="43.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="15 minutes from the beach" wrappingWidth="204.228515625">
                                  <font>
-                                    <Font name="Montserrat SemiBold" size="12.0" />
+                                    <Font name="Montserrat Regular" size="12.0" />
                                  </font>
                               </Text>
                               <ImageView fitHeight="37.0" fitWidth="35.0" layoutX="8.0" layoutY="285.0" pickOnBounds="true" preserveRatio="true">
@@ -177,7 +183,7 @@
                               </ImageView>
                               <Text layoutX="46.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2-6 guests" wrappingWidth="204.228515625">
                                  <font>
-                                    <Font name="Montserrat SemiBold" size="12.0" />
+                                    <Font name="Montserrat Regular" size="12.0" />
                                  </font>
                               </Text>
                               <ImageView fitHeight="30.0" fitWidth="31.0" layoutX="11.0" layoutY="323.0" pickOnBounds="true" preserveRatio="true">
@@ -185,9 +191,9 @@
                                     <Image url="@../icons/users-viewfinder-solid.png" />
                                  </image>
                               </ImageView>
-                              <Text layoutX="45.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Minimum 3-night stay, check-in from 3 PM, check-out by 11 AM." wrappingWidth="201.228515625">
+                              <Text layoutX="45.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Minimum 2-night stay, check-in from 3 PM, check-out by 11 AM." wrappingWidth="201.228515625">
                                  <font>
-                                    <Font name="Montserrat SemiBold" size="12.0" />
+                                    <Font name="Montserrat Regular" size="12.0" />
                                  </font>
                               </Text>
                               <ImageView fitHeight="32.0" fitWidth="30.0" layoutX="12.0" layoutY="358.0" pickOnBounds="true" preserveRatio="true">
@@ -197,7 +203,7 @@
                               </ImageView>
                               <Text layoutX="43.0" layoutY="412.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Starting from 99$ a night" wrappingWidth="201.228515625">
                                  <font>
-                                    <Font name="Montserrat SemiBold" size="12.0" />
+                                    <Font name="Montserrat Regular" size="12.0" />
                                  </font>
                               </Text>
                               <ImageView fitHeight="32.0" fitWidth="30.0" layoutX="10.0" layoutY="394.0" pickOnBounds="true" preserveRatio="true">
@@ -207,6 +213,11 @@
                               </ImageView>
                            </children>
                         </AnchorPane>
+                        <Text layoutX="260.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your luxoruous room" wrappingWidth="288.228515625">
+                           <font>
+                              <Font name="Montserrat Light" size="18.0" />
+                           </font>
+                        </Text>
                      </children>
                   </AnchorPane>
                </center>
