@@ -37,7 +37,7 @@
                      </font>
                   </Text>
                   <TextField fx:id="txtLoginEmail" layoutX="108.0" layoutY="238.0" prefHeight="35.0" prefWidth="300.0" promptText="Email" styleClass="textfield" stylesheets="@../css/Login.css" />
-                  <Button layoutX="135.0" layoutY="376.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="50.0" prefWidth="250.0" styleClass="btn4" stylesheets="@../css/Login.css" text="Login">
+                  <Button layoutX="135.0" layoutY="376.0" mnemonicParsing="false" onAction="#handleLogin" onKeyPressed="#handleKeyLogin" prefHeight="50.0" prefWidth="250.0" styleClass="btn4" stylesheets="@../css/Login.css" text="Login">
                      <font>
                         <Font size="15.0" />
                      </font>
