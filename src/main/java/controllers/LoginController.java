@@ -32,7 +32,7 @@ public class LoginController {
         boolean isLogin= UserService.login(loginUserData);
 
         if (!isLogin){
-            showAlert("Invalid Login", "Wrong email or password, please try again!");
+           Navigator.navigate(ae, Navigator.LOGIN_FAIL_ALERT);
         }
         else{
             Navigator.navigate(ae,Navigator.HOME_PAGE);
