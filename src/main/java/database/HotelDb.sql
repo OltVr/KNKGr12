@@ -14,13 +14,19 @@ CreatedAt datetime NOT NULL default NOW()
 );
 
 -- me u shtu check constraints per roomNumber, floorNumber, capacity, bedNumber, price.
-CREATE TABLE IF NOT EXISTS room (
+CREATE TABLE IF NOT EXISTS rooms (
     roomNumber INT NOT NULL PRIMARY KEY,
     floorNumber INT NOT NULL,
     roomType VARCHAR(50) NOT NULL,
     capacity INT NOT NULL,
     bedNumber INT NOT NULL,
-    price DOUBLE NOT NULL
+    price decimal(10,2) NOT NULL,
+    isAvailable boolean NOT NULL DEFAULT 1,
+    CONSTRAINT CHK_floor_number CHECK (floorNumber >= 1),
+    CONSTRAINT CHK_room_number CHECK (roomNumber >= 1),
+    CONSTRAINT CHK_bed_number CHECK (bedNumber >= 1),
+    CONSTRAINT CHK_capacity CHECK (capacity >= 1),
+    CONSTRAINT CHK_price CHECK (price > 0.00)
 );
 
 CREATE TABLE IF NOT EXISTS reservation (
@@ -32,6 +38,18 @@ CREATE TABLE IF NOT EXISTS reservation (
     checkOutDate DATE NOT NULL,
     numberOfPeople INT NOT NULL,
     FOREIGN KEY (email) REFERENCES user (email),
-    FOREIGN KEY (roomNumber) REFERENCES room (roomNumber)
+    FOREIGN KEY (roomNumber) REFERENCES rooms (roomNumber),
+     CONSTRAINT CHK_check_out_after_check_in
+        CHECK (checkOutDate >= checkInDate)
 );
 
+Delimiter //
+CREATE TRIGGER reservation_made_trigger
+AFTER INSERT ON reservation
+FOR EACH ROW
+BEGIN
+    UPDATE rooms
+    SET isAvailable = FALSE
+    WHERE roomNumber = NEW.roomNumber;
+END;
+delimiter ;
