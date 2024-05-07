@@ -147,7 +147,19 @@
                               </ImageView>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="509.0" layoutY="50.0" prefHeight="516.0" prefWidth="262.0" styleClass="third-form" stylesheets="@../css/Login.css" />
+                        <AnchorPane layoutX="509.0" layoutY="50.0" prefHeight="516.0" prefWidth="262.0" styleClass="third-form" stylesheets="@../css/Login.css">
+                           <children>
+                              <Text layoutX="34.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Guests this month">
+                                 <font>
+                                    <Font name="Roboto Light" size="24.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="34.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Month:">
+                                 <font>
+                                    <Font name="Roboto Light" size="16.0" />
+                                 </font>
+                              </Text>
+                           </children></AnchorPane>
                         <Text layoutX="41.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard">
                            <font>
                               <Font name="Roboto Light" size="18.0" />
