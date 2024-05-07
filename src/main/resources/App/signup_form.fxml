@@ -19,7 +19,7 @@
                <children>
                   <AnchorPane layoutY="44.0" prefHeight="111.0" prefWidth="879.0" styleClass="left-form" stylesheets="@../css/Login.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
-                        <Text fill="WHITE" layoutX="299.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SIGN UP">
+                        <Text fill="WHITE" layoutX="317.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SIGN UP">
                            <font>
                               <Font name="Montserrat SemiBold" size="63.0" />
                            </font>
@@ -40,8 +40,11 @@
                   <TextField fx:id="txtSignUpEmail" layoutX="271.0" layoutY="291.0" prefHeight="35.0" prefWidth="330.0" promptText="Email" styleClass="textfield" stylesheets="@../css/Login.css" />
                   <PasswordField fx:id="pwdSignUpPassword" layoutX="272.0" layoutY="344.0" prefHeight="35.0" prefWidth="150.0" promptText="Passsword" styleClass="textfield" stylesheets="@../css/Login.css" />
                   <PasswordField fx:id="pwdSignUpConfirmPassword" layoutX="450.0" layoutY="344.0" prefHeight="35.0" prefWidth="150.0" promptText="Confirm Password" styleClass="textfield" stylesheets="@../css/Login.css" />
-                  <Button layoutX="270.0" layoutY="405.0" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="50.0" prefWidth="330.0" styleClass="btn2" stylesheets="@../css/Login.css" text="Sign Up" />
-                  <Text fill="#0089ff" layoutX="356.0" layoutY="482.0" onMouseClicked="#handleHaveAnAccount" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account?" underline="true">
+                  <Button layoutX="270.0" layoutY="405.0" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="50.0" prefWidth="330.0" styleClass="btn2" stylesheets="@../css/Login.css" text="Sign Up" textFill="#074173">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Button>
+                  <Text fill="#0089ff" layoutX="368.0" layoutY="481.0" onMouseClicked="#handleHaveAnAccount" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account?" underline="true">
                      <font>
                         <Font name="Montserrat Medium" size="12.0" />
                      </font>

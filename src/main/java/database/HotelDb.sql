@@ -2,7 +2,7 @@ create database Hotel;
 
 use Hotel;
 
--- me u shtu check constraints per email, pass.
+-- me u shtu constraints per email, pass.
 CREATE TABLE IF NOT EXISTS user (
 email varchar(255) not null primary key,
 firstName varchar(255) NOT NULL,
@@ -13,7 +13,6 @@ isAdmin boolean NOT NULL DEFAULT 0,
 CreatedAt datetime NOT NULL default NOW()
 );
 
--- me u shtu check constraints per roomNumber, floorNumber, capacity, bedNumber, price.
 CREATE TABLE IF NOT EXISTS rooms (
     roomNumber INT NOT NULL PRIMARY KEY,
     floorNumber INT NOT NULL,

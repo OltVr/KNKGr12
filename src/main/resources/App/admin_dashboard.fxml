@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
@@ -70,12 +71,12 @@
                      <children>
                         <Text fill="WHITE" layoutX="14.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome,">
                            <font>
-                              <Font name="Roboto Light" size="22.0" />
+                              <Font size="22.0" />
                            </font>
                         </Text>
                         <Text fill="WHITE" layoutX="117.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin">
                            <font>
-                              <Font name="Montserrat SemiBold" size="22.0" />
+                              <Font size="22.0" />
                            </font>
                         </Text>
                         <ImageView fitHeight="30.0" fitWidth="24.0" layoutX="920.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
@@ -100,9 +101,9 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane layoutX="41.0" layoutY="50.0" prefHeight="499.0" prefWidth="434.0" styleClass="third-form" stylesheets="@../css/Login.css">
+                        <AnchorPane layoutX="41.0" layoutY="96.0" styleClass="third-form" stylesheets="@../css/Login.css">
                            <children>
-                              <LineChart layoutX="-8.0" layoutY="145.0" prefHeight="370.0" prefWidth="421.0">
+                              <LineChart layoutX="-14.0" layoutY="63.0" prefHeight="374.0" prefWidth="432.0">
                                 <xAxis>
                                   <CategoryAxis side="BOTTOM" />
                                 </xAxis>
@@ -110,61 +111,77 @@
                                   <NumberAxis side="LEFT" />
                                 </yAxis>
                               </LineChart>
-                              <Text layoutX="145.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Income Stats">
+                              <Text layoutX="151.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Graph Title">
                                  <font>
                                     <Font name="Roboto Light" size="24.0" />
                                  </font>
                               </Text>
-                              <ImageView fitHeight="46.0" fitWidth="32.0" layoutX="97.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icons/arrow-up-solid.png" />
-                                 </image>
-                              </ImageView>
-                              <Text layoutX="100.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clients Growth">
-                                 <font>
-                                    <Font name="Montserrat SemiBold" size="12.0" />
-                                 </font>
-                              </Text>
-                              <Text layoutX="134.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="25%">
-                                 <font>
-                                    <Font name="Montserrat Medium" size="30.0" />
-                                 </font>
-                              </Text>
-                              <Text layoutX="215.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Income">
-                                 <font>
-                                    <Font name="Montserrat SemiBold" size="12.0" />
-                                 </font>
-                              </Text>
-                              <Text layoutX="249.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="25%">
-                                 <font>
-                                    <Font name="Montserrat Medium" size="30.0" />
-                                 </font>
-                              </Text>
-                              <ImageView fitHeight="46.0" fitWidth="32.0" layoutX="213.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../icons/arrow-down-solid.png" />
-                                 </image>
-                              </ImageView>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="509.0" layoutY="50.0" prefHeight="516.0" prefWidth="262.0" styleClass="third-form" stylesheets="@../css/Login.css">
-                           <children>
-                              <Text layoutX="34.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Guests this month">
-                                 <font>
-                                    <Font name="Roboto Light" size="24.0" />
-                                 </font>
-                              </Text>
-                              <Text layoutX="34.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Month:">
-                                 <font>
-                                    <Font name="Roboto Light" size="16.0" />
-                                 </font>
-                              </Text>
-                           </children></AnchorPane>
-                        <Text layoutX="41.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard">
+                        <Text layoutX="41.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Analytics Dashboard">
                            <font>
-                              <Font name="Roboto Light" size="18.0" />
+                              <Font size="25.0" />
                            </font>
                         </Text>
+                        <Text layoutX="551.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current statistics">
+                           <font>
+                              <Font name="Roboto Light" size="24.0" />
+                           </font>
+                        </Text>
+                        <AnchorPane layoutX="529.0" layoutY="126.0" prefHeight="122.0" prefWidth="219.0" stylesheets="@../css/Login.css">
+                           <styleClass>
+                              <String fx:value="stats-card" />
+                              <String fx:value="stat1" />
+                           </styleClass>
+                           <children>
+                              <Text fill="#fffefe" layoutX="14.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="450$">
+                                 <font>
+                                    <Font name="Montserrat Regular" size="36.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="#fffefe" layoutX="14.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total income">
+                                 <font>
+                                    <Font name="Montserrat Regular" size="18.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="529.0" layoutY="268.0" prefHeight="122.0" prefWidth="219.0" stylesheets="@../css/Login.css">
+                           <styleClass>
+                              <String fx:value="stats-card" />
+                              <String fx:value="stat2" />
+                           </styleClass>
+                           <children>
+                              <Text fill="#fffefe" layoutX="14.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="120">
+                                 <font>
+                                    <Font name="Montserrat Regular" size="36.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="#fffefe" layoutX="14.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New users this year">
+                                 <font>
+                                    <Font name="Montserrat Regular" size="18.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="529.0" layoutY="411.0" prefHeight="122.0" prefWidth="219.0" stylesheets="@../css/Login.css">
+                           <styleClass>
+                              <String fx:value="stats-card" />
+                              <String fx:value="stat3" />
+                           </styleClass>
+                           <children>
+                              <Text fill="#fffefe" layoutX="14.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10">
+                                 <font>
+                                    <Font name="Montserrat Regular" size="36.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="#fffefe" layoutX="14.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rooms booked">
+                                 <font>
+                                    <Font name="Montserrat Regular" size="18.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
                      </children>
                   </AnchorPane>
                </center>

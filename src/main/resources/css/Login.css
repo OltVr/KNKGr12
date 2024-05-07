@@ -2,10 +2,10 @@
     -fx-background-color: #fff;
 }
 .left-form{
-    -fx-background-color: #30343f;
+    -fx-background-color: #074173;
 }
 .second-form{
-    -fx-background-color: #242832;
+    -fx-background-color: #074173;
 }
 .testing{
     -fx-background-color: #494e5d;
@@ -49,11 +49,11 @@
 }
 .btn2{
     -fx-background-color: transparent;
-    -fx-border-color: #0089ff;
+    -fx-border-color: #074173;
     -fx-border-width: 2px;
     -fx-background-radius: 7px;
     -fx-border-radius: 7px;
-    -fx-text-fill: #0089ff;
+    -fx-text-fill: #074173;
     -fx-cursor: hand;
     -fx-padding: 10px 20px;
 }
@@ -63,7 +63,7 @@
     -fx-text-fill: #ffffff;
 }
 .btn4{
-    -fx-background-color: #30353e;
+    -fx-background-color: #074173;
     -fx-background-radius: 7px;
     -fx-border-radius: 7px;
     -fx-text-fill: #fff;
@@ -75,4 +75,22 @@
 .btn4:pressed {
     -fx-background-color: #474957;
     -fx-text-fill: #d3d3d3;
+}
+
+stats-card{
+    -fx-border-color: #00000;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+}
+
+.stat1{
+ -fx-background-color: #4a9aff;
+}
+
+.stat2{
+ -fx-background-color: #f3b000;
+}
+
+.stat3{
+ -fx-background-color: #dc514f;
 }
