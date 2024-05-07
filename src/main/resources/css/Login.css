@@ -59,7 +59,7 @@
 }
 
 .btn2:hover {
-    -fx-background-color: #0089ff;
+    -fx-background-color: #164f80;
     -fx-text-fill: #ffffff;
 }
 .btn4{
@@ -70,7 +70,7 @@
 
 }
 .btn4:hover {
-    -fx-background-color: #3a404a;
+    -fx-background-color: #164f80;
 }
 .btn4:pressed {
     -fx-background-color: #474957;
