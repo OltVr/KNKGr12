@@ -46,4 +46,16 @@ public class UserService {
         );
     }
 
+    public static boolean loginAdmin( LoginUserDto loginData){
+        if (login(loginData)){
+            User user = UserRepository.getByEmail(loginData.getEmail());
+            if(user == null){
+                return false;
+            }
+            return user.isAdmin();
+        }
+        return false;
+    }
+
+
 }
