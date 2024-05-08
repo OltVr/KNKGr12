@@ -79,3 +79,6 @@ BEGIN
     CLOSE cur;
 END;
 delimiter
+
+
+update user set isAdmin=1 where email= 'email@email.com';
