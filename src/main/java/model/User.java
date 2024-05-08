@@ -6,13 +6,15 @@ public class User {
     private String email;
     private String salt;
     private String passwordHash;
+    private boolean isAdmin;
 
-    public User( String firstName, String lastName, String email, String salt, String passwordHash) {
+    public User( String firstName, String lastName, String email, String salt, String passwordHash, boolean isAdmin ) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.salt = salt;
         this.passwordHash = passwordHash;
+        this.isAdmin = isAdmin;
     }
 
 
@@ -35,5 +37,9 @@ public class User {
 
     public String getPasswordHash() {
         return passwordHash;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
     }
 }

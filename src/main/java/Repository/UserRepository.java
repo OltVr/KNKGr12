@@ -58,8 +58,9 @@ public class UserRepository {
             String email = result.getString("email");
             String salt = result.getString("salt");
             String passwordHash = result.getString("passwordHash");
+            boolean isAdmin=result.getBoolean("isAdmin");
             return new User(
-                    firstName, lastName, email, salt, passwordHash
+                    firstName, lastName, email, salt, passwordHash, isAdmin
             );
         } catch (Exception e) {
             return null;

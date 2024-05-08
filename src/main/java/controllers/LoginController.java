@@ -32,10 +32,8 @@ public class LoginController {
         txtLoginEmail.setOnKeyPressed(this::handleKeyLogin);
         pwdLoginPassword.setOnKeyPressed(this::handleKeyLogin);
     }
-
     @FXML
     private AnchorPane login_failed;
-
     @FXML
     private void handleLogin(ActionEvent ae){
         LoginUserDto loginUserData = new LoginUserDto(
@@ -51,7 +49,14 @@ public class LoginController {
 
         }
         else{
-            Navigator.navigate(ae,Navigator.HOME_PAGE);
+            boolean Admin=UserService.loginAdmin(loginUserData);
+            if (!Admin){
+                Navigator.navigate(ae,Navigator.HOME_PAGE);
+            }
+            else{
+                Navigator.navigate(ae,Navigator.ADMIN_DASHBOARD);
+            }
+
         }
     }
     @FXML
