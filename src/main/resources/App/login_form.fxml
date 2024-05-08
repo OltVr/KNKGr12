@@ -84,7 +84,7 @@
                            </ImageView>
                         </children>
                      </AnchorPane>
-                     <Text fill="#1b1b1b" layoutX="17.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Double-check your username and password and try again!" wrappingWidth="348.41326904296875">
+                     <Text fill="#1b1b1b" layoutX="17.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Double-check your email and password and try again!" wrappingWidth="348.41326904296875">
                         <font>
                            <Font name="Montserrat Regular" size="20.0" />
                         </font>
