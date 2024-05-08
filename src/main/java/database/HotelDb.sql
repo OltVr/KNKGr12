@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS rooms (
     bedNumber INT NOT NULL,
     price decimal(10,2) NOT NULL,
     isAvailable boolean NOT NULL DEFAULT 1,
+    CONSTRAINT CHK_room_type CHECK (upper(roomType)='SEA'or upper(roomType)='CITY'),
     CONSTRAINT CHK_floor_number CHECK (floorNumber >= 1),
     CONSTRAINT CHK_room_number CHECK (roomNumber >= 1),
     CONSTRAINT CHK_bed_number CHECK (bedNumber >= 1),
@@ -52,3 +53,29 @@ BEGIN
     WHERE roomNumber = NEW.roomNumber;
 END;
 delimiter ;
+--Funksion qe kqyr a ka kali checkOutDate
+delimiter //
+CREATE EVENT check_checkout_dates
+ON SCHEDULE EVERY 1 DAY
+DO
+BEGIN
+    DECLARE done INT DEFAULT FALSE;
+    DECLARE roomNumber INT;
+    DECLARE checkOutDate DATE;
+    DECLARE cur CURSOR FOR SELECT roomNumber, checkOutDate FROM reservation WHERE checkOutDate <= CURDATE();
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+
+    OPEN cur;
+    read_loop: LOOP
+        FETCH cur INTO roomNumber, checkOutDate;
+        IF done THEN
+            LEAVE read_loop;
+        END IF;
+
+        UPDATE room
+        SET isAvailable = TRUE
+        WHERE roomNumber = roomNumber;
+    END LOOP;
+    CLOSE cur;
+END;
+delimiter
