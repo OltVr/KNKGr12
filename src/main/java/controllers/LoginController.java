@@ -33,6 +33,8 @@ public class LoginController {
         pwdLoginPassword.setOnKeyPressed(this::handleKeyLogin);
     }
     @FXML
+    private AnchorPane login_failed;
+    @FXML
     private void handleLogin(ActionEvent ae){
         LoginUserDto loginUserData = new LoginUserDto(
                 this.txtLoginEmail.getText(),
