@@ -12,7 +12,7 @@ public class Navigator {
     public final static String LOGIN_PAGE = "login_form.fxml";
     public final static String HOME_PAGE = "user_home.fxml";
     public final static String CREATE_ACCOUNT_PAGE = "signup_form.fxml";
-    public final static String LOGIN_FAIL_ALERT = "login_failed.fxml";
+
 
 
     public static void navigate(Stage stage, String page){
