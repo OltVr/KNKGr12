@@ -2,13 +2,13 @@
     -fx-background-color: #fff;
 }
 .left-form{
-    -fx-background-color: #074173;
+    -fx-background-color: #0b2765;
 }
 .second-form{
-    -fx-background-color: #074173;
+    -fx-background-color: #0b2765;
 }
 .testing{
-    -fx-background-color: #074173;
+    -fx-background-color: #0b2765;
 }
 .third-form{
     -fx-background-color: #dcdcdc;
@@ -49,11 +49,11 @@
 }
 .btn2{
     -fx-background-color: transparent;
-    -fx-border-color: #074173;
+    -fx-border-color: #0b2765;
     -fx-border-width: 2px;
     -fx-background-radius: 7px;
     -fx-border-radius: 7px;
-    -fx-text-fill: #074173;
+    -fx-text-fill: #0b2765;
     -fx-cursor: hand;
     -fx-padding: 10px 20px;
 }
@@ -63,7 +63,7 @@
     -fx-text-fill: #ffffff;
 }
 .btn4{
-    -fx-background-color: #074173;
+    -fx-background-color: #0b2765;
     -fx-background-radius: 7px;
     -fx-border-radius: 7px;
     -fx-text-fill: #fff;
