@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
-   <children>
-      <AnchorPane prefHeight="423.0" prefWidth="637.0">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+
+
+   <AnchorPane fx:id="login_form" prefHeight="423.0" prefWidth="637.0">
          <children>
             <AnchorPane layoutX="-9.0" prefHeight="580.0" prefWidth="364.0" styleClass="left-form" stylesheets="@../css/Login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-9.0" AnchorPane.topAnchor="0.0">
                <children>
@@ -58,6 +54,47 @@
                </children>
             </AnchorPane>
          </children>
-      </AnchorPane>
-   </children>
+   </AnchorPane>
+
+   <AnchorPane fx:id="login_failed" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="382.0" styleClass="login_failed" stylesheets="@../css/Login.css" visible="false" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+      <children>
+         <StackPane layoutX="91.0" layoutY="25.0" prefHeight="200.0" prefWidth="382.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+               <AnchorPane prefHeight="235.0" prefWidth="382.0" style="-fx-background-color: #ffffff;">
+                  <children>
+                     <AnchorPane layoutX="103.0" prefHeight="75.0" prefWidth="382.0" style="-fx-background-color: #ed9d9d;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <children>
+                           <ImageView fitHeight="36.0" fitWidth="37.0" layoutX="14.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../icons/circle-exclamation-solid.png" />
+                              </image>
+                           </ImageView>
+                           <Text fill="#0d0a0a" layoutX="58.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login failed">
+                              <font>
+                                 <Font name="Montserrat Regular" size="24.0" />
+                              </font>
+                           </Text>
+                           <ImageView fitHeight="20.0" fitWidth="15.0" layoutX="356.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../icons/xmark-solid.png" />
+                              </image>
+                              <cursor>
+                                 <Cursor fx:constant="HAND" />
+                              </cursor>
+                           </ImageView>
+                        </children>
+                     </AnchorPane>
+                     <Text fill="#1b1b1b" layoutX="17.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Double-check your username and password and try again!" wrappingWidth="348.41326904296875">
+                        <font>
+                           <Font name="Montserrat Regular" size="20.0" />
+                        </font>
+                     </Text>
+                     <Button layoutX="283.0" layoutY="160.0" mnemonicParsing="false" onAction="#handleOkClick" prefHeight="20.0" prefWidth="74.0" text="OK" />
+                  </children>
+               </AnchorPane>
+            </children>
+         </StackPane>
+      </children>
+   </AnchorPane>
+
 </StackPane>

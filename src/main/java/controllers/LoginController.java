@@ -3,14 +3,23 @@ package controllers;
 import App.Navigator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import model.dto.LoginUserDto;
 import service.UserService;
+
+import java.io.IOException;
+import java.net.URL;
 
 public class LoginController {
     @FXML
@@ -32,10 +41,20 @@ public class LoginController {
         boolean isLogin= UserService.login(loginUserData);
 
         if (!isLogin){
-           Navigator.navigate(ae, Navigator.LOGIN_FAIL_ALERT);
+            login_failed.toFront();
+           login_failed.setVisible(true);
+
+
         }
         else{
-            Navigator.navigate(ae,Navigator.HOME_PAGE);
+            boolean Admin=UserService.loginAdmin(loginUserData);
+            if (!Admin){
+                Navigator.navigate(ae,Navigator.HOME_PAGE);
+            }
+            else{
+                Navigator.navigate(ae,Navigator.ADMIN_DASHBOARD);
+            }
+
         }
     }
     @FXML
@@ -64,5 +83,12 @@ public class LoginController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+    @FXML
+    private Button okButton;
+
+    @FXML
+    private void handleOkClick(ActionEvent ae) {
+        Navigator.navigate(ae, Navigator.LOGIN_PAGE);
     }
 }
