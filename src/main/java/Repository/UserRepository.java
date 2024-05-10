@@ -30,7 +30,6 @@ public class UserRepository {
             pst.setString(5, userData.getPasswordHash());
             pst.execute();
             pst.close();
-            conn.close();
             return true;
         } catch (Exception e) {
             return false;
@@ -88,7 +87,6 @@ public class UserRepository {
             pst.setDouble(6, roomData.getPrice());
             pst.execute();
             pst.close();
-            conn.close();
             System.out.println("[ADDED]");
             return true;
         } catch (Exception e) {
@@ -110,6 +108,7 @@ public class UserRepository {
                 System.out.println("[ROOM EXIST]") ;
                 return getRoomFromResultSet(result);
             };
+            pst.close();
             return null;
         } catch (Exception e) {
             return null;
@@ -132,7 +131,6 @@ public class UserRepository {
                         result.getInt("bedNumber"),
                         result.getDouble("price"),
                         result.getBoolean("isAvailable"));
-               System.out.println("[NEW ROOM]");
                 list.add(room);
             };
             return list;
