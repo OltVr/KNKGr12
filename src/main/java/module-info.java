@@ -4,6 +4,7 @@ module com.example.knkgr {
     requires java.sql;
     exports  App;
     opens controllers to javafx.fxml;
+    opens model to javafx.base;
 
     opens com.example.knkgr13 to javafx.fxml;
     exports com.example.knkgr13;

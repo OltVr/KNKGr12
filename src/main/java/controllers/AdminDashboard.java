@@ -1,13 +1,21 @@
 package controllers;
 
 import App.Navigator;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import model.Room;
 import model.dto.InsertRoomDto;
+import repository.UserRepository;
 import service.AdminService;
 
 import java.net.URL;
@@ -43,14 +51,34 @@ public class AdminDashboard implements Initializable {
     @FXML
     private ComboBox<Integer> Beds;
 
+    @FXML
+    private TableView<Room> roomTable;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        roomType.getItems().addAll("Sea View", "City View");
-        Capacity.getItems().addAll(1, 2,3,4,5,6,7,8);
-        Beds.getItems().addAll(1, 2,3,4);
+    @FXML
+    private TableColumn<Room, String> roomNumber_col;
 
-    }
+    @FXML
+    private TableColumn<Room, String> floorNumber_col;
+
+    @FXML
+    private TableColumn<Room, String> roomType_col;
+
+    @FXML
+    private TableColumn<Room, String> bedNumber_col;
+
+
+    @FXML
+    private TableColumn<Room, String> price_col;
+
+    @FXML
+    private TableColumn<Room, String> capacity_col;
+
+
+    @FXML
+    private TableColumn<Room, String> Available_col;
+
+
+
 
     @FXML
     private void handleAdd(){
@@ -62,11 +90,12 @@ public class AdminDashboard implements Initializable {
                 this.Beds.getSelectionModel().getSelectedItem(),
                 Double.parseDouble(this.txtPrice.getText())
         );
+
         boolean b = AdminService.addRoom(RoomData);
         if (!(b)) {
             System.out.println("Room already exists");
         } else {
-            System.out.println("Room added sucssesfully");
+            showList();
         }
 
     }
@@ -81,5 +110,31 @@ public class AdminDashboard implements Initializable {
     private void handleRooms(){
         dashboardPane.setVisible(false);
         roomPane.setVisible(true);
+    }
+
+    private void showList(){
+        ObservableList<Room> listData = UserRepository.ListRoom();
+
+        roomNumber_col.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
+        floorNumber_col.setCellValueFactory(new PropertyValueFactory<>("floorNumber"));
+        roomType_col.setCellValueFactory(new PropertyValueFactory<>("roomType"));
+        capacity_col.setCellValueFactory(new PropertyValueFactory<>("capacity"));
+        bedNumber_col.setCellValueFactory(new PropertyValueFactory<>("bedNumber"));
+        price_col.setCellValueFactory(new PropertyValueFactory<>("price"));
+        Available_col.setCellValueFactory(cellData -> {
+            Room room = cellData.getValue();
+            String availability = room.isAvailable() ? "Available" : "Unavailable";
+            return new SimpleStringProperty(availability);
+        });
+
+        roomTable.setItems(listData);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        roomType.getItems().addAll("Sea View", "City View");
+        Capacity.getItems().addAll(1, 2,3,4,5,6,7,8);
+        Beds.getItems().addAll(1, 2,3,4);
+        showList();
     }
 }

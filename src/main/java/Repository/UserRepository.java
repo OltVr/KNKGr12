@@ -1,6 +1,8 @@
 package repository;
 
 import database.DatabaseUtil;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import model.Room;
 import model.User;
 import model.dto.CreateUserDto;
@@ -111,6 +113,31 @@ public class UserRepository {
             return null;
         } catch (Exception e) {
             return null;
+        }
+    }
+
+
+    public static ObservableList<Room> ListRoom() {
+        ObservableList<Room> list= FXCollections.observableArrayList();
+        String query = "SELECT * FROM ROOMS";
+        Connection connection = DatabaseUtil.getConnection();
+        try {
+            PreparedStatement pst = connection.prepareStatement(query);
+            ResultSet result = pst.executeQuery();
+           while (result.next()) {
+                Room room= new Room(result.getInt("roomNumber"),
+                        result.getInt("floorNumber"),
+                        result.getString("roomType"),
+                        result.getInt("capacity"),
+                        result.getInt("bedNumber"),
+                        result.getDouble("price"),
+                        result.getBoolean("isAvailable"));
+               System.out.println("[NEW ROOM]");
+                list.add(room);
+            };
+            return list;
+        } catch (Exception e) {
+            return list;
         }
     }
 
