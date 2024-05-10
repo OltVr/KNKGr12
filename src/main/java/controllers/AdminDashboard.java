@@ -7,10 +7,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -126,6 +123,7 @@ public class AdminDashboard implements Initializable {
             System.out.println("Room already exists");
         } else {
             showList();
+            clear();
         }
 
     }
@@ -167,5 +165,29 @@ public class AdminDashboard implements Initializable {
         Beds.getItems().addAll(1, 2,3,4);
         showList();
         updateRoomsBooked();
+    }
+
+    private void clear(){
+        txtRoom.setText("");
+        txtFloor.setText("");
+        txtPrice.setText("");
+        roomType.getSelectionModel().clearSelection();
+        roomType.setPromptText("Type");
+        Capacity.getSelectionModel().clearSelection();
+        Capacity.setPromptText("Capacity");
+        Beds.getSelectionModel().clearSelection();
+        Beds.setPromptText("Number of Beds");
+    }
+
+    @FXML
+    private void  roomSelect(){
+        Room room = roomTable.getSelectionModel().getSelectedItem();
+//        int num = roomTable.getSelectionModel().getSelectedIndex();
+
+        if (room!=null){
+        txtRoom.setText(String.valueOf(room.getRoomNumber()));
+        txtFloor.setText(String.valueOf(room.getFloorNumber()));
+        txtPrice.setText(String.valueOf(room.getPrice()));}
+
     }
 }
