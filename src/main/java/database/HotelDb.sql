@@ -86,3 +86,8 @@ update user set isAdmin=1 where email= 'email@email.com';
 
 ALTER TABLE rooms DROP CONSTRAINT CHK_room_type;
 ALTER TABLE rooms ADD CONSTRAINT CHK_room_type CHECK (UPPER(roomType) IN ('SEA VIEW', 'CITY VIEW'));
+
+//insertimi per drejtkendshin e  kuq te admindashboard dmth me kqyr sa rooms booked today
+//po nese ne db te juj nuk figuron dhoma nr.13 edhe useri me imell si temen sju bon shkaku checkConstrains.
+INSERT INTO reservation (reservationID, email, roomNumber, reservationDate, checkInDate, checkOutDate, numberOfPeople)
+VALUES ('1', 'trimmo@gmail.com', '13', '2024-05-11', '2024-05-12', '2024-05-14', 2);

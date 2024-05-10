@@ -157,7 +157,7 @@
                                  </font>
                               </Text>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dc514f" height="123.0" layoutX="535.0" layoutY="409.0" stroke="#00000032" strokeType="INSIDE" style="-fx-arc-height: 30px; -fx-arc-width: 30px;" width="217.0" />
-                              <Text fill="#fffefe" layoutX="553.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10">
+                              <Text fx:id="txtRoomsBooked" fill="#fffefe" layoutX="553.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10">
                                  <font>
                                     <Font name="Montserrat Regular" size="36.0" />
                                  </font>
