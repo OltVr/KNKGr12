@@ -66,12 +66,23 @@ public class LoginController {
                     this.txtLoginEmail.getText(),
                     this.pwdLoginPassword.getText()
             );
-            boolean isLogin = UserService.login(loginUserData);
+            boolean isLogin= UserService.login(loginUserData);
 
-            if (!isLogin) {
-                showAlert("Invalid Login", "Wrong email or password, please try again!");
-            } else {
-                Navigator.navigate(ke, Navigator.HOME_PAGE);
+            if (!isLogin){
+                login_failed.toFront();
+                login_failed.setVisible(true);
+
+
+            }
+            else{
+                boolean Admin=UserService.loginAdmin(loginUserData);
+                if (!Admin){
+                    Navigator.navigate(ke,Navigator.HOME_PAGE);
+                }
+                else{
+                    Navigator.navigate(ke,Navigator.ADMIN_DASHBOARD);
+                }
+
             }
         }
     }

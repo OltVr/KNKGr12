@@ -5,6 +5,10 @@
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -28,7 +32,7 @@
                               <Font name="Montserrat Medium" size="12.0" />
                            </font>
                         </Button>
-                        <Button layoutX="-1.0" layoutY="84.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="Rooms">
+                        <Button layoutX="-1.0" layoutY="84.0" mnemonicParsing="false" onAction="#handleRooms" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="Rooms">
                            <font>
                               <Font name="Montserrat Medium" size="12.0" />
                            </font>
@@ -53,7 +57,7 @@
                               <Image url="@../icons/dashboard.png" />
                            </image>
                         </ImageView>
-                        <Button layoutX="-1.0" layoutY="1.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="Dashboard">
+                        <Button layoutX="-1.0" layoutY="1.0" mnemonicParsing="false" onAction="#handleDashboard" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="Dashboard">
                            <font>
                               <Font name="Montserrat Medium" size="12.0" />
                            </font>
@@ -74,12 +78,12 @@
                               <Font name="Montserrat Regular" size="22.0" />
                            </font>
                         </Text>
-                        <Text fill="WHITE" layoutX="137.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin">
+                        <Text fill="WHITE" layoutX="132.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin">
                            <font>
-                              <Font size="22.0" />
+                              <Font name="Montserrat Medium" size="22.0" />
                            </font>
                         </Text>
-                        <ImageView fitHeight="30.0" fitWidth="24.0" layoutX="920.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="30.0" fitWidth="24.0" layoutX="920.0" layoutY="10.0" onMousePressed="#handleLogout" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../icons/arrow.png" />
                            </image>
@@ -87,7 +91,7 @@
                               <Cursor fx:constant="OPEN_HAND" />
                            </cursor>
                         </ImageView>
-                        <Text fill="WHITE" layoutX="952.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign out" wrappingWidth="72.83200073242188">
+                        <Text fill="WHITE" layoutX="952.0" layoutY="26.0" onMousePressed="#handleLogout" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign out" wrappingWidth="72.83200073242188">
                            <font>
                               <Font name="Montserrat Medium" size="13.0" />
                            </font>
@@ -101,66 +105,132 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane layoutX="41.0" layoutY="83.0" prefHeight="451.0" prefWidth="442.0" styleClass="third-form" stylesheets="@../css/Login.css">
+                        <AnchorPane fx:id="dashboardPane" layoutX="380.0" layoutY="27.0" prefHeight="598.0" prefWidth="814.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <LineChart layoutY="62.0" prefHeight="374.0" prefWidth="432.0">
-                                <xAxis>
-                                  <CategoryAxis side="BOTTOM" />
-                                </xAxis>
-                                <yAxis>
-                                  <NumberAxis side="LEFT" />
-                                </yAxis>
-                              </LineChart>
-                              <Text layoutX="155.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Graph Title">
+                              <AnchorPane layoutX="22.0" layoutY="81.0" prefHeight="440.0" prefWidth="489.0" styleClass="third-form" stylesheets="@../css/Login.css">
+                                 <children>
+                                    <Text layoutX="178.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Graph Title">
+                                       <font>
+                                          <Font name="Montserrat Regular" size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <LineChart layoutY="84.0" prefHeight="378.0" prefWidth="489.0">
+                                      <xAxis>
+                                        <CategoryAxis side="BOTTOM" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis side="LEFT" />
+                                      </yAxis>
+                                    </LineChart>
+                                 </children>
+                              </AnchorPane>
+                              <Text layoutX="46.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Analytics Dashboard">
+                                 <font>
+                                    <Font name="Montserrat Regular" size="25.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="541.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current statistics">
                                  <font>
                                     <Font name="Montserrat Regular" size="24.0" />
                                  </font>
                               </Text>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4a9aff" height="123.0" layoutX="538.0" layoutY="148.0" stroke="#00000032" strokeType="INSIDE" style="-fx-arc-height: 30px; -fx-arc-width: 30px;" width="217.0" />
+                              <Text fill="#fffefe" layoutX="553.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="450$">
+                                 <font>
+                                    <Font name="Montserrat Regular" size="36.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="#fffefe" layoutX="557.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total income">
+                                 <font>
+                                    <Font name="Montserrat Regular" size="18.0" />
+                                 </font>
+                              </Text>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3b000" height="123.0" layoutX="535.0" layoutY="279.0" stroke="#00000032" strokeType="INSIDE" style="-fx-arc-height: 30px; -fx-arc-width: 30px;" width="217.0" />
+                              <Text fill="#fffefe" layoutX="553.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="120">
+                                 <font>
+                                    <Font name="Montserrat Regular" size="36.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="#fffefe" layoutX="553.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New users this year">
+                                 <font>
+                                    <Font name="Montserrat Regular" size="18.0" />
+                                 </font>
+                              </Text>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dc514f" height="123.0" layoutX="535.0" layoutY="409.0" stroke="#00000032" strokeType="INSIDE" style="-fx-arc-height: 30px; -fx-arc-width: 30px;" width="217.0" />
+                              <Text fill="#fffefe" layoutX="553.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10">
+                                 <font>
+                                    <Font name="Montserrat Regular" size="36.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="#fffefe" layoutX="553.0" layoutY="497.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rooms booked">
+                                 <font>
+                                    <Font name="Montserrat Regular" size="18.0" />
+                                 </font>
+                              </Text>
                            </children>
                         </AnchorPane>
-                        <Text layoutX="41.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Analytics Dashboard">
-                           <font>
-                              <Font name="Montserrat Regular" size="25.0" />
-                           </font>
-                        </Text>
-                        <Text layoutX="546.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current statistics">
-                           <font>
-                              <Font name="Montserrat Regular" size="24.0" />
-                           </font>
-                        </Text>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4a9aff" height="123.0" layoutX="540.0" layoutY="135.0" stroke="#00000032" strokeType="INSIDE" style="-fx-arc-height: 30px; -fx-arc-width: 30px;" width="217.0" />
-                        <Text fill="#fffefe" layoutX="551.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="450$">
-                           <font>
-                              <Font name="Montserrat Regular" size="36.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#fffefe" layoutX="551.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total income">
-                           <font>
-                              <Font name="Montserrat Regular" size="18.0" />
-                           </font>
-                        </Text>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f3b000" height="123.0" layoutX="540.0" layoutY="270.0" stroke="#00000032" strokeType="INSIDE" style="-fx-arc-height: 30px; -fx-arc-width: 30px;" width="217.0" />
-                        <Text fill="#fffefe" layoutX="551.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="120">
-                           <font>
-                              <Font name="Montserrat Regular" size="36.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#fffefe" layoutX="551.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New users this year">
-                           <font>
-                              <Font name="Montserrat Regular" size="18.0" />
-                           </font>
-                        </Text>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dc514f" height="123.0" layoutX="540.0" layoutY="405.0" stroke="#00000032" strokeType="INSIDE" style="-fx-arc-height: 30px; -fx-arc-width: 30px;" width="217.0" />
-                        <Text fill="#fffefe" layoutX="551.0" layoutY="466.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10">
-                           <font>
-                              <Font name="Montserrat Regular" size="36.0" />
-                           </font>
-                        </Text>
-                        <Text fill="#fffefe" layoutX="551.0" layoutY="494.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rooms booked">
-                           <font>
-                              <Font name="Montserrat Regular" size="18.0" />
-                           </font>
-                        </Text>
+                        <AnchorPane fx:id="roomPane" layoutX="5.0" layoutY="5.0" prefHeight="603.0" prefWidth="819.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="30.0" layoutY="15.0" prefHeight="154.0" prefWidth="754.0" styleClass="fxx" stylesheets="@../css/Login.css">
+                                 <children>
+                                    <Button layoutX="632.0" layoutY="11.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="37.0" prefWidth="79.0" styleClass="btn-green" stylesheets="@../css/Login.css" text="Add" />
+                                    <Button layoutX="632.0" layoutY="58.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="79.0" styleClass="btn-yellow" stylesheets="@../css/Login.css" text="Update" />
+                                    <Button layoutX="632.0" layoutY="107.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="79.0" styleClass="btn-red" stylesheets="@../css/Login.css" text="Delete" />
+                                    <TextField fx:id="txtRoom" layoutX="113.0" layoutY="17.0" styleClass="textfield" stylesheets="@../css/Login.css" />
+                                    <Text layoutX="10.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Number:">
+                                       <font>
+                                          <Font name="Montserrat Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="txtFloor" layoutX="113.0" layoutY="59.0" styleClass="textfield" stylesheets="@../css/Login.css" />
+                                    <Text layoutX="9.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Floor Number:">
+                                       <font>
+                                          <Font name="Montserrat Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="8.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Type:">
+                                       <font>
+                                          <Font name="Montserrat Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="284.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacity:">
+                                       <font>
+                                          <Font name="Montserrat Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <ComboBox fx:id="Capacity" layoutX="364.0" layoutY="17.0" prefWidth="150.0" promptText="8" />
+                                    <ComboBox fx:id="roomType" layoutX="113.0" layoutY="102.0" prefWidth="150.0" promptText="Sea View" />
+                                    <Text layoutX="284.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Beds:">
+                                       <font>
+                                          <Font name="Montserrat Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <ComboBox fx:id="Beds" layoutX="364.0" layoutY="58.0" prefWidth="150.0" promptText="4" />
+                                    <TextField fx:id="txtPrice" layoutX="365.0" layoutY="102.0" promptText="                            Euro (€)" styleClass="textfield" stylesheets="@../css/Login.css" />
+                                    <Text layoutX="284.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price: ">
+                                       <font>
+                                          <Font name="Montserrat Medium" size="12.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="30.0" layoutY="179.0" prefHeight="405.0" prefWidth="754.0" styleClass="fxx" stylesheets="@../css/Login.css">
+                                 <children>
+                                    <TableView layoutX="15.0" layoutY="21.0" prefHeight="370.0" prefWidth="725.0">
+                                      <columns>
+                                        <TableColumn prefWidth="128.0" text="RoomNumber" />
+                                        <TableColumn prefWidth="133.0" text="Floor Number" />
+                                          <TableColumn prefWidth="115.0" text="Room Type" />
+                                          <TableColumn prefWidth="17.0" text="capacity " />
+                                          <TableColumn prefWidth="129.0" text="Bed Number" />
+                                          <TableColumn prefWidth="90.0" text="Price" />
+                                          <TableColumn prefWidth="112.0" text="Available" />
+                                      </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
                      </children>
                   </AnchorPane>
                </center>

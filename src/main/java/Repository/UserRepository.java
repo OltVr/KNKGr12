@@ -1,8 +1,10 @@
 package repository;
 
 import database.DatabaseUtil;
+import model.Room;
 import model.User;
 import model.dto.CreateUserDto;
+import model.dto.InsertRoomDto;
 
 
 import java.sql.Connection;
@@ -66,4 +68,69 @@ public class UserRepository {
             return null;
         }
     }
+
+    public static boolean insert(InsertRoomDto roomData) {
+        Connection conn = DatabaseUtil.getConnection();
+        String query = """
+                INSERT INTO ROOMS (roomNumber, floorNumber, roomType, capacity, bedNumber, price)
+                VALUE (?, ?, ?, ?, ?, ?)
+                """;
+        //String query = "INSERT INTO USER VALUE (?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement pst = conn.prepareStatement(query);
+            pst.setInt(1, roomData.getRoomNumber());
+            pst.setInt(2,roomData.getFloorNumber());
+            pst.setString(3, roomData.getRoomType());
+            pst.setInt(4, roomData.getCapacity());
+            pst.setInt(5, roomData.getBedNumber());
+            pst.setDouble(6, roomData.getPrice());
+            pst.execute();
+            pst.close();
+            conn.close();
+            System.out.println("[ADDED]");
+            return true;
+        } catch (Exception e) {
+            System.out.println("[ERROR] SQL did not execute "+e.getMessage());
+            return false;
+        }
+
+    }
+
+    public static Room getRoom(int roomNumber,int floor) {
+        String query = "SELECT * FROM ROOMS WHERE roomNumber = ? AND floorNumber= ? LIMIT 1";
+        Connection connection = DatabaseUtil.getConnection();
+        try {
+            PreparedStatement pst = connection.prepareStatement(query);
+            pst.setInt(1, roomNumber);
+            pst.setInt(2, floor);
+            ResultSet result = pst.executeQuery();
+            if(result.next()){
+                System.out.println("[ROOM EXIST]") ;
+                return getRoomFromResultSet(result);
+            };
+            return null;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    private static Room getRoomFromResultSet(ResultSet result) {
+        try {
+            int roomNumber = result.getInt("roomNumber");
+            int floor = result.getInt("floorNumber");
+            int capacity = result.getInt("capacity");
+            int beds = result.getInt("bedNumber");
+            double price = result.getDouble("price");
+            boolean isAvailable = result.getBoolean("isAvailable");
+            String roomType = result.getString("roomType");
+            System.out.println("[RETURNING ROOM] "+roomNumber+" "+floor+" "+capacity+" "+beds+" "+price+" "+isAvailable+" "+roomType);
+            return new Room(
+                    roomNumber,floor,roomType,capacity,beds,price,isAvailable
+            );
+        } catch (Exception e) {
+            System.out.println("[ERROR] "+e.getMessage());
+            return null;
+        }
+    }
+
 }
