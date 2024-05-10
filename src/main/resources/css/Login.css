@@ -179,7 +179,7 @@
 }
 
 .table-view .table-row-cell:selected {
-    -fx-background-color: #b3d9ff;
+    -fx-background-color: #83c1ff;
     -fx-text-fill: #ffffff;
 }
 
