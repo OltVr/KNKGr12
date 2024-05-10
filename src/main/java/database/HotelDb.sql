@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS rooms (
     bedNumber INT NOT NULL,
     price decimal(10,2) NOT NULL,
     isAvailable boolean NOT NULL DEFAULT 1,
-    CONSTRAINT CHK_room_type CHECK (UPPER(roomType) IN ('SEA VIEW', 'CITY VIEW'));,
+    CONSTRAINT CHK_room_type CHECK (UPPER(roomType) IN ('SEA VIEW', 'CITY VIEW')),
     CONSTRAINT CHK_floor_number CHECK (floorNumber >= 1),
     CONSTRAINT CHK_room_number CHECK (roomNumber >= 1),
     CONSTRAINT CHK_bed_number CHECK (bedNumber >= 1),
