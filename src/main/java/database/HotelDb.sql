@@ -82,3 +82,7 @@ delimiter ;
 
 
 update user set isAdmin=1 where email= 'email@email.com';
+
+
+ALTER TABLE rooms DROP CONSTRAINT CHK_room_type;
+ALTER TABLE rooms ADD CONSTRAINT CHK_room_type CHECK (UPPER(roomType) IN ('SEA VIEW', 'CITY VIEW'));
