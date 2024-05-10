@@ -24,7 +24,7 @@ public class SignupController {
 
     // Regex patterns for email and password validation
     private static final String EMAIL_REGEX = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
-    private static final String PASSWORD_REGEX = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&*?+=!])(?=\\S+$).{8,}$";
+    private static final String PASSWORD_REGEX = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^./&*?+=!])(?=\\S+$).{8,}$";
 
     @FXML
     private void handleSignUp(ActionEvent ae) {
