@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS rooms (
     bedNumber INT NOT NULL,
     price decimal(10,2) NOT NULL,
     isAvailable boolean NOT NULL DEFAULT 1,
-    CONSTRAINT CHK_room_type CHECK (upper(roomType)='SEA'or upper(roomType)='CITY'),
+    CONSTRAINT CHK_room_type CHECK (upper(roomType)='SEA VIEW'or upper(roomType)='CITY VIEW'),
     CONSTRAINT CHK_floor_number CHECK (floorNumber >= 1),
     CONSTRAINT CHK_room_number CHECK (roomNumber >= 1),
     CONSTRAINT CHK_bed_number CHECK (bedNumber >= 1),
@@ -72,13 +72,13 @@ BEGIN
             LEAVE read_loop;
         END IF;
 
-        UPDATE room
+        UPDATE rooms
         SET isAvailable = TRUE
         WHERE roomNumber = roomNumber;
     END LOOP;
     CLOSE cur;
 END;
-delimiter
+delimiter ;
 
 
 update user set isAdmin=1 where email= 'email@email.com';
