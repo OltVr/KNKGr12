@@ -80,6 +80,8 @@ public class AdminDashboard implements Initializable {
     private TableColumn<Room, String> Available_col;
     @FXML
     private Text txtRoomsBooked;
+    @FXML
+    private Text txtTotalIncome;
 
 
 
@@ -87,6 +89,11 @@ public class AdminDashboard implements Initializable {
         String count= String.valueOf(UserRepository.RoomsBooked());
         txtRoomsBooked.setText(count);
 
+    }
+
+    private void updateTotalIncome(){
+        String total=String.valueOf(UserRepository.TotalIncome()+" $");
+        txtTotalIncome.setText(total);
     }
 
 
@@ -172,6 +179,7 @@ public class AdminDashboard implements Initializable {
         Beds.getItems().addAll(1, 2,3,4);
         showList();
         updateRoomsBooked();
+        updateTotalIncome();
     }
 
     private void clear(){
@@ -199,7 +207,6 @@ public class AdminDashboard implements Initializable {
     }
     @FXML
     private void handleDeleteRoom(){
-        //this deletes the room
         int roomNumber= Integer.parseInt(txtRoom.getText());
         int floorNumber= Integer.parseInt(txtFloor.getText());
         if (UserRepository.deleteRoom(roomNumber,floorNumber)){

@@ -135,7 +135,7 @@
                                  </font>
                               </Text>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4a9aff" height="123.0" layoutX="538.0" layoutY="148.0" stroke="#00000032" strokeType="INSIDE" style="-fx-arc-height: 30px; -fx-arc-width: 30px;" width="217.0" />
-                              <Text fill="#fffefe" layoutX="553.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="450$">
+                              <Text fx:id="txtTotalIncome" fill="#fffefe" layoutX="553.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="450$">
                                  <font>
                                     <Font name="Montserrat Regular" size="36.0" />
                                  </font>
