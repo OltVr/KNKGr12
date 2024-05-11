@@ -162,6 +162,28 @@ public class UserRepository {
         }
     }
 
+    public static int TotalIncome(){
+        Connection con=null;
+        PreparedStatement statement=null;
+        ResultSet rez=null;
+
+        try{
+            String Query= "SELECT SUM(r.price) AS total_price FROM rooms r JOIN reservation res ON r.roomNumber = res.roomNumber";
+            con=DatabaseUtil.getConnection();
+            statement=con.prepareStatement(Query);
+            rez=statement.executeQuery();
+
+            if (rez.next()){
+                int price= rez.getInt("total_price");
+                return price;
+            }
+            return 0;
+        }catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
     public static int RoomsBooked() {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -173,7 +195,7 @@ public class UserRepository {
             statement.setDate(1, java.sql.Date.valueOf(LocalDate.now()));
             result = statement.executeQuery();
             if (result.next()) {
-                System.out.println("Rooms booked updated successfully.");
+
                 return result.getInt("Rooms_booked");
             }
             return 0;
