@@ -197,4 +197,17 @@ public class AdminDashboard implements Initializable {
         txtPrice.setText(String.valueOf(room.getPrice()));}
 
     }
+    @FXML
+    private void handleDeleteRoom(){
+        int roomNumber= Integer.parseInt(txtRoom.getText());
+        int floorNumber= Integer.parseInt(txtFloor.getText());
+        if (UserRepository.deleteRoom(roomNumber,floorNumber)){
+            showList();
+            clear();
+        }
+        else {
+            System.out.println("[ERROR] Couldn't find room");
+        }
+
+    }
 }
