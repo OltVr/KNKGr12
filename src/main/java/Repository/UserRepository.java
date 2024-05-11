@@ -63,7 +63,7 @@ public class UserRepository {
             String email = result.getString("email");
             String salt = result.getString("salt");
             String passwordHash = result.getString("passwordHash");
-            boolean isAdmin=result.getBoolean("isAdmin");
+            boolean isAdmin = result.getBoolean("isAdmin");
             return new User(
                     firstName, lastName, email, salt, passwordHash, isAdmin
             );
@@ -82,7 +82,7 @@ public class UserRepository {
         try {
             PreparedStatement pst = conn.prepareStatement(query);
             pst.setInt(1, roomData.getRoomNumber());
-            pst.setInt(2,roomData.getFloorNumber());
+            pst.setInt(2, roomData.getFloorNumber());
             pst.setString(3, roomData.getRoomType());
             pst.setInt(4, roomData.getCapacity());
             pst.setInt(5, roomData.getBedNumber());
@@ -92,13 +92,13 @@ public class UserRepository {
             System.out.println("[ADDED]");
             return true;
         } catch (Exception e) {
-            System.out.println("[ERROR] SQL did not execute "+e.getMessage());
+            System.out.println("[ERROR] SQL did not execute " + e.getMessage());
             return false;
         }
 
     }
 
-    public static Room getRoom(int roomNumber,int floor) {
+    public static Room getRoom(int roomNumber, int floor) {
         String query = "SELECT * FROM ROOMS WHERE roomNumber = ? AND floorNumber= ? LIMIT 1";
         Connection connection = DatabaseUtil.getConnection();
         try {
@@ -106,10 +106,11 @@ public class UserRepository {
             pst.setInt(1, roomNumber);
             pst.setInt(2, floor);
             ResultSet result = pst.executeQuery();
-            if(result.next()){
-                System.out.println("[ROOM EXIST]") ;
+            if (result.next()) {
+                System.out.println("[ROOM EXIST]");
                 return getRoomFromResultSet(result);
-            };
+            }
+            ;
             pst.close();
             return null;
         } catch (Exception e) {
@@ -119,14 +120,14 @@ public class UserRepository {
 
 
     public static ObservableList<Room> ListRoom() {
-        ObservableList<Room> list= FXCollections.observableArrayList();
+        ObservableList<Room> list = FXCollections.observableArrayList();
         String query = "SELECT * FROM ROOMS";
         Connection connection = DatabaseUtil.getConnection();
         try {
             PreparedStatement pst = connection.prepareStatement(query);
             ResultSet result = pst.executeQuery();
-           while (result.next()) {
-                Room room= new Room(result.getInt("roomNumber"),
+            while (result.next()) {
+                Room room = new Room(result.getInt("roomNumber"),
                         result.getInt("floorNumber"),
                         result.getString("roomType"),
                         result.getInt("capacity"),
@@ -134,7 +135,8 @@ public class UserRepository {
                         result.getDouble("price"),
                         result.getBoolean("isAvailable"));
                 list.add(room);
-            };
+            }
+            ;
             return list;
         } catch (Exception e) {
             return list;
@@ -150,12 +152,12 @@ public class UserRepository {
             double price = result.getDouble("price");
             boolean isAvailable = result.getBoolean("isAvailable");
             String roomType = result.getString("roomType");
-            System.out.println("[RETURNING ROOM] "+roomNumber+" "+floor+" "+capacity+" "+beds+" "+price+" "+isAvailable+" "+roomType);
+            System.out.println("[RETURNING ROOM] " + roomNumber + " " + floor + " " + capacity + " " + beds + " " + price + " " + isAvailable + " " + roomType);
             return new Room(
-                    roomNumber,floor,roomType,capacity,beds,price,isAvailable
+                    roomNumber, floor, roomType, capacity, beds, price, isAvailable
             );
         } catch (Exception e) {
-            System.out.println("[ERROR] "+e.getMessage());
+            System.out.println("[ERROR] " + e.getMessage());
             return null;
         }
     }
@@ -182,4 +184,22 @@ public class UserRepository {
         }
     }
 
+    public static boolean deleteRoom(int roomNumber, int floor) {
+        String query = "DELETE FROM ROOMS WHERE roomNumber = ? AND floorNumber = ?";
+        Connection connection = DatabaseUtil.getConnection();
+        try {
+            PreparedStatement pst = connection.prepareStatement(query);
+            pst.setInt(1, roomNumber);
+            pst.setInt(2, floor);
+            pst.executeUpdate();
+            pst.close();
+            System.out.println("[DELETED ROOM] Room deleted successfully.");
+            return true;
+        } catch (SQLException e) {
+            System.out.println("[DB ERROR] " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+
+    }
 }

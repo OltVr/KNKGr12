@@ -175,7 +175,7 @@
                                  <children>
                                     <Button layoutX="632.0" layoutY="11.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="37.0" prefWidth="79.0" styleClass="btn-green" stylesheets="@../css/Login.css" text="Add" />
                                     <Button layoutX="632.0" layoutY="58.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="79.0" styleClass="btn-yellow" stylesheets="@../css/Login.css" text="Update" />
-                                    <Button layoutX="632.0" layoutY="107.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="79.0" styleClass="btn-red" stylesheets="@../css/Login.css" text="Delete" />
+                                    <Button layoutX="632.0" layoutY="107.0" mnemonicParsing="false" onAction="#handleDeleteRoom" prefHeight="37.0" prefWidth="79.0" styleClass="btn-red" stylesheets="@../css/Login.css" text="Delete" />
                                     <TextField fx:id="txtRoom" layoutX="113.0" layoutY="17.0" styleClass="textfield" stylesheets="@../css/Login.css" />
                                     <Text layoutX="10.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Number:">
                                        <font>
