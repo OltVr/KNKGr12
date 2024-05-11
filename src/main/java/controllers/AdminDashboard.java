@@ -209,6 +209,26 @@ public class AdminDashboard implements Initializable {
         else {
             System.out.println("[ERROR] Couldn't find room");
         }
+    }
 
+    @FXML
+    private void handleUpdate(){
+        InsertRoomDto RoomData = new InsertRoomDto(
+                Integer.parseInt(this.txtRoom.getText()),
+                Integer.parseInt(this.txtFloor.getText()),
+                this.roomType.getSelectionModel().getSelectedItem(),
+                this.Capacity.getSelectionModel().getSelectedItem(),
+                this.Beds.getSelectionModel().getSelectedItem(),
+                Double.parseDouble(this.txtPrice.getText())
+        );
+
+        if (UserRepository.updateRoom(RoomData)){
+            showList();
+            clear();
+            System.out.println("[UPDATE] Table has been updated");
+        }
+        else {
+            System.out.println("[ERROR] The room either does not exist or there was a [DB ERROR]");
+        }
     }
 }
