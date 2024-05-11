@@ -12,6 +12,8 @@ import model.dto.InsertRoomDto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class UserRepository {
     public static boolean create(CreateUserDto userData) {
@@ -155,6 +157,28 @@ public class UserRepository {
         } catch (Exception e) {
             System.out.println("[ERROR] "+e.getMessage());
             return null;
+        }
+    }
+
+    public static int RoomsBooked() {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet result = null;
+        try {
+            String query = "SELECT COUNT(*) as Rooms_booked FROM reservation WHERE reservationDate = ?";
+            connection = DatabaseUtil.getConnection();
+            statement = connection.prepareStatement(query);
+            statement.setDate(1, java.sql.Date.valueOf(LocalDate.now()));
+            result = statement.executeQuery();
+            if (result.next()) {
+                System.out.println("Rooms booked updated successfully.");
+                return result.getInt("Rooms_booked");
+            }
+            return 0;
+
+        } catch (SQLException e) {
+            System.out.println("[ERROR DB]" + e.getMessage());
+            return 0;
         }
     }
 

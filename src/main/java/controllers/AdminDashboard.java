@@ -1,8 +1,6 @@
 package controllers;
 
 import App.Navigator;
-import database.DatabaseUtil;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,12 +16,6 @@ import repository.UserRepository;
 import service.AdminService;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 public class AdminDashboard implements Initializable {
@@ -32,6 +24,12 @@ public class AdminDashboard implements Initializable {
 
     @FXML
     private AnchorPane roomPane;
+
+    @FXML
+    private AnchorPane reservationPane;
+
+    @FXML
+    private AnchorPane guestsPane;
 
     @FXML
     private void handleLogout(MouseEvent me) {
@@ -84,24 +82,11 @@ public class AdminDashboard implements Initializable {
     private Text txtRoomsBooked;
 
 
+
     private void updateRoomsBooked(){
-        Connection connection=null;
-        PreparedStatement statement=null;
-        ResultSet result=null;
-        try{
-        String query= "SELECT COUNT(*) as Rooms_booked FROM reservation WHERE reservationDate = ?";
-        connection= DatabaseUtil.getConnection();
-        statement =connection.prepareStatement(query);
-        statement.setDate(1,java.sql.Date.valueOf(LocalDate.now()));
-        result=statement.executeQuery();
-        if (result.next()){
-            int roomsCount= result.getInt("Rooms_booked");
-            txtRoomsBooked.setText(String.valueOf(roomsCount));
-        }
-            System.out.println("Rooms booked updated successfully.");
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
+        String count= String.valueOf(UserRepository.RoomsBooked());
+        txtRoomsBooked.setText(count);
+
     }
 
 
@@ -131,14 +116,36 @@ public class AdminDashboard implements Initializable {
     @FXML
     private void handleDashboard(){
         dashboardPane.setVisible(true);
+        reservationPane.setVisible(false);
         roomPane.setVisible(false);
+        guestsPane.setVisible(false);
+    }
+
+    @FXML
+    private void handleReservations(){
+        dashboardPane.setVisible(false);
+        reservationPane.setVisible(true);
+        roomPane.setVisible(false);
+        guestsPane.setVisible(false);
     }
 
     @FXML
     private void handleRooms(){
         dashboardPane.setVisible(false);
+        reservationPane.setVisible(false);
         roomPane.setVisible(true);
+        guestsPane.setVisible(false);
     }
+
+    @FXML
+    private void handleGuests(){
+        dashboardPane.setVisible(false);
+        reservationPane.setVisible(false);
+        roomPane.setVisible(false);
+        guestsPane.setVisible(true);
+    }
+
+
 
     private void showList(){
         ObservableList<Room> listData = UserRepository.ListRoom();

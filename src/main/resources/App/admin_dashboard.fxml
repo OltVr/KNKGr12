@@ -27,7 +27,7 @@
                <left>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="left-form" stylesheets="@../css/Login.css" BorderPane.alignment="CENTER">
                      <children>
-                        <Button layoutX="-1.0" layoutY="42.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="Guests">
+                        <Button layoutX="-1.0" layoutY="42.0" mnemonicParsing="false" onAction="#handleGuests" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="Guests">
                            <font>
                               <Font name="Montserrat Medium" size="12.0" />
                            </font>
@@ -37,7 +37,7 @@
                               <Font name="Montserrat Medium" size="12.0" />
                            </font>
                         </Button>
-                        <Button layoutX="-1.0" layoutY="126.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="Reservations">
+                        <Button layoutX="-1.0" layoutY="126.0" mnemonicParsing="false" onAction="#handleReservations" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="Reservations">
                            <font>
                               <Font name="Montserrat Medium" size="12.0" />
                            </font>
@@ -105,7 +105,7 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane fx:id="dashboardPane" prefHeight="598.0" prefWidth="814.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="dashboardPane" prefHeight="598.0" prefWidth="814.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="22.0" layoutY="81.0" prefHeight="440.0" prefWidth="489.0" styleClass="third-form" stylesheets="@../css/Login.css">
                                  <children>
@@ -218,12 +218,12 @@
                                  <children>
                                     <TableView fx:id="roomTable" layoutX="10.0" layoutY="17.0" onMouseClicked="#roomSelect" prefHeight="370.0" prefWidth="733.0">
                                       <columns>
-                                        <TableColumn fx:id="roomNumber_col" prefWidth="99.19995498657227" text="Room #" />
-                                        <TableColumn fx:id="floorNumber_col" prefWidth="99.199951171875" text="Floor" />
-                                          <TableColumn fx:id="roomType_col" prefWidth="138.40000915527344" text="Room Type" />
-                                          <TableColumn fx:id="capacity_col" prefWidth="115.0" text="Capacity " />
-                                          <TableColumn fx:id="bedNumber_col" prefWidth="143.0" text="Bed Number" />
-                                          <TableColumn fx:id="price_col" prefWidth="15.0" text="Price" />
+                                        <TableColumn fx:id="roomNumber_col" prefWidth="93.59999465942383" text="Room #" />
+                                        <TableColumn fx:id="floorNumber_col" prefWidth="84.800048828125" text="Floor" />
+                                          <TableColumn fx:id="roomType_col" prefWidth="128.7999725341797" text="Room Type" />
+                                          <TableColumn fx:id="capacity_col" prefWidth="102.39996337890625" text="Capacity " />
+                                          <TableColumn fx:id="bedNumber_col" prefWidth="128.79998779296875" text="Bed Number" />
+                                          <TableColumn fx:id="price_col" prefWidth="74.4000244140625" text="Price" />
                                           <TableColumn fx:id="Available_col" prefWidth="121.60009765625" text="Available" />
                                       </columns>
                                     </TableView>
@@ -231,7 +231,7 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="roomPane1" layoutY="3.0" prefHeight="603.0" prefWidth="828.0" visible="false">
+                        <AnchorPane fx:id="guestsPane" layoutY="3.0" prefHeight="603.0" prefWidth="828.0" visible="false">
                            <children>
                               <AnchorPane layoutX="21.0" layoutY="52.0" prefHeight="522.0" prefWidth="784.0" styleClass="fxx" stylesheets="@../css/Login.css">
                                  <children>
@@ -287,7 +287,7 @@
                               </Text>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="roomPane11" layoutY="3.0" prefHeight="603.0" prefWidth="828.0">
+                        <AnchorPane fx:id="reservationPane" layoutY="3.0" prefHeight="603.0" prefWidth="828.0" visible="false">
                            <children>
                               <AnchorPane layoutX="21.0" layoutY="52.0" prefHeight="522.0" prefWidth="784.0" styleClass="fxx" stylesheets="@../css/Login.css">
                                  <children>
