@@ -82,27 +82,7 @@ public class AdminDashboard implements Initializable {
     private TableColumn<Room, String> Available_col;
     @FXML
     private Text txtRoomsBooked;
-    @FXML
-    private Text txtTotalIncome;
 
-
-    public void updateTotalIncome(){
-        Connection conn= null;
-        PreparedStatement statement=null;
-        ResultSet rez=null;
-        try {
-            String query="SELECT SUM(r.price) AS total_price FROM rooms r JOIN reservation res ON r.roomNumber = res.roomNumber";
-            conn=DatabaseUtil.getConnection();
-            statement= conn.prepareStatement(query);
-            rez=statement.executeQuery();
-            if(rez.next()){
-                int totali=rez.getInt("total_price");
-                txtTotalIncome.setText(String.valueOf(totali+" $"));
-            }
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     private void updateRoomsBooked(){
         Connection connection=null;
@@ -118,6 +98,7 @@ public class AdminDashboard implements Initializable {
             int roomsCount= result.getInt("Rooms_booked");
             txtRoomsBooked.setText(String.valueOf(roomsCount));
         }
+            System.out.println("Rooms booked updated successfully.");
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -184,7 +165,6 @@ public class AdminDashboard implements Initializable {
         Beds.getItems().addAll(1, 2,3,4);
         showList();
         updateRoomsBooked();
-        updateTotalIncome();
     }
 
     private void clear(){
