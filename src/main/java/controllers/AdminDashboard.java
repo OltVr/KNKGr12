@@ -199,6 +199,7 @@ public class AdminDashboard implements Initializable {
     }
     @FXML
     private void handleDeleteRoom(){
+        //this deletes the room
         int roomNumber= Integer.parseInt(txtRoom.getText());
         int floorNumber= Integer.parseInt(txtFloor.getText());
         if (UserRepository.deleteRoom(roomNumber,floorNumber)){
