@@ -224,4 +224,27 @@ public class UserRepository {
         }
 
     }
+
+    public static boolean updateRoom(InsertRoomDto room) {
+        String query = "UPDATE ROOMS SET floorNumber= ?, roomType= ?, capacity= ?, bedNumber= ?, price= ?  WHERE roomNumber = ?";
+        Connection connection = DatabaseUtil.getConnection();
+        try {
+            PreparedStatement pst = connection.prepareStatement(query);
+            pst.setInt(1, room.getFloorNumber());
+            pst.setString(2 ,room.getRoomType());
+            pst.setInt(3, room.getCapacity());
+            pst.setInt(4, room.getBedNumber());
+            pst.setDouble(5, room.getPrice());
+            pst.setInt(6, room.getRoomNumber());
+            pst.executeUpdate();
+            pst.close();
+            System.out.println("[UPDATE] Room updated successfully.");
+            return true;
+        } catch (SQLException e) {
+            System.out.println("[DB ERROR] " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+
+    }
 }
