@@ -12,10 +12,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import model.Room;
+import model.User;
 import model.dto.InsertRoomDto;
 import service.AdminService;
 
 import java.net.URL;
+import java.sql.Timestamp;
 import java.util.ResourceBundle;
 
 public class AdminDashboard implements Initializable {
@@ -78,10 +80,33 @@ public class AdminDashboard implements Initializable {
 
     @FXML
     private TableColumn<Room, String> Available_col;
+
+    @FXML
+    private TableView<User> userTable;
+    @FXML
+    private TableColumn<User, String> email_col;
+
+    @FXML
+    private TableColumn<User, String> firstName_col;
+
+    @FXML
+    private TableColumn<User, String> lastName_col;
+
+    @FXML
+    private TableColumn<User, Boolean> isAdmin_col;
+
+    @FXML
+    private TableColumn<User, Timestamp> CreatedAt_col;
+
+
     @FXML
     private Text txtRoomsBooked;
     @FXML
     private Text txtTotalIncome;
+
+
+
+
 
 
 
@@ -95,9 +120,6 @@ public class AdminDashboard implements Initializable {
         String total=String.valueOf(AdminRepository.TotalIncome()+" $");
         txtTotalIncome.setText(total);
     }
-
-
-
 
     @FXML
     private void handleAdd(){
@@ -172,12 +194,26 @@ public class AdminDashboard implements Initializable {
         roomTable.setItems(listData);
     }
 
+    private void showUserList(){
+        ObservableList<User> listData = AdminRepository.ListUser();
+
+        email_col.setCellValueFactory(new PropertyValueFactory<>("email"));
+        firstName_col.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        lastName_col.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        isAdmin_col.setCellValueFactory(new PropertyValueFactory<>("isAdmin"));
+        CreatedAt_col.setCellValueFactory(new PropertyValueFactory<>("CreatedAt"));
+
+        userTable.setItems(listData);
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         roomType.getItems().addAll("Sea View", "City View");
         Capacity.getItems().addAll(1, 2,3,4,5,6,7,8);
         Beds.getItems().addAll(1, 2,3,4);
         showList();
+        showUserList();
         updateRoomsBooked();
         updateTotalIncome();
     }
@@ -205,6 +241,7 @@ public class AdminDashboard implements Initializable {
         txtPrice.setText(String.valueOf(room.getPrice()));}
 
     }
+
     @FXML
     private void handleDeleteRoom(){
         int roomNumber= Integer.parseInt(txtRoom.getText());

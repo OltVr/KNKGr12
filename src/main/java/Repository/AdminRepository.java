@@ -4,6 +4,7 @@ import database.DatabaseUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Room;
+import model.User;
 import model.dto.InsertRoomDto;
 
 import java.sql.Connection;
@@ -73,6 +74,28 @@ public class AdminRepository {
             return null;
         } catch (Exception e) {
             return null;
+        }
+    }
+    public static ObservableList<User> ListUser(){
+        ObservableList<User> list = FXCollections.observableArrayList();
+        String query = "SELECT * FROM USER";
+        Connection connection = DatabaseUtil.getConnection();
+        try {
+            PreparedStatement pst = connection.prepareStatement(query);
+            ResultSet result = pst.executeQuery();
+            while (result.next()) {
+                User user = new User(result.getString("email"),
+                        result.getString("firstName"),
+                        result.getString("lastName"),
+                        result.getString("salt"),
+                        result.getString("passwordHash"),
+                        result.getBoolean("isAdmin"),
+                        result.getTimestamp("CreatedAt"));
+                list.add(user);
+            }
+            return list;
+        } catch (Exception e) {
+            return list;
         }
     }
     public static ObservableList<Room> ListRoom() {

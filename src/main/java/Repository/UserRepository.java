@@ -10,6 +10,7 @@ import model.dto.CreateUserDto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 
 
 public class UserRepository {
@@ -61,8 +62,9 @@ public class UserRepository {
             String salt = result.getString("salt");
             String passwordHash = result.getString("passwordHash");
             boolean isAdmin = result.getBoolean("isAdmin");
+            Timestamp CreatedAt = result.getTimestamp("CreatedAt");
             return new User(
-                    firstName, lastName, email, salt, passwordHash, isAdmin
+                    firstName, lastName, email, salt, passwordHash, isAdmin, CreatedAt
             );
         } catch (Exception e) {
             return null;

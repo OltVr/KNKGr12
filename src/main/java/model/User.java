@@ -1,5 +1,7 @@
 package model;
 
+import java.sql.Timestamp;
+
 public class User {
     private String firstName;
     private String lastName;
@@ -7,14 +9,16 @@ public class User {
     private String salt;
     private String passwordHash;
     private boolean isAdmin;
+    private Timestamp CreatedAt;
 
-    public User( String firstName, String lastName, String email, String salt, String passwordHash, boolean isAdmin ) {
+    public User( String firstName, String lastName, String email, String salt, String passwordHash, boolean isAdmin, Timestamp CreatedAt) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.salt = salt;
         this.passwordHash = passwordHash;
         this.isAdmin = isAdmin;
+        this.CreatedAt=CreatedAt;
     }
 
 
@@ -41,5 +45,9 @@ public class User {
 
     public boolean isAdmin() {
         return isAdmin;
+    }
+
+    public Timestamp getCreatedAt() {
+        return CreatedAt;
     }
 }
