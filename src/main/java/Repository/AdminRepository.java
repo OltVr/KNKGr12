@@ -127,7 +127,7 @@ public class AdminRepository {
         ResultSet rez=null;
 
         try{
-            String Query= "SELECT SUM(r.price) AS total_price FROM rooms r JOIN reservation res ON r.roomNumber = res.roomNumber";
+            String Query= "SELECT SUM(DATEDIFF(res.checkOutDate, res.checkInDate) * r.price) AS total_price FROM rooms r JOIN reservation res ON r.roomNumber = res.roomNumber";
             con=DatabaseUtil.getConnection();
             statement=con.prepareStatement(Query);
             rez=statement.executeQuery();
