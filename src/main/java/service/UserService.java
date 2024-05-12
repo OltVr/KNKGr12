@@ -3,7 +3,7 @@ package service;
 
 import model.User;
 import model.dto.LoginUserDto;
-import repository.UserRepository;
+import Repository.UserRepository;
 import model.dto.CreateUserDto;
 import model.dto.UserDto;
 

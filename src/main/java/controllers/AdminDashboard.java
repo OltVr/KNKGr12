@@ -1,6 +1,7 @@
 package controllers;
 
 import App.Navigator;
+import Repository.AdminRepository;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,7 +13,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import model.Room;
 import model.dto.InsertRoomDto;
-import repository.UserRepository;
 import service.AdminService;
 
 import java.net.URL;
@@ -86,13 +86,13 @@ public class AdminDashboard implements Initializable {
 
 
     private void updateRoomsBooked(){
-        String count= String.valueOf(UserRepository.RoomsBooked());
+        String count= String.valueOf(AdminRepository.RoomsBooked());
         txtRoomsBooked.setText(count);
 
     }
 
     private void updateTotalIncome(){
-        String total=String.valueOf(UserRepository.TotalIncome()+" $");
+        String total=String.valueOf(AdminRepository.TotalIncome()+" $");
         txtTotalIncome.setText(total);
     }
 
@@ -155,7 +155,7 @@ public class AdminDashboard implements Initializable {
 
 
     private void showList(){
-        ObservableList<Room> listData = UserRepository.ListRoom();
+        ObservableList<Room> listData = AdminRepository.ListRoom();
 
         roomNumber_col.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
         floorNumber_col.setCellValueFactory(new PropertyValueFactory<>("floorNumber"));
@@ -209,7 +209,7 @@ public class AdminDashboard implements Initializable {
     private void handleDeleteRoom(){
         int roomNumber= Integer.parseInt(txtRoom.getText());
         int floorNumber= Integer.parseInt(txtFloor.getText());
-        if (UserRepository.deleteRoom(roomNumber,floorNumber)){
+        if (AdminRepository.deleteRoom(roomNumber,floorNumber)){
             showList();
             clear();
         }
@@ -229,7 +229,7 @@ public class AdminDashboard implements Initializable {
                 Double.parseDouble(this.txtPrice.getText())
         );
 
-        if (UserRepository.updateRoom(RoomData)){
+        if (AdminRepository.updateRoom(RoomData)){
             showList();
             clear();
             System.out.println("[UPDATE] Table has been updated");

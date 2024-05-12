@@ -4,13 +4,13 @@ package service;
 import model.Room;
 import model.dto.InsertRoomDto;
 
-import repository.UserRepository;
+import Repository.AdminRepository;
 
 public class AdminService {
     public static boolean addRoom(InsertRoomDto roomData){
-       Room room=UserRepository.getRoom(roomData.getRoomNumber(), roomData.getFloorNumber());
+       Room room=AdminRepository.getRoom(roomData.getRoomNumber(), roomData.getFloorNumber());
        if (room==null){
-           return UserRepository.insert(roomData);
+           return AdminRepository.insert(roomData);
        }
        return false;
     }
