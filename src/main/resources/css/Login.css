@@ -87,7 +87,7 @@
     -fx-background-color: #e9e9e9;
 }
 .btn-green {
-    -fx-background-color: #228B22; /* A not very light green */
+    -fx-background-color: #228B22;
     -fx-background-radius: 7px;
     -fx-border-radius: 7px;
     -fx-text-fill: #fff;
@@ -165,18 +165,18 @@
     -fx-background-color: #0a2560;
     -fx-text-fill: #ffffff;
     -fx-font-weight: bold;
-    -fx-padding: 10px; /* Increased padding for better spacing */
+    -fx-padding: 10px;
 }
 
 .table-view .table-row-cell {
     -fx-border-color: #d3d3d3;
     -fx-table-cell-border-color: #d3d3d3;
-    -fx-padding: 15px; /* Increased padding for larger row size */
-    -fx-font-size: 16px; /* Slightly larger font size for better readability */
+    -fx-padding: 15px;
+    -fx-font-size: 16px;
 }
 
 .table-view .table-row-cell:filled:even {
-    -fx-background-color: #f1f1f1; /* Slightly darker for better contrast */
+    -fx-background-color: #f1f1f1;
 }
 
 .table-view .table-row-cell:filled:odd {
@@ -266,4 +266,99 @@
 .compact-detailed-table-view .table-cell {
     -fx-padding: 5px;
     -fx-border-color: #d3d3d3;
+}
+
+.s2 {
+    -fx-font-family: 'Montserrat Medium', sans-serif;
+    -fx-font-size: 12px;
+    -fx-background-color: #ffffff;
+    -fx-table-cell-border-color: transparent;
+    -fx-border-color: #d3d3d3;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.s2 .column-header-background {
+    -fx-background-color: #34495e;
+    -fx-background-radius: 10px 10px 0 0;
+}
+
+.s2 .column-header, .s2 .column-header .label {
+    -fx-background-color: #34495e;
+    -fx-text-fill: #ecf0f1;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 5px 10px 5px;
+    -fx-border-width: 0 0 1px 0;
+    -fx-border-color: #2c3e50;
+}
+
+.s2 .table-row-cell {
+    -fx-border-color: #d3d3d3;
+    -fx-table-cell-border-color: #d3d3d3;
+    -fx-padding: 10px;
+    -fx-font-size: 12px;
+}
+
+.s2 .table-row-cell:filled:even {
+    -fx-background-color: #ecf0f1;
+}
+
+.s2 .table-row-cell:filled:odd {
+    -fx-background-color: #ffffff;
+}
+
+.s2 .table-row-cell:selected {
+    -fx-background-color: #3498db;
+    -fx-text-fill: #ffffff;
+}
+
+.s2 .table-cell {
+    -fx-padding: 10px;
+    -fx-border-color: #d3d3d3;
+}
+/* Stylish DatePicker Styles */
+.dateclass {
+    -fx-font-family: 'Montserrat Medium', sans-serif;
+    -fx-font-size: 12px;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #0b2765;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 5px;
+}
+
+.dateclass:focused {
+    -fx-border-color: #0b2765;
+    -fx-effect: dropshadow(three-pass-box, rgba(41, 128, 185, 0.3), 10, 0, 0, 0);
+}
+
+.dateclass .arrow {
+    -fx-background-color: #0b2765;
+    -fx-background-radius: 5px;
+    -fx-padding: 2px;
+}
+
+.dateclass .arrow-button {
+    -fx-background-color: #0b2765;
+    -fx-background-radius: 5px;
+    -fx-padding: 2px;
+}
+
+.dateclass .calendar-pane {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #0b2765;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.dateclass .calendar-day-cell {
+    -fx-text-fill: #0b2765;
+    -fx-background-color: transparent;
+}
+
+.dateclass .calendar-day-cell:selected {
+    -fx-background-color: #0b2765;
+    -fx-text-fill: #ffffff;
 }

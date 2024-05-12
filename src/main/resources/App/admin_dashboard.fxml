@@ -169,7 +169,7 @@
                               </Text>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="roomPane" layoutX="5.0" layoutY="5.0" prefHeight="603.0" prefWidth="819.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="roomPane" layoutX="5.0" layoutY="5.0" prefHeight="603.0" prefWidth="819.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="30.0" layoutY="15.0" prefHeight="154.0" prefWidth="754.0" styleClass="fxx" stylesheets="@../css/Login.css">
                                  <children>
@@ -225,6 +225,7 @@
                                           <TableColumn fx:id="bedNumber_col" prefWidth="143.0" text="Bed Number" />
                                           <TableColumn fx:id="price_col" prefWidth="15.0" text="Price" />
                                           <TableColumn fx:id="Available_col" prefWidth="121.60009765625" text="Available" />
+                                          <TableColumn fx:id="bedNumber_col2" prefWidth="143.0" text="Bed Number" />
                                       </columns>
                                     </TableView>
                                  </children>
@@ -287,7 +288,7 @@
                               </Text>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="roomPane11" layoutY="3.0" prefHeight="603.0" prefWidth="828.0">
+                        <AnchorPane fx:id="roomPane11" layoutY="3.0" prefHeight="603.0" prefWidth="828.0" visible="false">
                            <children>
                               <AnchorPane layoutX="21.0" layoutY="52.0" prefHeight="522.0" prefWidth="784.0" styleClass="fxx" stylesheets="@../css/Login.css">
                                  <children>
