@@ -1,0 +1,157 @@
+.table-view {
+    -fx-font-family: 'Montserrat Medium', sans-serif;
+    -fx-font-size: 14px;
+    -fx-background-color: #ffffff;
+    -fx-table-cell-border-color: transparent;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #0a2560;
+}
+
+.table-view .column-header, .table-view .column-header .label {
+    -fx-background-color: #0a2560;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 4px 10px 4px;
+}
+
+.table-view .table-row-cell {
+    -fx-padding: 5px;
+    -fx-font-size: 14px;
+}
+
+.table-view .table-row-cell:filled:even {
+    -fx-background-color: #f1f1f1;
+}
+
+.table-view .table-row-cell:filled:odd {
+    -fx-background-color: #ffffff;
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #2a447c !important;
+    -fx-text-fill: #ffffff !important;
+}
+
+.table-view .table-cell {
+    -fx-padding: 8px;
+    -fx-border-color: transparent;
+}
+
+.table-view .table-cell:selected {
+    -fx-background-color: #2a447c !important;
+    -fx-text-fill: #ffffff !important;
+}
+
+.table-view .table-cell:selected .text {
+    -fx-fill: #ffffff !important;
+}
+
+.stylish-detailed-table-view {
+    -fx-font-family: 'Montserrat Medium', sans-serif;
+    -fx-font-size: 12px;
+    -fx-background-color: #ffffff;
+    -fx-table-cell-border-color: transparent;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+}
+
+.stylish-detailed-table-view .column-header-background {
+    -fx-background-color: #002b5c;
+}
+
+.stylish-detailed-table-view .column-header, .stylish-detailed-table-view .column-header .label {
+    -fx-background-color: #002b5c;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-padding: 15px 5px 15px 5px;
+}
+
+.stylish-detailed-table-view .table-row-cell {
+    -fx-border-color: #d3d3d3;
+    -fx-table-cell-border-color: #d3d3d3;
+    -fx-font-size: 12px;
+    -fx-padding: 10px;
+}
+
+.stylish-detailed-table-view .table-row-cell:filled:even {
+    -fx-background-color: #f7f7f7;
+}
+
+.stylish-detailed-table-view .table-row-cell:filled:odd {
+    -fx-background-color: #ffffff;
+}
+
+.stylish-detailed-table-view .table-row-cell:selected {
+    -fx-background-color: #6c757d !important; /*background */
+    -fx-text-fill: #ffffff !important; /*text */
+}
+
+.stylish-detailed-table-view .table-cell {
+    -fx-padding: 8px;
+    -fx-border-color: #d3d3d3;
+}
+
+.stylish-detailed-table-view .table-cell:selected {
+    -fx-background-color: #6c757d !important; /*background */
+    -fx-text-fill: #ffffff !important;
+}
+
+.stylish-detailed-table-view .table-cell:selected .text {
+    -fx-fill: #ffffff !important;
+}
+
+.compact-stylish-table-view {
+    -fx-font-family: 'Montserrat Medium', sans-serif;
+    -fx-font-size: 10px;
+    -fx-background-color: #ffffff;
+    -fx-table-cell-border-color: transparent;
+     -fx-border-color: #cccccc;
+     -fx-border-width: 1px;
+}
+
+.compact-stylish-table-view .column-header-background {
+    -fx-background-color: #003366;
+}
+
+.compact-stylish-table-view .column-header, .compact-stylish-table-view .column-header .label {
+    -fx-background-color: #003366;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 3px 10px 3px;
+}
+
+.compact-stylish-table-view .table-row-cell {
+    -fx-border-color: #cccccc;
+    -fx-table-cell-border-color: #cccccc;
+    -fx-font-size: 10px;
+    -fx-padding: 5px;
+}
+
+.compact-stylish-table-view .table-row-cell:filled:even {
+    -fx-background-color: #eaeaea;
+}
+
+.compact-stylish-table-view .table-row-cell:filled:odd {
+    -fx-background-color: #ffffff;
+}
+
+.compact-stylish-table-view .table-row-cell:selected {
+    -fx-background-color: #6c757d !important;
+    -fx-text-fill: #ffffff !important;
+}
+
+.compact-stylish-table-view .table-cell {
+    -fx-padding: 5px;
+    -fx-border-color: #cccccc;
+}
+
+.compact-stylish-table-view .table-cell:selected {
+    -fx-background-color: #6c757d !important;
+    -fx-text-fill: #ffffff !important;
+}
+
+.compact-stylish-table-view .table-cell:selected .text {
+    -fx-fill: #ffffff !important;
+}

@@ -105,7 +105,7 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane fx:id="dashboardPane" prefHeight="598.0" prefWidth="814.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="dashboardPane" prefHeight="598.0" prefWidth="814.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="22.0" layoutY="81.0" prefHeight="440.0" prefWidth="489.0" styleClass="third-form" stylesheets="@../css/Login.css">
                                  <children>
@@ -216,13 +216,13 @@
                               </AnchorPane>
                               <AnchorPane layoutX="30.0" layoutY="179.0" prefHeight="405.0" prefWidth="754.0" styleClass="fxx" stylesheets="@../css/Login.css">
                                  <children>
-                                    <TableView fx:id="roomTable" layoutX="10.0" layoutY="17.0" onMouseClicked="#roomSelect" prefHeight="370.0" prefWidth="733.0">
+                                    <TableView fx:id="roomTable" layoutX="10.0" layoutY="17.0" onMouseClicked="#roomSelect" prefHeight="370.0" prefWidth="733.0" stylesheets="@../css/table.css">
                                       <columns>
-                                        <TableColumn fx:id="roomNumber_col" prefWidth="93.59999465942383" text="Room #" />
-                                        <TableColumn fx:id="floorNumber_col" prefWidth="84.800048828125" text="Floor" />
+                                        <TableColumn fx:id="roomNumber_col" prefWidth="100.0" text="Room #" />
+                                        <TableColumn fx:id="floorNumber_col" prefWidth="79.0" text="Floor" />
                                           <TableColumn fx:id="roomType_col" prefWidth="128.7999725341797" text="Room Type" />
-                                          <TableColumn fx:id="capacity_col" prefWidth="102.39996337890625" text="Capacity " />
-                                          <TableColumn fx:id="bedNumber_col" prefWidth="128.79998779296875" text="Bed Number" />
+                                          <TableColumn fx:id="capacity_col" prefWidth="111.0" text="Capacity " />
+                                          <TableColumn fx:id="bedNumber_col" prefWidth="121.0" text="Bed Number" />
                                           <TableColumn fx:id="price_col" prefWidth="74.4000244140625" text="Price" />
                                           <TableColumn fx:id="Available_col" prefWidth="121.60009765625" text="Available" />
                                       </columns>
@@ -231,11 +231,11 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="guestsPane" layoutY="3.0" prefHeight="603.0" prefWidth="828.0" visible="false">
+                        <AnchorPane fx:id="guestsPane" layoutY="3.0" prefHeight="603.0" prefWidth="828.0">
                            <children>
                               <AnchorPane layoutX="21.0" layoutY="52.0" prefHeight="522.0" prefWidth="784.0" styleClass="fxx" stylesheets="@../css/Login.css">
                                  <children>
-                                    <TableView fx:id="roomTable1" layoutX="26.0" layoutY="103.0" onMouseClicked="#roomSelect" prefHeight="370.0" prefWidth="733.0">
+                                    <TableView fx:id="roomTable1" layoutX="26.0" layoutY="103.0" onMouseClicked="#roomSelect" prefHeight="370.0" prefWidth="733.0" stylesheets="@../css/table.css">
                                        <columns>
                                           <TableColumn fx:id="roomNumber_col1" prefWidth="99.19995498657227" text="Email #" />
                                           <TableColumn fx:id="floorNumber_col1" prefWidth="138.0" text="First Name" />
