@@ -1,18 +1,15 @@
 package controllers;
 
 import App.Navigator;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import model.Room;
 import model.dto.InsertRoomDto;
 import repository.UserRepository;
@@ -27,6 +24,12 @@ public class AdminDashboard implements Initializable {
 
     @FXML
     private AnchorPane roomPane;
+
+    @FXML
+    private AnchorPane reservationPane;
+
+    @FXML
+    private AnchorPane guestsPane;
 
     @FXML
     private void handleLogout(MouseEvent me) {
@@ -73,9 +76,25 @@ public class AdminDashboard implements Initializable {
     @FXML
     private TableColumn<Room, String> capacity_col;
 
-
     @FXML
     private TableColumn<Room, String> Available_col;
+    @FXML
+    private Text txtRoomsBooked;
+    @FXML
+    private Text txtTotalIncome;
+
+
+
+    private void updateRoomsBooked(){
+        String count= String.valueOf(UserRepository.RoomsBooked());
+        txtRoomsBooked.setText(count);
+
+    }
+
+    private void updateTotalIncome(){
+        String total=String.valueOf(UserRepository.TotalIncome()+" $");
+        txtTotalIncome.setText(total);
+    }
 
 
 
@@ -96,6 +115,7 @@ public class AdminDashboard implements Initializable {
             System.out.println("Room already exists");
         } else {
             showList();
+            clear();
         }
 
     }
@@ -103,14 +123,36 @@ public class AdminDashboard implements Initializable {
     @FXML
     private void handleDashboard(){
         dashboardPane.setVisible(true);
+        reservationPane.setVisible(false);
         roomPane.setVisible(false);
+        guestsPane.setVisible(false);
+    }
+
+    @FXML
+    private void handleReservations(){
+        dashboardPane.setVisible(false);
+        reservationPane.setVisible(true);
+        roomPane.setVisible(false);
+        guestsPane.setVisible(false);
     }
 
     @FXML
     private void handleRooms(){
         dashboardPane.setVisible(false);
+        reservationPane.setVisible(false);
         roomPane.setVisible(true);
+        guestsPane.setVisible(false);
     }
+
+    @FXML
+    private void handleGuests(){
+        dashboardPane.setVisible(false);
+        reservationPane.setVisible(false);
+        roomPane.setVisible(false);
+        guestsPane.setVisible(true);
+    }
+
+
 
     private void showList(){
         ObservableList<Room> listData = UserRepository.ListRoom();
@@ -136,5 +178,64 @@ public class AdminDashboard implements Initializable {
         Capacity.getItems().addAll(1, 2,3,4,5,6,7,8);
         Beds.getItems().addAll(1, 2,3,4);
         showList();
+        updateRoomsBooked();
+        updateTotalIncome();
+    }
+
+    private void clear(){
+        txtRoom.setText("");
+        txtFloor.setText("");
+        txtPrice.setText("");
+        roomType.getSelectionModel().clearSelection();
+        roomType.setPromptText("Type");
+        Capacity.getSelectionModel().clearSelection();
+        Capacity.setPromptText("Capacity");
+        Beds.getSelectionModel().clearSelection();
+        Beds.setPromptText("Number of Beds");
+    }
+
+    @FXML
+    private void  roomSelect(){
+        Room room = roomTable.getSelectionModel().getSelectedItem();
+//        int num = roomTable.getSelectionModel().getSelectedIndex();
+
+        if (room!=null){
+        txtRoom.setText(String.valueOf(room.getRoomNumber()));
+        txtFloor.setText(String.valueOf(room.getFloorNumber()));
+        txtPrice.setText(String.valueOf(room.getPrice()));}
+
+    }
+    @FXML
+    private void handleDeleteRoom(){
+        int roomNumber= Integer.parseInt(txtRoom.getText());
+        int floorNumber= Integer.parseInt(txtFloor.getText());
+        if (UserRepository.deleteRoom(roomNumber,floorNumber)){
+            showList();
+            clear();
+        }
+        else {
+            System.out.println("[ERROR] Couldn't find room");
+        }
+    }
+
+    @FXML
+    private void handleUpdate(){
+        InsertRoomDto RoomData = new InsertRoomDto(
+                Integer.parseInt(this.txtRoom.getText()),
+                Integer.parseInt(this.txtFloor.getText()),
+                this.roomType.getSelectionModel().getSelectedItem(),
+                this.Capacity.getSelectionModel().getSelectedItem(),
+                this.Beds.getSelectionModel().getSelectedItem(),
+                Double.parseDouble(this.txtPrice.getText())
+        );
+
+        if (UserRepository.updateRoom(RoomData)){
+            showList();
+            clear();
+            System.out.println("[UPDATE] Table has been updated");
+        }
+        else {
+            System.out.println("[ERROR] The room either does not exist or there was a [DB ERROR]");
+        }
     }
 }

@@ -27,7 +27,7 @@
                <left>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="left-form" stylesheets="@../css/Login.css" BorderPane.alignment="CENTER">
                      <children>
-                        <Button layoutX="-1.0" layoutY="42.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="Guests">
+                        <Button layoutX="-1.0" layoutY="42.0" mnemonicParsing="false" onAction="#handleGuests" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="Guests">
                            <font>
                               <Font name="Montserrat Medium" size="12.0" />
                            </font>
@@ -37,7 +37,7 @@
                               <Font name="Montserrat Medium" size="12.0" />
                            </font>
                         </Button>
-                        <Button layoutX="-1.0" layoutY="126.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="Reservations">
+                        <Button layoutX="-1.0" layoutY="126.0" mnemonicParsing="false" onAction="#handleReservations" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="Reservations">
                            <font>
                               <Font name="Montserrat Medium" size="12.0" />
                            </font>
@@ -83,7 +83,7 @@
                               <Font name="Montserrat Medium" size="22.0" />
                            </font>
                         </Text>
-                        <ImageView fitHeight="30.0" fitWidth="24.0" layoutX="920.0" layoutY="10.0" onMousePressed="#handleLogout" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="30.0" fitWidth="24.0" layoutX="933.0" layoutY="9.0" onMousePressed="#handleLogout" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../icons/arrow.png" />
                            </image>
@@ -91,7 +91,7 @@
                               <Cursor fx:constant="OPEN_HAND" />
                            </cursor>
                         </ImageView>
-                        <Text fill="WHITE" layoutX="952.0" layoutY="26.0" onMousePressed="#handleLogout" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign out" wrappingWidth="72.83200073242188">
+                        <Text fill="WHITE" layoutX="965.0" layoutY="25.0" onMousePressed="#handleLogout" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign out" wrappingWidth="72.83200073242188">
                            <font>
                               <Font name="Montserrat Medium" size="13.0" />
                            </font>
@@ -105,7 +105,7 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane fx:id="dashboardPane" layoutX="380.0" layoutY="27.0" prefHeight="598.0" prefWidth="814.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="dashboardPane" prefHeight="598.0" prefWidth="814.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="22.0" layoutY="81.0" prefHeight="440.0" prefWidth="489.0" styleClass="third-form" stylesheets="@../css/Login.css">
                                  <children>
@@ -135,7 +135,7 @@
                                  </font>
                               </Text>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4a9aff" height="123.0" layoutX="538.0" layoutY="148.0" stroke="#00000032" strokeType="INSIDE" style="-fx-arc-height: 30px; -fx-arc-width: 30px;" width="217.0" />
-                              <Text fill="#fffefe" layoutX="553.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="450$">
+                              <Text fx:id="txtTotalIncome" fill="#fffefe" layoutX="553.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="450$">
                                  <font>
                                     <Font name="Montserrat Regular" size="36.0" />
                                  </font>
@@ -157,7 +157,7 @@
                                  </font>
                               </Text>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#dc514f" height="123.0" layoutX="535.0" layoutY="409.0" stroke="#00000032" strokeType="INSIDE" style="-fx-arc-height: 30px; -fx-arc-width: 30px;" width="217.0" />
-                              <Text fill="#fffefe" layoutX="553.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10">
+                              <Text fx:id="txtRoomsBooked" fill="#fffefe" layoutX="553.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10">
                                  <font>
                                     <Font name="Montserrat Regular" size="36.0" />
                                  </font>
@@ -174,8 +174,8 @@
                               <AnchorPane layoutX="30.0" layoutY="15.0" prefHeight="154.0" prefWidth="754.0" styleClass="fxx" stylesheets="@../css/Login.css">
                                  <children>
                                     <Button layoutX="632.0" layoutY="11.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="37.0" prefWidth="79.0" styleClass="btn-green" stylesheets="@../css/Login.css" text="Add" />
-                                    <Button layoutX="632.0" layoutY="58.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="79.0" styleClass="btn-yellow" stylesheets="@../css/Login.css" text="Update" />
-                                    <Button layoutX="632.0" layoutY="107.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="79.0" styleClass="btn-red" stylesheets="@../css/Login.css" text="Delete" />
+                                    <Button layoutX="632.0" layoutY="58.0" mnemonicParsing="false" onAction="#handleUpdate" prefHeight="37.0" prefWidth="79.0" styleClass="btn-yellow" stylesheets="@../css/Login.css" text="Update" />
+                                    <Button layoutX="632.0" layoutY="107.0" mnemonicParsing="false" onAction="#handleDeleteRoom" prefHeight="37.0" prefWidth="79.0" styleClass="btn-red" stylesheets="@../css/Login.css" text="Delete" />
                                     <TextField fx:id="txtRoom" layoutX="113.0" layoutY="17.0" styleClass="textfield" stylesheets="@../css/Login.css" />
                                     <Text layoutX="10.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Number:">
                                        <font>
@@ -198,14 +198,14 @@
                                           <Font name="Montserrat Medium" size="12.0" />
                                        </font>
                                     </Text>
-                                    <ComboBox fx:id="Capacity" layoutX="364.0" layoutY="17.0" prefWidth="150.0" promptText="8" />
-                                    <ComboBox fx:id="roomType" layoutX="113.0" layoutY="102.0" prefWidth="150.0" promptText="Sea View" />
+                                    <ComboBox fx:id="Capacity" layoutX="364.0" layoutY="17.0" prefWidth="150.0" promptText="Capacity" />
+                                    <ComboBox fx:id="roomType" layoutX="113.0" layoutY="102.0" prefWidth="150.0" promptText="Type" />
                                     <Text layoutX="284.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Beds:">
                                        <font>
                                           <Font name="Montserrat Medium" size="12.0" />
                                        </font>
                                     </Text>
-                                    <ComboBox fx:id="Beds" layoutX="364.0" layoutY="58.0" prefWidth="150.0" promptText="4" />
+                                    <ComboBox fx:id="Beds" layoutX="364.0" layoutY="58.0" prefWidth="150.0" promptText="Number of Beds" />
                                     <TextField fx:id="txtPrice" layoutX="365.0" layoutY="102.0" promptText="                            Euro (€)" styleClass="textfield" stylesheets="@../css/Login.css" />
                                     <Text layoutX="284.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price: ">
                                        <font>
@@ -216,19 +216,133 @@
                               </AnchorPane>
                               <AnchorPane layoutX="30.0" layoutY="179.0" prefHeight="405.0" prefWidth="754.0" styleClass="fxx" stylesheets="@../css/Login.css">
                                  <children>
-                                    <TableView fx:id="roomTable" layoutX="15.0" layoutY="21.0" prefHeight="370.0" prefWidth="725.0">
+                                    <TableView fx:id="roomTable" layoutX="10.0" layoutY="17.0" onMouseClicked="#roomSelect" prefHeight="370.0" prefWidth="733.0">
                                       <columns>
-                                        <TableColumn fx:id="roomNumber_col" prefWidth="99.19995498657227" text="Room #" />
-                                        <TableColumn fx:id="floorNumber_col" prefWidth="99.199951171875" text="Floor" />
-                                          <TableColumn fx:id="roomType_col" prefWidth="138.40000915527344" text="Room Type" />
-                                          <TableColumn fx:id="capacity_col" prefWidth="90.39996337890625" text="Capacity " />
-                                          <TableColumn fx:id="bedNumber_col" prefWidth="109.60003662109375" text="Bed Number" />
-                                          <TableColumn fx:id="price_col" prefWidth="71.199951171875" text="Price" />
+                                        <TableColumn fx:id="roomNumber_col" prefWidth="93.59999465942383" text="Room #" />
+                                        <TableColumn fx:id="floorNumber_col" prefWidth="84.800048828125" text="Floor" />
+                                          <TableColumn fx:id="roomType_col" prefWidth="128.7999725341797" text="Room Type" />
+                                          <TableColumn fx:id="capacity_col" prefWidth="102.39996337890625" text="Capacity " />
+                                          <TableColumn fx:id="bedNumber_col" prefWidth="128.79998779296875" text="Bed Number" />
+                                          <TableColumn fx:id="price_col" prefWidth="74.4000244140625" text="Price" />
                                           <TableColumn fx:id="Available_col" prefWidth="121.60009765625" text="Available" />
                                       </columns>
                                     </TableView>
                                  </children>
                               </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="guestsPane" layoutY="3.0" prefHeight="603.0" prefWidth="828.0" visible="false">
+                           <children>
+                              <AnchorPane layoutX="21.0" layoutY="52.0" prefHeight="522.0" prefWidth="784.0" styleClass="fxx" stylesheets="@../css/Login.css">
+                                 <children>
+                                    <TableView fx:id="roomTable1" layoutX="26.0" layoutY="103.0" onMouseClicked="#roomSelect" prefHeight="370.0" prefWidth="733.0">
+                                       <columns>
+                                          <TableColumn fx:id="roomNumber_col1" prefWidth="99.19995498657227" text="Email #" />
+                                          <TableColumn fx:id="floorNumber_col1" prefWidth="138.0" text="First Name" />
+                                          <TableColumn fx:id="roomType_col1" prefWidth="124.0" text="Last Name" />
+                                          <TableColumn fx:id="capacity_col1" prefWidth="133.0" text="isAdmin" />
+                                          <TableColumn fx:id="bedNumber_col1" prefWidth="237.0" text="CreatedAt" />
+                                       </columns>
+                                    </TableView>
+                                    <TextField layoutX="494.0" layoutY="36.0" prefHeight="33.0" prefWidth="198.0" promptText="Search" styleClass="cool-search-field" stylesheets="@../css/Login.css">
+                                       <font>
+                                          <Font name="Montserrat Medium" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                    <Button layoutX="698.0" layoutY="36.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="59.0" styleClass="btn4" stylesheets="@../css/Login.css" text="Search">
+                                       <font>
+                                          <Font name="Montserrat Medium" size="12.0" />
+                                       </font>
+                                    </Button>
+                                    <ImageView fitHeight="21.0" fitWidth="22.0" layoutX="500.0" layoutY="42.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../icons/search.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Button layoutX="291.0" layoutY="482.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="203.0" styleClass="btn-red" stylesheets="@../css/Login.css" text="Delete">
+                                       <font>
+                                          <Font name="Montserrat Medium" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <AnchorPane layoutX="26.0" layoutY="18.0" prefHeight="68.0" prefWidth="253.0" styleClass="fxx" stylesheets="@../css/Login.css">
+                                       <children>
+                                          <ImageView fitHeight="64.0" fitWidth="62.0" layoutX="6.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../icons/users-blalck.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text layoutX="90.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User List">
+                                             <font>
+                                                <Font name="Montserrat ExtraBold" size="29.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                              <Text layoutX="21.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard">
+                                 <font>
+                                    <Font name="Montserrat Light" size="31.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="reservationPane" layoutY="3.0" prefHeight="603.0" prefWidth="828.0" visible="false">
+                           <children>
+                              <AnchorPane layoutX="21.0" layoutY="52.0" prefHeight="522.0" prefWidth="784.0" styleClass="fxx" stylesheets="@../css/Login.css">
+                                 <children>
+                                    <TableView fx:id="roomTable11" layoutX="9.0" layoutY="109.0" onMouseClicked="#roomSelect" prefHeight="364.0" prefWidth="766.0" styleClass="compact-detailed-table-view" stylesheets="@../css/Login.css">
+                                       <columns>
+                                          <TableColumn fx:id="roomNumber_col11" prefWidth="91.0" text="Reservation ID" />
+                                          <TableColumn fx:id="floorNumber_col11" prefWidth="145.0" text="Email" />
+                                          <TableColumn fx:id="roomType_col11" prefWidth="81.0" text="Room Nr." />
+                                          <TableColumn fx:id="capacity_col11" prefWidth="109.0" text="ReservationDate" />
+                                          <TableColumn fx:id="bedNumber_col11" prefWidth="120.0" text="CheckIn" />
+                                          <TableColumn fx:id="bedNumber_col111" prefWidth="112.0" text="CheckOut" />
+                                          <TableColumn fx:id="bedNumber_col1111" prefWidth="107.0" text="Number of People" />
+                                       </columns>
+                                    </TableView>
+                                    <TextField layoutX="494.0" layoutY="36.0" prefHeight="33.0" prefWidth="198.0" promptText="Search" styleClass="cool-search-field" stylesheets="@../css/Login.css">
+                                       <font>
+                                          <Font name="Montserrat Medium" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                    <Button layoutX="698.0" layoutY="36.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="59.0" styleClass="btn4" stylesheets="@../css/Login.css" text="Search">
+                                       <font>
+                                          <Font name="Montserrat Medium" size="12.0" />
+                                       </font>
+                                    </Button>
+                                    <ImageView fitHeight="21.0" fitWidth="22.0" layoutX="500.0" layoutY="42.0" opacity="0.69" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../icons/search.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Button layoutX="291.0" layoutY="482.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="203.0" styleClass="btn-red" stylesheets="@../css/Login.css" text="Delete">
+                                       <font>
+                                          <Font name="Montserrat Medium" size="13.0" />
+                                       </font>
+                                    </Button>
+                                    <AnchorPane layoutX="26.0" layoutY="18.0" prefHeight="68.0" prefWidth="315.0" styleClass="fxx" stylesheets="@../css/Login.css">
+                                       <children>
+                                          <ImageView fitHeight="56.0" fitWidth="55.0" layoutX="15.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../icons/calendar.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text layoutX="89.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservations">
+                                             <font>
+                                                <Font name="Montserrat ExtraBold" size="29.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                              <Text layoutX="21.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard">
+                                 <font>
+                                    <Font name="Montserrat Light" size="31.0" />
+                                 </font>
+                              </Text>
                            </children>
                         </AnchorPane>
                      </children>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SignupController">
+   <children>
+      <AnchorPane prefHeight="423.0" prefWidth="637.0">
+         <children>
+            <AnchorPane prefHeight="580.0" prefWidth="857.0" styleClass="white-bg" stylesheets="@../css/Login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <AnchorPane layoutY="29.0" prefHeight="111.0" prefWidth="879.0" styleClass="left-form" stylesheets="@../css/Login.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <children>
+                        <Text fill="WHITE" layoutX="266.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Proceeding">
+                           <font>
+                              <Font name="Montserrat ExtraBold" size="55.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+                  <ImageView fitHeight="176.0" fitWidth="176.0" layoutX="694.0" layoutY="149.0" opacity="0.1" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/logoF-B.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="176.0" fitWidth="176.0" layoutY="397.0" opacity="0.1" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/logoF-B.png" />
+                     </image>
+                  </ImageView>
+                  <Line endX="4.0" layoutX="549.0" layoutY="414.0" startX="-117.0" strokeWidth="3.0" />
+                  <Text layoutX="336.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Number:" wrappingWidth="161.5999984741211">
+                     <font>
+                        <Font name="Montserrat Medium" size="19.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="497.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="217" wrappingWidth="41.599998474121094">
+                     <font>
+                        <Font name="Montserrat ExtraBold" size="19.0" />
+                     </font>
+                  </Text>
+                  <DatePicker layoutX="215.0" layoutY="276.0" styleClass="dateclass" stylesheets="@../css/Login.css" />
+                  <Text layoutX="215.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Check in date:" wrappingWidth="161.5999984741211">
+                     <font>
+                        <Font name="Montserrat Medium" size="19.0" />
+                     </font>
+                  </Text>
+                  <DatePicker layoutX="456.0" layoutY="275.0" styleClass="dateclass" stylesheets="@../css/Login.css" />
+                  <Text layoutX="456.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Check out date:" wrappingWidth="161.5999984741211">
+                     <font>
+                        <Font name="Montserrat Medium" size="19.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="314.0" layoutY="401.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total price:" wrappingWidth="109.5999984741211">
+                     <font>
+                        <Font name="Montserrat Medium" size="19.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="536.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="€" wrappingWidth="20.599998474121094">
+                     <font>
+                        <Font name="Montserrat Medium" size="29.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="432.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="340.00" wrappingWidth="103.5999984741211">
+                     <font>
+                        <Font name="Montserrat Medium" size="29.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
