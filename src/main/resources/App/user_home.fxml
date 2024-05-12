@@ -16,7 +16,7 @@
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="left-form" stylesheets="@../css/Login.css" BorderPane.alignment="CENTER">
                      <children>
                         <Button layoutY="259.0" mnemonicParsing="false" onAction="#handleReservations" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="Reservations">
-                           <font>
+                            <font>
                               <Font name="Montserrat Medium" size="12.0" />
                            </font>
                         </Button>

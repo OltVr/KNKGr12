@@ -30,6 +30,7 @@ public class UserInterface implements Initializable {
         homePane.setVisible(false);
         reservationsPane.setVisible(true);
         historyPane.setVisible(false);
+
     }
     @FXML
     private void handleHistory(){
