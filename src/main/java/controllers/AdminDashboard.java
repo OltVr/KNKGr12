@@ -82,9 +82,13 @@ public class AdminDashboard implements Initializable {
     private Text txtRoomsBooked;
     @FXML
     private Text txtTotalIncome;
+    @FXML
+    private Text txtNewUsers;
 
-
-
+    private void updateNewUsers(){
+        String totalNewUsers= String.valueOf(AdminRepository.newUsers());
+        txtNewUsers.setText(totalNewUsers);
+    }
     private void updateRoomsBooked(){
         String count= String.valueOf(AdminRepository.RoomsBooked());
         txtRoomsBooked.setText(count);
@@ -180,6 +184,7 @@ public class AdminDashboard implements Initializable {
         showList();
         updateRoomsBooked();
         updateTotalIncome();
+        updateNewUsers();
     }
 
     private void clear(){
