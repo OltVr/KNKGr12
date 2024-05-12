@@ -203,5 +203,26 @@ public class AdminRepository {
             return false;
         }
 
+
+    }
+    public static int newUsers(){
+        Connection conn=null;
+        PreparedStatement statement=null;
+        ResultSet result=null;
+        try{
+            String query="SELECT COUNT(*) AS user_count FROM user WHERE YEAR(CreatedAt) = YEAR(CURDATE()) AND isAdmin != 1";
+            conn=DatabaseUtil.getConnection();
+            statement=conn.prepareStatement(query);
+            result=statement.executeQuery();
+
+            if (result.next()){
+                int users=result.getInt("user_count");
+                return users;
+            }
+            return 0;
+        }catch (Exception e){
+            e.printStackTrace();
+            return 0;
+        }
     }
 }
