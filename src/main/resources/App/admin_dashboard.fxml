@@ -95,7 +95,7 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane fx:id="dashboardPane" prefHeight="598.0" prefWidth="814.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="dashboardPane" prefHeight="598.0" prefWidth="814.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="22.0" layoutY="81.0" prefHeight="440.0" prefWidth="489.0" styleClass="third-form" stylesheets="@../css/Login.css">
                                  <children>
@@ -221,7 +221,7 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="guestsPane" layoutY="3.0" prefHeight="603.0" prefWidth="828.0">
+                        <AnchorPane fx:id="guestsPane" layoutY="3.0" prefHeight="603.0" prefWidth="828.0" visible="false">
                            <children>
                               <AnchorPane layoutX="21.0" layoutY="52.0" prefHeight="522.0" prefWidth="784.0" styleClass="fxx" stylesheets="@../css/Login.css">
                                  <children>
