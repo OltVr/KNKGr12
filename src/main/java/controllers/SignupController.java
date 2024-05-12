@@ -56,6 +56,12 @@ public class SignupController {
         boolean response = UserService.signUp(userSignUpData);
 
         if (response) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText(null);
+            alert.setContentText("Signup was successful!");
+            alert.showAndWait();
+
             Navigator.navigate(ae, Navigator.LOGIN_PAGE);
         }
     }
