@@ -1,8 +1,6 @@
 package controllers;
 
 import App.Navigator;
-import database.DatabaseUtil;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,12 +16,6 @@ import repository.UserRepository;
 import service.AdminService;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 public class AdminDashboard implements Initializable {
@@ -32,6 +24,12 @@ public class AdminDashboard implements Initializable {
 
     @FXML
     private AnchorPane roomPane;
+
+    @FXML
+    private AnchorPane reservationPane;
+
+    @FXML
+    private AnchorPane guestsPane;
 
     @FXML
     private void handleLogout(MouseEvent me) {
@@ -82,26 +80,20 @@ public class AdminDashboard implements Initializable {
     private TableColumn<Room, String> Available_col;
     @FXML
     private Text txtRoomsBooked;
+    @FXML
+    private Text txtTotalIncome;
+
 
 
     private void updateRoomsBooked(){
-        Connection connection=null;
-        PreparedStatement statement=null;
-        ResultSet result=null;
-        try{
-        String query= "SELECT COUNT(*) as Rooms_booked FROM reservation WHERE reservationDate = ?";
-        connection= DatabaseUtil.getConnection();
-        statement =connection.prepareStatement(query);
-        statement.setDate(1,java.sql.Date.valueOf(LocalDate.now()));
-        result=statement.executeQuery();
-        if (result.next()){
-            int roomsCount= result.getInt("Rooms_booked");
-            txtRoomsBooked.setText(String.valueOf(roomsCount));
-        }
-            System.out.println("Rooms booked updated successfully.");
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
+        String count= String.valueOf(UserRepository.RoomsBooked());
+        txtRoomsBooked.setText(count);
+
+    }
+
+    private void updateTotalIncome(){
+        String total=String.valueOf(UserRepository.TotalIncome()+" $");
+        txtTotalIncome.setText(total);
     }
 
 
@@ -131,14 +123,36 @@ public class AdminDashboard implements Initializable {
     @FXML
     private void handleDashboard(){
         dashboardPane.setVisible(true);
+        reservationPane.setVisible(false);
         roomPane.setVisible(false);
+        guestsPane.setVisible(false);
+    }
+
+    @FXML
+    private void handleReservations(){
+        dashboardPane.setVisible(false);
+        reservationPane.setVisible(true);
+        roomPane.setVisible(false);
+        guestsPane.setVisible(false);
     }
 
     @FXML
     private void handleRooms(){
         dashboardPane.setVisible(false);
+        reservationPane.setVisible(false);
         roomPane.setVisible(true);
+        guestsPane.setVisible(false);
     }
+
+    @FXML
+    private void handleGuests(){
+        dashboardPane.setVisible(false);
+        reservationPane.setVisible(false);
+        roomPane.setVisible(false);
+        guestsPane.setVisible(true);
+    }
+
+
 
     private void showList(){
         ObservableList<Room> listData = UserRepository.ListRoom();
@@ -165,6 +179,7 @@ public class AdminDashboard implements Initializable {
         Beds.getItems().addAll(1, 2,3,4);
         showList();
         updateRoomsBooked();
+        updateTotalIncome();
     }
 
     private void clear(){
@@ -189,5 +204,38 @@ public class AdminDashboard implements Initializable {
         txtFloor.setText(String.valueOf(room.getFloorNumber()));
         txtPrice.setText(String.valueOf(room.getPrice()));}
 
+    }
+    @FXML
+    private void handleDeleteRoom(){
+        int roomNumber= Integer.parseInt(txtRoom.getText());
+        int floorNumber= Integer.parseInt(txtFloor.getText());
+        if (UserRepository.deleteRoom(roomNumber,floorNumber)){
+            showList();
+            clear();
+        }
+        else {
+            System.out.println("[ERROR] Couldn't find room");
+        }
+    }
+
+    @FXML
+    private void handleUpdate(){
+        InsertRoomDto RoomData = new InsertRoomDto(
+                Integer.parseInt(this.txtRoom.getText()),
+                Integer.parseInt(this.txtFloor.getText()),
+                this.roomType.getSelectionModel().getSelectedItem(),
+                this.Capacity.getSelectionModel().getSelectedItem(),
+                this.Beds.getSelectionModel().getSelectedItem(),
+                Double.parseDouble(this.txtPrice.getText())
+        );
+
+        if (UserRepository.updateRoom(RoomData)){
+            showList();
+            clear();
+            System.out.println("[UPDATE] Table has been updated");
+        }
+        else {
+            System.out.println("[ERROR] The room either does not exist or there was a [DB ERROR]");
+        }
     }
 }
