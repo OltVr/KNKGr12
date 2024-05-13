@@ -84,13 +84,15 @@ public class AdminRepository {
             PreparedStatement pst = connection.prepareStatement(query);
             ResultSet result = pst.executeQuery();
             while (result.next()) {
-                User user = new User(result.getString("email"),
+                User user = new User(
                         result.getString("firstName"),
                         result.getString("lastName"),
+                        result.getString("email"),
                         result.getString("salt"),
                         result.getString("passwordHash"),
                         result.getBoolean("isAdmin"),
                         result.getTimestamp("CreatedAt"));
+                System.out.println("[USER] Email:" +user.getEmail());
                 list.add(user);
             }
             return list;
@@ -113,6 +115,7 @@ public class AdminRepository {
                         result.getInt("bedNumber"),
                         result.getDouble("price"),
                         result.getBoolean("isAvailable"));
+
                 list.add(room);
             }
             ;
