@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="641.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserInterface">
+<AnchorPane prefHeight="641.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserInterface">
    <children>
       <StackPane prefHeight="641.0" prefWidth="1020.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane prefHeight="641.0" prefWidth="1020.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -79,7 +85,7 @@
                                           <Font name="Montserrat Regular" size="27.0" />
                                        </font>
                                     </Text>
-                                    <Button layoutX="-1.0" layoutY="425.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="360.0" styleClass="btn4" stylesheets="@../css/Login.css" text="Check For Availability" textAlignment="CENTER">
+                                    <Button layoutX="-1.0" layoutY="425.0" mnemonicParsing="false" onMouseClicked="#handleCheckSeaView" prefHeight="56.0" prefWidth="360.0" styleClass="btn4" stylesheets="@../css/Login.css" text="Check For Availability" textAlignment="CENTER">
                                        <font>
                                           <Font name="Montserrat Regular" size="14.0" />
                                        </font>
@@ -138,7 +144,7 @@
                                           <Font name="Montserrat Regular" size="27.0" />
                                        </font>
                                     </Text>
-                                    <Button layoutX="-1.0" layoutY="425.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="360.0" styleClass="btn4" stylesheets="@../css/Login.css" text="Check For Availability" textAlignment="CENTER">
+                                    <Button layoutX="-1.0" layoutY="425.0" mnemonicParsing="false" onMouseClicked="#handleCheckCityView" prefHeight="56.0" prefWidth="360.0" styleClass="btn4" stylesheets="@../css/Login.css" text="Check For Availability" textAlignment="CENTER">
                                        <font>
                                           <Font name="Montserrat Regular" size="14.0" />
                                        </font>
@@ -212,7 +218,7 @@
                               </Text>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="3.0" layoutY="5.0" prefHeight="641.0" prefWidth="808.0" visible="false">
+                        <AnchorPane fx:id="seaViewPane" layoutX="3.0" layoutY="5.0" prefHeight="641.0" prefWidth="808.0" visible="false">
                            <children>
                               <Text fill="GREY" layoutX="294.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sea View">
                                  <font>
@@ -248,7 +254,7 @@
                               <Line endX="569.0" layoutX="217.0" layoutY="522.0" startX="-188.0" stroke="#000561" strokeWidth="4.0" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutY="3.0" prefHeight="641.0" prefWidth="808.0" visible="false">
+                        <AnchorPane fx:id="cityViewPane" layoutY="3.0" prefHeight="641.0" prefWidth="808.0" visible="false">
                            <children>
                               <Text fill="GREY" layoutX="294.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City View">
                                  <font>
