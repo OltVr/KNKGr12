@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
 
 
    <AnchorPane fx:id="login_form" prefHeight="423.0" prefWidth="637.0">
@@ -27,23 +32,23 @@
                         <Font name="Montserrat Light" size="20.0" />
                      </font>
                   </Text>
-                  <Text fill="#30353e" layoutX="57.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hotel Management System">
+                  <Text fill="#30353e" layoutX="57.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%HMS">
                      <font>
                         <Font name="Montserrat Regular" size="30.0" />
                      </font>
                   </Text>
                   <TextField fx:id="txtLoginEmail" layoutX="108.0" layoutY="238.0" prefHeight="35.0" prefWidth="300.0" promptText="Email" styleClass="textfield" stylesheets="@../css/Login.css" />
-                  <Button layoutX="135.0" layoutY="376.0" mnemonicParsing="false" onAction="#handleLogin" onKeyPressed="#handleKeyLogin" prefHeight="50.0" prefWidth="250.0" styleClass="btn4" stylesheets="@../css/Login.css" text="Login">
+                  <Button layoutX="135.0" layoutY="376.0" mnemonicParsing="false" onAction="#handleLogin" onKeyPressed="#handleKeyLogin" prefHeight="50.0" prefWidth="250.0" styleClass="btn4" stylesheets="@../css/Login.css" text="%btnLogin">
                      <font>
                         <Font name="Montserrat Regular" size="15.0" />
                      </font>
                   </Button>
-                  <Text layoutX="145.0" layoutY="446.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?">
+                  <Text layoutX="145.0" layoutY="446.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%noAccount">
                      <font>
                         <Font name="Montserrat Medium" size="13.0" />
                      </font>
                   </Text>
-                  <Text fill="#3974ea" layoutX="308.0" layoutY="446.0" onMouseClicked="#handleCreateAccount" strokeType="OUTSIDE" strokeWidth="0.0" text="Signup" underline="true">
+                  <Text fill="#3974ea" layoutX="308.0" layoutY="446.0" onMouseClicked="#handleCreateAccount" strokeType="OUTSIDE" strokeWidth="0.0" text="%btnSignUp" underline="true">
                      <font>
                         <Font name="Montserrat Medium" size="13.0" />
                      </font>
@@ -51,6 +56,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Text>
+               <Button layoutX="453.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="%lang" />
                </children>
             </AnchorPane>
          </children>

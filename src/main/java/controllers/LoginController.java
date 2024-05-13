@@ -20,6 +20,8 @@ import service.UserService;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class LoginController {
     @FXML
@@ -27,6 +29,7 @@ public class LoginController {
     @FXML
     private PasswordField pwdLoginPassword;
 
+    @FXML
     public void initialize() {
         // Set up event listeners for the text fields
         txtLoginEmail.setOnKeyPressed(this::handleKeyLogin);
@@ -103,5 +106,18 @@ public class LoginController {
     @FXML
     private void handleOkClick(ActionEvent ae) {
         Navigator.navigate(ae, Navigator.LOGIN_PAGE);
+    }
+    @FXML
+    private void handleChangeLanguage(ActionEvent ae) {
+
+        if (Navigator.locale.getLanguage().equals("en")){
+            Navigator.changeLanguage(ae,"sq");
+            System.out.println("[CHANGE] ALBANIAN");
+        }
+        else if  (Navigator.locale.getLanguage().equals("sq")){
+            Navigator.changeLanguage(ae,"en");
+            System.out.println("[CHANGE] ENGLISH");
+        }
+
     }
 }

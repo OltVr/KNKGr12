@@ -75,7 +75,7 @@ public class UserInterface implements Initializable {
         cityViewPane.setVisible(true);
     }
     @FXML
-    public void handleProceeding(MouseEvent ae) {
-        Navigator.navigate(ae, Navigator.PROCEEDING_PAGE);
+    public void handleProceeding(MouseEvent me) {
+        Navigator.navigate(me, Navigator.PROCEEDING_PAGE);
     }
 }
