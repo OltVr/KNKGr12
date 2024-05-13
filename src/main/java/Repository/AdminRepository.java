@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import model.Room;
 import model.User;
 import model.dto.InsertRoomDto;
+import model.dto.ReservationDto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -98,6 +99,44 @@ public class AdminRepository {
             return list;
         } catch (Exception e) {
             return list;
+        }
+    }
+    public static ObservableList<ReservationDto> ListReservations() {
+        ObservableList<ReservationDto> list = FXCollections.observableArrayList();
+        String query = "SELECT * FROM reservation";
+        Connection connection = DatabaseUtil.getConnection();
+        try {
+            PreparedStatement pst = connection.prepareStatement(query);
+            ResultSet result = pst.executeQuery();
+            while (result.next()) {
+                ReservationDto reservation = new ReservationDto(
+                        result.getInt("reservationID"),
+                        result.getString("email"),
+                        result.getInt("roomNumber"),
+                        result.getDate("reservationDate"),
+                        result.getDate("checkInDate"),
+                        result.getDate("checkOutDate"),
+                        result.getInt("numberOfPeople"));
+                System.out.println("[RESERVATION] ID:" + reservation.getReservationID());
+                list.add(reservation);
+            }
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return list;
+        }
+    }
+    public static boolean deleteReservation(int reservationID) {
+        String query = "DELETE FROM reservation WHERE reservationID = ?";
+        Connection connection = DatabaseUtil.getConnection();
+        try {
+            PreparedStatement pst = connection.prepareStatement(query);
+            pst.setInt(1, reservationID);
+            int result = pst.executeUpdate();
+            return result > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
     }
     public static ObservableList<Room> ListRoom() {

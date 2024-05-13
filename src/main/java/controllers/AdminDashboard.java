@@ -14,9 +14,11 @@ import javafx.scene.text.Text;
 import model.Room;
 import model.User;
 import model.dto.InsertRoomDto;
+import model.dto.ReservationDto;
 import service.AdminService;
 
 import java.net.URL;
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ResourceBundle;
 
@@ -103,6 +105,23 @@ public class AdminDashboard implements Initializable {
     private Text txtRoomsBooked;
     @FXML
     private Text txtTotalIncome;
+    @FXML
+    private TableView<ReservationDto> reservationTable;
+
+    @FXML
+    private TableColumn<ReservationDto, Integer> Res_reservationID_col;
+    @FXML
+    private TableColumn<ReservationDto, String> Res_email_col;
+    @FXML
+    private TableColumn<ReservationDto, Integer> Res_roomNumber_col;
+    @FXML
+    private TableColumn<ReservationDto, Date> Res_reservationDate_col;
+    @FXML
+    private TableColumn<ReservationDto, Date> Res_checkInDate_col;
+    @FXML
+    private TableColumn<ReservationDto, Date> Res_checkOutDate_col;
+    @FXML
+    private TableColumn<ReservationDto, Integer> Res_numberOfPeople_col;
 
 
 
@@ -196,6 +215,40 @@ public class AdminDashboard implements Initializable {
 
         roomTable.setItems(listData);
     }
+    private void showReservationList() {
+        ObservableList<ReservationDto> listData = AdminRepository.ListReservations();
+
+        Res_reservationID_col.setCellValueFactory(new PropertyValueFactory<>("reservationID"));
+        Res_email_col.setCellValueFactory(new PropertyValueFactory<>("email"));
+        Res_roomNumber_col.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
+        Res_reservationDate_col.setCellValueFactory(new PropertyValueFactory<>("reservationDate"));
+        Res_checkInDate_col.setCellValueFactory(new PropertyValueFactory<>("checkInDate"));
+        Res_checkOutDate_col.setCellValueFactory(new PropertyValueFactory<>("checkOutDate"));
+        Res_numberOfPeople_col.setCellValueFactory(new PropertyValueFactory<>("numberOfPeople"));
+
+        reservationTable.setItems(listData);
+    }
+    @FXML
+    private void handleDeleteReservation() {
+        ReservationDto selectedReservation = reservationTable.getSelectionModel().getSelectedItem();
+        if (selectedReservation != null) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this reservation?", ButtonType.YES, ButtonType.NO);
+            alert.showAndWait();
+
+            if (alert.getResult() == ButtonType.YES) {
+                boolean success = AdminRepository.deleteReservation(selectedReservation.getReservationID());
+                if (success) {
+                    reservationTable.getItems().remove(selectedReservation);
+                    System.out.println("[DELETE] Reservation ID: " + selectedReservation.getReservationID() + " has been deleted.");
+                } else {
+                    System.out.println("[ERROR] Failed to delete reservation.");
+                }
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "No reservation selected.");
+            alert.showAndWait();
+        }
+    }
 
     private void showUserList(){
         ObservableList<User> listData = AdminRepository.ListUser();
@@ -224,6 +277,7 @@ public class AdminDashboard implements Initializable {
         updateRoomsBooked();
         updateTotalIncome();
         updateNewUsers();
+        showReservationList();
     }
 
     private void clear(){

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
@@ -231,7 +232,7 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="guestsPane" layoutY="3.0" prefHeight="603.0" prefWidth="828.0">
+                        <AnchorPane fx:id="guestsPane" layoutY="3.0" prefHeight="603.0" prefWidth="828.0" visible="false">
                            <children>
                               <AnchorPane layoutX="21.0" layoutY="52.0" prefHeight="522.0" prefWidth="784.0" styleClass="fxx" stylesheets="@../css/Login.css">
                                  <children>
@@ -287,20 +288,24 @@
                               </Text>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="reservationPane" layoutY="3.0" prefHeight="603.0" prefWidth="828.0" visible="false">
+                        <AnchorPane fx:id="reservationPane" layoutY="3.0" prefHeight="603.0" prefWidth="828.0">
                            <children>
                               <AnchorPane layoutX="21.0" layoutY="52.0" prefHeight="522.0" prefWidth="784.0" styleClass="fxx" stylesheets="@../css/Login.css">
                                  <children>
-                                    <TableView fx:id="roomTable11" layoutX="9.0" layoutY="109.0" onMouseClicked="#roomSelect" prefHeight="364.0" prefWidth="766.0" styleClass="compact-detailed-table-view" stylesheets="@../css/Login.css">
+                                    <TableView fx:id="reservationTable" layoutX="9.0" layoutY="109.0" onMouseClicked="#roomSelect" prefHeight="364.0" prefWidth="766.0" styleClass="compact-detailed-table-view">
                                        <columns>
-                                          <TableColumn fx:id="roomNumber_col11" prefWidth="91.0" text="Reservation ID" />
-                                          <TableColumn fx:id="floorNumber_col11" prefWidth="145.0" text="Email" />
-                                          <TableColumn fx:id="roomType_col11" prefWidth="81.0" text="Room Nr." />
-                                          <TableColumn fx:id="capacity_col11" prefWidth="109.0" text="ReservationDate" />
-                                          <TableColumn fx:id="bedNumber_col11" prefWidth="120.0" text="CheckIn" />
-                                          <TableColumn fx:id="bedNumber_col111" prefWidth="112.0" text="CheckOut" />
-                                          <TableColumn fx:id="bedNumber_col1111" prefWidth="107.0" text="Number of People" />
+                                          <TableColumn fx:id="Res_reservationID_col" prefWidth="69.0" text="RID" />
+                                          <TableColumn fx:id="Res_email_col" prefWidth="145.0" text="Email" />
+                                          <TableColumn fx:id="Res_roomNumber_col" prefWidth="96.0" text="Room Nr." />
+                                          <TableColumn fx:id="Res_reservationDate_col" prefWidth="151.0" text="ReservationDate" />
+                                          <TableColumn fx:id="Res_checkInDate_col" prefWidth="85.0" text="CheckIn" />
+                                          <TableColumn fx:id="Res_checkOutDate_col" prefWidth="112.0" text="CheckOut" />
+                                          <TableColumn fx:id="Res_numberOfPeople_col" prefWidth="107.0" text="NumPeople" />
                                        </columns>
+                                       <stylesheets>
+                                          <URL value="@../css/Login.css" />
+                                          <URL value="@../css/table.css" />
+                                       </stylesheets>
                                     </TableView>
                                     <TextField layoutX="494.0" layoutY="36.0" prefHeight="33.0" prefWidth="198.0" promptText="Search" styleClass="cool-search-field" stylesheets="@../css/Login.css">
                                        <font>
@@ -317,7 +322,7 @@
                                           <Image url="@../icons/search.png" />
                                        </image>
                                     </ImageView>
-                                    <Button layoutX="291.0" layoutY="482.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="203.0" styleClass="btn-red" stylesheets="@../css/Login.css" text="Delete">
+                                    <Button fx:id="deleteReservationButton" layoutX="291.0" layoutY="482.0" mnemonicParsing="false" onAction="#handleDeleteReservation" prefHeight="30.0" prefWidth="203.0" styleClass="btn-red" stylesheets="@../css/Login.css" text="Delete">
                                        <font>
                                           <Font name="Montserrat Medium" size="13.0" />
                                        </font>
