@@ -14,6 +14,7 @@ public class Navigator {
     public final static String CREATE_ACCOUNT_PAGE = "signup_form.fxml";
     public final static String LOGIN_FAIL_ALERT = "login_failed.fxml";
     public final static String ADMIN_DASHBOARD = "admin_dashboard.fxml";
+    public final static String PROCEEDING_PAGE = "proceeding.fxml";
 
 
     public static void navigate(Stage stage, String page){
