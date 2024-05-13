@@ -223,10 +223,9 @@ public class AdminRepository {
         PreparedStatement statement = null;
         ResultSet result = null;
         try {
-            String query = "SELECT COUNT(*) as Rooms_booked FROM reservation WHERE reservationDate = ?";
+            String query = "SELECT COUNT(*) as Rooms_booked FROM reservation WHERE DATE(reservationDate) = CURDATE()";
             connection = DatabaseUtil.getConnection();
             statement = connection.prepareStatement(query);
-            statement.setDate(1, java.sql.Date.valueOf(LocalDate.now()));
             result = statement.executeQuery();
             if (result.next()) {
 
