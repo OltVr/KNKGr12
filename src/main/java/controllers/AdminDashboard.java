@@ -93,7 +93,7 @@ public class AdminDashboard implements Initializable {
     private TableColumn<User, String> lastName_col;
 
     @FXML
-    private TableColumn<User, Boolean> isAdmin_col;
+    private TableColumn<User, String> isAdmin_col;
 
     @FXML
     private TableColumn<User, Timestamp> CreatedAt_col;
@@ -200,7 +200,11 @@ public class AdminDashboard implements Initializable {
         email_col.setCellValueFactory(new PropertyValueFactory<>("email"));
         firstName_col.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         lastName_col.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-        isAdmin_col.setCellValueFactory(new PropertyValueFactory<>("isAdmin"));
+        isAdmin_col.setCellValueFactory(cellData -> {
+            User user = cellData.getValue();
+            String role = user.isAdmin() ? "Admin" : "User";
+            return new SimpleStringProperty(role);
+        });
         CreatedAt_col.setCellValueFactory(new PropertyValueFactory<>("CreatedAt"));
 
         userTable.setItems(listData);
