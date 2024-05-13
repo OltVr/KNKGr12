@@ -97,8 +97,8 @@ public class AdminDashboard implements Initializable {
 
     @FXML
     private TableColumn<User, Timestamp> CreatedAt_col;
-
-
+    @FXML
+    private Text txtNewUsers;
     @FXML
     private Text txtRoomsBooked;
     @FXML
@@ -107,7 +107,10 @@ public class AdminDashboard implements Initializable {
 
 
 
-
+    private void updateNewUsers(){
+        String newUsers=String.valueOf(AdminRepository.newUsers());
+        txtNewUsers.setText(newUsers);
+    }
 
 
     private void updateRoomsBooked(){
@@ -220,6 +223,7 @@ public class AdminDashboard implements Initializable {
         showUserList();
         updateRoomsBooked();
         updateTotalIncome();
+        updateNewUsers();
     }
 
     private void clear(){
