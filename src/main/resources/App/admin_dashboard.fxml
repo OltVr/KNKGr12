@@ -307,12 +307,12 @@
                                           <URL value="@../css/table.css" />
                                        </stylesheets>
                                     </TableView>
-                                    <TextField layoutX="494.0" layoutY="36.0" prefHeight="33.0" prefWidth="198.0" promptText="Search" styleClass="cool-search-field" stylesheets="@../css/Login.css">
+                                    <TextField fx:id="searchField" layoutX="494.0" layoutY="36.0" prefHeight="33.0" prefWidth="198.0" promptText="Search" styleClass="cool-search-field" stylesheets="@../css/Login.css">
                                        <font>
                                           <Font name="Montserrat Medium" size="12.0" />
                                        </font>
                                     </TextField>
-                                    <Button layoutX="698.0" layoutY="36.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="59.0" styleClass="btn4" stylesheets="@../css/Login.css" text="Search">
+                                    <Button fx:id="searchButton" layoutX="698.0" layoutY="36.0" mnemonicParsing="false" onAction="#handleSearchReservation" prefHeight="33.0" prefWidth="59.0" styleClass="btn4" stylesheets="@../css/Login.css" text="Search">
                                        <font>
                                           <Font name="Montserrat Medium" size="12.0" />
                                        </font>

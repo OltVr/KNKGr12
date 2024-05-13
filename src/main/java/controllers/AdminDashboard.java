@@ -123,6 +123,9 @@ public class AdminDashboard implements Initializable {
     @FXML
     private TableColumn<ReservationDto, Integer> Res_numberOfPeople_col;
 
+    @FXML
+    private TextField searchField;
+
 
 
 
@@ -246,6 +249,25 @@ public class AdminDashboard implements Initializable {
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.WARNING, "No reservation selected.");
+            alert.showAndWait();
+        }
+    }
+    @FXML
+    private void handleSearchReservation() {
+        String searchTerm = searchField.getText().trim();
+        if (!searchTerm.isEmpty()) {
+            ObservableList<ReservationDto> searchResults = AdminRepository.searchReservations(searchTerm);
+            if (!searchResults.isEmpty()) {
+                reservationTable.setItems(searchResults);
+                System.out.println("[SEARCH] Results found for: " + searchTerm);
+            } else {
+                System.out.println("[SEARCH] No results found for: " + searchTerm);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "No reservations found for the given search term.");
+                alert.showAndWait();
+            }
+        } else {
+            System.out.println("[SEARCH] Search term is empty.");
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Please enter a search term.");
             alert.showAndWait();
         }
     }

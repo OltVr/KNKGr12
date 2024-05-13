@@ -139,6 +139,40 @@ public class AdminRepository {
             return false;
         }
     }
+    public static ObservableList<ReservationDto> searchReservations(String searchTerm) {
+        ObservableList<ReservationDto> list = FXCollections.observableArrayList();
+        String query = "SELECT * FROM reservation WHERE email LIKE ? OR reservationID = ?";
+        Connection connection = DatabaseUtil.getConnection();
+        try {
+            PreparedStatement pst = connection.prepareStatement(query);
+            pst.setString(1, "%" + searchTerm + "%");
+            pst.setInt(2, tryParseInt(searchTerm));
+            ResultSet result = pst.executeQuery();
+            while (result.next()) {
+                ReservationDto reservation = new ReservationDto(
+                        result.getInt("reservationID"),
+                        result.getString("email"),
+                        result.getInt("roomNumber"),
+                        result.getDate("reservationDate"),
+                        result.getDate("checkInDate"),
+                        result.getDate("checkOutDate"),
+                        result.getInt("numberOfPeople"));
+                System.out.println("[RESERVATION] ID:" + reservation.getReservationID());
+                list.add(reservation);
+            }
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return list;
+        }
+    }
+    private static int tryParseInt(String value) {
+        try {
+            return Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            return -1; // Default to -1 nese fails
+        }
+    }
     public static ObservableList<Room> ListRoom() {
         ObservableList<Room> list = FXCollections.observableArrayList();
         String query = "SELECT * FROM ROOMS";
