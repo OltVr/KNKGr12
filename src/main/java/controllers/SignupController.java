@@ -10,6 +10,9 @@ import javafx.scene.input.MouseEvent;
 import model.dto.UserDto;
 import service.UserService;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 public class SignupController {
     @FXML
     private TextField txtSignUpName;
@@ -25,6 +28,22 @@ public class SignupController {
     // Regex patterns for email and password validation
     private static final String EMAIL_REGEX = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
     private static final String PASSWORD_REGEX = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^./&*?+=!])(?=\\S+$).{8,}$";
+
+    private ResourceBundle bundle;
+
+    @FXML
+    private void initialize(){
+        Locale locale = Locale.getDefault();
+
+        if (locale.getLanguage().equals("sq")){
+            System.out.println("[GJUHA] Shqip");
+            bundle= ResourceBundle.getBundle("translations.content", locale);
+        }
+        else {
+            bundle = ResourceBundle.getBundle("translations.content_en", locale);
+        }
+    }
+
 
     @FXML
     private void handleSignUp(ActionEvent ae) {

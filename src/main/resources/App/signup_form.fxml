@@ -19,7 +19,7 @@
                <children>
                   <AnchorPane layoutY="44.0" prefHeight="111.0" prefWidth="879.0" styleClass="left-form" stylesheets="@../css/Login.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
-                        <Text fill="WHITE" layoutX="300.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SIGN UP">
+                        <Text fill="WHITE" layoutX="300.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%lblSignUp">
                            <font>
                               <Font name="Montserrat Regular" size="63.0" />
                            </font>
@@ -31,11 +31,11 @@
                         <Image url="@../icons/logoF-B.png" />
                      </image>
                   </ImageView>
-                  <TextField fx:id="txtSignUpName" layoutX="271.0" layoutY="237.0" prefHeight="35.0" prefWidth="150.0" promptText="First Name" styleClass="textfield" stylesheets="@../css/Login.css">
+                  <TextField fx:id="txtSignUpName" layoutX="271.0" layoutY="237.0" prefHeight="35.0" prefWidth="150.0" promptText="%lblFirst" styleClass="textfield" stylesheets="@../css/Login.css">
                      <font>
                         <Font name="Montserrat Regular" size="12.0" />
                      </font></TextField>
-                  <TextField fx:id="txtSignUpLastName" layoutX="450.0" layoutY="237.0" prefHeight="35.0" prefWidth="150.0" promptText="Last Name" styleClass="textfield" stylesheets="@../css/Login.css">
+                  <TextField fx:id="txtSignUpLastName" layoutX="450.0" layoutY="237.0" prefHeight="35.0" prefWidth="150.0" promptText="%lblLast" styleClass="textfield" stylesheets="@../css/Login.css">
                      <font>
                         <Font name="Montserrat Medium" size="12.0" />
                      </font>
@@ -48,11 +48,11 @@
                      <font>
                         <Font name="Montserrat Regular" size="12.0" />
                      </font></PasswordField>
-                  <PasswordField fx:id="pwdSignUpConfirmPassword" layoutX="450.0" layoutY="344.0" prefHeight="35.0" prefWidth="150.0" promptText="Confirm Password" styleClass="textfield" stylesheets="@../css/Login.css">
+                  <PasswordField fx:id="pwdSignUpConfirmPassword" layoutX="450.0" layoutY="344.0" prefHeight="35.0" prefWidth="150.0" promptText="%lblConfirmPassword" styleClass="textfield" stylesheets="@../css/Login.css">
                      <font>
                         <Font name="Montserrat Regular" size="12.0" />
                      </font></PasswordField>
-                  <Button layoutX="270.0" layoutY="405.0" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="50.0" prefWidth="330.0" styleClass="btn2" stylesheets="@../css/Login.css" text="Sign Up" textFill="#074173">
+                  <Button layoutX="270.0" layoutY="405.0" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="50.0" prefWidth="330.0" styleClass="btn2" stylesheets="@../css/Login.css" text="%btnSignUp" textFill="#074173">
                      <font>
                         <Font name="Montserrat Regular" size="14.0" />
                      </font></Button>
