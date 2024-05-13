@@ -286,7 +286,7 @@
                                     <TableColumn prefWidth="81.0" text="Price" />
                                  </columns>
                               </TableView>
-                              <Button fx:id="btnReserve1" layoutX="154.0" layoutY="544.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="508.0" style="-fx-background-color: #34495e;" styleClass="btn4" stylesheets="@../css/Login.css" text="Reserve" />
+                              <Button fx:id="btnReserve1" layoutX="154.0" layoutY="544.0" mnemonicParsing="false" onMouseClicked="#handleProceeding" prefHeight="32.0" prefWidth="508.0" style="-fx-background-color: #34495e;" styleClass="btn4" stylesheets="@../css/Login.css" text="Reserve" />
                               <Line endX="569.0" layoutX="217.0" layoutY="522.0" startX="-188.0" stroke="#000561" strokeWidth="4.0" />
                            </children>
                         </AnchorPane>
