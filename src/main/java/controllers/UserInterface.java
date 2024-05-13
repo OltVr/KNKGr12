@@ -74,4 +74,8 @@ public class UserInterface implements Initializable {
         seaViewPane.setVisible(false);
         cityViewPane.setVisible(true);
     }
+    @FXML
+    public void handleProceeding(MouseEvent ae) {
+        Navigator.navigate(ae, Navigator.PROCEEDING_PAGE);
+    }
 }
