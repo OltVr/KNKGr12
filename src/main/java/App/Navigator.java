@@ -24,11 +24,9 @@ public class Navigator {
     public static void navigate(Stage stage, String page){
         FXMLLoader loader = new FXMLLoader(
                 Navigator.class.getResource(page)
-
-
         );
-         // Get the user's current locale
 
+         // Get the user's current locale
 // Load the appropriate resource bundle based on the locale
 
         if (locale.getLanguage().equals("sq")) {
@@ -55,13 +53,11 @@ public class Navigator {
         navigate(stage, page);
     }
 
-    public static void changeLanguage(Event e,String localeCode){
+    public static void changeLanguage(Event e, String localeCode){
         locale = new Locale(localeCode);
-
         bundle = ResourceBundle.getBundle("translations.content", locale);
         System.out.println("[LOCALE LANG] "+ locale.getLanguage());
         Navigator.navigate(e,currentPage);
-
     }
 
     private static void refresh(){

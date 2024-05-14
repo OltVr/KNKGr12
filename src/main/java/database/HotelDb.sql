@@ -41,6 +41,7 @@ FOREIGN KEY (roomNumber) REFERENCES rooms (roomNumber) on delete cascade,
 CONSTRAINT CHK_check_out_after_check_in CHECK (checkOutDate >= checkInDate)
 );
 
+-- Trigger qe e bon dhomen unavailable kur rezervohet
 Delimiter //
 CREATE TRIGGER reservation_made_trigger
 AFTER INSERT ON reservation
@@ -51,7 +52,8 @@ BEGIN
     WHERE roomNumber = NEW.roomNumber;
 END;
 delimiter ;
---Funksion qe kqyr a ka kali checkOutDate
+
+--Funksion qe kqyr a ka kalu checkOutDate, nese po e bon dhomen available
 delimiter //
 CREATE EVENT check_checkout_dates
 ON SCHEDULE EVERY 1 DAY
@@ -78,15 +80,11 @@ BEGIN
 END;
 delimiter ;
 
-
+-- Per me e kthy userin ne admin
 update user set isAdmin=1 where email= 'email@email.com';
 
 
-ALTER TABLE rooms DROP CONSTRAINT CHK_room_type;
-ALTER TABLE rooms ADD CONSTRAINT CHK_room_type CHECK (UPPER(roomType) IN ('SEA VIEW', 'CITY VIEW'));
-
--- insertimi per drejtkendshin e  kuq te admindashboard dmth me kqyr sa rooms booked today
--- po nese ne db te juj nuk figuron dhoma nr.13 edhe useri me imell si temen sju bon shkaku checkConstrains.
+-- Insertim ne tabelen Reservation per testime
 INSERT INTO reservation (reservationID, email, roomNumber, reservationDate, checkInDate, checkOutDate, numberOfPeople)
 VALUES ('1', 'trimmo@gmail.com', '13', '2024-05-11', '2024-05-12', '2024-05-14', 2);
 
@@ -103,7 +101,7 @@ CREATE TABLE Deleted_Reservations (
     deletion_timestamp TIMESTAMP
 );
 
-//triggerat me i shti rezervimet e fshime ne tabelen e mesiperme
+-- triggerat me i shti rezervimet e fshime ne tabelen e mesiperme
 DELIMITER //
 CREATE TRIGGER save_deleted_reservation_user
 BEFORE DELETE ON user

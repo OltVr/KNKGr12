@@ -20,97 +20,88 @@ import model.User;
 import model.dto.InsertRoomDto;
 import model.dto.ReservationDto;
 import service.AdminService;
+import javafx.scene.control.Alert;
 
 import java.net.URL;
 import java.sql.*;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AdminDashboard implements Initializable {
     @FXML
     private AnchorPane dashboardPane;
-
     @FXML
     private AnchorPane roomPane;
-
     @FXML
     private AnchorPane reservationPane;
-
     @FXML
     private AnchorPane guestsPane;
-
     @FXML
     private void handleLogout(MouseEvent me) {
-        Navigator.navigate(me,Navigator.LOGIN_PAGE);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to Sign Out?", ButtonType.YES, ButtonType.NO);
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.YES) {
+            Navigator.navigate(me, Navigator.LOGIN_PAGE);
+        }
     }
 
+    // Rooms Management Page
     @FXML
     private TextField txtRoom;
-
     @FXML
     private TextField txtFloor;
-
     @FXML
     private TextField txtPrice;
-
     @FXML
     private ComboBox<String> roomType;
-
     @FXML
     private ComboBox<Integer> Capacity;
-
     @FXML
     private ComboBox<Integer> Beds;
 
+    // Tabela Rooms
     @FXML
     private TableView<Room> roomTable;
-
     @FXML
     private TableColumn<Room, String> roomNumber_col;
-
     @FXML
     private TableColumn<Room, String> floorNumber_col;
-
     @FXML
     private TableColumn<Room, String> roomType_col;
-
     @FXML
     private TableColumn<Room, String> bedNumber_col;
-
-
     @FXML
     private TableColumn<Room, String> price_col;
-
     @FXML
     private TableColumn<Room, String> capacity_col;
-
     @FXML
     private TableColumn<Room, String> Available_col;
 
+    //Tabela User
     @FXML
     private TableView<User> userTable;
     @FXML
     private TableColumn<User, String> email_col;
-
     @FXML
     private TableColumn<User, String> firstName_col;
-
     @FXML
     private TableColumn<User, String> lastName_col;
-
     @FXML
     private TableColumn<User, String> isAdmin_col;
-
     @FXML
     private TableColumn<User, Timestamp> CreatedAt_col;
+
+    // Admin Dashboard Page
     @FXML
     private Text txtNewUsers;
     @FXML
     private Text txtRoomsBooked;
     @FXML
     private Text txtTotalIncome;
+
+    // Tabela Reservations
     @FXML
     private TableView<ReservationDto> reservationTable;
-
     @FXML
     private TableColumn<ReservationDto, Integer> Res_reservationID_col;
     @FXML
@@ -126,6 +117,7 @@ public class AdminDashboard implements Initializable {
     @FXML
     private TableColumn<ReservationDto, Integer> Res_numberOfPeople_col;
 
+    // Searchi te userat
     @FXML
     private TextField searchField;
     @FXML
@@ -133,6 +125,7 @@ public class AdminDashboard implements Initializable {
     @FXML
     private TextField searchFieldUser;
 
+    // ADMIN DASHBOARD
     private void populateChart(){
         Connection connect=null;
         PreparedStatement statement=null;
@@ -170,6 +163,15 @@ public class AdminDashboard implements Initializable {
         txtTotalIncome.setText(total);
     }
 
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    // ROOM MANAGEMENT
     @FXML
     private void handleAdd(){
         InsertRoomDto RoomData = new InsertRoomDto(
@@ -183,7 +185,7 @@ public class AdminDashboard implements Initializable {
 
         boolean b = AdminService.addRoom(RoomData);
         if (!(b)) {
-            System.out.println("Room already exists");
+            showAlert("Room not added", "A room with this number already exists");
         } else {
             showList();
             clear();
@@ -191,6 +193,7 @@ public class AdminDashboard implements Initializable {
 
     }
 
+    // Nderrimi i faqeve me visibility prej scenebuilder
     @FXML
     private void handleDashboard(){
         dashboardPane.setVisible(true);
@@ -268,7 +271,7 @@ public class AdminDashboard implements Initializable {
                     reservationTable.getItems().remove(selectedReservation);
                     System.out.println("[DELETE] Reservation ID: " + selectedReservation.getReservationID() + " has been deleted.");
                 } else {
-                    System.out.println("[ERROR] Failed to delete reservation.");
+                    showAlert("Error", "Failed to delete reservation");
                 }
             }
         } else {
@@ -286,12 +289,12 @@ public class AdminDashboard implements Initializable {
                 System.out.println("[SEARCH] Results found for: " + searchTerm);
             } else {
                 System.out.println("[SEARCH] No results found for: " + searchTerm);
-                Alert alert = new Alert(Alert.AlertType.INFORMATION, "No reservations found for the given search term.");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "No reservations found for the given ID");
                 alert.showAndWait();
             }
         } else {
             System.out.println("[SEARCH] Search term is empty.");
-            Alert alert = new Alert(Alert.AlertType.WARNING, "Please enter a search term.");
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Please enter a reservation ID.");
             alert.showAndWait();
         }
     }
@@ -306,12 +309,12 @@ public class AdminDashboard implements Initializable {
                 System.out.println("[SEARCH] Results found for: " + searchTerm);
             } else {
                 System.out.println("[SEARCH] No results found for: " + searchTerm);
-                Alert alert = new Alert(Alert.AlertType.INFORMATION, "No users found for the given search term.");
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "No users found for the given email address.");
                 alert.showAndWait();
             }
         } else {
             System.out.println("[SEARCH] Search term is empty.");
-            Alert alert = new Alert(Alert.AlertType.WARNING, "Please enter a search term.");
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Please enter an email address.");
             alert.showAndWait();
         }
     }
@@ -380,7 +383,7 @@ public class AdminDashboard implements Initializable {
             clear();
         }
         else {
-            System.out.println("[ERROR] Couldn't find room");
+            showAlert("Error", "Couldn't find room.");
         }
     }
     @FXML
@@ -396,7 +399,7 @@ public class AdminDashboard implements Initializable {
                     userTable.getItems().remove(selectedUser);
                     System.out.println("[DELETE] User with email: " + selectedUser.getEmail() + " has been deleted.");
                 } else {
-                    System.out.println("[ERROR] Failed to delete user.");
+                    showAlert("Error", "Failed to delete user.");
                 }
             }
         } else {
@@ -419,10 +422,11 @@ public class AdminDashboard implements Initializable {
         if (AdminRepository.updateRoom(RoomData)){
             showList();
             clear();
-            System.out.println("[UPDATE] Table has been updated");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Table was updated successfully.");
+            alert.showAndWait();
         }
         else {
-            System.out.println("[ERROR] The room either does not exist or there was a [DB ERROR]");
+            showAlert("Error", "The room either does not exist or there was a database error.");
         }
     }
 }
