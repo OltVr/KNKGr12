@@ -76,7 +76,7 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane fx:id="homePane" layoutX="14.0" layoutY="16.0" prefHeight="641.0" prefWidth="808.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="homePane" layoutX="14.0" layoutY="16.0" prefHeight="641.0" prefWidth="808.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="33.0" layoutY="107.0" prefHeight="480.0" prefWidth="359.0" styleClass="third-form" stylesheets="@../css/Login.css">
                                  <children>
@@ -218,7 +218,7 @@
                               </Text>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="seaViewPane" layoutX="3.0" layoutY="5.0" prefHeight="641.0" prefWidth="808.0" visible="false">
+                        <AnchorPane fx:id="seaViewPane" layoutX="3.0" layoutY="5.0" prefHeight="641.0" prefWidth="808.0">
                            <children>
                               <Text fill="GREY" layoutX="294.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sea View">
                                  <font>
@@ -241,13 +241,13 @@
                                  </image>
                               </ImageView>
                               <Line endX="101.5" layoutX="216.0" layoutY="329.0" startX="-188.0" stroke="#000561" strokeWidth="4.0" />
-                              <TableView layoutX="330.0" layoutY="130.0" prefHeight="381.0" prefWidth="460.0" styleClass="s2" stylesheets="@../css/Login.css">
+                              <TableView fx:id="seaTable" layoutX="330.0" layoutY="130.0" prefHeight="381.0" prefWidth="460.0" styleClass="s2" stylesheets="@../css/Login.css">
                                 <columns>
-                                  <TableColumn fx:id="roomColumn" prefWidth="72.0" text="Room" />
-                                  <TableColumn fx:id="floorColumn" prefWidth="94.0" text="Floor" />
-                                    <TableColumn fx:id="capacityColumn" prefWidth="90.0" text="Capacity" />
-                                    <TableColumn fx:id="bedNrColumn" prefWidth="121.0" text="Bed Number" />
-                                    <TableColumn fx:id="priceColumn" prefWidth="81.0" text="Price" />
+                                  <TableColumn fx:id="seaViewRoomNumber_col" prefWidth="72.0" text="Room" />
+                                  <TableColumn fx:id="seaViewFloorNumber_col" prefWidth="94.0" text="Floor" />
+                                    <TableColumn fx:id="seaViewCapacity_col" prefWidth="90.0" text="Capacity" />
+                                    <TableColumn fx:id="seaViewBedNumber_col" prefWidth="121.0" text="Bed Number" />
+                                    <TableColumn fx:id="seaViewPrice_col" prefWidth="81.0" text="Price" />
                                 </columns>
                               </TableView>
                               <Button fx:id="btnReserve" layoutX="154.0" layoutY="544.0" mnemonicParsing="false" onMouseClicked="#handleProceeding" prefHeight="32.0" prefWidth="508.0" style="-fx-background-color: #34495e;" styleClass="btn4" stylesheets="@../css/Login.css" text="Reserve" />
