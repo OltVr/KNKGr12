@@ -5,9 +5,9 @@ import Repository.AdminRepository;
 import database.DatabaseUtil;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.chart.Chart;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
@@ -28,6 +28,8 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AdminDashboard implements Initializable {
+    private static String  pane;
+
     @FXML
     private AnchorPane dashboardPane;
     @FXML
@@ -200,6 +202,7 @@ public class AdminDashboard implements Initializable {
         reservationPane.setVisible(false);
         roomPane.setVisible(false);
         guestsPane.setVisible(false);
+        pane="Dashboard";
     }
 
     @FXML
@@ -208,6 +211,8 @@ public class AdminDashboard implements Initializable {
         reservationPane.setVisible(true);
         roomPane.setVisible(false);
         guestsPane.setVisible(false);
+        pane="Reservations";
+        System.out.println("[RESERVATION]");
     }
 
     @FXML
@@ -216,6 +221,7 @@ public class AdminDashboard implements Initializable {
         reservationPane.setVisible(false);
         roomPane.setVisible(true);
         guestsPane.setVisible(false);
+        pane="Rooms";
     }
 
     @FXML
@@ -224,6 +230,7 @@ public class AdminDashboard implements Initializable {
         reservationPane.setVisible(false);
         roomPane.setVisible(false);
         guestsPane.setVisible(true);
+        pane="Guests";
     }
 
 
@@ -427,6 +434,20 @@ public class AdminDashboard implements Initializable {
         }
         else {
             showAlert("Error", "The room either does not exist or there was a database error.");
+        }
+    }
+
+    @FXML
+    private void handleChangeLanguage(ActionEvent ae){
+
+        if (Navigator.locale.getLanguage().equals("en")){
+            Navigator.changeLanguage(ae,"sq");
+            System.out.println("[CHANGE] ALBANIAN");
+
+        }
+        else if  (Navigator.locale.getLanguage().equals("sq")){
+            Navigator.changeLanguage(ae,"en");
+            System.out.println("[CHANGE] ENGLISH");
         }
     }
 }
