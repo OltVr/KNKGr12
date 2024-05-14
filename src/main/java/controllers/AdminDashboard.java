@@ -338,6 +338,27 @@ public class AdminDashboard implements Initializable {
             System.out.println("[ERROR] Couldn't find room");
         }
     }
+    @FXML
+    private void handleDeleteUser() {
+        User selectedUser = userTable.getSelectionModel().getSelectedItem();
+        if (selectedUser != null) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this user?", ButtonType.YES, ButtonType.NO);
+            alert.showAndWait();
+
+            if (alert.getResult() == ButtonType.YES) {
+                boolean success = AdminRepository.deleteUser(selectedUser.getEmail());
+                if (success) {
+                    userTable.getItems().remove(selectedUser);
+                    System.out.println("[DELETE] User with email: " + selectedUser.getEmail() + " has been deleted.");
+                } else {
+                    System.out.println("[ERROR] Failed to delete user.");
+                }
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "No user selected.");
+            alert.showAndWait();
+        }
+    }
 
     @FXML
     private void handleUpdate(){

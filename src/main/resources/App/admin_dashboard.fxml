@@ -250,7 +250,7 @@
                                           <Image url="@../icons/search.png" />
                                        </image>
                                     </ImageView>
-                                    <Button layoutX="291.0" layoutY="482.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="203.0" styleClass="btn-red" stylesheets="@../css/Login.css" text="Delete">
+                                    <Button layoutX="291.0" layoutY="482.0" mnemonicParsing="false" onAction="#handleDeleteUser" prefHeight="30.0" prefWidth="203.0" styleClass="btn-red" stylesheets="@../css/Login.css" text="Delete">
                                        <font>
                                           <Font name="Montserrat Medium" size="13.0" />
                                        </font>
