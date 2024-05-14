@@ -98,4 +98,30 @@ public class UserRepository {
         }
     }
 
+    public static ObservableList<Room> listCityViewRooms() {
+        ObservableList<Room> list = FXCollections.observableArrayList();
+        String query = "SELECT * FROM rooms WHERE roomType = 'City View' AND isAvailable = True";
+        Connection connection = DatabaseUtil.getConnection();
+        try {
+            PreparedStatement pst = connection.prepareStatement(query);
+            ResultSet result = pst.executeQuery();
+            while (result.next()) {
+                Room room = new Room(
+                        result.getInt("roomNumber"),
+                        result.getInt("floorNumber"),
+                        result.getString("roomType"),
+                        result.getInt("capacity"),
+                        result.getInt("bedNumber"),
+                        result.getDouble("price"),
+                        result.getBoolean("isAvailable"));
+                System.out.println("[ROOM] Number: " + room.getRoomNumber());
+                list.add(room);
+            }
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return list;
+        }
+    }
+
 }
