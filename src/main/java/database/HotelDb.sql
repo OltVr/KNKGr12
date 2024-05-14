@@ -2,7 +2,6 @@ create database Hotel;
 
 use Hotel;
 
--- me u shtu constraints per email, pass.
 CREATE TABLE IF NOT EXISTS user (
 email varchar(255) not null primary key,
 firstName varchar(255) NOT NULL,
@@ -30,17 +29,16 @@ CREATE TABLE IF NOT EXISTS rooms (
 );
 
 CREATE TABLE IF NOT EXISTS reservation (
-    reservationID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    email VARCHAR(255) NOT NULL,
-    roomNumber INT NOT NULL,
-    reservationDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    checkInDate DATE NOT NULL,
-    checkOutDate DATE NOT NULL,
-    numberOfPeople INT NOT NULL,
-    FOREIGN KEY (email) REFERENCES user (email) delete on cascade,
-    FOREIGN KEY (roomNumber) REFERENCES rooms (roomNumber) delete on cascade,
-     CONSTRAINT CHK_check_out_after_check_in
-        CHECK (checkOutDate >= checkInDate)
+reservationID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+email VARCHAR(255) NOT NULL,
+roomNumber INT NOT NULL,
+reservationDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+checkInDate DATE NOT NULL,
+checkOutDate DATE NOT NULL,
+numberOfPeople INT NOT NULL,
+FOREIGN KEY (email) REFERENCES user (email) on delete cascade,
+FOREIGN KEY (roomNumber) REFERENCES rooms (roomNumber) on delete cascade,
+CONSTRAINT CHK_check_out_after_check_in CHECK (checkOutDate >= checkInDate)
 );
 
 Delimiter //
@@ -87,12 +85,12 @@ update user set isAdmin=1 where email= 'email@email.com';
 ALTER TABLE rooms DROP CONSTRAINT CHK_room_type;
 ALTER TABLE rooms ADD CONSTRAINT CHK_room_type CHECK (UPPER(roomType) IN ('SEA VIEW', 'CITY VIEW'));
 
-//insertimi per drejtkendshin e  kuq te admindashboard dmth me kqyr sa rooms booked today
-//po nese ne db te juj nuk figuron dhoma nr.13 edhe useri me imell si temen sju bon shkaku checkConstrains.
+-- insertimi per drejtkendshin e  kuq te admindashboard dmth me kqyr sa rooms booked today
+-- po nese ne db te juj nuk figuron dhoma nr.13 edhe useri me imell si temen sju bon shkaku checkConstrains.
 INSERT INTO reservation (reservationID, email, roomNumber, reservationDate, checkInDate, checkOutDate, numberOfPeople)
 VALUES ('1', 'trimmo@gmail.com', '13', '2024-05-11', '2024-05-12', '2024-05-14', 2);
 
-//logtable
+-- logtable
 CREATE TABLE Deleted_Reservations (
     deleted_reservation_id INT AUTO_INCREMENT PRIMARY KEY,
 	reservationID INT NOT NULL,
