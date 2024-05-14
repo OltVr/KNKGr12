@@ -40,7 +40,7 @@ public class AdminDashboard implements Initializable {
 
     @FXML
     private void handleLogout(MouseEvent me) {
-        Navigator.navigate(me, Navigator.LOGIN_PAGE);
+        Navigator.navigate(me,Navigator.LOGIN_PAGE);
     }
 
     @FXML
@@ -131,64 +131,45 @@ public class AdminDashboard implements Initializable {
     @FXML
     private LineChart<String, Number> chartDashboard;
 
-    @FXML
-    private TableView<Room> seaViewRoomTable;
+    private void populateChart(){
+        Connection connect=null;
+        PreparedStatement statement=null;
+        ResultSet result=null;
+        XYChart.Series chart=new XYChart.Series();
+        try{
+            String query= "SELECT res.reservationDate, SUM(DATEDIFF(res.checkOutDate, res.checkInDate) * r.price) AS total_price FROM rooms r JOIN reservation res ON r.roomNumber = res.roomNumber GROUP BY res.reservationDate";
+            connect= DatabaseUtil.getConnection();
+            statement=connect.prepareStatement(query);
+            result=statement.executeQuery();
 
-    @FXML
-    private TableColumn<Room, Integer> seaViewRoomNumber_col;
-    @FXML
-    private TableColumn<Room, Integer> seaViewFloorNumber_col;
-    @FXML
-    private TableColumn<Room, String> seaViewRoomType_col;
-    @FXML
-    private TableColumn<Room, Integer> seaViewBedNumber_col;
-    @FXML
-    private TableColumn<Room, Double> seaViewPrice_col;
-    @FXML
-    private TableColumn<Room, Integer> seaViewCapacity_col;
-    @FXML
-    private TableColumn<Room, String> seaViewAvailable_col;
-
-
-    private void populateChart() {
-        Connection connect = null;
-        PreparedStatement statement = null;
-        ResultSet result = null;
-        XYChart.Series chart = new XYChart.Series();
-        try {
-            String query = "SELECT res.reservationDate, SUM(DATEDIFF(res.checkOutDate, res.checkInDate) * r.price) AS total_price FROM rooms r JOIN reservation res ON r.roomNumber = res.roomNumber GROUP BY res.reservationDate";
-            connect = DatabaseUtil.getConnection();
-            statement = connect.prepareStatement(query);
-            result = statement.executeQuery();
-
-            while (result.next()) {
+            while(result.next()){
                 chart.getData().add(new XYChart.Data(result.getString(1), result.getInt(2)));
             }
             chartDashboard.getData().add(chart);
-        } catch (Exception e) {
+        }catch (Exception e){
             e.printStackTrace();
         }
     }
 
-    private void updateNewUsers() {
-        String newUsers = String.valueOf(AdminRepository.newUsers());
+    private void updateNewUsers(){
+        String newUsers=String.valueOf(AdminRepository.newUsers());
         txtNewUsers.setText(newUsers);
     }
 
 
-    private void updateRoomsBooked() {
-        String count = String.valueOf(AdminRepository.RoomsBooked());
+    private void updateRoomsBooked(){
+        String count= String.valueOf(AdminRepository.RoomsBooked());
         txtRoomsBooked.setText(count);
 
     }
 
-    private void updateTotalIncome() {
-        String total = String.valueOf(AdminRepository.TotalIncome() + " $");
+    private void updateTotalIncome(){
+        String total=String.valueOf(AdminRepository.TotalIncome()+" $");
         txtTotalIncome.setText(total);
     }
 
     @FXML
-    private void handleAdd() {
+    private void handleAdd(){
         InsertRoomDto RoomData = new InsertRoomDto(
                 Integer.parseInt(this.txtRoom.getText()),
                 Integer.parseInt(this.txtFloor.getText()),
@@ -209,7 +190,7 @@ public class AdminDashboard implements Initializable {
     }
 
     @FXML
-    private void handleDashboard() {
+    private void handleDashboard(){
         dashboardPane.setVisible(true);
         reservationPane.setVisible(false);
         roomPane.setVisible(false);
@@ -217,7 +198,7 @@ public class AdminDashboard implements Initializable {
     }
 
     @FXML
-    private void handleReservations() {
+    private void handleReservations(){
         dashboardPane.setVisible(false);
         reservationPane.setVisible(true);
         roomPane.setVisible(false);
@@ -225,7 +206,7 @@ public class AdminDashboard implements Initializable {
     }
 
     @FXML
-    private void handleRooms() {
+    private void handleRooms(){
         dashboardPane.setVisible(false);
         reservationPane.setVisible(false);
         roomPane.setVisible(true);
@@ -233,7 +214,7 @@ public class AdminDashboard implements Initializable {
     }
 
     @FXML
-    private void handleGuests() {
+    private void handleGuests(){
         dashboardPane.setVisible(false);
         reservationPane.setVisible(false);
         roomPane.setVisible(false);
@@ -241,7 +222,8 @@ public class AdminDashboard implements Initializable {
     }
 
 
-    private void showList() {
+
+    private void showList(){
         ObservableList<Room> listData = AdminRepository.ListRoom();
 
         roomNumber_col.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
@@ -258,7 +240,6 @@ public class AdminDashboard implements Initializable {
 
         roomTable.setItems(listData);
     }
-
     private void showReservationList() {
         ObservableList<ReservationDto> listData = AdminRepository.ListReservations();
 
@@ -272,7 +253,6 @@ public class AdminDashboard implements Initializable {
 
         reservationTable.setItems(listData);
     }
-
     @FXML
     private void handleDeleteReservation() {
         ReservationDto selectedReservation = reservationTable.getSelectionModel().getSelectedItem();
@@ -294,7 +274,6 @@ public class AdminDashboard implements Initializable {
             alert.showAndWait();
         }
     }
-
     @FXML
     private void handleSearchReservation() {
         String searchTerm = searchField.getText().trim();
@@ -315,7 +294,7 @@ public class AdminDashboard implements Initializable {
         }
     }
 
-    private void showUserList() {
+    private void showUserList(){
         ObservableList<User> listData = AdminRepository.ListUser();
 
         email_col.setCellValueFactory(new PropertyValueFactory<>("email"));
@@ -335,8 +314,8 @@ public class AdminDashboard implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         roomType.getItems().addAll("Sea View", "City View");
-        Capacity.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8);
-        Beds.getItems().addAll(1, 2, 3, 4);
+        Capacity.getItems().addAll(1, 2,3,4,5,6,7,8);
+        Beds.getItems().addAll(1, 2,3,4);
         showList();
         showUserList();
         updateRoomsBooked();
@@ -347,7 +326,7 @@ public class AdminDashboard implements Initializable {
 //        showSeaViewRooms();1
     }
 
-    private void clear() {
+    private void clear(){
         txtRoom.setText("");
         txtFloor.setText("");
         txtPrice.setText("");
@@ -360,30 +339,29 @@ public class AdminDashboard implements Initializable {
     }
 
     @FXML
-    private void roomSelect() {
+    private void  roomSelect(){
         Room room = roomTable.getSelectionModel().getSelectedItem();
 //        int num = roomTable.getSelectionModel().getSelectedIndex();
 
-        if (room != null) {
-            txtRoom.setText(String.valueOf(room.getRoomNumber()));
-            txtFloor.setText(String.valueOf(room.getFloorNumber()));
-            txtPrice.setText(String.valueOf(room.getPrice()));
-        }
+        if (room!=null){
+        txtRoom.setText(String.valueOf(room.getRoomNumber()));
+        txtFloor.setText(String.valueOf(room.getFloorNumber()));
+        txtPrice.setText(String.valueOf(room.getPrice()));}
 
     }
 
     @FXML
-    private void handleDeleteRoom() {
-        int roomNumber = Integer.parseInt(txtRoom.getText());
-        int floorNumber = Integer.parseInt(txtFloor.getText());
-        if (AdminRepository.deleteRoom(roomNumber, floorNumber)) {
+    private void handleDeleteRoom(){
+        int roomNumber= Integer.parseInt(txtRoom.getText());
+        int floorNumber= Integer.parseInt(txtFloor.getText());
+        if (AdminRepository.deleteRoom(roomNumber,floorNumber)){
             showList();
             clear();
-        } else {
+        }
+        else {
             System.out.println("[ERROR] Couldn't find room");
         }
     }
-
     @FXML
     private void handleDeleteUser() {
         User selectedUser = userTable.getSelectionModel().getSelectedItem();
@@ -407,7 +385,7 @@ public class AdminDashboard implements Initializable {
     }
 
     @FXML
-    private void handleUpdate() {
+    private void handleUpdate(){
         InsertRoomDto RoomData = new InsertRoomDto(
                 Integer.parseInt(this.txtRoom.getText()),
                 Integer.parseInt(this.txtFloor.getText()),
@@ -417,11 +395,12 @@ public class AdminDashboard implements Initializable {
                 Double.parseDouble(this.txtPrice.getText())
         );
 
-        if (AdminRepository.updateRoom(RoomData)) {
+        if (AdminRepository.updateRoom(RoomData)){
             showList();
             clear();
             System.out.println("[UPDATE] Table has been updated");
-        } else {
+        }
+        else {
             System.out.println("[ERROR] The room either does not exist or there was a [DB ERROR]");
         }
     }

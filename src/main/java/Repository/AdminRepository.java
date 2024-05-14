@@ -301,7 +301,7 @@ public class AdminRepository {
         }
     }
 
-    public static ObservableList<Room> listSeaViewRooms() {
-        return null;
-    }
+//    public static ObservableList<Room> listSeaViewRooms() {
+//        return null;
+//    }
 }
