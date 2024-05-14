@@ -256,6 +256,23 @@ public class AdminRepository {
         }
 
     }
+    public static boolean deleteUser(String email) {
+        String query = "DELETE FROM user WHERE email = ?";
+        Connection connection = DatabaseUtil.getConnection();
+        try {
+            PreparedStatement pst = connection.prepareStatement(query);
+            pst.setString(1, email);
+            pst.executeUpdate();
+            pst.close();
+            System.out.println("[DELETED USER] User deleted successfully.");
+            return true;
+        } catch (SQLException e) {
+            System.out.println("[DB ERROR] " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+
+    }
 
     public static boolean updateRoom(InsertRoomDto room) {
         String query = "UPDATE ROOMS SET floorNumber= ?, roomType= ?, capacity= ?, bedNumber= ?, price= ?  WHERE roomNumber = ?";
@@ -300,21 +317,5 @@ public class AdminRepository {
             return 0;
         }
     }
-    public static boolean deleteUser(String email) {
-        String query = "DELETE FROM user WHERE email = ?";
-        Connection connection = DatabaseUtil.getConnection();
-        try {
-            PreparedStatement pst = connection.prepareStatement(query);
-            pst.setString(1, email);
-            pst.executeUpdate();
-            pst.close();
-            System.out.println("[DELETED USER] User deleted successfully.");
-            return true;
-        } catch (SQLException e) {
-            System.out.println("[DB ERROR] " + e.getMessage());
-            e.printStackTrace();
-            return false;
-        }
 
-    }
 }
