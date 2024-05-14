@@ -323,7 +323,6 @@ public class AdminDashboard implements Initializable {
         updateNewUsers();
         showReservationList();
         populateChart();
-//        showSeaViewRooms();1
     }
 
     private void clear(){
