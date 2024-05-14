@@ -106,11 +106,11 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane fx:id="dashboardPane" prefHeight="598.0" prefWidth="814.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="dashboardPane" prefHeight="598.0" prefWidth="814.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="22.0" layoutY="81.0" prefHeight="440.0" prefWidth="489.0" styleClass="third-form" stylesheets="@../css/Login.css">
                                  <children>
-                                    <Text layoutX="178.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Graph Title">
+                                    <Text layoutX="110.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Daily Income Graph">
                                        <font>
                                           <Font name="Montserrat Regular" size="24.0" />
                                        </font>
@@ -163,7 +163,7 @@
                                     <Font name="Montserrat Regular" size="36.0" />
                                  </font>
                               </Text>
-                              <Text fill="#fffefe" layoutX="553.0" layoutY="497.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rooms booked">
+                              <Text fill="#fffefe" layoutX="550.0" layoutY="498.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rooms booked today">
                                  <font>
                                     <Font name="Montserrat Regular" size="18.0" />
                                  </font>
@@ -260,7 +260,7 @@
                                           <Image url="@../icons/search.png" />
                                        </image>
                                     </ImageView>
-                                    <Button layoutX="291.0" onAction="#handleDeleteUser" layoutY="482.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="203.0" styleClass="btn-red" stylesheets="@../css/Login.css" text="Delete">
+                                    <Button layoutX="291.0" layoutY="482.0" mnemonicParsing="false" onAction="#handleDeleteUser" prefHeight="30.0" prefWidth="203.0" styleClass="btn-red" stylesheets="@../css/Login.css" text="Delete">
                                        <font>
                                           <Font name="Montserrat Medium" size="13.0" />
                                        </font>
@@ -288,14 +288,14 @@
                               </Text>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="reservationPane" layoutY="3.0" prefHeight="603.0" prefWidth="828.0">
+                        <AnchorPane fx:id="reservationPane" layoutY="3.0" prefHeight="603.0" prefWidth="828.0" visible="false">
                            <children>
                               <AnchorPane layoutX="21.0" layoutY="52.0" prefHeight="522.0" prefWidth="784.0" styleClass="fxx" stylesheets="@../css/Login.css">
                                  <children>
                                     <TableView fx:id="reservationTable" layoutX="9.0" layoutY="109.0" onMouseClicked="#roomSelect" prefHeight="364.0" prefWidth="766.0" styleClass="compact-detailed-table-view">
                                        <columns>
                                           <TableColumn fx:id="Res_reservationID_col" prefWidth="69.0" text="RID" />
-                                          <TableColumn fx:id="Res_email_col" prefWidth="145.0" text="Email" />
+                                          <TableColumn fx:id="Res_email_col" prefWidth="145.0" text="User" />
                                           <TableColumn fx:id="Res_roomNumber_col" prefWidth="96.0" text="Room Nr." />
                                           <TableColumn fx:id="Res_reservationDate_col" prefWidth="151.0" text="ReservationDate" />
                                           <TableColumn fx:id="Res_checkInDate_col" prefWidth="85.0" text="CheckIn" />
