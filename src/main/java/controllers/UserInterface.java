@@ -45,6 +45,19 @@ public class UserInterface implements Initializable {
     @FXML
     private TableColumn<Room, Integer> seaViewCapacity_col;
 
+    @FXML
+    private TableView<Room> cityTable;
+    @FXML
+    private TableColumn<Room, Integer> cityViewRoomNumber_col;
+    @FXML
+    private TableColumn<Room, Integer> cityViewFloorNumber_col;
+    @FXML
+    private TableColumn<Room, Integer> cityViewBedNumber_col;
+    @FXML
+    private TableColumn<Room, Double> cityViewPrice_col;
+    @FXML
+    private TableColumn<Room, Integer> cityViewCapacity_col;
+
 
     @FXML
     private void handleHome(){
@@ -80,6 +93,7 @@ public class UserInterface implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         showSeaViewRooms();
+        showCityViewRooms();
     }
     @FXML
     public void handleCheckSeaView(MouseEvent me){
@@ -113,4 +127,17 @@ public class UserInterface implements Initializable {
 
         seaTable.setItems(listData);
     }
+
+    private void showCityViewRooms() {
+        ObservableList<Room> listData = UserRepository.listCityViewRooms();
+
+        cityViewRoomNumber_col.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
+        cityViewFloorNumber_col.setCellValueFactory(new PropertyValueFactory<>("floorNumber"));
+        cityViewBedNumber_col.setCellValueFactory(new PropertyValueFactory<>("bedNumber"));
+        cityViewPrice_col.setCellValueFactory(new PropertyValueFactory<>("price"));
+        cityViewCapacity_col.setCellValueFactory(new PropertyValueFactory<>("capacity"));
+
+        cityTable.setItems(listData);
+    }
+
 }
