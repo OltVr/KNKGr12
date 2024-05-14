@@ -2,6 +2,7 @@ package controllers;
 
 import App.Navigator;
 import Repository.AdminRepository;
+import Repository.UserRepository;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -105,7 +106,7 @@ public class UserInterface implements Initializable {
     }
 
     private void showSeaViewRooms() {
-        ObservableList<Room> listData = AdminRepository.listSeaViewRooms();
+        ObservableList<Room> listData = UserRepository.listSeaViewRooms();
 
         seaViewRoomNumber_col.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
         seaViewFloorNumber_col.setCellValueFactory(new PropertyValueFactory<>("floorNumber"));
