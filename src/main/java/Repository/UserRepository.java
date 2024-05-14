@@ -74,7 +74,7 @@ public class UserRepository {
 
     public static ObservableList<Room> listSeaViewRooms() {
         ObservableList<Room> list = FXCollections.observableArrayList();
-        String query = "SELECT * FROM rooms WHERE roomType = 'Sea View'";
+        String query = "SELECT * FROM rooms WHERE roomType = 'Sea View' AND isAvailable = True";
         Connection connection = DatabaseUtil.getConnection();
         try {
             PreparedStatement pst = connection.prepareStatement(query);
