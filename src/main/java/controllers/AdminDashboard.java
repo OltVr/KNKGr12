@@ -115,7 +115,7 @@ public class AdminDashboard implements Initializable {
     @FXML
     private TableColumn<ReservationDto, Date> Res_checkOutDate_col;
     @FXML
-    private TableColumn<ReservationDto, Integer> Res_numberOfPeople_col;
+    private TableColumn<ReservationDto, Integer> Res_totalPrice_col;
 
     // Searchi te userat
     @FXML
@@ -254,7 +254,7 @@ public class AdminDashboard implements Initializable {
         Res_reservationDate_col.setCellValueFactory(new PropertyValueFactory<>("reservationDate"));
         Res_checkInDate_col.setCellValueFactory(new PropertyValueFactory<>("checkInDate"));
         Res_checkOutDate_col.setCellValueFactory(new PropertyValueFactory<>("checkOutDate"));
-        Res_numberOfPeople_col.setCellValueFactory(new PropertyValueFactory<>("numberOfPeople"));
+        Res_totalPrice_col.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
 
         reservationTable.setItems(listData);
     }

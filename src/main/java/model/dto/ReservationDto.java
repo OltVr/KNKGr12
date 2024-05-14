@@ -9,16 +9,16 @@ public class ReservationDto {
     private Date reservationDate;
     private Date checkInDate;
     private Date checkOutDate;
-    private int numberOfPeople;
+    private double totalPrice;
 
-    public ReservationDto(int reservationID, String email, int roomNumber, Date reservationDate, Date checkInDate, Date checkOutDate, int numberOfPeople) {
+    public ReservationDto(int reservationID, String email, int roomNumber, Date reservationDate, Date checkInDate, Date checkOutDate, int totalPrice) {
         this.reservationID = reservationID;
         this.email = email;
         this.roomNumber = roomNumber;
         this.reservationDate = reservationDate;
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
-        this.numberOfPeople = numberOfPeople;
+        this.totalPrice = totalPrice;
     }
 
     public int getReservationID() {
@@ -45,7 +45,7 @@ public class ReservationDto {
         return checkOutDate;
     }
 
-    public int getNumberOfPeople() {
-        return numberOfPeople;
+    public double getTotalPrice() {
+        return totalPrice;
     }
 }

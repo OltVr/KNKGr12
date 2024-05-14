@@ -116,7 +116,7 @@ public class AdminRepository {
                         result.getDate("reservationDate"),
                         result.getDate("checkInDate"),
                         result.getDate("checkOutDate"),
-                        result.getInt("numberOfPeople"));
+                        result.getInt("totalPrice"));
                 System.out.println("[RESERVATION] ID:" + reservation.getReservationID());
                 list.add(reservation);
             }
@@ -156,7 +156,7 @@ public class AdminRepository {
                         result.getDate("reservationDate"),
                         result.getDate("checkInDate"),
                         result.getDate("checkOutDate"),
-                        result.getInt("numberOfPeople"));
+                        result.getInt("totalPrice"));
                 System.out.println("[RESERVATION] ID:" + reservation.getReservationID());
                 list.add(reservation);
             }

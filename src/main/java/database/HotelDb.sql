@@ -35,11 +35,37 @@ roomNumber INT NOT NULL,
 reservationDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 checkInDate DATE NOT NULL,
 checkOutDate DATE NOT NULL,
-numberOfPeople INT NOT NULL,
+totalPrice DECIMAL(10,2) NOT NULL,
 FOREIGN KEY (email) REFERENCES user (email) on delete cascade,
 FOREIGN KEY (roomNumber) REFERENCES rooms (roomNumber) on delete cascade,
 CONSTRAINT CHK_check_out_after_check_in CHECK (checkOutDate >= checkInDate)
 );
+
+-- Editohet tabela me u shtu total price pa e bo drop databazen
+ALTER TABLE reservation
+CHANGE COLUMN numberOfPeople totalPrice DECIMAL(10, 2) NOT NULL;
+
+-- Trigger qe e llogarit totalPrice para insertit ne reservim
+DELIMITER //
+
+CREATE TRIGGER calculate_total_price BEFORE INSERT ON reservation
+FOR EACH ROW
+BEGIN
+    DECLARE num_days INT;
+    DECLARE room_price DECIMAL(10, 2);
+
+    -- Get the number of days between check-in and check-out dates
+    SET num_days = DATEDIFF(NEW.checkOutDate, NEW.checkInDate);
+
+    -- Get the room price based on the room number
+    SELECT price INTO room_price FROM rooms WHERE roomNumber = NEW.roomNumber;
+
+    -- Calculate the total price
+    SET NEW.totalPrice = num_days * room_price;
+END;
+//
+
+DELIMITER ;
 
 -- Trigger qe e bon dhomen unavailable kur rezervohet
 Delimiter //
@@ -53,7 +79,7 @@ BEGIN
 END;
 delimiter ;
 
---Funksion qe kqyr a ka kalu checkOutDate, nese po e bon dhomen available
+-- Funksion qe kqyr a ka kalu checkOutDate, nese po e bon dhomen available
 delimiter //
 CREATE EVENT check_checkout_dates
 ON SCHEDULE EVERY 1 DAY
@@ -85,8 +111,10 @@ update user set isAdmin=1 where email= 'email@email.com';
 
 
 -- Insertim ne tabelen Reservation per testime
-INSERT INTO reservation (reservationID, email, roomNumber, reservationDate, checkInDate, checkOutDate, numberOfPeople)
-VALUES ('1', 'trimmo@gmail.com', '13', '2024-05-11', '2024-05-12', '2024-05-14', 2);
+INSERT INTO reservation (reservationID, email, roomNumber, reservationDate, checkInDate, checkOutDate)
+VALUES ('10', 'trimmo@gmail.com', '4', '2024-05-11', '2024-05-12', '2024-05-14');
+select*from reservation;
+select*from rooms;
 
 -- logtable
 CREATE TABLE Deleted_Reservations (
@@ -97,9 +125,13 @@ CREATE TABLE Deleted_Reservations (
     reservationDate TIMESTAMP NOT NULL,
     checkInDate DATE NOT NULL,
     checkOutDate DATE NOT NULL,
-    numberOfPeople INT NOT NULL,
+    totalPrice DECIMAL(10,2) NOT NULL,
     deletion_timestamp TIMESTAMP
 );
+
+-- Ndryshohet edhe kjo
+ALTER TABLE Deleted_Reservations
+CHANGE COLUMN numberOfPeople totalPrice DECIMAL(10, 2) NOT NULL;
 
 -- triggerat me i shti rezervimet e fshime ne tabelen e mesiperme
 DELIMITER //
@@ -107,8 +139,8 @@ CREATE TRIGGER save_deleted_reservation_user
 BEFORE DELETE ON user
 FOR EACH ROW
 BEGIN
-    INSERT INTO Deleted_Reservations (reservationID, email, roomNumber, reservationDate, checkInDate, checkOutDate, numberOfPeople, deletion_timestamp)
-    SELECT reservationID, email, roomNumber, reservationDate, checkInDate, checkOutDate, numberOfPeople, NOW()
+    INSERT INTO Deleted_Reservations (reservationID, email, roomNumber, reservationDate, checkInDate, checkOutDate, totalPrice, deletion_timestamp)
+    SELECT reservationID, email, roomNumber, reservationDate, checkInDate, checkOutDate, totalPrice, NOW()
     FROM reservation
     WHERE email = OLD.email;
 END;
@@ -119,10 +151,11 @@ CREATE TRIGGER save_deleted_reservation_room
 BEFORE DELETE ON rooms
 FOR EACH ROW
 BEGIN
-    INSERT INTO Deleted_Reservations (reservationID, email, roomNumber, reservationDate, checkInDate, checkOutDate, numberOfPeople, deletion_timestamp)
-    SELECT reservationID, email, roomNumber, reservationDate, checkInDate, checkOutDate, numberOfPeople, NOW()
+    INSERT INTO Deleted_Reservations (reservationID, email, roomNumber, reservationDate, checkInDate, checkOutDate, totalPrice, deletion_timestamp)
+    SELECT reservationID, email, roomNumber, reservationDate, checkInDate, checkOutDate, totalPrice, NOW()
     FROM reservation
     WHERE roomNumber = OLD.roomNumber;
 END;
 DELIMITER ;
+
 
