@@ -130,6 +130,8 @@ public class AdminDashboard implements Initializable {
     private TextField searchField;
     @FXML
     private LineChart<String, Number> chartDashboard;
+    @FXML
+    private TextField searchFieldUser;
 
     private void populateChart(){
         Connection connect=null;
@@ -285,6 +287,26 @@ public class AdminDashboard implements Initializable {
             } else {
                 System.out.println("[SEARCH] No results found for: " + searchTerm);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION, "No reservations found for the given search term.");
+                alert.showAndWait();
+            }
+        } else {
+            System.out.println("[SEARCH] Search term is empty.");
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Please enter a search term.");
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    private void handleSearchUser() {
+        String searchTerm = searchFieldUser.getText().trim();
+        if (!searchTerm.isEmpty()) {
+            ObservableList<User> searchResults = AdminRepository.searchUsers(searchTerm);
+            if (!searchResults.isEmpty()) {
+                userTable.setItems(searchResults);
+                System.out.println("[SEARCH] Results found for: " + searchTerm);
+            } else {
+                System.out.println("[SEARCH] No results found for: " + searchTerm);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "No users found for the given search term.");
                 alert.showAndWait();
             }
         } else {

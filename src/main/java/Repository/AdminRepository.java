@@ -173,6 +173,32 @@ public class AdminRepository {
             return -1; // Default to -1 nese fails
         }
     }
+    public static ObservableList<User> searchUsers(String searchTerm) {
+        ObservableList<User> userList = FXCollections.observableArrayList();
+        String query = "SELECT * FROM user WHERE email LIKE ?";
+        Connection connection = DatabaseUtil.getConnection();
+        try {
+            PreparedStatement pst = connection.prepareStatement(query);
+            pst.setString(1, "%" + searchTerm + "%");
+            ResultSet result = pst.executeQuery();
+            while (result.next()) {
+                User user = new User(
+                        result.getString("firstName"),
+                        result.getString("lastName"),
+                        result.getString("email"),
+                        result.getString("salt"),
+                        result.getString("passwordHash"),
+                        result.getBoolean("isAdmin"),
+                        result.getTimestamp("createdAt"));
+                System.out.println("[USER] Email:" + user.getEmail());
+                userList.add(user);
+            }
+            return userList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return userList;
+        }
+    }
     public static ObservableList<Room> ListRoom() {
         ObservableList<Room> list = FXCollections.observableArrayList();
         String query = "SELECT * FROM ROOMS";
