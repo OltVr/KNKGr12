@@ -2,10 +2,14 @@ package controllers;
 
 import App.Navigator;
 import Repository.AdminRepository;
+import database.DatabaseUtil;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.Chart;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
@@ -18,8 +22,7 @@ import model.dto.ReservationDto;
 import service.AdminService;
 
 import java.net.URL;
-import java.sql.Date;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 public class AdminDashboard implements Initializable {
@@ -125,9 +128,29 @@ public class AdminDashboard implements Initializable {
 
     @FXML
     private TextField searchField;
+    @FXML
+    private LineChart<String, Number> chartDashboard;
 
 
+    private void populateChart(){
+        Connection connect=null;
+        PreparedStatement statement=null;
+        ResultSet result=null;
+        XYChart.Series chart=new XYChart.Series();
+        try{
+            String query= "SELECT res.reservationDate, SUM(DATEDIFF(res.checkOutDate, res.checkInDate) * r.price) AS total_price FROM rooms r JOIN reservation res ON r.roomNumber = res.roomNumber GROUP BY res.reservationDate";
+            connect= DatabaseUtil.getConnection();
+            statement=connect.prepareStatement(query);
+            result=statement.executeQuery();
 
+            while(result.next()){
+                chart.getData().add(new XYChart.Data(result.getString(1), result.getInt(2)));
+            }
+            chartDashboard.getData().add(chart);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
     private void updateNewUsers(){
         String newUsers=String.valueOf(AdminRepository.newUsers());
@@ -300,6 +323,7 @@ public class AdminDashboard implements Initializable {
         updateTotalIncome();
         updateNewUsers();
         showReservationList();
+        populateChart();
     }
 
     private void clear(){
