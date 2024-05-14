@@ -32,22 +32,19 @@ public class UserInterface implements Initializable {
     @FXML
     private AnchorPane cityViewPane;
     @FXML
-    private TableView<Room> seaViewRoomTable;
+    private TableView<Room> seaTable;
 
     @FXML
     private TableColumn<Room, Integer> seaViewRoomNumber_col;
     @FXML
     private TableColumn<Room, Integer> seaViewFloorNumber_col;
     @FXML
-    private TableColumn<Room, String> seaViewRoomType_col;
-    @FXML
     private TableColumn<Room, Integer> seaViewBedNumber_col;
     @FXML
     private TableColumn<Room, Double> seaViewPrice_col;
     @FXML
     private TableColumn<Room, Integer> seaViewCapacity_col;
-    @FXML
-    private TableColumn<Room, String> seaViewAvailable_col;
+
 
     @FXML
     private void handleHome(){
@@ -82,7 +79,7 @@ public class UserInterface implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        showSeaViewRooms();
     }
     @FXML
     public void handleCheckSeaView(MouseEvent me){
@@ -110,16 +107,10 @@ public class UserInterface implements Initializable {
 
         seaViewRoomNumber_col.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
         seaViewFloorNumber_col.setCellValueFactory(new PropertyValueFactory<>("floorNumber"));
-        seaViewRoomType_col.setCellValueFactory(new PropertyValueFactory<>("roomType"));
         seaViewBedNumber_col.setCellValueFactory(new PropertyValueFactory<>("bedNumber"));
         seaViewPrice_col.setCellValueFactory(new PropertyValueFactory<>("price"));
         seaViewCapacity_col.setCellValueFactory(new PropertyValueFactory<>("capacity"));
-        seaViewAvailable_col.setCellValueFactory(cellData -> {
-            Room room = cellData.getValue();
-            String availability = room.isAvailable() ? "Available" : "Unavailable";
-            return new SimpleStringProperty(availability);
-        });
 
-        seaViewRoomTable.setItems(listData);
+        seaTable.setItems(listData);
     }
 }
