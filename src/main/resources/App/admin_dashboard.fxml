@@ -38,7 +38,7 @@
                               <Font name="Montserrat Medium" size="12.0" />
                            </font>
                         </Button>
-                        <Button layoutX="-1.0" layoutY="126.0" mnemonicParsing="false" onAction="#handleReservations" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="Reservations">
+                        <Button layoutX="-1.0" layoutY="126.0" mnemonicParsing="false" onAction="#handleReservations" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="%Reservations">
                            <font>
                               <Font name="Montserrat Medium" size="12.0" />
                            </font>
@@ -58,7 +58,7 @@
                               <Image url="@../icons/dashboard.png" />
                            </image>
                         </ImageView>
-                        <Button layoutX="-1.0" layoutY="1.0" mnemonicParsing="false" onAction="#handleDashboard" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="Dashboard">
+                        <Button layoutX="-1.0" layoutY="1.0" mnemonicParsing="false" onAction="#handleDashboard" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="%Dashboard">
                            <font>
                               <Font name="Montserrat Medium" size="12.0" />
                            </font>
@@ -171,7 +171,7 @@
                               </Text>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="roomPane" layoutX="5.0" layoutY="5.0" prefHeight="603.0" prefWidth="819.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="roomPane" layoutX="5.0" layoutY="5.0" prefHeight="603.0" prefWidth="819.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="30.0" layoutY="15.0" prefHeight="154.0" prefWidth="754.0" styleClass="fxx" stylesheets="@../css/Login.css">
                                  <children>
@@ -296,24 +296,24 @@
                                     <TableView fx:id="reservationTable" layoutX="9.0" layoutY="109.0" onMouseClicked="#roomSelect" prefHeight="364.0" prefWidth="766.0" styleClass="compact-detailed-table-view">
                                        <columns>
                                           <TableColumn fx:id="Res_reservationID_col" prefWidth="69.0" text="RID" />
-                                          <TableColumn fx:id="Res_email_col" prefWidth="145.0" text="User" />
-                                          <TableColumn fx:id="Res_roomNumber_col" prefWidth="96.0" text="Room Nr." />
-                                          <TableColumn fx:id="Res_reservationDate_col" prefWidth="151.0" text="ReservationDate" />
-                                          <TableColumn fx:id="Res_checkInDate_col" prefWidth="85.0" text="CheckIn" />
-                                          <TableColumn fx:id="Res_checkOutDate_col" prefWidth="112.0" text="CheckOut" />
-                                          <TableColumn fx:id="Res_totalPrice_col" prefWidth="107.0" text="TotalPrice" />
+                                          <TableColumn fx:id="Res_email_col" prefWidth="145.0" text="%columnUser" />
+                                          <TableColumn fx:id="Res_roomNumber_col" prefWidth="96.0" text="%columnRoom#" />
+                                          <TableColumn fx:id="Res_reservationDate_col" prefWidth="151.0" text="%columnReservationDate" />
+                                          <TableColumn fx:id="Res_checkInDate_col" prefWidth="85.0" text="%columnCheckIn" />
+                                          <TableColumn fx:id="Res_checkOutDate_col" prefWidth="112.0" text="%columnCheckOut" />
+                                          <TableColumn fx:id="Res_totalPrice_col" prefWidth="107.0" text="%columnTotalPrice" />
                                        </columns>
                                        <stylesheets>
                                           <URL value="@../css/Login.css" />
                                           <URL value="@../css/table.css" />
                                        </stylesheets>
                                     </TableView>
-                                    <TextField fx:id="searchField" layoutX="494.0" layoutY="36.0" prefHeight="33.0" prefWidth="198.0" promptText="Search" styleClass="cool-search-field" stylesheets="@../css/Login.css">
+                                    <TextField fx:id="searchField" layoutX="494.0" layoutY="36.0" prefHeight="33.0" prefWidth="198.0" promptText="%Search" styleClass="cool-search-field" stylesheets="@../css/Login.css">
                                        <font>
                                           <Font name="Montserrat Medium" size="12.0" />
                                        </font>
                                     </TextField>
-                                    <Button fx:id="searchButton" layoutX="698.0" layoutY="36.0" mnemonicParsing="false" onAction="#handleSearchReservation" prefHeight="33.0" prefWidth="59.0" styleClass="btn4" stylesheets="@../css/Login.css" text="Search">
+                                    <Button fx:id="searchButton" layoutX="698.0" layoutY="36.0" mnemonicParsing="false" onAction="#handleSearchReservation" prefHeight="33.0" prefWidth="59.0" styleClass="btn4" stylesheets="@../css/Login.css" text="%Search">
                                        <font>
                                           <Font name="Montserrat Medium" size="12.0" />
                                        </font>
@@ -323,7 +323,7 @@
                                           <Image url="@../icons/search.png" />
                                        </image>
                                     </ImageView>
-                                    <Button fx:id="deleteReservationButton" layoutX="291.0" layoutY="482.0" mnemonicParsing="false" onAction="#handleDeleteReservation" prefHeight="30.0" prefWidth="203.0" styleClass="btn-red" stylesheets="@../css/Login.css" text="Delete">
+                                    <Button fx:id="deleteReservationButton" layoutX="291.0" layoutY="482.0" mnemonicParsing="false" onAction="#handleDeleteReservation" prefHeight="30.0" prefWidth="203.0" styleClass="btn-red" stylesheets="@../css/Login.css" text="%btnDelete">
                                        <font>
                                           <Font name="Montserrat Medium" size="13.0" />
                                        </font>
@@ -335,7 +335,7 @@
                                                 <Image url="@../icons/calendar.png" />
                                              </image>
                                           </ImageView>
-                                          <Text layoutX="89.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservations">
+                                          <Text layoutX="89.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%Reservations">
                                              <font>
                                                 <Font name="Montserrat ExtraBold" size="29.0" />
                                              </font>
@@ -344,7 +344,7 @@
                                     </AnchorPane>
                                  </children>
                               </AnchorPane>
-                              <Text layoutX="21.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard">
+                              <Text layoutX="21.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%Dashboard">
                                  <font>
                                     <Font name="Montserrat Light" size="31.0" />
                                  </font>
