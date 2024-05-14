@@ -64,9 +64,9 @@
             <id>default-cli</id>
             <configuration>
               <mainClass>com.example.knkgr13/com.example.knkgr13.HelloApplication</mainClass>
-              <launcher>app</launcher>
-              <jlinkZipName>app</jlinkZipName>
-              <jlinkImageName>app</jlinkImageName>
+              <launcher>App</launcher>
+              <jlinkZipName>App</jlinkZipName>
+              <jlinkImageName>App</jlinkImageName>
               <noManPages>true</noManPages>
               <stripDebug>true</stripDebug>
               <noHeaderFiles>true</noHeaderFiles>

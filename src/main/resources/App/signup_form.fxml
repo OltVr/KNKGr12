@@ -56,7 +56,7 @@
                      <font>
                         <Font name="Montserrat Regular" size="14.0" />
                      </font></Button>
-                  <Text fill="#3974ea" layoutX="490.0" layoutY="474.0" onMouseClicked="#handleHaveAnAccount" strokeType="OUTSIDE" strokeWidth="0.0" text="Login Now" underline="true">
+                  <Text fill="#3974ea" layoutX="490.0" layoutY="474.0" onMouseClicked="#handleHaveAnAccount" strokeType="OUTSIDE" strokeWidth="0.0" text="%lblLoginNow" underline="true">
                      <font>
                         <Font name="Montserrat Medium" size="13.0" />
                      </font>
@@ -69,11 +69,12 @@
                         <Image url="@../icons/logoF-B.png" />
                      </image>
                   </ImageView>
-                  <Text layoutX="314.0" layoutY="474.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account?">
+                  <Text layoutX="314.0" layoutY="474.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%txtHaveAcc">
                      <font>
                         <Font name="Montserrat Medium" size="13.0" />
                      </font>
                   </Text>
+                  <Button layoutX="782.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleChangeLanguage" text="%lang" />
                </children>
             </AnchorPane>
          </children>
