@@ -131,6 +131,24 @@ public class AdminDashboard implements Initializable {
     @FXML
     private LineChart<String, Number> chartDashboard;
 
+    @FXML
+    private TableView<Room> seaViewRoomTable;
+
+    @FXML
+    private TableColumn<Room, Integer> seaViewRoomNumber_col;
+    @FXML
+    private TableColumn<Room, Integer> seaViewFloorNumber_col;
+    @FXML
+    private TableColumn<Room, String> seaViewRoomType_col;
+    @FXML
+    private TableColumn<Room, Integer> seaViewBedNumber_col;
+    @FXML
+    private TableColumn<Room, Double> seaViewPrice_col;
+    @FXML
+    private TableColumn<Room, Integer> seaViewCapacity_col;
+    @FXML
+    private TableColumn<Room, String> seaViewAvailable_col;
+
 
     private void populateChart(){
         Connection connect=null;
@@ -324,6 +342,7 @@ public class AdminDashboard implements Initializable {
         updateNewUsers();
         showReservationList();
         populateChart();
+//        showSeaViewRooms();1
     }
 
     private void clear(){
@@ -383,4 +402,22 @@ public class AdminDashboard implements Initializable {
             System.out.println("[ERROR] The room either does not exist or there was a [DB ERROR]");
         }
     }
+
+//    private void showSeaViewRooms() {
+//        ObservableList<Room> listData = AdminRepository.listSeaViewRooms();
+//
+//        seaViewRoomNumber_col.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
+//        seaViewFloorNumber_col.setCellValueFactory(new PropertyValueFactory<>("floorNumber"));
+//        seaViewRoomType_col.setCellValueFactory(new PropertyValueFactory<>("roomType"));
+//        seaViewBedNumber_col.setCellValueFactory(new PropertyValueFactory<>("bedNumber"));
+//        seaViewPrice_col.setCellValueFactory(new PropertyValueFactory<>("price"));
+//        seaViewCapacity_col.setCellValueFactory(new PropertyValueFactory<>("capacity"));
+//        seaViewAvailable_col.setCellValueFactory(cellData -> {
+//            Room = cellData.getValue();
+//            String availability = room.isAvailable() ? "Available" : "Unavailable";
+//            return new SimpleStringProperty(availability);
+//        });
+//
+//        seaViewRoomTable.setItems(listData);
+//    }
 }
