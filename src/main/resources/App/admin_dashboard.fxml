@@ -28,12 +28,12 @@
                <left>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="left-form" stylesheets="@../css/Login.css" BorderPane.alignment="CENTER">
                      <children>
-                        <Button layoutX="-1.0" layoutY="42.0" mnemonicParsing="false" onAction="#handleGuests" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="Guests">
+                        <Button layoutX="-1.0" layoutY="42.0" mnemonicParsing="false" onAction="#handleGuests" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="%guests">
                            <font>
                               <Font name="Montserrat Medium" size="12.0" />
                            </font>
                         </Button>
-                        <Button layoutX="-1.0" layoutY="84.0" mnemonicParsing="false" onAction="#handleRooms" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="Rooms">
+                        <Button layoutX="-1.0" layoutY="84.0" mnemonicParsing="false" onAction="#handleRooms" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="%rooms">
                            <font>
                               <Font name="Montserrat Medium" size="12.0" />
                            </font>
@@ -111,7 +111,7 @@
                            <children>
                               <AnchorPane layoutX="22.0" layoutY="81.0" prefHeight="440.0" prefWidth="489.0" styleClass="third-form" stylesheets="@../css/Login.css">
                                  <children>
-                                    <Text layoutX="110.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Daily Income Graph">
+                                    <Text layoutX="110.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%DIG">
                                        <font>
                                           <Font name="Montserrat Regular" size="24.0" />
                                        </font>
@@ -126,12 +126,12 @@
                                     </LineChart>
                                  </children>
                               </AnchorPane>
-                              <Text layoutX="46.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Analytics Dashboard">
+                              <Text layoutX="46.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%analyticsDashboard">
                                  <font>
                                     <Font name="Montserrat Regular" size="25.0" />
                                  </font>
                               </Text>
-                              <Text layoutX="541.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current statistics">
+                              <Text layoutX="541.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%currentStatistics">
                                  <font>
                                     <Font name="Montserrat Regular" size="24.0" />
                                  </font>
@@ -142,7 +142,7 @@
                                     <Font name="Montserrat Regular" size="36.0" />
                                  </font>
                               </Text>
-                              <Text fill="#fffefe" layoutX="557.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total income">
+                              <Text fill="#fffefe" layoutX="557.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%totalIncome">
                                  <font>
                                     <Font name="Montserrat Regular" size="18.0" />
                                  </font>
@@ -153,7 +153,7 @@
                                     <Font name="Montserrat Regular" size="36.0" />
                                  </font>
                               </Text>
-                              <Text fill="#fffefe" layoutX="553.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="New users this year">
+                              <Text fill="#fffefe" layoutX="553.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%newUsersYear">
                                  <font>
                                     <Font name="Montserrat Regular" size="18.0" />
                                  </font>
@@ -164,7 +164,7 @@
                                     <Font name="Montserrat Regular" size="36.0" />
                                  </font>
                               </Text>
-                              <Text fill="#fffefe" layoutX="550.0" layoutY="498.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rooms booked today">
+                              <Text fill="#fffefe" layoutX="550.0" layoutY="498.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%roomsBookedToday">
                                  <font>
                                     <Font name="Montserrat Regular" size="18.0" />
                                  </font>
@@ -240,18 +240,18 @@
                                     <TableView fx:id="userTable" layoutX="26.0" layoutY="103.0" prefHeight="370.0" prefWidth="733.0" stylesheets="@../css/table.css">
                                        <columns>
                                           <TableColumn fx:id="email_col" prefWidth="99.19995498657227" text="Email #" />
-                                          <TableColumn fx:id="firstName_col" prefWidth="138.0" text="First Name" />
-                                          <TableColumn fx:id="lastName_col" prefWidth="124.0" text="Last Name" />
-                                          <TableColumn fx:id="isAdmin_col" prefWidth="133.0" text="isAdmin" />
-                                          <TableColumn fx:id="CreatedAt_col" prefWidth="237.0" text="CreatedAt" />
+                                          <TableColumn fx:id="firstName_col" prefWidth="138.0" text="%lblFirst" />
+                                          <TableColumn fx:id="lastName_col" prefWidth="124.0" text="%lblLast" />
+                                          <TableColumn fx:id="isAdmin_col" prefWidth="133.0" text="%lblRole" />
+                                          <TableColumn fx:id="CreatedAt_col" prefWidth="237.0" text="%lblCreated" />
                                        </columns>
                                     </TableView>
-                                    <TextField fx:id="searchFieldUser" layoutX="494.0" layoutY="36.0" prefHeight="33.0" prefWidth="198.0" promptText="Search" styleClass="cool-search-field" stylesheets="@../css/Login.css">
+                                    <TextField fx:id="searchFieldUser" layoutX="494.0" layoutY="36.0" prefHeight="33.0" prefWidth="198.0" promptText="%Search" styleClass="cool-search-field" stylesheets="@../css/Login.css">
                                        <font>
                                           <Font name="Montserrat Medium" size="12.0" />
                                        </font>
                                     </TextField>
-                                    <Button layoutX="698.0" layoutY="36.0" mnemonicParsing="false" onAction="#handleSearchUser" prefHeight="33.0" prefWidth="59.0" styleClass="btn4" stylesheets="@../css/Login.css" text="Search">
+                                    <Button layoutX="698.0" layoutY="36.0" mnemonicParsing="false" onAction="#handleSearchUser" prefHeight="33.0" prefWidth="59.0" styleClass="btn4" stylesheets="@../css/Login.css" text="%Search">
                                        <font>
                                           <Font name="Montserrat Medium" size="12.0" />
                                        </font>
@@ -261,7 +261,7 @@
                                           <Image url="@../icons/search.png" />
                                        </image>
                                     </ImageView>
-                                    <Button layoutX="291.0" layoutY="482.0" mnemonicParsing="false" onAction="#handleDeleteUser" prefHeight="30.0" prefWidth="203.0" styleClass="btn-red" stylesheets="@../css/Login.css" text="Delete">
+                                    <Button layoutX="291.0" layoutY="482.0" mnemonicParsing="false" onAction="#handleDeleteUser" prefHeight="30.0" prefWidth="203.0" styleClass="btn-red" stylesheets="@../css/Login.css" text="%btnDelete">
                                        <font>
                                           <Font name="Montserrat Medium" size="13.0" />
                                        </font>
@@ -273,7 +273,7 @@
                                                 <Image url="@../icons/users-blalck.png" />
                                              </image>
                                           </ImageView>
-                                          <Text layoutX="90.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User List">
+                                          <Text layoutX="90.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%userList">
                                              <font>
                                                 <Font name="Montserrat ExtraBold" size="29.0" />
                                              </font>
@@ -282,7 +282,7 @@
                                     </AnchorPane>
                                  </children>
                               </AnchorPane>
-                              <Text layoutX="21.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard">
+                              <Text layoutX="21.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%Dashboard">
                                  <font>
                                     <Font name="Montserrat Light" size="31.0" />
                                  </font>
