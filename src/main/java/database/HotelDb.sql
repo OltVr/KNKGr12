@@ -37,8 +37,8 @@ CREATE TABLE IF NOT EXISTS reservation (
     checkInDate DATE NOT NULL,
     checkOutDate DATE NOT NULL,
     numberOfPeople INT NOT NULL,
-    FOREIGN KEY (email) REFERENCES user (email),
-    FOREIGN KEY (roomNumber) REFERENCES rooms (roomNumber),
+    FOREIGN KEY (email) REFERENCES user (email) delete on cascade,
+    FOREIGN KEY (roomNumber) REFERENCES rooms (roomNumber) delete on cascade,
      CONSTRAINT CHK_check_out_after_check_in
         CHECK (checkOutDate >= checkInDate)
 );
@@ -91,3 +91,42 @@ ALTER TABLE rooms ADD CONSTRAINT CHK_room_type CHECK (UPPER(roomType) IN ('SEA V
 //po nese ne db te juj nuk figuron dhoma nr.13 edhe useri me imell si temen sju bon shkaku checkConstrains.
 INSERT INTO reservation (reservationID, email, roomNumber, reservationDate, checkInDate, checkOutDate, numberOfPeople)
 VALUES ('1', 'trimmo@gmail.com', '13', '2024-05-11', '2024-05-12', '2024-05-14', 2);
+
+//logtable
+CREATE TABLE Deleted_Reservations (
+    deleted_reservation_id INT AUTO_INCREMENT PRIMARY KEY,
+	reservationID INT NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    roomNumber INT NOT NULL,
+    reservationDate TIMESTAMP NOT NULL,
+    checkInDate DATE NOT NULL,
+    checkOutDate DATE NOT NULL,
+    numberOfPeople INT NOT NULL,
+    deletion_timestamp TIMESTAMP
+);
+
+//triggerat me i shti rezervimet e fshime ne tabelen e mesiperme
+DELIMITER //
+CREATE TRIGGER save_deleted_reservation_user
+BEFORE DELETE ON user
+FOR EACH ROW
+BEGIN
+    INSERT INTO Deleted_Reservations (reservationID, email, roomNumber, reservationDate, checkInDate, checkOutDate, numberOfPeople, deletion_timestamp)
+    SELECT reservationID, email, roomNumber, reservationDate, checkInDate, checkOutDate, numberOfPeople, NOW()
+    FROM reservation
+    WHERE email = OLD.email;
+END;
+DELIMITER;
+
+DELIMITER //
+CREATE TRIGGER save_deleted_reservation_room
+BEFORE DELETE ON rooms
+FOR EACH ROW
+BEGIN
+    INSERT INTO Deleted_Reservations (reservationID, email, roomNumber, reservationDate, checkInDate, checkOutDate, numberOfPeople, deletion_timestamp)
+    SELECT reservationID, email, roomNumber, reservationDate, checkInDate, checkOutDate, numberOfPeople, NOW()
+    FROM reservation
+    WHERE roomNumber = OLD.roomNumber;
+END;
+DELIMITER ;
+
