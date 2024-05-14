@@ -112,7 +112,7 @@ update user set isAdmin=1 where email= 'email@email.com';
 
 -- Insertim ne tabelen Reservation per testime
 INSERT INTO reservation (reservationID, email, roomNumber, reservationDate, checkInDate, checkOutDate)
-VALUES ('10', 'trimmo@gmail.com', '4', '2024-05-11', '2024-05-12', '2024-05-14');
+VALUES ('11', 'trimmo@gmail.com', '4', '2024-05-11', '2024-05-12', '2024-05-14');
 select*from reservation;
 select*from rooms;
 
@@ -129,10 +129,15 @@ CREATE TABLE Deleted_Reservations (
     deletion_timestamp TIMESTAMP
 );
 
+use Hotel;
+select*from Deleted_Reservations;
+
 -- Ndryshohet edhe kjo
 ALTER TABLE Deleted_Reservations
 CHANGE COLUMN numberOfPeople totalPrice DECIMAL(10, 2) NOT NULL;
 
+-- DUHET ME DROP EDHE ME BO PRAP SE KA NDRYSHIME
+DROP TRIGGER IF EXISTS save_deleted_reservation_user;
 -- triggerat me i shti rezervimet e fshime ne tabelen e mesiperme
 DELIMITER //
 CREATE TRIGGER save_deleted_reservation_user
@@ -145,6 +150,8 @@ BEGIN
     WHERE email = OLD.email;
 END;
 DELIMITER;
+
+DROP TRIGGER IF EXISTS save_deleted_reservation_room;
 
 DELIMITER //
 CREATE TRIGGER save_deleted_reservation_room
