@@ -2,10 +2,11 @@ package Repository;
 
 import database.DatabaseUtil;
 
+import model.Room;
 import model.User;
 import model.dto.CreateUserDto;
-
-
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -68,6 +69,32 @@ public class UserRepository {
             );
         } catch (Exception e) {
             return null;
+        }
+    }
+
+    public static ObservableList<Room> listSeaViewRooms() {
+        ObservableList<Room> list = FXCollections.observableArrayList();
+        String query = "SELECT * FROM rooms WHERE roomType = 'Sea View'";
+        Connection connection = DatabaseUtil.getConnection();
+        try {
+            PreparedStatement pst = connection.prepareStatement(query);
+            ResultSet result = pst.executeQuery();
+            while (result.next()) {
+                Room room = new Room(
+                        result.getInt("roomNumber"),
+                        result.getInt("floorNumber"),
+                        result.getString("roomType"),
+                        result.getInt("capacity"),
+                        result.getInt("bedNumber"),
+                        result.getDouble("price"),
+                        result.getBoolean("isAvailable"));
+                System.out.println("[ROOM] Number: " + room.getRoomNumber());
+                list.add(room);
+            }
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return list;
         }
     }
 
