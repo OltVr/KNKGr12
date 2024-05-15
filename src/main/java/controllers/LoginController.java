@@ -38,9 +38,7 @@ public class LoginController {
 
         if (!isLogin){
             login_failed.toFront();
-           login_failed.setVisible(true);
-
-
+            login_failed.setVisible(true);
         }
         else{
             boolean Admin=UserService.loginAdmin(loginUserData);

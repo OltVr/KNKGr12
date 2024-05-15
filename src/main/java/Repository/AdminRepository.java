@@ -15,7 +15,9 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class AdminRepository {
-    public static boolean insert(InsertRoomDto roomData) {
+
+    //ROOMS
+    public static boolean insertRoom(InsertRoomDto roomData) {
         Connection conn = DatabaseUtil.getConnection();
         String query = """
                 INSERT INTO ROOMS (roomNumber, floorNumber, roomType, capacity, bedNumber, price)
@@ -77,6 +79,117 @@ public class AdminRepository {
             return null;
         }
     }
+
+    public static boolean deleteRoom(int roomNumber, int floor) {
+        String query = "DELETE FROM ROOMS WHERE roomNumber = ? AND floorNumber = ?";
+        Connection connection = DatabaseUtil.getConnection();
+        try {
+            PreparedStatement pst = connection.prepareStatement(query);
+            pst.setInt(1, roomNumber);
+            pst.setInt(2, floor);
+            pst.executeUpdate();
+            pst.close();
+            System.out.println("[DELETED ROOM] Room deleted successfully.");
+            return true;
+        } catch (SQLException e) {
+            System.out.println("[DB ERROR] " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static boolean updateRoom(InsertRoomDto room) {
+        String query = "UPDATE ROOMS SET floorNumber= ?, roomType= ?, capacity= ?, bedNumber= ?, price= ?  WHERE roomNumber = ?";
+        Connection connection = DatabaseUtil.getConnection();
+        try {
+            PreparedStatement pst = connection.prepareStatement(query);
+            pst.setInt(1, room.getFloorNumber());
+            pst.setString(2 ,room.getRoomType());
+            pst.setInt(3, room.getCapacity());
+            pst.setInt(4, room.getBedNumber());
+            pst.setDouble(5, room.getPrice());
+            pst.setInt(6, room.getRoomNumber());
+            pst.executeUpdate();
+            pst.close();
+            System.out.println("[UPDATE] Room updated successfully.");
+            return true;
+        } catch (SQLException e) {
+            System.out.println("[DB ERROR] " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static ObservableList<Room> ListRoom() {
+        ObservableList<Room> list = FXCollections.observableArrayList();
+        String query = "SELECT * FROM ROOMS";
+        Connection connection = DatabaseUtil.getConnection();
+        try {
+            PreparedStatement pst = connection.prepareStatement(query);
+            ResultSet result = pst.executeQuery();
+            while (result.next()) {
+                Room room = new Room(result.getInt("roomNumber"),
+                        result.getInt("floorNumber"),
+                        result.getString("roomType"),
+                        result.getInt("capacity"),
+                        result.getInt("bedNumber"),
+                        result.getDouble("price"),
+                        result.getBoolean("isAvailable"));
+
+                list.add(room);
+            };
+            return list;
+        } catch (Exception e) {
+            return list;
+        }
+    }
+
+    //USERS
+    public static boolean deleteUser(String email) {
+        String query = "DELETE FROM user WHERE email = ?";
+        Connection connection = DatabaseUtil.getConnection();
+        try {
+            PreparedStatement pst = connection.prepareStatement(query);
+            pst.setString(1, email);
+            pst.executeUpdate();
+            pst.close();
+            System.out.println("[DELETED USER] User deleted successfully.");
+            return true;
+        } catch (SQLException e) {
+            System.out.println("[DB ERROR] " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
+    public static ObservableList<User> searchUsers(String searchTerm) {
+        ObservableList<User> userList = FXCollections.observableArrayList();
+        String query = "SELECT * FROM user WHERE email LIKE ?";
+        Connection connection = DatabaseUtil.getConnection();
+        try {
+            PreparedStatement pst = connection.prepareStatement(query);
+            pst.setString(1, "%" + searchTerm + "%");
+            ResultSet result = pst.executeQuery();
+            while (result.next()) {
+                User user = new User(
+                        result.getString("firstName"),
+                        result.getString("lastName"),
+                        result.getString("email"),
+                        result.getString("salt"),
+                        result.getString("passwordHash"),
+                        result.getBoolean("isAdmin"),
+                        result.getTimestamp("createdAt"));
+                System.out.println("[USER] Email:" + user.getEmail());
+                userList.add(user);
+            }
+            return userList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return userList;
+        }
+    }
+
     public static ObservableList<User> ListUser(){
         ObservableList<User> list = FXCollections.observableArrayList();
         String query = "SELECT * FROM USER";
@@ -101,31 +214,8 @@ public class AdminRepository {
             return list;
         }
     }
-    public static ObservableList<ReservationDto> ListReservations() {
-        ObservableList<ReservationDto> list = FXCollections.observableArrayList();
-        String query = "SELECT * FROM reservation";
-        Connection connection = DatabaseUtil.getConnection();
-        try {
-            PreparedStatement pst = connection.prepareStatement(query);
-            ResultSet result = pst.executeQuery();
-            while (result.next()) {
-                ReservationDto reservation = new ReservationDto(
-                        result.getInt("reservationID"),
-                        result.getString("email"),
-                        result.getInt("roomNumber"),
-                        result.getDate("reservationDate"),
-                        result.getDate("checkInDate"),
-                        result.getDate("checkOutDate"),
-                        result.getInt("totalPrice"));
-                System.out.println("[RESERVATION] ID:" + reservation.getReservationID());
-                list.add(reservation);
-            }
-            return list;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return list;
-        }
-    }
+
+    //RESERVATION
     public static boolean deleteReservation(int reservationID) {
         String query = "DELETE FROM reservation WHERE reservationID = ?";
         Connection connection = DatabaseUtil.getConnection();
@@ -166,6 +256,34 @@ public class AdminRepository {
             return list;
         }
     }
+
+    public static ObservableList<ReservationDto> ListReservations() {
+        ObservableList<ReservationDto> list = FXCollections.observableArrayList();
+        String query = "SELECT * FROM reservation";
+        Connection connection = DatabaseUtil.getConnection();
+        try {
+            PreparedStatement pst = connection.prepareStatement(query);
+            ResultSet result = pst.executeQuery();
+            while (result.next()) {
+                ReservationDto reservation = new ReservationDto(
+                        result.getInt("reservationID"),
+                        result.getString("email"),
+                        result.getInt("roomNumber"),
+                        result.getDate("reservationDate"),
+                        result.getDate("checkInDate"),
+                        result.getDate("checkOutDate"),
+                        result.getInt("totalPrice"));
+                System.out.println("[RESERVATION] ID:" + reservation.getReservationID());
+                list.add(reservation);
+            }
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return list;
+        }
+    }
+
+
     private static int tryParseInt(String value) {
         try {
             return Integer.parseInt(value);
@@ -173,56 +291,7 @@ public class AdminRepository {
             return -1; // Default to -1 nese fails
         }
     }
-    public static ObservableList<User> searchUsers(String searchTerm) {
-        ObservableList<User> userList = FXCollections.observableArrayList();
-        String query = "SELECT * FROM user WHERE email LIKE ?";
-        Connection connection = DatabaseUtil.getConnection();
-        try {
-            PreparedStatement pst = connection.prepareStatement(query);
-            pst.setString(1, "%" + searchTerm + "%");
-            ResultSet result = pst.executeQuery();
-            while (result.next()) {
-                User user = new User(
-                        result.getString("firstName"),
-                        result.getString("lastName"),
-                        result.getString("email"),
-                        result.getString("salt"),
-                        result.getString("passwordHash"),
-                        result.getBoolean("isAdmin"),
-                        result.getTimestamp("createdAt"));
-                System.out.println("[USER] Email:" + user.getEmail());
-                userList.add(user);
-            }
-            return userList;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return userList;
-        }
-    }
-    public static ObservableList<Room> ListRoom() {
-        ObservableList<Room> list = FXCollections.observableArrayList();
-        String query = "SELECT * FROM ROOMS";
-        Connection connection = DatabaseUtil.getConnection();
-        try {
-            PreparedStatement pst = connection.prepareStatement(query);
-            ResultSet result = pst.executeQuery();
-            while (result.next()) {
-                Room room = new Room(result.getInt("roomNumber"),
-                        result.getInt("floorNumber"),
-                        result.getString("roomType"),
-                        result.getInt("capacity"),
-                        result.getInt("bedNumber"),
-                        result.getDouble("price"),
-                        result.getBoolean("isAvailable"));
 
-                list.add(room);
-            }
-            ;
-            return list;
-        } catch (Exception e) {
-            return list;
-        }
-    }
     public static int TotalIncome(){
         Connection con=null;
         PreparedStatement statement=null;
@@ -230,7 +299,7 @@ public class AdminRepository {
 
         try{
             String Query= "SELECT SUM(DATEDIFF(res.checkOutDate, res.checkInDate) * r.price) AS total_price FROM rooms r JOIN reservation res ON r.roomNumber = res.roomNumber";
-            con=DatabaseUtil.getConnection();
+            con= DatabaseUtil.getConnection();
             statement=con.prepareStatement(Query);
             rez=statement.executeQuery();
 
@@ -264,65 +333,7 @@ public class AdminRepository {
             return 0;
         }
     }
-    public static boolean deleteRoom(int roomNumber, int floor) {
-        String query = "DELETE FROM ROOMS WHERE roomNumber = ? AND floorNumber = ?";
-        Connection connection = DatabaseUtil.getConnection();
-        try {
-            PreparedStatement pst = connection.prepareStatement(query);
-            pst.setInt(1, roomNumber);
-            pst.setInt(2, floor);
-            pst.executeUpdate();
-            pst.close();
-            System.out.println("[DELETED ROOM] Room deleted successfully.");
-            return true;
-        } catch (SQLException e) {
-            System.out.println("[DB ERROR] " + e.getMessage());
-            e.printStackTrace();
-            return false;
-        }
 
-    }
-    public static boolean deleteUser(String email) {
-        String query = "DELETE FROM user WHERE email = ?";
-        Connection connection = DatabaseUtil.getConnection();
-        try {
-            PreparedStatement pst = connection.prepareStatement(query);
-            pst.setString(1, email);
-            pst.executeUpdate();
-            pst.close();
-            System.out.println("[DELETED USER] User deleted successfully.");
-            return true;
-        } catch (SQLException e) {
-            System.out.println("[DB ERROR] " + e.getMessage());
-            e.printStackTrace();
-            return false;
-        }
-
-    }
-
-    public static boolean updateRoom(InsertRoomDto room) {
-        String query = "UPDATE ROOMS SET floorNumber= ?, roomType= ?, capacity= ?, bedNumber= ?, price= ?  WHERE roomNumber = ?";
-        Connection connection = DatabaseUtil.getConnection();
-        try {
-            PreparedStatement pst = connection.prepareStatement(query);
-            pst.setInt(1, room.getFloorNumber());
-            pst.setString(2 ,room.getRoomType());
-            pst.setInt(3, room.getCapacity());
-            pst.setInt(4, room.getBedNumber());
-            pst.setDouble(5, room.getPrice());
-            pst.setInt(6, room.getRoomNumber());
-            pst.executeUpdate();
-            pst.close();
-            System.out.println("[UPDATE] Room updated successfully.");
-            return true;
-        } catch (SQLException e) {
-            System.out.println("[DB ERROR] " + e.getMessage());
-            e.printStackTrace();
-            return false;
-        }
-
-
-    }
     public static int newUsers(){
         Connection conn=null;
         PreparedStatement statement=null;

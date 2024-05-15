@@ -1,4 +1,4 @@
-package controllers;
+package controllers.User;
 
 import App.Navigator;
 import Repository.UserRepository;

@@ -1,4 +1,4 @@
-package controllers;
+package controllers.Admin;
 
 import App.Navigator;
 import Repository.AdminRepository;
@@ -119,7 +119,7 @@ public class AdminDashboard implements Initializable {
     @FXML
     private TableColumn<ReservationDto, Integer> Res_totalPrice_col;
 
-    // Searchi te userat
+    // chart
     @FXML
     private TextField searchField;
     @FXML
