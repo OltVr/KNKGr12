@@ -1,7 +1,6 @@
 package controllers.Admin;
 
 import App.Navigator;
-import Repository.AdminRepository;
 import database.DatabaseUtil;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
@@ -149,19 +148,19 @@ public class AdminDashboard implements Initializable {
     }
 
     private void updateNewUsers(){
-        String newUsers=String.valueOf(AdminRepository.newUsers());
+        String newUsers=String.valueOf(AdminService.newUsers());
         txtNewUsers.setText(newUsers);
     }
 
 
     private void updateRoomsBooked(){
-        String count= String.valueOf(AdminRepository.RoomsBooked());
+        String count= String.valueOf(AdminService.RoomsBooked());
         txtRoomsBooked.setText(count);
 
     }
 
     private void updateTotalIncome(){
-        String total=String.valueOf(AdminRepository.TotalIncome()+" $");
+        String total=String.valueOf(AdminService.TotalIncome()+" $");
         txtTotalIncome.setText(total);
     }
 
@@ -236,7 +235,7 @@ public class AdminDashboard implements Initializable {
 
 
     private void showList(){
-        ObservableList<Room> listData = AdminRepository.ListRoom();
+        ObservableList<Room> listData = AdminService.ListRoom();
 
         roomNumber_col.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
         floorNumber_col.setCellValueFactory(new PropertyValueFactory<>("floorNumber"));
@@ -253,7 +252,7 @@ public class AdminDashboard implements Initializable {
         roomTable.setItems(listData);
     }
     private void showReservationList() {
-        ObservableList<ReservationDto> listData = AdminRepository.ListReservations();
+        ObservableList<ReservationDto> listData = AdminService.ListReservations();
 
         Res_reservationID_col.setCellValueFactory(new PropertyValueFactory<>("reservationID"));
         Res_email_col.setCellValueFactory(new PropertyValueFactory<>("email"));
@@ -273,7 +272,7 @@ public class AdminDashboard implements Initializable {
             alert.showAndWait();
 
             if (alert.getResult() == ButtonType.YES) {
-                boolean success = AdminRepository.deleteReservation(selectedReservation.getReservationID());
+                boolean success = AdminService.deleteReservation(selectedReservation.getReservationID());
                 if (success) {
                     reservationTable.getItems().remove(selectedReservation);
                     System.out.println("[DELETE] Reservation ID: " + selectedReservation.getReservationID() + " has been deleted.");
@@ -290,7 +289,7 @@ public class AdminDashboard implements Initializable {
     private void handleSearchReservation() {
         String searchTerm = searchField.getText().trim();
         if (!searchTerm.isEmpty()) {
-            ObservableList<ReservationDto> searchResults = AdminRepository.searchReservations(searchTerm);
+            ObservableList<ReservationDto> searchResults = AdminService.searchReservations(searchTerm);
             if (!searchResults.isEmpty()) {
                 reservationTable.setItems(searchResults);
                 System.out.println("[SEARCH] Results found for: " + searchTerm);
@@ -310,7 +309,7 @@ public class AdminDashboard implements Initializable {
     private void handleSearchUser() {
         String searchTerm = searchFieldUser.getText().trim();
         if (!searchTerm.isEmpty()) {
-            ObservableList<User> searchResults = AdminRepository.searchUsers(searchTerm);
+            ObservableList<User> searchResults = AdminService.searchUsers(searchTerm);
             if (!searchResults.isEmpty()) {
                 userTable.setItems(searchResults);
                 System.out.println("[SEARCH] Results found for: " + searchTerm);
@@ -327,7 +326,7 @@ public class AdminDashboard implements Initializable {
     }
 
     private void showUserList(){
-        ObservableList<User> listData = AdminRepository.ListUser();
+        ObservableList<User> listData = AdminService.ListUser();
 
         email_col.setCellValueFactory(new PropertyValueFactory<>("email"));
         firstName_col.setCellValueFactory(new PropertyValueFactory<>("firstName"));
@@ -385,7 +384,7 @@ public class AdminDashboard implements Initializable {
     private void handleDeleteRoom(){
         int roomNumber= Integer.parseInt(txtRoom.getText());
         int floorNumber= Integer.parseInt(txtFloor.getText());
-        if (AdminRepository.deleteRoom(roomNumber,floorNumber)){
+        if (AdminService.deleteRoom(roomNumber,floorNumber)){
             showList();
             clear();
         }
@@ -401,7 +400,7 @@ public class AdminDashboard implements Initializable {
             alert.showAndWait();
 
             if (alert.getResult() == ButtonType.YES) {
-                boolean success = AdminRepository.deleteUser(selectedUser.getEmail());
+                boolean success = AdminService.deleteUser(selectedUser.getEmail());
                 if (success) {
                     userTable.getItems().remove(selectedUser);
                     System.out.println("[DELETE] User with email: " + selectedUser.getEmail() + " has been deleted.");
@@ -426,7 +425,7 @@ public class AdminDashboard implements Initializable {
                 Double.parseDouble(this.txtPrice.getText())
         );
 
-        if (AdminRepository.updateRoom(RoomData)){
+        if (AdminService.updateRoom(RoomData)){
             showList();
             clear();
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Table was updated successfully.");
