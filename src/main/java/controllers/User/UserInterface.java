@@ -1,7 +1,6 @@
 package controllers.User;
 
 import App.Navigator;
-import Repository.UserRepository;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +12,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import model.Room;
+import service.UserService;
 
 import java.net.URL;
 import java.util.Optional;
@@ -120,7 +120,7 @@ public class UserInterface implements Initializable {
     }
 
     private void showSeaViewRooms() {
-        ObservableList<Room> listData = UserRepository.listSeaViewRooms();
+        ObservableList<Room> listData = UserService.listSeaViewRooms();
 
         seaViewRoomNumber_col.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
         seaViewFloorNumber_col.setCellValueFactory(new PropertyValueFactory<>("floorNumber"));
@@ -132,7 +132,7 @@ public class UserInterface implements Initializable {
     }
 
     private void showCityViewRooms() {
-        ObservableList<Room> listData = UserRepository.listCityViewRooms();
+        ObservableList<Room> listData = UserService.listCityViewRooms();
 
         cityViewRoomNumber_col.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
         cityViewFloorNumber_col.setCellValueFactory(new PropertyValueFactory<>("floorNumber"));

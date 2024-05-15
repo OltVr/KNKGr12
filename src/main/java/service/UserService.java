@@ -1,6 +1,9 @@
 package service;
 
 
+import Repository.AdminRepository;
+import javafx.collections.ObservableList;
+import model.Room;
 import model.User;
 import model.dto.LoginUserDto;
 import Repository.UserRepository;
@@ -27,8 +30,6 @@ public class UserService {
         );
     return UserRepository.create(createUserData);
     }
-
-
 
     public static boolean login( LoginUserDto loginData){
         User user = UserRepository.getByEmail(loginData.getEmail());
@@ -57,5 +58,11 @@ public class UserService {
         return false;
     }
 
+    public static ObservableList<Room> listSeaViewRooms() {
+        return UserRepository.listSeaViewRooms();
+    }
 
+    public static ObservableList<Room> listCityViewRooms() {
+        return UserRepository.listSeaViewRooms();
+    }
 }
