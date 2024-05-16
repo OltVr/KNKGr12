@@ -1,6 +1,7 @@
 package controllers;
 
 import App.Navigator;
+import App.SessionManager;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import model.Room;
 import service.UserService;
 
@@ -59,7 +61,18 @@ public class UserController implements Initializable {
     private TableColumn<Room, Double> cityViewPrice_col;
     @FXML
     private TableColumn<Room, Integer> cityViewCapacity_col;
+    @FXML
+    private Text txtfirstName;
     private String anchorPane = "Home";
+
+    public void showFirstName(){
+        String emri= SessionManager.getUserName();
+        if (emri != null) {
+            txtfirstName.setText(emri);
+        }else{
+            System.out.println("Firstname is null !!!");
+        }
+    }
 
     private void setAllPanesInvisible() {
         homePane.setVisible(false);
@@ -105,6 +118,7 @@ public class UserController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         showSeaViewRooms();
         showCityViewRooms();
+        showFirstName();
     }
     @FXML
     public void handleCheckSeaView(MouseEvent me){

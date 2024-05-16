@@ -1,6 +1,8 @@
 package controllers;
 
 import App.Navigator;
+import App.SessionManager;
+import Repository.UserRepository;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -11,6 +13,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import model.User;
 import model.dto.LoginUserDto;
 import service.UserService;
 
@@ -43,7 +46,12 @@ public class LoginController {
         else{
             boolean Admin=UserService.loginAdmin(loginUserData);
             if (!Admin){
-                Navigator.navigate(ae,Navigator.HOME_PAGE);
+                User user= UserRepository.getByEmail(loginUserData.getEmail());
+                if(user != null){
+                    SessionManager.setUser(user);
+                    Navigator.navigate(ae,Navigator.HOME_PAGE);
+                }
+
             }
             else{
                 Navigator.navigate(ae,Navigator.ADMIN_DASHBOARD);

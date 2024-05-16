@@ -202,7 +202,7 @@
                                     <Font name="Montserrat ExtraBold" size="45.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="firstName" fill="GREY" layoutX="470.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+                              <Text fx:id="txtfirstName" fill="GREY" layoutX="470.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
                                  <font>
                                     <Font name="Montserrat ExtraBold" size="45.0" />
                                  </font>
