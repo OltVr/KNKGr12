@@ -376,3 +376,8 @@
 
 -fx-background-color: #28a3f4;
 }
+#statusBar {
+    -fx-font-size: 12px;
+    -fx-text-fill: green;
+    -fx-alignment: center;
+}
