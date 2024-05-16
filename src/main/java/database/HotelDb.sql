@@ -41,6 +41,18 @@ FOREIGN KEY (roomNumber) REFERENCES rooms (roomNumber) on delete cascade,
 CONSTRAINT CHK_check_out_after_check_in CHECK (checkOutDate >= checkInDate)
 );
 
+CREATE TABLE IF NOT EXISTS staff (
+    staffID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    firstName VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    position ENUM('General Manager', 'Receptionist', 'Waiter', 'Maintenance Technician') NOT NULL,
+    salary DECIMAL(10, 2) NOT NULL,
+    isActive BOOLEAN NOT NULL DEFAULT TRUE,
+    isFullTime BOOLEAN NOT NULL DEFAULT TRUE,
+    hasBenefits BOOLEAN NOT NULL DEFAULT FALSE,
+    createdAt DATETIME NOT NULL DEFAULT NOW() -- nuk osht ntabele
+);
+
 -- Editohet tabela me u shtu total price pa e bo drop databazen
 ALTER TABLE reservation
 CHANGE COLUMN numberOfPeople totalPrice DECIMAL(10, 2) NOT NULL;
