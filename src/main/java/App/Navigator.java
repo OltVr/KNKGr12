@@ -41,7 +41,6 @@ public class Navigator {
 
         loader.setResources(bundle);
         try {
-            System.out.println("[DEBUGGER HEKENI QETA VET BAREM]");
             Scene scene = new Scene(loader.load());
             stage.setScene(scene);
             stage.show();
