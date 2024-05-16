@@ -88,7 +88,6 @@ public class UserRepository {
                         result.getInt("bedNumber"),
                         result.getDouble("price"),
                         result.getBoolean("isAvailable"));
-                System.out.println("[ROOM] Number: " + room.getRoomNumber());
                 list.add(room);
             }
             return list;
@@ -114,7 +113,6 @@ public class UserRepository {
                         result.getInt("bedNumber"),
                         result.getDouble("price"),
                         result.getBoolean("isAvailable"));
-                System.out.println("[ROOM] Number: " + room.getRoomNumber());
                 list.add(room);
             }
             return list;

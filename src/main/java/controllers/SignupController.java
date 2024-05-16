@@ -46,7 +46,6 @@ public class SignupController {
         Locale locale = Locale.getDefault();
 
         if (locale.getLanguage().equals("sq")){
-            System.out.println("[GJUHA] Shqip");
             bundle= ResourceBundle.getBundle("translations.content", locale);
         }
         else {
@@ -58,11 +57,10 @@ public class SignupController {
 
         if (Navigator.locale.getLanguage().equals("en")){
             Navigator.changeLanguage(ae,"sq");
-            System.out.println("[CHANGE] ALBANIAN");
+
         }
         else if  (Navigator.locale.getLanguage().equals("sq")){
             Navigator.changeLanguage(ae,"en");
-            System.out.println("[CHANGE] ENGLISH");
         }
 
     }

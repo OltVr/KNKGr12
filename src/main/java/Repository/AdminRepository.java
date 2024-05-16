@@ -34,7 +34,6 @@ public class AdminRepository {
             pst.setDouble(6, roomData.getPrice());
             pst.execute();
             pst.close();
-            System.out.println("[ADDED]");
             return true;
         } catch (Exception e) {
             System.out.println("[ERROR] SQL did not execute " + e.getMessage());
@@ -51,7 +50,6 @@ public class AdminRepository {
             double price = result.getDouble("price");
             boolean isAvailable = result.getBoolean("isAvailable");
             String roomType = result.getString("roomType");
-            System.out.println("[RETURNING ROOM] " + roomNumber + " " + floor + " " + capacity + " " + beds + " " + price + " " + isAvailable + " " + roomType);
             return new Room(
                     roomNumber, floor, roomType, capacity, beds, price, isAvailable
             );
@@ -69,7 +67,6 @@ public class AdminRepository {
             pst.setInt(2, floor);
             ResultSet result = pst.executeQuery();
             if (result.next()) {
-                System.out.println("[ROOM EXIST]");
                 return getRoomFromResultSet(result);
             }
             ;
@@ -89,7 +86,6 @@ public class AdminRepository {
             pst.setInt(2, floor);
             pst.executeUpdate();
             pst.close();
-            System.out.println("[DELETED ROOM] Room deleted successfully.");
             return true;
         } catch (SQLException e) {
             System.out.println("[DB ERROR] " + e.getMessage());
@@ -111,7 +107,6 @@ public class AdminRepository {
             pst.setInt(6, room.getRoomNumber());
             pst.executeUpdate();
             pst.close();
-            System.out.println("[UPDATE] Room updated successfully.");
             return true;
         } catch (SQLException e) {
             System.out.println("[DB ERROR] " + e.getMessage());
@@ -153,7 +148,6 @@ public class AdminRepository {
             pst.setString(1, email);
             pst.executeUpdate();
             pst.close();
-            System.out.println("[DELETED USER] User deleted successfully.");
             return true;
         } catch (SQLException e) {
             System.out.println("[DB ERROR] " + e.getMessage());
@@ -180,7 +174,6 @@ public class AdminRepository {
                         result.getString("passwordHash"),
                         result.getBoolean("isAdmin"),
                         result.getTimestamp("createdAt"));
-                System.out.println("[USER] Email:" + user.getEmail());
                 userList.add(user);
             }
             return userList;
@@ -206,7 +199,6 @@ public class AdminRepository {
                         result.getString("passwordHash"),
                         result.getBoolean("isAdmin"),
                         result.getTimestamp("CreatedAt"));
-                System.out.println("[USER] Email:" +user.getEmail());
                 list.add(user);
             }
             return list;
@@ -247,7 +239,6 @@ public class AdminRepository {
                         result.getDate("checkInDate"),
                         result.getDate("checkOutDate"),
                         result.getInt("totalPrice"));
-                System.out.println("[RESERVATION] ID:" + reservation.getReservationID());
                 list.add(reservation);
             }
             return list;
@@ -273,7 +264,6 @@ public class AdminRepository {
                         result.getDate("checkInDate"),
                         result.getDate("checkOutDate"),
                         result.getInt("totalPrice"));
-                System.out.println("[RESERVATION] ID:" + reservation.getReservationID());
                 list.add(reservation);
             }
             return list;

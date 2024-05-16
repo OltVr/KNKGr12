@@ -224,7 +224,6 @@ public class AdminController implements Initializable {
         reservationPane.setVisible(true);
         pane = "Reservations";
         Navigator.setCurrentVisibleSection("#reservationPane");
-        System.out.println("[RESERVATION]");
     }
 
     @FXML
@@ -310,7 +309,6 @@ public class AdminController implements Initializable {
                 boolean success = AdminService.deleteReservation(selectedReservation.getReservationID());
                 if (success) {
                     reservationTable.getItems().remove(selectedReservation);
-                    System.out.println("[DELETE] Reservation ID: " + selectedReservation.getReservationID() + " has been deleted.");
                 } else {
                     showAlert("Error", "Failed to delete reservation");
                 }
@@ -327,14 +325,11 @@ public class AdminController implements Initializable {
             ObservableList<ReservationDto> searchResults = AdminService.searchReservations(searchTerm);
             if (!searchResults.isEmpty()) {
                 reservationTable.setItems(searchResults);
-                System.out.println("[SEARCH] Results found for: " + searchTerm);
             } else {
-                System.out.println("[SEARCH] No results found for: " + searchTerm);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION, "No reservations found for the given ID");
                 alert.showAndWait();
             }
         } else {
-            System.out.println("[SEARCH] Search term is empty.");
             Alert alert = new Alert(Alert.AlertType.WARNING, "Please enter a reservation ID.");
             alert.showAndWait();
         }
@@ -347,14 +342,11 @@ public class AdminController implements Initializable {
             ObservableList<User> searchResults = AdminService.searchUsers(searchTerm);
             if (!searchResults.isEmpty()) {
                 userTable.setItems(searchResults);
-                System.out.println("[SEARCH] Results found for: " + searchTerm);
             } else {
-                System.out.println("[SEARCH] No results found for: " + searchTerm);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION, "No users found for the given email address.");
                 alert.showAndWait();
             }
         } else {
-            System.out.println("[SEARCH] Search term is empty.");
             Alert alert = new Alert(Alert.AlertType.WARNING, "Please enter an email address.");
             alert.showAndWait();
         }
@@ -438,7 +430,6 @@ public class AdminController implements Initializable {
                 boolean success = AdminService.deleteUser(selectedUser.getEmail());
                 if (success) {
                     userTable.getItems().remove(selectedUser);
-                    System.out.println("[DELETE] User with email: " + selectedUser.getEmail() + " has been deleted.");
                 } else {
                     showAlert("Error", "Failed to delete user.");
                 }
@@ -477,12 +468,9 @@ public class AdminController implements Initializable {
 
         if (Navigator.locale.getLanguage().equals("en")){
             Navigator.changeLanguage(ae,"sq");
-            System.out.println("[CHANGE] ALBANIAN");
-
         }
         else if  (Navigator.locale.getLanguage().equals("sq")){
             Navigator.changeLanguage(ae,"en");
-            System.out.println("[CHANGE] ENGLISH");
         }
     }
 }

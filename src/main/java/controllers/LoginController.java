@@ -101,11 +101,9 @@ public class LoginController {
 
         if (Navigator.locale.getLanguage().equals("en")){
             Navigator.changeLanguage(ae,"sq");
-            System.out.println("[CHANGE] ALBANIAN");
         }
         else if  (Navigator.locale.getLanguage().equals("sq")){
             Navigator.changeLanguage(ae,"en");
-            System.out.println("[CHANGE] ENGLISH");
         }
 
     }

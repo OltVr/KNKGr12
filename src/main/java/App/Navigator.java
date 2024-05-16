@@ -41,6 +41,7 @@ public class Navigator {
 
         loader.setResources(bundle);
         try {
+            System.out.println("[DEBUGGER HEKENI QETA VET BAREM]");
             Scene scene = new Scene(loader.load());
             stage.setScene(scene);
             stage.show();
@@ -59,7 +60,6 @@ public class Navigator {
     public static void changeLanguage(Event e, String localeCode) {
         locale = new Locale(localeCode);
         bundle = ResourceBundle.getBundle("translations.content", locale);
-        System.out.println("[LOCALE LANG] " + locale.getLanguage());
         updateUI(e);
     }
 
