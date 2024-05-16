@@ -328,4 +328,8 @@
     -fx-border-radius: 30;
     -fx-padding: 10;
 }
-
+#statusBar {
+    -fx-font-size: 12px;
+    -fx-text-fill: green;
+    -fx-alignment: center;
+}

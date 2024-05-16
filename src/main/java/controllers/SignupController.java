@@ -1,12 +1,18 @@
 package controllers;
 
 import App.Navigator;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.util.Duration;
 import model.dto.UserDto;
 import service.UserService;
 
@@ -14,6 +20,8 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class SignupController {
+    @FXML
+    private BorderPane root;
     @FXML
     private TextField txtSignUpName;
     @FXML
@@ -24,6 +32,8 @@ public class SignupController {
     private PasswordField pwdSignUpPassword;
     @FXML
     private PasswordField pwdSignUpConfirmPassword;
+    @FXML
+    private Label statusBar;
 
     // Regex patterns for email and password validation
     private static final String EMAIL_REGEX = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
@@ -88,13 +98,16 @@ public class SignupController {
         boolean response = UserService.signUp(userSignUpData);
 
         if (response) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setHeaderText(null);
-            alert.setContentText("Signup was successful!");
-            alert.showAndWait();
+            statusBar.setVisible(true);
+            root.setBottom(statusBar);
+            BorderPane.setAlignment(statusBar, Pos.CENTER);
 
-            Navigator.navigate(ae, Navigator.LOGIN_PAGE);
+            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(5), event -> {
+                statusBar.setVisible(false);
+
+                Navigator.navigate(ae, Navigator.LOGIN_PAGE);
+            }));
+            timeline.play();
         }
     }
 
