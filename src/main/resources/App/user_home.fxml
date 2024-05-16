@@ -21,12 +21,12 @@
                <left>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="left-form" stylesheets="@../css/Login.css" BorderPane.alignment="CENTER">
                      <children>
-                        <Button layoutY="259.0" mnemonicParsing="false" onAction="#handleReservations" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="Reservations">
+                        <Button layoutY="259.0" mnemonicParsing="false" onAction="#handleReservations" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="%btnReservations">
                             <font>
                               <Font name="Montserrat Medium" size="12.0" />
                            </font>
                         </Button>
-                        <Button layoutY="301.0" mnemonicParsing="false" onAction="#handleHistory" prefHeight="40.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="History" textAlignment="JUSTIFY">
+                        <Button layoutY="301.0" mnemonicParsing="false" onAction="#handleHistory" prefHeight="40.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="%btnHistory" textAlignment="JUSTIFY">
                            <font>
                               <Font name="Montserrat Medium" size="12.0" />
                            </font>
@@ -41,7 +41,7 @@
                               <Image url="@../icons/history.png" />
                            </image>
                         </ImageView>
-                        <Button layoutY="218.0" mnemonicParsing="false" onAction="#handleHome" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="Home">
+                        <Button layoutY="218.0" mnemonicParsing="false" onAction="#handleHome" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="%btnHome">
                            <font>
                               <Font name="Montserrat Medium" size="12.0" />
                            </font>
@@ -51,12 +51,12 @@
                               <Image url="@../icons/house-user-solid.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="29.0" fitWidth="31.0" layoutX="23.0" layoutY="619.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="29.0" fitWidth="31.0" layoutX="23.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../icons/arrow.png" />
                            </image>
                         </ImageView>
-                        <Button layoutY="612.0" mnemonicParsing="false" onAction="#handleLogOut" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="Log Out">
+                        <Button layoutY="341.0" mnemonicParsing="false" onAction="#handleLogOut" prefHeight="42.0" prefWidth="212.0" styleClass="btn3" stylesheets="@../css/Login.css" text="%btnLogOut">
                            <font>
                               <Font name="Montserrat Medium" size="12.0" />
                            </font>
@@ -70,6 +70,7 @@
                               </ImageView>
                            </children>
                         </AnchorPane>
+                        <Button layoutX="73.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleChangeLanguage" prefHeight="35.0" prefWidth="53.0" text="%lang" />
                      </children>
                   </AnchorPane>
                </left>
@@ -80,12 +81,12 @@
                            <children>
                               <AnchorPane layoutX="33.0" layoutY="107.0" prefHeight="480.0" prefWidth="359.0" styleClass="third-form" stylesheets="@../css/Login.css">
                                  <children>
-                                    <Text layoutX="118.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sea View">
+                                    <Text layoutX="118.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%seaView">
                                        <font>
                                           <Font name="Montserrat Regular" size="27.0" />
                                        </font>
                                     </Text>
-                                    <Button layoutX="-1.0" layoutY="425.0" mnemonicParsing="false" onMouseClicked="#handleCheckSeaView" prefHeight="56.0" prefWidth="360.0" styleClass="btn4" stylesheets="@../css/Login.css" text="Check For Availability" textAlignment="CENTER">
+                                    <Button layoutX="-1.0" layoutY="425.0" mnemonicParsing="false" onMouseClicked="#handleCheckSeaView" prefHeight="56.0" prefWidth="360.0" styleClass="btn4" stylesheets="@../css/Login.css" text="%btnAvailability" textAlignment="CENTER">
                                        <font>
                                           <Font name="Montserrat Regular" size="14.0" />
                                        </font>
@@ -95,7 +96,7 @@
                                           <Image url="@../icons/pic1.png" />
                                        </image>
                                     </ImageView>
-                                    <Text layoutX="43.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Just 10 minutes from the beach" wrappingWidth="204.228515625">
+                                    <Text layoutX="43.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%txtDistance1" wrappingWidth="204.228515625">
                                        <font>
                                           <Font name="Montserrat Regular" size="12.0" />
                                        </font>
@@ -105,7 +106,7 @@
                                           <Image url="@../icons/location-crosshairs-solid.png" />
                                        </image>
                                     </ImageView>
-                                    <Text layoutX="46.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2-8 guests" wrappingWidth="204.228515625">
+                                    <Text layoutX="46.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%txtGuests1" wrappingWidth="204.228515625">
                                        <font>
                                           <Font name="Montserrat Regular" size="12.0" />
                                        </font>
@@ -115,7 +116,7 @@
                                           <Image url="@../icons/users-viewfinder-solid.png" />
                                        </image>
                                     </ImageView>
-                                    <Text layoutX="45.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Minimum 3-night stay, check-in from 3 PM, check-out by 11 AM." wrappingWidth="201.228515625">
+                                    <Text layoutX="45.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%txtInfo" wrappingWidth="201.228515625">
                                        <font>
                                           <Font name="Montserrat Regular" size="12.0" />
                                        </font>
@@ -125,7 +126,7 @@
                                           <Image url="@../icons/building-shield-solid.png" />
                                        </image>
                                     </ImageView>
-                                    <Text layoutX="45.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Starting from 99$ a night" wrappingWidth="201.228515625">
+                                    <Text layoutX="45.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%txtPrice" wrappingWidth="201.228515625">
                                        <font>
                                           <Font name="Montserrat Regular" size="12.0" />
                                        </font>
@@ -139,12 +140,12 @@
                               </AnchorPane>
                               <AnchorPane layoutX="418.0" layoutY="107.0" prefHeight="480.0" prefWidth="359.0" styleClass="third-form" stylesheets="@../css/Login.css">
                                  <children>
-                                    <Text layoutX="117.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City View">
+                                    <Text layoutX="117.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%cityView">
                                        <font>
                                           <Font name="Montserrat Regular" size="27.0" />
                                        </font>
                                     </Text>
-                                    <Button layoutX="-1.0" layoutY="425.0" mnemonicParsing="false" onMouseClicked="#handleCheckCityView" prefHeight="56.0" prefWidth="360.0" styleClass="btn4" stylesheets="@../css/Login.css" text="Check For Availability" textAlignment="CENTER">
+                                    <Button layoutX="-1.0" layoutY="425.0" mnemonicParsing="false" onMouseClicked="#handleCheckCityView" prefHeight="56.0" prefWidth="360.0" styleClass="btn4" stylesheets="@../css/Login.css" text="%btnAvailability" textAlignment="CENTER">
                                        <font>
                                           <Font name="Montserrat Regular" size="14.0" />
                                        </font>
@@ -154,7 +155,7 @@
                                           <Image url="@../icons/premium-sea-view-bed-room-2.jpg" />
                                        </image>
                                     </ImageView>
-                                    <Text layoutX="43.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="15 minutes from the beach" wrappingWidth="204.228515625">
+                                    <Text layoutX="43.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%txtDistance2" wrappingWidth="204.228515625">
                                        <font>
                                           <Font name="Montserrat Regular" size="12.0" />
                                        </font>
@@ -164,7 +165,7 @@
                                           <Image url="@../icons/location-crosshairs-solid.png" />
                                        </image>
                                     </ImageView>
-                                    <Text layoutX="46.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2-6 guests" wrappingWidth="204.228515625">
+                                    <Text layoutX="46.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%txtGuests2" wrappingWidth="204.228515625">
                                        <font>
                                           <Font name="Montserrat Regular" size="12.0" />
                                        </font>
@@ -174,7 +175,7 @@
                                           <Image url="@../icons/users-viewfinder-solid.png" />
                                        </image>
                                     </ImageView>
-                                    <Text layoutX="45.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Minimum 2-night stay, check-in from 3 PM, check-out by 11 AM." wrappingWidth="201.228515625">
+                                    <Text layoutX="45.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%txtInfo2" wrappingWidth="201.228515625">
                                        <font>
                                           <Font name="Montserrat Regular" size="12.0" />
                                        </font>
@@ -184,7 +185,7 @@
                                           <Image url="@../icons/building-shield-solid.png" />
                                        </image>
                                     </ImageView>
-                                    <Text layoutX="43.0" layoutY="412.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Starting from 99$ a night" wrappingWidth="201.228515625">
+                                    <Text layoutX="43.0" layoutY="412.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%txtPrice2" wrappingWidth="201.228515625">
                                        <font>
                                           <Font name="Montserrat Regular" size="12.0" />
                                        </font>
@@ -196,22 +197,22 @@
                                     </ImageView>
                                  </children>
                               </AnchorPane>
-                              <Text fill="GREY" layoutX="196.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome,  ">
+                              <Text fill="GREY" layoutX="180.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%welcome">
                                  <font>
                                     <Font name="Montserrat ExtraBold" size="45.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="firstName" fill="GREY" layoutX="448.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+                              <Text fx:id="firstName" fill="GREY" layoutX="470.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
                                  <font>
                                     <Font name="Montserrat ExtraBold" size="45.0" />
                                  </font>
                               </Text>
-                              <Text fill="#808080" layoutX="261.0" layoutY="621.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Looking for your perfect stay? Book your room today!">
+                              <Text fill="#808080" layoutX="261.0" layoutY="621.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%smallTxt">
                                  <font>
                                     <Font name="Montserrat Medium" size="12.0" />
                                  </font>
                               </Text>
-                              <Text layoutX="277.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your luxorious room" wrappingWidth="253.228515625">
+                              <Text layoutX="277.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%subTitle" wrappingWidth="253.228515625">
                                  <font>
                                     <Font name="Montserrat Light" size="18.0" />
                                  </font>
@@ -220,12 +221,12 @@
                         </AnchorPane>
                         <AnchorPane fx:id="seaViewPane" layoutX="3.0" layoutY="5.0" prefHeight="641.0" prefWidth="808.0" visible="false">
                            <children>
-                              <Text fill="GREY" layoutX="294.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sea View">
+                              <Text fill="GREY" layoutX="294.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%seaView">
                                  <font>
                                     <Font name="Montserrat ExtraBold" size="45.0" />
                                  </font>
                               </Text>
-                              <Text layoutX="290.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pick your Sea View Room" wrappingWidth="227.6285400390625">
+                              <Text layoutX="290.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%txtChoose" wrappingWidth="227.6285400390625">
                                  <font>
                                     <Font name="Montserrat Light" size="18.0" />
                                  </font>
@@ -243,25 +244,25 @@
                               <Line endX="101.5" layoutX="216.0" layoutY="329.0" startX="-188.0" stroke="#000561" strokeWidth="4.0" />
                               <TableView fx:id="seaTable" layoutX="330.0" layoutY="130.0" prefHeight="381.0" prefWidth="460.0" styleClass="s2" stylesheets="@../css/Login.css">
                                 <columns>
-                                  <TableColumn fx:id="seaViewRoomNumber_col" prefWidth="72.0" text="Room" />
-                                  <TableColumn fx:id="seaViewFloorNumber_col" prefWidth="94.0" text="Floor" />
-                                    <TableColumn fx:id="seaViewCapacity_col" prefWidth="90.0" text="Capacity" />
-                                    <TableColumn fx:id="seaViewBedNumber_col" prefWidth="121.0" text="Bed Number" />
-                                    <TableColumn fx:id="seaViewPrice_col" prefWidth="81.0" text="Price" />
+                                  <TableColumn fx:id="seaViewRoomNumber_col" prefWidth="72.0" text="%colRoom" />
+                                  <TableColumn fx:id="seaViewFloorNumber_col" prefWidth="94.0" text="%colFloor" />
+                                    <TableColumn fx:id="seaViewCapacity_col" prefWidth="90.0" text="%colCapacity" />
+                                    <TableColumn fx:id="seaViewBedNumber_col" prefWidth="121.0" text="%colBeds" />
+                                    <TableColumn fx:id="seaViewPrice_col" prefWidth="81.0" text="%colPrice" />
                                 </columns>
                               </TableView>
-                              <Button fx:id="btnReserve" layoutX="154.0" layoutY="544.0" mnemonicParsing="false" onMouseClicked="#handleProceeding" prefHeight="32.0" prefWidth="508.0" style="-fx-background-color: #34495e;" styleClass="btn4" stylesheets="@../css/Login.css" text="Reserve Now" />
+                              <Button fx:id="btnReserve" layoutX="154.0" layoutY="544.0" mnemonicParsing="false" onMouseClicked="#handleProceeding" prefHeight="32.0" prefWidth="508.0" style="-fx-background-color: #34495e;" styleClass="btn4" stylesheets="@../css/Login.css" text="%btnReserve" />
                               <Line endX="569.0" layoutX="217.0" layoutY="522.0" startX="-188.0" stroke="#000561" strokeWidth="4.0" />
                            </children>
                         </AnchorPane>
                         <AnchorPane fx:id="cityViewPane" layoutY="3.0" prefHeight="641.0" prefWidth="808.0" visible="false">
                            <children>
-                              <Text fill="GREY" layoutX="294.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="City View">
+                              <Text fill="GREY" layoutX="294.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%cityView">
                                  <font>
                                     <Font name="Montserrat ExtraBold" size="45.0" />
                                  </font>
                               </Text>
-                              <Text layoutX="294.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pick your City View Room" wrappingWidth="253.228515625">
+                              <Text layoutX="294.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%txtChoose" wrappingWidth="253.228515625">
                                  <font>
                                     <Font name="Montserrat Light" size="18.0" />
                                  </font>
@@ -279,38 +280,37 @@
                               <Line endX="101.5" layoutX="216.0" layoutY="329.0" startX="-188.0" stroke="#000561" strokeWidth="4.0" />
                               <TableView fx:id="cityTable" layoutX="330.0" layoutY="130.0" prefHeight="381.0" prefWidth="460.0" styleClass="s2" stylesheets="@../css/Login.css">
                                  <columns>
-                                    <TableColumn fx:id="cityViewRoomNumber_col" prefWidth="72.0" text="Room" />
-                                    <TableColumn fx:id="cityViewFloorNumber_col" prefWidth="94.0" text="Floor" />
-                                    <TableColumn fx:id="cityViewCapacity_col" prefWidth="90.0" text="Capacity" />
-                                    <TableColumn fx:id="cityViewBedNumber_col" prefWidth="121.0" text="Bed Number" />
-                                    <TableColumn fx:id="cityViewPrice_col" prefWidth="81.0" text="Price" />
+                                    <TableColumn fx:id="cityViewRoomNumber_col" prefWidth="72.0" text="%colRoom" />
+                                    <TableColumn fx:id="cityViewFloorNumber_col" prefWidth="94.0" text="%colFloor" />
+                                    <TableColumn fx:id="cityViewCapacity_col" prefWidth="90.0" text="%colCapacity" />
+                                    <TableColumn fx:id="cityViewBedNumber_col" prefWidth="121.0" text="%colBeds" />
+                                    <TableColumn fx:id="cityViewPrice_col" prefWidth="81.0" text="%colPrice" />
                                  </columns>
                               </TableView>
-                              <Button fx:id="btnReserve1" layoutX="154.0" layoutY="544.0" mnemonicParsing="false" onMouseClicked="#handleProceeding" prefHeight="32.0" prefWidth="508.0" style="-fx-background-color: #34495e;" styleClass="btn4" stylesheets="@../css/Login.css" text="Reserve Now" />
+                              <Button fx:id="btnReserve1" layoutX="154.0" layoutY="544.0" mnemonicParsing="false" onMouseClicked="#handleProceeding" prefHeight="32.0" prefWidth="508.0" style="-fx-background-color: #34495e;" styleClass="btn4" stylesheets="@../css/Login.css" text="%btnReserve" />
                               <Line endX="569.0" layoutX="217.0" layoutY="522.0" startX="-188.0" stroke="#000561" strokeWidth="4.0" />
                            </children>
                         </AnchorPane>
                         <AnchorPane fx:id="reservationsPane" layoutY="3.0" prefHeight="641.0" prefWidth="808.0" visible="false">
                            <children>
-                              <Text fill="GREY" layoutX="248.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservations">
+                              <Text fill="GREY" layoutX="248.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%btnReservations">
                                  <font>
                                     <Font name="Montserrat ExtraBold" size="45.0" />
                                  </font>
                               </Text>
-                              <TableView layoutX="29.0" layoutY="228.0" prefHeight="162.0" prefWidth="759.0" styleClass="stylish-detailed-table-view" stylesheets="@../css/table.css">
+                              <TableView layoutX="29.0" layoutY="228.0" prefHeight="172.0" prefWidth="760.0" styleClass="stylish-detailed-table-view" stylesheets="@../css/table.css">
                                  <columns>
-                                    <TableColumn prefWidth="97.0" text="Room Num" />
-                                    <TableColumn prefWidth="129.0" text="Reservation Date" />
-                                    <TableColumn prefWidth="81.0" text="BedNum" />
-                                    <TableColumn prefWidth="88.0" text="Price" />
-                                    <TableColumn prefWidth="97.0" text="Price" />
-                                    <TableColumn prefWidth="127.0" text="CheckIn" />
-                                    <TableColumn prefWidth="138.0" text="CheckOut" />
+                                    <TableColumn prefWidth="97.0" text="%colRoom" />
+                                    <TableColumn prefWidth="129.60003662109375" text="%colDate" />
+                                    <TableColumn prefWidth="158.39999389648438" text="%colBeds" />
+                                    <TableColumn prefWidth="100.800048828125" text="%colPrice" />
+                                    <TableColumn prefWidth="120.800048828125" text="CheckIn" />
+                                    <TableColumn prefWidth="153.5999755859375" text="CheckOut" />
                                  </columns>
                               </TableView>
-                              <Button layoutX="155.0" layoutY="482.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="508.0" styleClass="btn-red" stylesheets="@../css/Login.css" text="Cancel Reservation" />
+                              <Button layoutX="155.0" layoutY="482.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="508.0" styleClass="btn-red" stylesheets="@../css/Login.css" text="%btnCancelRes" />
                               <Line endX="569.0" layoutX="218.0" layoutY="453.0" startX="-188.0" stroke="#090e4a" strokeWidth="4.0" />
-                              <Text fill="#d7d7d7" layoutX="296.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Status">
+                              <Text fill="#d7d7d7" layoutX="296.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%txtStatus">
                                  <font>
                                     <Font name="Montserrat Medium" size="29.0" />
                                  </font>
@@ -334,17 +334,17 @@
                                     <Image url="@../icons/logoF-B.png" />
                                  </image>
                               </ImageView>
-                              <Text fill="GREY" layoutX="203.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservation History">
+                              <Text fill="GREY" layoutX="203.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%resHistory">
                                  <font>
                                     <Font name="Montserrat ExtraBold" size="45.0" />
                                  </font>
                               </Text>
-                              <TableView layoutX="289.0" layoutY="137.0" prefHeight="374.0" prefWidth="486.0" styleClass="compact-stylish-table-view" stylesheets="@../css/table.css">
+                              <TableView layoutX="281.0" layoutY="137.0" prefHeight="374.0" prefWidth="511.0" styleClass="compact-stylish-table-view" stylesheets="@../css/table.css">
                                  <columns>
-                                    <TableColumn prefWidth="74.0" text="Room Num" />
-                                    <TableColumn prefWidth="104.0" text="Reservation Date" />
-                                    <TableColumn prefWidth="66.0" text="BedNum" />
-                                    <TableColumn minWidth="0.0" prefWidth="54.0" text="Price" />
+                                    <TableColumn prefWidth="74.0" text="%colRoom" />
+                                    <TableColumn prefWidth="103.20001220703125" text="%colDate" />
+                                    <TableColumn prefWidth="91.20001220703125" text="%colBeds" />
+                                    <TableColumn minWidth="0.0" prefWidth="54.0" text="%colPrice" />
                                     <TableColumn prefWidth="70.0" text="CheckIn" />
                                     <TableColumn prefWidth="75.0" text="CheckOut" />
                                  </columns>
@@ -365,7 +365,7 @@
                               </ImageView>
                               <AnchorPane layoutX="41.0" layoutY="297.0" prefHeight="118.0" prefWidth="190.0" styleClass="rounded-red-anchor-pane" stylesheets="@../css/Login.css">
                                  <children>
-                                    <Text fill="WHITE" layoutX="20.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Reservations">
+                                    <Text fill="WHITE" layoutX="20.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%totalRes">
                                        <font>
                                           <Font name="Montserrat ExtraBold" size="18.0" />
                                        </font>
@@ -377,7 +377,7 @@
                                     </Text>
                                  </children>
                               </AnchorPane>
-                              <Text fill="GREY" layoutX="88.0" layoutY="609.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thank you for your loyalty and trust in us. We look forward to serving you again and ensuring your next stay is as memorable and enjoyable as ever." textAlignment="CENTER" wrappingWidth="614.3126220703125">
+                              <Text fill="GREY" layoutX="88.0" layoutY="609.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%thankYou" textAlignment="CENTER" wrappingWidth="614.3126220703125">
                                  <font>
                                     <Font name="Montserrat Medium" size="12.0" />
                                  </font>
@@ -389,7 +389,7 @@
                                           <Image url="@../icons/history-blue.png" />
                                        </image>
                                     </ImageView>
-                                    <Text fill="#0f2172" layoutX="81.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your History" wrappingWidth="102.81898498535156">
+                                    <Text fill="#0f2172" layoutX="81.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%yourHistory" wrappingWidth="102.81898498535156">
                                        <font>
                                           <Font size="24.0" />
                                        </font>
