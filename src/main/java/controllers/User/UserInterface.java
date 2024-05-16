@@ -30,8 +30,10 @@ public class UserInterface implements Initializable {
     private AnchorPane seaViewPane;
     @FXML
     private AnchorPane cityViewPane;
+
     @FXML
     private TableView<Room> seaTable;
+
 
     @FXML
     private TableColumn<Room, Integer> seaViewRoomNumber_col;
@@ -56,31 +58,36 @@ public class UserInterface implements Initializable {
     private TableColumn<Room, Double> cityViewPrice_col;
     @FXML
     private TableColumn<Room, Integer> cityViewCapacity_col;
+    private String anchorPane = "Home";
 
+    private void setAllPanesInvisible() {
+        homePane.setVisible(false);
+        reservationsPane.setVisible(false);
+        cityViewPane.setVisible(false);
+        seaViewPane.setVisible(false);
+        historyPane.setVisible(false);
+    }
 
     @FXML
     private void handleHome(){
+        setAllPanesInvisible();
         homePane.setVisible(true);
-        reservationsPane.setVisible(false);
-        historyPane.setVisible(false);
-        seaViewPane.setVisible(false);
-        cityViewPane.setVisible(false);
+        anchorPane = "Home";
+        Navigator.setCurrentVisibleSection("#homePane");
     }
     @FXML
     private void handleReservations(){
-        homePane.setVisible(false);
+        setAllPanesInvisible();
         reservationsPane.setVisible(true);
-        historyPane.setVisible(false);
-        seaViewPane.setVisible(false);
-        cityViewPane.setVisible(false);
+        anchorPane = "Reservations";
+        Navigator.setCurrentVisibleSection("#reservationsPane");
     }
     @FXML
     private void handleHistory(){
-        homePane.setVisible(false);
-        reservationsPane.setVisible(false);
+        setAllPanesInvisible();
         historyPane.setVisible(true);
-        seaViewPane.setVisible(false);
-        cityViewPane.setVisible(false);
+        anchorPane = "History";
+        Navigator.setCurrentVisibleSection("#historyPane");
     }
 
     @FXML
@@ -100,19 +107,17 @@ public class UserInterface implements Initializable {
     }
     @FXML
     public void handleCheckSeaView(MouseEvent me){
-        homePane.setVisible(false);
-        reservationsPane.setVisible(false);
-        historyPane.setVisible(false);
+        setAllPanesInvisible();
         seaViewPane.setVisible(true);
-        cityViewPane.setVisible(false);
+        anchorPane = "SeaView";
+        Navigator.setCurrentVisibleSection("#seaViewPane");
     }
     @FXML
     public void handleCheckCityView(MouseEvent me){
-        homePane.setVisible(false);
-        reservationsPane.setVisible(false);
-        historyPane.setVisible(false);
-        seaViewPane.setVisible(false);
+        setAllPanesInvisible();
         cityViewPane.setVisible(true);
+        anchorPane = "CityView";
+        Navigator.setCurrentVisibleSection("#cityViewPane");
     }
     @FXML
     public void handleProceeding(MouseEvent me) {

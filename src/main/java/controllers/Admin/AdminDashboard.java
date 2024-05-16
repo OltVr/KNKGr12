@@ -13,6 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import model.Room;
 import model.User;
@@ -126,6 +127,8 @@ public class AdminDashboard implements Initializable {
     @FXML
     private TextField searchFieldUser;
 
+    private String anchorPane = "Dashboard";
+
     // ADMIN DASHBOARD
     private void populateChart(){
         Connection connect=null;
@@ -195,41 +198,43 @@ public class AdminDashboard implements Initializable {
     }
 
     // Nderrimi i faqeve me visibility prej scenebuilder
-    @FXML
-    private void handleDashboard(){
-        dashboardPane.setVisible(true);
+    private void setAllPanesInvisible() {
+        dashboardPane.setVisible(false);
         reservationPane.setVisible(false);
         roomPane.setVisible(false);
         guestsPane.setVisible(false);
-        pane="Dashboard";
+    }
+    @FXML
+    private void handleDashboard() {
+        setAllPanesInvisible();
+        dashboardPane.setVisible(true);
+        pane = "Dashboard";
+        Navigator.setCurrentVisibleSection("#dashboardPane");
     }
 
     @FXML
-    private void handleReservations(){
-        dashboardPane.setVisible(false);
+    private void handleReservations() {
+        setAllPanesInvisible();
         reservationPane.setVisible(true);
-        roomPane.setVisible(false);
-        guestsPane.setVisible(false);
-        pane="Reservations";
+        pane = "Reservations";
+        Navigator.setCurrentVisibleSection("#reservationPane");
         System.out.println("[RESERVATION]");
     }
 
     @FXML
-    private void handleRooms(){
-        dashboardPane.setVisible(false);
-        reservationPane.setVisible(false);
+    private void handleRooms() {
+        setAllPanesInvisible();
         roomPane.setVisible(true);
-        guestsPane.setVisible(false);
-        pane="Rooms";
+        pane = "Rooms";
+        Navigator.setCurrentVisibleSection("#roomPane");
     }
 
     @FXML
-    private void handleGuests(){
-        dashboardPane.setVisible(false);
-        reservationPane.setVisible(false);
-        roomPane.setVisible(false);
+    private void handleGuests() {
+        setAllPanesInvisible();
         guestsPane.setVisible(true);
-        pane="Guests";
+        pane = "Guests";
+        Navigator.setCurrentVisibleSection("#guestsPane");
     }
 
 
@@ -435,6 +440,7 @@ public class AdminDashboard implements Initializable {
             showAlert("Error", "The room either does not exist or there was a database error.");
         }
     }
+
 
     @FXML
     private void handleChangeLanguage(ActionEvent ae){
