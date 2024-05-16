@@ -58,6 +58,10 @@ public class UserService {
         return false;
     }
 
+    public static User getUserEmail(String email){
+        return UserRepository.getByEmail(email);
+    }
+
     public static ObservableList<Room> listSeaViewRooms() {
         return UserRepository.listSeaViewRooms();
     }
