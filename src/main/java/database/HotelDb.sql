@@ -40,6 +40,9 @@ FOREIGN KEY (email) REFERENCES user (email) on delete cascade,
 FOREIGN KEY (roomNumber) REFERENCES rooms (roomNumber) on delete cascade,
 CONSTRAINT CHK_check_out_after_check_in CHECK (checkOutDate >= checkInDate)
 );
+-- Editohet tabela me u shtu total price pa e bo drop databazen
+ALTER TABLE reservation
+CHANGE COLUMN numberOfPeople totalPrice DECIMAL(10, 2) NOT NULL;
 
 CREATE TABLE IF NOT EXISTS staff (
     staffID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -53,9 +56,7 @@ CREATE TABLE IF NOT EXISTS staff (
     createdAt DATETIME NOT NULL DEFAULT NOW() -- nuk osht ntabele
 );
 
--- Editohet tabela me u shtu total price pa e bo drop databazen
-ALTER TABLE reservation
-CHANGE COLUMN numberOfPeople totalPrice DECIMAL(10, 2) NOT NULL;
+
 
 -- Trigger qe e llogarit totalPrice para insertit ne reservim
 DELIMITER //

@@ -9,8 +9,7 @@ module com.example.knkgr {
 
     opens com.example.knkgr13 to javafx.fxml;
     exports com.example.knkgr13;
-    opens controllers.User to javafx.fxml;
-    opens controllers.Admin to javafx.fxml;
+
 
 
 }

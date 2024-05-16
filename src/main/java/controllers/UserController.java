@@ -1,4 +1,4 @@
-package controllers.User;
+package controllers;
 
 import App.Navigator;
 import javafx.collections.ObservableList;
@@ -19,7 +19,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 
-public class UserInterface implements Initializable {
+public class UserController implements Initializable {
     @FXML
     private AnchorPane homePane;
     @FXML
@@ -30,6 +30,7 @@ public class UserInterface implements Initializable {
     private AnchorPane seaViewPane;
     @FXML
     private AnchorPane cityViewPane;
+
 
     @FXML
     private TableView<Room> seaTable;

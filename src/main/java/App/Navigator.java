@@ -86,6 +86,8 @@ public class Navigator {
                 Pane reservationsPane = (Pane) root.lookup("#reservationsPane");
                 Pane cityViewPane = (Pane) root.lookup("#cityViewPane");
                 Pane seaViewPane = (Pane) root.lookup("#seaViewPane");
+                Pane addStaffPane = (Pane) root.lookup("#addStaffPane");
+                Pane staffListPane = (Pane) root.lookup("#staffListPane");
 
 
                 if (dashboardPane != null) {
@@ -114,6 +116,11 @@ public class Navigator {
                 }
                 if (seaViewPane != null) {
                     seaViewPane.setVisible(false);
+                }
+                if (addStaffPane != null) {
+                    addStaffPane.setVisible(false);
+                }  if (staffListPane != null) {
+                    staffListPane.setVisible(false);
                 }
 
                 Node section = root.lookup(currentVisibleSection);

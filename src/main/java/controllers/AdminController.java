@@ -1,4 +1,4 @@
-package controllers.Admin;
+package controllers;
 
 import App.Navigator;
 import database.DatabaseUtil;
@@ -13,7 +13,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import model.Room;
 import model.User;
@@ -27,7 +26,7 @@ import java.sql.*;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class AdminDashboard implements Initializable {
+public class AdminController implements Initializable {
     private static String  pane;
 
     @FXML
@@ -38,6 +37,11 @@ public class AdminDashboard implements Initializable {
     private AnchorPane reservationPane;
     @FXML
     private AnchorPane guestsPane;
+    @FXML
+    private AnchorPane addStaffPane;
+    @FXML
+    private AnchorPane staffListPane;
+
     @FXML
     private void handleLogout(MouseEvent me) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to Sign Out?", ButtonType.YES, ButtonType.NO);
@@ -203,6 +207,8 @@ public class AdminDashboard implements Initializable {
         reservationPane.setVisible(false);
         roomPane.setVisible(false);
         guestsPane.setVisible(false);
+        staffListPane.setVisible(false);
+        addStaffPane.setVisible(false);
     }
     @FXML
     private void handleDashboard() {
@@ -235,6 +241,30 @@ public class AdminDashboard implements Initializable {
         guestsPane.setVisible(true);
         pane = "Guests";
         Navigator.setCurrentVisibleSection("#guestsPane");
+    }
+
+    @FXML
+    private void handleStaff() {
+        setAllPanesInvisible();
+        addStaffPane.setVisible(true);
+        pane = "addStaff";
+        Navigator.setCurrentVisibleSection("#addStaffPane");
+    }
+
+    @FXML
+    private void handleStaffList() {
+        setAllPanesInvisible();
+        staffListPane.setVisible(true);
+        pane = "staffList";
+        Navigator.setCurrentVisibleSection("#staffListPane");
+    }
+
+    @FXML
+    private void handleBack() {
+        setAllPanesInvisible();
+        addStaffPane.setVisible(true);
+        pane = "addStaff";
+        Navigator.setCurrentVisibleSection("#addStaffPane");
     }
 
 
