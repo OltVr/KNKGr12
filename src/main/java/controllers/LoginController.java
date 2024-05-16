@@ -77,7 +77,11 @@ public class LoginController {
             else{
                 boolean Admin=UserService.loginAdmin(loginUserData);
                 if (!Admin){
-                    Navigator.navigate(ke,Navigator.HOME_PAGE);
+                    User user= UserRepository.getByEmail(loginUserData.getEmail());
+                    if(user != null){
+                        SessionManager.setUser(user);
+                        Navigator.navigate(ke,Navigator.HOME_PAGE);
+                    }
                 }
                 else{
                     Navigator.navigate(ke,Navigator.ADMIN_DASHBOARD);
