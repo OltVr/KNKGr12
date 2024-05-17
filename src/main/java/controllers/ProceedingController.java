@@ -39,7 +39,4 @@ public class ProceedingController {
 
     }
 
-    private void handleReserve(ActionEvent ae){
-
-    }
 }

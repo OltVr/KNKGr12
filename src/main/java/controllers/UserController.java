@@ -163,6 +163,7 @@ public class UserController implements Initializable {
         cityTable.setItems(listData);
     }
 
+
     @FXML
     private void handleChangeLanguage(ActionEvent ae) {
 
@@ -175,5 +176,7 @@ public class UserController implements Initializable {
         }
 
     }
+
+
 
 }

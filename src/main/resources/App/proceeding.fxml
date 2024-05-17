@@ -73,7 +73,7 @@
                         <Font name="Montserrat Medium" size="29.0" />
                      </font>
                   </Text>
-                  <Button layoutX="354.0" layoutY="468.0" mnemonicParsing="false" onAction="#handleReserve" prefHeight="35.0" prefWidth="162.0" styleClass="btn4" stylesheets="@../css/Login.css" text="%btnRes">
+                  <Button layoutX="354.0" layoutY="468.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="162.0" styleClass="btn4" stylesheets="@../css/Login.css" text="%btnRes">
                      <font>
                         <Font name="Montserrat SemiBold" size="14.0" />
                      </font>
