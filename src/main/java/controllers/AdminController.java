@@ -155,6 +155,11 @@ public class AdminController implements Initializable {
     @FXML
     private CheckBox checkBenefits;
 
+    private String anchorPane = "Dashboard";
+
+
+
+
     // ADMIN DASHBOARD
     private void populateChart(){
         Connection connect=null;
@@ -432,6 +437,12 @@ public class AdminController implements Initializable {
         updateNewUsers();
         showReservationList();
         populateChart();
+        ToggleGroup positions = new ToggleGroup();
+
+        radioManager.setToggleGroup(positions);
+        radioWaiter.setToggleGroup(positions);
+        radioReceptionist.setToggleGroup(positions);
+        radioTech.setToggleGroup(positions);
     }
 
     private void clear(){
