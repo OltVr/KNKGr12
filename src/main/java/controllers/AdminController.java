@@ -2,6 +2,9 @@ package controllers;
 
 import App.Navigator;
 import database.DatabaseUtil;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,6 +18,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import model.Room;
+import model.Staff;
 import model.User;
 import model.dto.InsertRoomDto;
 import model.dto.InsertStaffDto;
@@ -131,6 +135,8 @@ public class AdminController implements Initializable {
     private LineChart<String, Number> chartDashboard;
     @FXML
     private TextField searchFieldUser;
+    @FXML
+    private TextField searchFieldStaff;
 
     //Staff
 
@@ -154,6 +160,26 @@ public class AdminController implements Initializable {
     private CheckBox checkFullTime;
     @FXML
     private CheckBox checkBenefits;
+
+    //Tabela Staff
+    @FXML
+    private TableView<Staff> reservationTable1;
+    @FXML
+    private TableColumn<Staff, Integer> SID_col;
+    @FXML
+    private TableColumn<Staff, String> Name_col;
+    @FXML
+    private TableColumn<Staff, String> staffEmail_col;
+    @FXML
+    private TableColumn<Staff, String> position_col;
+    @FXML
+    private TableColumn<Staff, Double> salary_col;
+    @FXML
+    private TableColumn<Staff, Boolean> isActive_col;
+    @FXML
+    private TableColumn<Staff, Boolean> FullTime_col;
+    @FXML
+    private TableColumn<Staff, Boolean> Benefits_col;
 
     private String anchorPane = "Dashboard";
 
@@ -437,6 +463,7 @@ public class AdminController implements Initializable {
         updateNewUsers();
         showReservationList();
         populateChart();
+        showStaffList();
         ToggleGroup positions = new ToggleGroup();
 
         radioManager.setToggleGroup(positions);
@@ -524,6 +551,58 @@ public class AdminController implements Initializable {
         }
     }
 
+    private void showStaffList(){
+        ObservableList<Staff> staffListData = AdminService.ListStaff();
+
+        SID_col.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getStaffID()).asObject());
+        Name_col.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStaffFirstName() + " " + cellData.getValue().getStaffLastName()));
+        staffEmail_col.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStaffEmail()));
+        position_col.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPosition()));
+        salary_col.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getSalary()).asObject());
+        isActive_col.setCellValueFactory(cellData -> new SimpleBooleanProperty(cellData.getValue().isEmployed()).asObject());
+        FullTime_col.setCellValueFactory(cellData -> new SimpleBooleanProperty(cellData.getValue().isFullTime()).asObject());
+        Benefits_col.setCellValueFactory(cellData -> new SimpleBooleanProperty(cellData.getValue().isHasBenefits()).asObject());
+
+        reservationTable1.setItems(staffListData);
+    }
+
+    @FXML
+    private void handleDeleteStaff(){
+        Staff selectedStaff = reservationTable1.getSelectionModel().getSelectedItem();
+        if (selectedStaff != null) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this staff member?", ButtonType.YES, ButtonType.NO);
+            alert.showAndWait();
+
+            if (alert.getResult() == ButtonType.YES) {
+                boolean success = AdminService.deleteStaff(selectedStaff.getStaffEmail());
+                if (success) {
+                    reservationTable1.getItems().remove(selectedStaff);
+                } else {
+                    showAlert("Error", "Failed to delete staff member.");
+                }
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "No user selected.");
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    private void handleSearchStaff(){
+        String searchTerm = searchFieldStaff.getText().trim();
+        if (!searchTerm.isEmpty()) {
+            ObservableList<Staff> searchResults = AdminService.searchStaff(searchTerm);
+            if (!searchResults.isEmpty()) {
+                reservationTable1.setItems(searchResults);
+            } else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "No staff member found for the given email address.");
+                alert.showAndWait();
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Please enter an email address.");
+            alert.showAndWait();
+        }
+    }
 
     @FXML
     private void handleChangeLanguage(ActionEvent ae){

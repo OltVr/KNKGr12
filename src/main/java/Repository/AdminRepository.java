@@ -4,6 +4,7 @@ import database.DatabaseUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Room;
+import model.Staff;
 import model.User;
 import model.dto.InsertRoomDto;
 import model.dto.InsertStaffDto;
@@ -370,8 +371,79 @@ public class AdminRepository {
             return 0;
         }
     }
+    //Staff table
+    public static ObservableList<Staff> ListStaff(){
+        ObservableList<Staff> list = FXCollections.observableArrayList();
+        String query = "SELECT * FROM staff";
+        Connection connection = DatabaseUtil.getConnection();
+        try {
+            PreparedStatement pst = connection.prepareStatement(query);
+            ResultSet result = pst.executeQuery();
+            while (result.next()) {
+                Staff staff = new Staff(
+                        result.getInt("staffID"),
+                        result.getString("firstName"),
+                        result.getString("lastName"),
+                        result.getString("email"),
+                        result.getString("position"),
+                        result.getDouble("salary"),
+                        result.getBoolean("isEmployed"),
+                        result.getBoolean("isFullTime"),
+                        result.getBoolean("hasBenefits"),
+                        result.getTimestamp("createdAt"));
+                list.add(staff);
+            }
+            return list;
+        } catch (Exception e) {
+            return list;
+        }
+    }
 
+    public static ObservableList<Staff> searchStaff(String searchTerm) {
+        ObservableList<Staff> staffList = FXCollections.observableArrayList();
+        String query = "SELECT * FROM staff WHERE email LIKE ?";
+        Connection connection = DatabaseUtil.getConnection();
+        try {
+            PreparedStatement pst = connection.prepareStatement(query);
+            pst.setString(1, "%" + searchTerm + "%");
+            ResultSet result = pst.executeQuery();
+            while (result.next()) {
+                Staff staff = new Staff(
+                        result.getInt("staffID"),
+                        result.getString("firstName"),
+                        result.getString("lastName"),
+                        result.getString("email"),
+                        result.getString("position"),
+                        result.getDouble("salary"),
+                        result.getBoolean("isEmployed"),
+                        result.getBoolean("isFullTime"),
+                        result.getBoolean("hasBenefits"),
+                        result.getTimestamp("createdAt"));
+                staffList.add(staff);
+            }
+            return staffList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return staffList;
+        }
+    }
 
+    public static boolean deleteStaff(String email) {
+        String query = "DELETE FROM staff WHERE email = ?";
+        Connection connection = DatabaseUtil.getConnection();
+        try {
+            PreparedStatement pst = connection.prepareStatement(query);
+            pst.setString(1, email);
+            pst.executeUpdate();
+            pst.close();
+            return true;
+        } catch (SQLException e) {
+            System.out.println("[DB ERROR] " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+
+    }
 
 
 }

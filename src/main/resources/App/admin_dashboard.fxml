@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.chart.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="641.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminController">
+<AnchorPane prefHeight="641.0" prefWidth="1020.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminController">
    <children>
       <StackPane prefHeight="641.0" prefWidth="1020.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane prefHeight="641.0" prefWidth="1020.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -107,9 +121,9 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane fx:id="dashboardPane" prefHeight="598.0" prefWidth="814.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="dashboardPane" prefHeight="598.0" prefWidth="814.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane layoutX="22.0" layoutY="81.0" prefHeight="440.0" prefWidth="489.0" styleClass="third-form" stylesheets="@../css/Login.css">
+                              <AnchorPane layoutX="22.0" layoutY="81.0" prefHeight="440.0" prefWidth="489.0" styleClass="third-form" stylesheets="@../css/Login.css" visible="false">
                                  <children>
                                     <Text layoutX="110.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%DIG">
                                        <font>
@@ -173,7 +187,7 @@
                         </AnchorPane>
                         <AnchorPane fx:id="roomPane" layoutX="5.0" layoutY="5.0" prefHeight="603.0" prefWidth="819.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <AnchorPane layoutX="30.0" layoutY="15.0" prefHeight="154.0" prefWidth="754.0" styleClass="fxx" stylesheets="@../css/Login.css">
+                              <AnchorPane layoutX="30.0" layoutY="15.0" prefHeight="154.0" prefWidth="754.0" styleClass="fxx" stylesheets="@../css/Login.css" visible="false">
                                  <children>
                                     <Button layoutX="632.0" layoutY="11.0" mnemonicParsing="false" onAction="#handleAddRoom" prefHeight="37.0" prefWidth="79.0" styleClass="btn-green" stylesheets="@../css/Login.css" text="%btnAdd" />
                                     <Button layoutX="632.0" layoutY="58.0" mnemonicParsing="false" onAction="#handleUpdate" prefHeight="37.0" prefWidth="79.0" styleClass="btn-yellow" stylesheets="@../css/Login.css" text="%btnUpdate" />
@@ -216,7 +230,7 @@
                                     </Text>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane layoutX="30.0" layoutY="179.0" prefHeight="405.0" prefWidth="754.0" styleClass="fxx" stylesheets="@../css/Login.css">
+                              <AnchorPane layoutX="30.0" layoutY="179.0" prefHeight="405.0" prefWidth="754.0" styleClass="fxx" stylesheets="@../css/Login.css" visible="false">
                                  <children>
                                     <TableView fx:id="roomTable" layoutX="10.0" layoutY="17.0" onMouseClicked="#roomSelect" prefHeight="370.0" prefWidth="733.0" stylesheets="@../css/table.css">
                                        <columns>
@@ -460,28 +474,28 @@
                               <TextField fx:id="txtStaffEmail" layoutX="198.0" layoutY="434.0" promptText="Email" styleClass="textfield" stylesheets="@../css/Login.css" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="staffListPane" layoutY="2.0" prefHeight="603.0" prefWidth="828.0" visible="false">
+                        <AnchorPane fx:id="staffListPane" layoutY="2.0" prefHeight="603.0" prefWidth="828.0">
                            <children>
                               <AnchorPane layoutX="21.0" layoutY="52.0" prefHeight="522.0" prefWidth="784.0" styleClass="fxx" stylesheets="@../css/Login.css">
                                  <children>
                                     <TableView fx:id="reservationTable1" layoutX="9.0" layoutY="109.0" onMouseClicked="#roomSelect" prefHeight="364.0" prefWidth="766.0" styleClass="compact-detailed-table-view" stylesheets="@../css/table.css">
                                        <columns>
-                                          <TableColumn prefWidth="69.0" text="SID" />
-                                          <TableColumn prefWidth="81.0" text="%colName" />
-                                          <TableColumn prefWidth="143.0" text="%colEmail" />
-                                          <TableColumn prefWidth="107.0" text="%colPosition" />
-                                          <TableColumn prefWidth="87.0" text="%colSalary" />
-                                          <TableColumn prefWidth="85.0" text="%isActive" />
-                                          <TableColumn prefWidth="93.5999755859375" text="%isFullTime" />
-                                          <TableColumn prefWidth="98.4000244140625" text="%hasBenefits" />
+                                          <TableColumn fx:id="SID_col" prefWidth="69.0" text="SID" />
+                                          <TableColumn fx:id="Name_col" prefWidth="81.0" text="%colName" />
+                                          <TableColumn fx:id="staffEmail_col" prefWidth="143.0" text="%colEmail" />
+                                          <TableColumn fx:id="position_col" prefWidth="107.0" text="%colPosition" />
+                                          <TableColumn fx:id="salary_col" prefWidth="87.0" text="%colSalary" />
+                                          <TableColumn fx:id="isActive_col" prefWidth="85.0" text="%isActive" />
+                                          <TableColumn fx:id="FullTime_col" prefWidth="93.5999755859375" text="%isFullTime" />
+                                          <TableColumn fx:id="Benefits_col" prefWidth="98.4000244140625" text="%hasBenefits" />
                                        </columns>
                                     </TableView>
-                                    <TextField layoutX="494.0" layoutY="36.0" prefHeight="33.0" prefWidth="198.0" promptText="%Search" styleClass="cool-search-field" stylesheets="@../css/Login.css">
+                                    <TextField fx:id="searchFieldStaff" layoutX="494.0" layoutY="36.0" prefHeight="33.0" prefWidth="198.0" promptText="%Search" styleClass="cool-search-field" stylesheets="@../css/Login.css">
                                        <font>
                                           <Font name="Montserrat Medium" size="12.0" />
                                        </font>
                                     </TextField>
-                                    <Button layoutX="698.0" layoutY="36.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="59.0" styleClass="btn4" stylesheets="@../css/Login.css" text="%Search">
+                                    <Button layoutX="698.0" layoutY="36.0" mnemonicParsing="false" onAction="#handleSearchStaff" prefHeight="33.0" prefWidth="59.0" styleClass="btn4" stylesheets="@../css/Login.css" text="%Search">
                                        <font>
                                           <Font name="Montserrat Medium" size="12.0" />
                                        </font>
@@ -491,7 +505,7 @@
                                           <Image url="@../icons/search.png" />
                                        </image>
                                     </ImageView>
-                                    <Button layoutX="291.0" layoutY="482.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="203.0" styleClass="btn-red" stylesheets="@../css/Login.css" text="%btnDelete">
+                                    <Button layoutX="291.0" layoutY="482.0" mnemonicParsing="false" onAction="#handleDeleteStaff" prefHeight="30.0" prefWidth="203.0" styleClass="btn-red" stylesheets="@../css/Login.css" text="%btnDelete">
                                        <font>
                                           <Font name="Montserrat Medium" size="13.0" />
                                        </font>
