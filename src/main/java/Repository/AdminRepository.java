@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import model.Room;
 import model.User;
 import model.dto.InsertRoomDto;
+import model.dto.InsertStaffDto;
 import model.dto.ReservationDto;
 
 import java.sql.Connection;
@@ -32,6 +33,31 @@ public class AdminRepository {
             pst.setInt(4, roomData.getCapacity());
             pst.setInt(5, roomData.getBedNumber());
             pst.setDouble(6, roomData.getPrice());
+            pst.execute();
+            pst.close();
+            return true;
+        } catch (Exception e) {
+            System.out.println("[ERROR] SQL did not execute " + e.getMessage());
+            return false;
+        }
+
+    }
+
+    public static boolean insertStaff(InsertStaffDto staffData) {
+        Connection conn = DatabaseUtil.getConnection();
+        String query = """
+                INSERT INTO STAFF (firstName, lastName, email, position, salary, isFullTime, hasBenefits)
+                VALUE (?, ?, ?, ?, ?, ?, ?)
+                """;
+        try {
+            PreparedStatement pst = conn.prepareStatement(query);
+            pst.setString(1, staffData.getStaffFirstName());
+            pst.setString(2, staffData.getStaffLastName());
+            pst.setString(3, staffData.getStaffEmail());
+            pst.setString(4, staffData.getPosition());
+            pst.setDouble(5, staffData.getSalary());
+            pst.setBoolean(6, staffData.isFullTime());
+            pst.setBoolean(7, staffData.isHasBenefits());
             pst.execute();
             pst.close();
             return true;

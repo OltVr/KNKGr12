@@ -121,7 +121,7 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane fx:id="dashboardPane" prefHeight="598.0" prefWidth="814.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="dashboardPane" prefHeight="598.0" prefWidth="814.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="22.0" layoutY="81.0" prefHeight="440.0" prefWidth="489.0" styleClass="third-form" stylesheets="@../css/Login.css">
                                  <children>
@@ -189,7 +189,7 @@
                            <children>
                               <AnchorPane layoutX="30.0" layoutY="15.0" prefHeight="154.0" prefWidth="754.0" styleClass="fxx" stylesheets="@../css/Login.css">
                                  <children>
-                                    <Button layoutX="632.0" layoutY="11.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="37.0" prefWidth="79.0" styleClass="btn-green" stylesheets="@../css/Login.css" text="%btnAdd" />
+                                    <Button layoutX="632.0" layoutY="11.0" mnemonicParsing="false" onAction="#handleAddRoom" prefHeight="37.0" prefWidth="79.0" styleClass="btn-green" stylesheets="@../css/Login.css" text="%btnAdd" />
                                     <Button layoutX="632.0" layoutY="58.0" mnemonicParsing="false" onAction="#handleUpdate" prefHeight="37.0" prefWidth="79.0" styleClass="btn-yellow" stylesheets="@../css/Login.css" text="%btnUpdate" />
                                     <Button layoutX="632.0" layoutY="107.0" mnemonicParsing="false" onAction="#handleDeleteRoom" prefHeight="37.0" prefWidth="79.0" styleClass="btn-red" stylesheets="@../css/Login.css" text="%btnDelete" />
                                     <TextField fx:id="txtRoom" layoutX="113.0" layoutY="17.0" styleClass="textfield" stylesheets="@../css/Login.css" />
@@ -365,7 +365,7 @@
                               </Text>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="addStaffPane" layoutY="2.0" prefHeight="603.0" prefWidth="828.0" visible="false">
+                        <AnchorPane fx:id="addStaffPane" layoutY="2.0" prefHeight="603.0" prefWidth="828.0">
                            <children>
                               <Text layoutX="25.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%txtStaff">
                                  <font>
@@ -382,7 +382,7 @@
                                                 <Image url="@../icons/generalManager.png" />
                                              </image>
                                           </ImageView>
-                                          <RadioButton layoutX="88.0" layoutY="164.0" mnemonicParsing="false" styleClass="radio" stylesheets="@../css/Login.css" />
+                                          <RadioButton fx:id="radioManager" layoutX="88.0" layoutY="164.0" mnemonicParsing="false" styleClass="radio" stylesheets="@../css/Login.css" />
                                           <AnchorPane layoutX="17.0" layoutY="6.0" prefHeight="25.0" prefWidth="166.0" styleClass="title-anch" stylesheets="@../css/Login.css">
                                              <children>
                                                 <Text layoutX="11.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%txtManager">
@@ -402,7 +402,7 @@
                                                 <Image url="@../icons/Recepcionist.png" />
                                              </image>
                                           </ImageView>
-                                          <RadioButton layoutX="88.0" layoutY="164.0" mnemonicParsing="false" styleClass="radio" stylesheets="@../css/Login.css" />
+                                          <RadioButton fx:id="radioReceptionist" layoutX="88.0" layoutY="164.0" mnemonicParsing="false" styleClass="radio" stylesheets="@../css/Login.css" />
                                           <AnchorPane layoutX="17.0" layoutY="6.0" prefHeight="25.0" prefWidth="166.0" styleClass="title-anch" stylesheets="@../css/Login.css">
                                              <children>
                                                 <Text layoutX="30.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%txtRec">
@@ -422,7 +422,7 @@
                                                 <Image url="@../icons/Waiter.png" />
                                              </image>
                                           </ImageView>
-                                          <RadioButton layoutX="88.0" layoutY="164.0" mnemonicParsing="false" styleClass="radio" stylesheets="@../css/Login.css" />
+                                          <RadioButton fx:id="radioWaiter" layoutX="88.0" layoutY="164.0" mnemonicParsing="false" styleClass="radio" stylesheets="@../css/Login.css" />
                                           <AnchorPane layoutX="17.0" layoutY="6.0" prefHeight="25.0" prefWidth="166.0" styleClass="title-anch" stylesheets="@../css/Login.css">
                                              <children>
                                                 <Text layoutX="55.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%txtWaiter">
@@ -442,7 +442,7 @@
                                                 <Image url="@../icons/Tech.png" />
                                              </image>
                                           </ImageView>
-                                          <RadioButton layoutX="88.0" layoutY="164.0" mnemonicParsing="false" styleClass="radio" stylesheets="@../css/Login.css" />
+                                          <RadioButton fx:id="radioTech" layoutX="88.0" layoutY="164.0" mnemonicParsing="false" styleClass="radio" stylesheets="@../css/Login.css" />
                                           <AnchorPane layoutX="17.0" layoutY="6.0" prefHeight="25.0" prefWidth="166.0" styleClass="title-anch" stylesheets="@../css/Login.css">
                                              <children>
                                                 <Text layoutX="38.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%txtTech">
@@ -457,20 +457,21 @@
                                  </children>
                               </AnchorPane>
                               <Line endX="361.0" layoutX="424.0" layoutY="293.0" startX="-380.0" stroke="#f2f2f2" strokeWidth="4.0" />
-                              <Button layoutX="339.0" layoutY="530.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="151.0" styleClass="btn-green" stylesheets="@../css/Login.css" text="%btnAddStaff" />
-                              <TextField layoutX="198.0" layoutY="334.0" promptText="%lblFirst" styleClass="textfield" stylesheets="@../css/Login.css" />
-                              <TextField layoutX="198.0" layoutY="385.0" promptText="%lblLast" styleClass="textfield" stylesheets="@../css/Login.css" />
-                              <TextField layoutX="198.0" layoutY="439.0" promptText="%lblSalary" styleClass="textfield" stylesheets="@../css/Login.css" />
-                              <CheckBox layoutX="490.0" layoutY="348.0" mnemonicParsing="false" text="%check1">
+                              <Button layoutX="339.0" layoutY="530.0" mnemonicParsing="false" onAction="#handleAddStaff" prefHeight="36.0" prefWidth="151.0" styleClass="btn-green" stylesheets="@../css/Login.css" text="%btnAddStaff" />
+                              <TextField fx:id="txtStaffFirstName" layoutX="198.0" layoutY="334.0" promptText="%lblFirst" styleClass="textfield" stylesheets="@../css/Login.css" />
+                              <TextField fx:id="txtStaffLastName" layoutX="198.0" layoutY="385.0" promptText="%lblLast" styleClass="textfield" stylesheets="@../css/Login.css" />
+                              <TextField fx:id="txtStaffSalary" layoutX="198.0" layoutY="479.0" promptText="%lblSalary" styleClass="textfield" stylesheets="@../css/Login.css" />
+                              <CheckBox fx:id="checkFullTime" layoutX="490.0" layoutY="348.0" mnemonicParsing="false" text="%check1">
                                  <font>
                                     <Font name="Montserrat Medium" size="12.0" />
                                  </font>
                               </CheckBox>
-                              <CheckBox layoutX="490.0" layoutY="391.0" mnemonicParsing="false" text="%check2">
+                              <CheckBox fx:id="checkBenefits" layoutX="490.0" layoutY="391.0" mnemonicParsing="false" text="%check2">
                                  <font>
                                     <Font name="Montserrat Medium" size="12.0" />
                                  </font></CheckBox>
                               <Button layoutX="733.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleStaffList" prefHeight="25.0" prefWidth="66.0" styleClass="btn4" stylesheets="@../css/Login.css" text="%btnStaffList" />
+                              <TextField fx:id="txtStaffEmail" layoutX="198.0" layoutY="434.0" promptText="Email" styleClass="textfield" stylesheets="@../css/Login.css" />
                            </children>
                         </AnchorPane>
                         <AnchorPane fx:id="staffListPane" layoutY="2.0" prefHeight="603.0" prefWidth="828.0" visible="false">

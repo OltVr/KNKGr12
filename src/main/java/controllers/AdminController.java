@@ -17,6 +17,7 @@ import javafx.scene.text.Text;
 import model.Room;
 import model.User;
 import model.dto.InsertRoomDto;
+import model.dto.InsertStaffDto;
 import model.dto.ReservationDto;
 import service.AdminService;
 import javafx.scene.control.Alert;
@@ -27,7 +28,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AdminController implements Initializable {
-    private static String  pane;
+    private static String pane;
 
     @FXML
     private AnchorPane dashboardPane;
@@ -131,6 +132,28 @@ public class AdminController implements Initializable {
     @FXML
     private TextField searchFieldUser;
 
+    //Staff
+
+    @FXML
+    private TextField txtStaffFirstName;
+    @FXML
+    private TextField txtStaffLastName;
+    @FXML
+    private TextField txtStaffEmail;
+    @FXML
+    private TextField txtStaffSalary;
+    @FXML
+    private RadioButton radioManager;
+    @FXML
+    private RadioButton radioWaiter;
+    @FXML
+    private RadioButton radioReceptionist;
+    @FXML
+    private RadioButton radioTech;
+    @FXML
+    private CheckBox checkFullTime;
+    @FXML
+    private CheckBox checkBenefits;
     private String anchorPane = "Dashboard";
 
     // ADMIN DASHBOARD
@@ -179,9 +202,37 @@ public class AdminController implements Initializable {
         alert.showAndWait();
     }
 
+    @FXML
+    private void handleAddStaff(){
+        String firstName = txtStaffFirstName.getText();
+        String lastName = txtStaffLastName.getText();
+        String email = txtStaffEmail.getText();
+        double salary = Double.parseDouble(txtStaffSalary.getText());
+
+        String position = "";
+        if (radioManager.isSelected()) {
+            position = "General Manager";
+        } else if (radioWaiter.isSelected()) {
+            position = "Waiter";
+        } else if (radioReceptionist.isSelected()) {
+            position = "Receptionist";
+        } else if (radioTech.isSelected()) {
+            position = "Maintenance Technician";
+        }
+
+        boolean isFullTime = checkFullTime.isSelected();
+        boolean hasBenefits = checkBenefits.isSelected();
+
+        InsertStaffDto staffData = new InsertStaffDto(firstName, lastName, email, position, salary, isFullTime, hasBenefits);
+
+        AdminService.addStaff(staffData);
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Staff was added successfully.");
+    }
+
     // ROOM MANAGEMENT
     @FXML
-    private void handleAdd(){
+    private void handleAddRoom(){
         InsertRoomDto RoomData = new InsertRoomDto(
                 Integer.parseInt(this.txtRoom.getText()),
                 Integer.parseInt(this.txtFloor.getText()),
@@ -195,7 +246,7 @@ public class AdminController implements Initializable {
         if (!(b)) {
             showAlert("Room not added", "A room with this number already exists");
         } else {
-            showList();
+            showRoomList();
             clear();
         }
 
@@ -268,7 +319,7 @@ public class AdminController implements Initializable {
 
 
 
-    private void showList(){
+    private void showRoomList(){
         ObservableList<Room> listData = AdminService.ListRoom();
 
         roomNumber_col.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
@@ -374,7 +425,7 @@ public class AdminController implements Initializable {
         roomType.getItems().addAll("Sea View", "City View");
         Capacity.getItems().addAll(1, 2,3,4,5,6,7,8);
         Beds.getItems().addAll(1, 2,3,4);
-        showList();
+        showRoomList();
         showUserList();
         updateRoomsBooked();
         updateTotalIncome();
@@ -412,7 +463,7 @@ public class AdminController implements Initializable {
         int roomNumber= Integer.parseInt(txtRoom.getText());
         int floorNumber= Integer.parseInt(txtFloor.getText());
         if (AdminService.deleteRoom(roomNumber,floorNumber)){
-            showList();
+            showRoomList();
             clear();
         }
         else {
@@ -452,7 +503,7 @@ public class AdminController implements Initializable {
         );
 
         if (AdminService.updateRoom(RoomData)){
-            showList();
+            showRoomList();
             clear();
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Table was updated successfully.");
             alert.showAndWait();

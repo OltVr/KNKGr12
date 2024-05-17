@@ -1,19 +1,13 @@
 package service;
 
-
-import database.DatabaseUtil;
 import javafx.collections.ObservableList;
 import model.Room;
+import model.Staff;
 import model.User;
 import model.dto.InsertRoomDto;
-
 import Repository.AdminRepository;
+import model.dto.InsertStaffDto;
 import model.dto.ReservationDto;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class AdminService {
     public static boolean addRoom(InsertRoomDto roomData){
@@ -22,6 +16,10 @@ public class AdminService {
            return AdminRepository.insertRoom(roomData);
        }
        return false;
+    }
+
+    public static boolean addStaff(InsertStaffDto staffData){
+            return AdminRepository.insertStaff(staffData);
     }
 
     public static int newUsers() {
