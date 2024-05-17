@@ -44,7 +44,7 @@ CONSTRAINT CHK_check_out_after_check_in CHECK (checkOutDate >= checkInDate)
 ALTER TABLE reservation
 CHANGE COLUMN numberOfPeople totalPrice DECIMAL(10, 2) NOT NULL;
 
-
+-- DROP TABLE EDHE CREATE PRAP PER ME E NDREQ
 CREATE TABLE IF NOT EXISTS staff (
     staffID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     firstName VARCHAR(255) NOT NULL,
@@ -53,13 +53,14 @@ CREATE TABLE IF NOT EXISTS staff (
     email VARCHAR(255) NOT NULL UNIQUE,
     position ENUM('General Manager', 'Receptionist', 'Waiter', 'Maintenance Technician') NOT NULL,
     salary DECIMAL(10, 2) NOT NULL,
-    isActive BOOLEAN NOT NULL DEFAULT TRUE,
+    isEmployed BOOLEAN NOT NULL DEFAULT TRUE,
     isFullTime BOOLEAN NOT NULL DEFAULT TRUE,
     hasBenefits BOOLEAN NOT NULL DEFAULT FALSE,
     createdAt DATETIME NOT NULL DEFAULT NOW() -- nuk osht ntabele
 );
 
-
+use hotel;
+select*from staff;
 
 -- Trigger qe e llogarit totalPrice para insertit ne reservim
 DELIMITER //

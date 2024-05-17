@@ -228,6 +228,7 @@ public class AdminController implements Initializable {
         AdminService.addStaff(staffData);
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "Staff was added successfully.");
+        alert.showAndWait();
     }
 
     // ROOM MANAGEMENT
