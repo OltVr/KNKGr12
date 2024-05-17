@@ -121,7 +121,7 @@
                <center>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane fx:id="dashboardPane" prefHeight="598.0" prefWidth="814.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="dashboardPane" prefHeight="598.0" prefWidth="814.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="22.0" layoutY="81.0" prefHeight="440.0" prefWidth="489.0" styleClass="third-form" stylesheets="@../css/Login.css">
                                  <children>
@@ -365,7 +365,7 @@
                               </Text>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="addStaffPane" layoutY="2.0" prefHeight="603.0" prefWidth="828.0">
+                        <AnchorPane fx:id="addStaffPane" layoutY="2.0" prefHeight="603.0" prefWidth="828.0" visible="false">
                            <children>
                               <Text layoutX="25.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%txtStaff">
                                  <font>
@@ -470,7 +470,7 @@
                                  <font>
                                     <Font name="Montserrat Medium" size="12.0" />
                                  </font></CheckBox>
-                              <Button layoutX="733.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleStaffList" prefHeight="25.0" prefWidth="66.0" styleClass="btn4" stylesheets="@../css/Login.css" text="%btnStaffList" />
+                              <Button layoutX="677.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleStaffList" prefHeight="26.0" prefWidth="122.0" styleClass="btn4" stylesheets="@../css/Login.css" text="%btnStaffList" />
                               <TextField fx:id="txtStaffEmail" layoutX="198.0" layoutY="434.0" promptText="Email" styleClass="textfield" stylesheets="@../css/Login.css" />
                            </children>
                         </AnchorPane>
@@ -531,8 +531,8 @@
                                     <Font name="Montserrat Light" size="31.0" />
                                  </font>
                               </Text>
-                              <Button layoutX="717.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="25.0" prefWidth="88.0" styleClass="btn4" stylesheets="@../css/Login.css" text="%btnBack" />
-                              <ImageView fitHeight="24.0" fitWidth="19.0" layoutX="722.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                              <Button layoutX="683.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="26.0" prefWidth="122.0" styleClass="btn4" stylesheets="@../css/Login.css" text="%btnBack" />
+                              <ImageView fitHeight="24.0" fitWidth="19.0" layoutX="694.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../icons/back.png" />
                                  </image>
