@@ -69,4 +69,13 @@ public class AdminService {
     public static boolean updateRoom(InsertRoomDto roomData) {
         return AdminRepository.updateRoom(roomData);
     }
+
+    public static ObservableList<Staff> ListStaff(){return AdminRepository.ListStaff();}
+
+    public static ObservableList<Staff> searchStaff(String searchTerm){
+        return AdminRepository.searchStaff(searchTerm);
+    }
+
+    public static boolean deleteStaff(String email){return AdminRepository.deleteStaff(email);}
+
 }
