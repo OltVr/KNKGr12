@@ -23,32 +23,6 @@ public class ReserveController {
     @FXML
     private DatePicker checkOutDatePicker;
 
-    public void initializeData() {
-        int roomNumber = SessionManager.getSelectedRoomNumber();
-        roomNumberLabel.setText(String.valueOf(roomNumber));
-    }
-
-    @FXML
-    private void confirmReservation(ActionEvent event) {
-        LocalDate checkInDate = checkInDatePicker.getValue();
-        LocalDate checkOutDate = checkOutDatePicker.getValue();
-
-        if (checkInDate != null && checkOutDate != null) {
-            CreateReservationDto reservationDto = new CreateReservationDto(
-                    SessionManager.getUserId(),
-                    SessionManager.getSelectedRoomNumber(),
-                    checkInDate,
-                    checkOutDate
-            );
-
-            UserRepository userRepository = new UserRepository();
-            userRepository.saveReservation(reservationDto);
-
-            System.out.println("Reservation confirmed.");
-        } else {
-            System.out.println("Please select check-in and check-out dates.");
-        }
-    }
 
     @FXML
     private void initialize(){
