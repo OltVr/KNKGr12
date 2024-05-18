@@ -22,7 +22,7 @@ import model.Staff;
 import model.User;
 import model.dto.InsertRoomDto;
 import model.dto.InsertStaffDto;
-import model.dto.ReservationDto;
+import model.Reservation;
 import service.AdminService;
 import javafx.scene.control.Alert;
 
@@ -112,21 +112,21 @@ public class AdminController implements Initializable {
 
     // Tabela Reservations
     @FXML
-    private TableView<ReservationDto> reservationTable;
+    private TableView<Reservation> reservationTable;
     @FXML
-    private TableColumn<ReservationDto, Integer> Res_reservationID_col;
+    private TableColumn<Reservation, Integer> Res_reservationID_col;
     @FXML
-    private TableColumn<ReservationDto, String> Res_email_col;
+    private TableColumn<Reservation, String> Res_email_col;
     @FXML
-    private TableColumn<ReservationDto, Integer> Res_roomNumber_col;
+    private TableColumn<Reservation, Integer> Res_roomNumber_col;
     @FXML
-    private TableColumn<ReservationDto, Date> Res_reservationDate_col;
+    private TableColumn<Reservation, Date> Res_reservationDate_col;
     @FXML
-    private TableColumn<ReservationDto, Date> Res_checkInDate_col;
+    private TableColumn<Reservation, Date> Res_checkInDate_col;
     @FXML
-    private TableColumn<ReservationDto, Date> Res_checkOutDate_col;
+    private TableColumn<Reservation, Date> Res_checkOutDate_col;
     @FXML
-    private TableColumn<ReservationDto, Integer> Res_totalPrice_col;
+    private TableColumn<Reservation, Integer> Res_totalPrice_col;
 
     // chart
     @FXML
@@ -368,7 +368,7 @@ public class AdminController implements Initializable {
         roomTable.setItems(listData);
     }
     private void showReservationList() {
-        ObservableList<ReservationDto> listData = AdminService.ListReservations();
+        ObservableList<Reservation> listData = AdminService.ListReservations();
 
         Res_reservationID_col.setCellValueFactory(new PropertyValueFactory<>("reservationID"));
         Res_email_col.setCellValueFactory(new PropertyValueFactory<>("email"));
@@ -382,7 +382,7 @@ public class AdminController implements Initializable {
     }
     @FXML
     private void handleDeleteReservation() {
-        ReservationDto selectedReservation = reservationTable.getSelectionModel().getSelectedItem();
+        Reservation selectedReservation = reservationTable.getSelectionModel().getSelectedItem();
         if (selectedReservation != null) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this reservation?", ButtonType.YES, ButtonType.NO);
             alert.showAndWait();
@@ -404,7 +404,7 @@ public class AdminController implements Initializable {
     private void handleSearchReservation() {
         String searchTerm = searchField.getText().trim();
         if (!searchTerm.isEmpty()) {
-            ObservableList<ReservationDto> searchResults = AdminService.searchReservations(searchTerm);
+            ObservableList<Reservation> searchResults = AdminService.searchReservations(searchTerm);
             if (!searchResults.isEmpty()) {
                 reservationTable.setItems(searchResults);
             } else {

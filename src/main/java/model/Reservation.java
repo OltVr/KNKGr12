@@ -1,8 +1,8 @@
-package model.dto;
+package model;
 
 import java.sql.Date;
 
-public class ReservationDto {
+public class Reservation {
     private int reservationID;
     private String email;
     private int roomNumber;
@@ -11,7 +11,7 @@ public class ReservationDto {
     private Date checkOutDate;
     private double totalPrice;
 
-    public ReservationDto(int reservationID, String email, int roomNumber, Date reservationDate, Date checkInDate, Date checkOutDate, int totalPrice) {
+    public Reservation(int reservationID, String email, int roomNumber, Date reservationDate, Date checkInDate, Date checkOutDate, int totalPrice) {
         this.reservationID = reservationID;
         this.email = email;
         this.roomNumber = roomNumber;

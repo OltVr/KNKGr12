@@ -14,11 +14,11 @@ import java.util.ResourceBundle;
 
 public class Navigator {
     public final static String LOGIN_PAGE = "login_form.fxml";
-    public final static String HOME_PAGE = "user_home.fxml";
+    public final static String HOME_PAGE = "user_pages.fxml";
     public final static String CREATE_ACCOUNT_PAGE = "signup_form.fxml";
     public final static String LOGIN_FAIL_ALERT = "login_failed.fxml";
-    public final static String ADMIN_DASHBOARD = "admin_dashboard.fxml";
-    public final static String PROCEEDING_PAGE = "proceeding.fxml";
+    public final static String ADMIN_DASHBOARD = "admin_pages.fxml";
+    public final static String PROCEEDING_PAGE = "reserve_form.fxml";
     private static ResourceBundle bundle;
     public static Locale locale = Locale.getDefault();
     private static String currentPage;

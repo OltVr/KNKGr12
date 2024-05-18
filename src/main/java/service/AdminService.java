@@ -7,7 +7,7 @@ import model.User;
 import model.dto.InsertRoomDto;
 import Repository.AdminRepository;
 import model.dto.InsertStaffDto;
-import model.dto.ReservationDto;
+import model.Reservation;
 
 public class AdminService {
     public static boolean addRoom(InsertRoomDto roomData){
@@ -38,7 +38,7 @@ public class AdminService {
         return AdminRepository.ListRoom();
     }
 
-    public static ObservableList<ReservationDto> ListReservations() {
+    public static ObservableList<Reservation> ListReservations() {
         return AdminRepository.ListReservations();
     }
 
@@ -46,7 +46,7 @@ public class AdminService {
         return AdminRepository.deleteReservation(reservationID);
     }
 
-    public static ObservableList<ReservationDto> searchReservations(String searchTerm) {
+    public static ObservableList<Reservation> searchReservations(String searchTerm) {
         return AdminRepository.searchReservations(searchTerm);
     }
 

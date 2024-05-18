@@ -8,13 +8,12 @@ import model.Staff;
 import model.User;
 import model.dto.InsertRoomDto;
 import model.dto.InsertStaffDto;
-import model.dto.ReservationDto;
+import model.Reservation;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 
 public class AdminRepository {
 
@@ -248,8 +247,8 @@ public class AdminRepository {
             return false;
         }
     }
-    public static ObservableList<ReservationDto> searchReservations(String searchTerm) {
-        ObservableList<ReservationDto> list = FXCollections.observableArrayList();
+    public static ObservableList<Reservation> searchReservations(String searchTerm) {
+        ObservableList<Reservation> list = FXCollections.observableArrayList();
         String query = "SELECT * FROM reservation WHERE email LIKE ? OR reservationID = ?";
         Connection connection = DatabaseUtil.getConnection();
         try {
@@ -258,7 +257,7 @@ public class AdminRepository {
             pst.setInt(2, tryParseInt(searchTerm));
             ResultSet result = pst.executeQuery();
             while (result.next()) {
-                ReservationDto reservation = new ReservationDto(
+                Reservation reservation = new Reservation(
                         result.getInt("reservationID"),
                         result.getString("email"),
                         result.getInt("roomNumber"),
@@ -275,15 +274,15 @@ public class AdminRepository {
         }
     }
 
-    public static ObservableList<ReservationDto> ListReservations() {
-        ObservableList<ReservationDto> list = FXCollections.observableArrayList();
+    public static ObservableList<Reservation> ListReservations() {
+        ObservableList<Reservation> list = FXCollections.observableArrayList();
         String query = "SELECT * FROM reservation";
         Connection connection = DatabaseUtil.getConnection();
         try {
             PreparedStatement pst = connection.prepareStatement(query);
             ResultSet result = pst.executeQuery();
             while (result.next()) {
-                ReservationDto reservation = new ReservationDto(
+                Reservation reservation = new Reservation(
                         result.getInt("reservationID"),
                         result.getString("email"),
                         result.getInt("roomNumber"),

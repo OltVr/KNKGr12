@@ -1,27 +1,19 @@
 package controllers;
 
 import App.Navigator;
-import App.SessionManager;
-import Repository.UserRepository;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import model.dto.CreateReservationDto;
 
-import java.time.LocalDate;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class ReserveController {
     private ResourceBundle bundle;
-
     @FXML
-    private Label roomNumberLabel;
+    private DatePicker checkInDate;
     @FXML
-    private DatePicker checkInDatePicker;
-    @FXML
-    private DatePicker checkOutDatePicker;
+    private DatePicker checkOutDate;
 
 
     @FXML

@@ -67,6 +67,6 @@ public class UserService {
     }
 
     public static ObservableList<Room> listCityViewRooms() {
-        return UserRepository.listSeaViewRooms();
+        return UserRepository.listCityViewRooms();
     }
 }
