@@ -176,6 +176,25 @@ public class UserController implements Initializable {
         }
 
     }
+    @FXML
+    private void  seaRoomSelect() {
+        Room room = seaTable.getSelectionModel().getSelectedItem();
+//        int num = roomTable.getSelectionModel().getSelectedIndex();
+
+        if (room != null) {
+            SessionManager.setRoom(room);
+        }
+    }
+    @FXML
+    private void  cityRoomSelect() {
+        Room room = cityTable.getSelectionModel().getSelectedItem();
+//        int num = roomTable.getSelectionModel().getSelectedIndex();
+
+        if (room != null) {
+            SessionManager.setRoom(room);
+        }
+    }
+
 
 
 

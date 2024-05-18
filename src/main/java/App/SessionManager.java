@@ -1,9 +1,11 @@
 package App;
 
+import model.Room;
 import model.User;
 
 public class SessionManager {
     private static User currentUser;
+    private static Room selectedRoom;
 
     public static void setUser(User user){
         currentUser=user;
@@ -36,4 +38,21 @@ public class SessionManager {
             return null;
         }
     }
+
+    //ROOM management
+    public static void setRoom(Room room){
+        selectedRoom=room;
+    }
+
+    public static Room getSelectedRoom(){
+        return  selectedRoom;
+    }
+
+    public static int getSelectedRoomNumber(){
+        return selectedRoom.getRoomNumber();
+    }
+    public static double getPrice(){
+       return selectedRoom.getPrice();
+    }
+
 }

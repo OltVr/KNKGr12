@@ -1,15 +1,21 @@
 package controllers;
 
 import App.Navigator;
+import App.SessionManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
+import javafx.scene.text.Text;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class ReserveController {
     private ResourceBundle bundle;
+    @FXML
+    private Text rsrvRoom;
+    @FXML
+    private Text totalPrice;
     @FXML
     private DatePicker checkInDate;
     @FXML
@@ -25,6 +31,8 @@ public class ReserveController {
         }
         else {
             bundle = ResourceBundle.getBundle("translations.content_en", locale);
+
+            rsrvRoom.setText(String.valueOf(SessionManager.getSelectedRoom().getRoomNumber()));
         }
     }
     @FXML
