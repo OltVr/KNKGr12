@@ -478,16 +478,15 @@
                            <children>
                               <AnchorPane layoutX="21.0" layoutY="52.0" prefHeight="522.0" prefWidth="784.0" styleClass="fxx" stylesheets="@../css/Login.css">
                                  <children>
-                                    <TableView fx:id="reservationTable1" layoutX="9.0" layoutY="109.0" onMouseClicked="#roomSelect" prefHeight="364.0" prefWidth="766.0" styleClass="compact-detailed-table-view" stylesheets="@../css/table.css">
+                                    <TableView fx:id="reservationTable1" layoutX="14.0" layoutY="109.0" onMouseClicked="#roomSelect" prefHeight="364.0" prefWidth="766.0" styleClass="compact-detailed-table-view" stylesheets="@../css/table.css">
                                        <columns>
-                                          <TableColumn fx:id="SID_col" prefWidth="69.0" text="SID" />
-                                          <TableColumn fx:id="Name_col" prefWidth="81.0" text="%colName" />
-                                          <TableColumn fx:id="staffEmail_col" prefWidth="143.0" text="%colEmail" />
-                                          <TableColumn fx:id="position_col" prefWidth="107.0" text="%colPosition" />
-                                          <TableColumn fx:id="salary_col" prefWidth="87.0" text="%colSalary" />
-                                          <TableColumn fx:id="isActive_col" prefWidth="85.0" text="%isActive" />
-                                          <TableColumn fx:id="FullTime_col" prefWidth="93.5999755859375" text="%isFullTime" />
-                                          <TableColumn fx:id="Benefits_col" prefWidth="98.4000244140625" text="%hasBenefits" />
+                                          <TableColumn fx:id="SID_col" prefWidth="56.000003814697266" text="SID" />
+                                          <TableColumn fx:id="Name_col" prefWidth="108.79995727539062" text="%colName" />
+                                          <TableColumn fx:id="staffEmail_col" prefWidth="139.9999542236328" text="%colEmail" />
+                                          <TableColumn fx:id="position_col" prefWidth="123.20001220703125" text="%colPosition" />
+                                          <TableColumn fx:id="salary_col" prefWidth="111.99993896484375" text="%colSalary" />
+                                          <TableColumn fx:id="FullTime_col" prefWidth="119.20001220703125" text="%isFullTime" />
+                                          <TableColumn fx:id="Benefits_col" prefWidth="109.5999755859375" text="%hasBenefits" />
                                        </columns>
                                     </TableView>
                                     <TextField fx:id="searchFieldStaff" layoutX="494.0" layoutY="36.0" prefHeight="33.0" prefWidth="198.0" promptText="%Search" styleClass="cool-search-field" stylesheets="@../css/Login.css">
