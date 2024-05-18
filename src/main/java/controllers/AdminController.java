@@ -175,8 +175,6 @@ public class AdminController implements Initializable {
     @FXML
     private TableColumn<Staff, Double> salary_col;
     @FXML
-    private TableColumn<Staff, Boolean> isActive_col;
-    @FXML
     private TableColumn<Staff, Boolean> FullTime_col;
     @FXML
     private TableColumn<Staff, Boolean> Benefits_col;
@@ -564,9 +562,32 @@ public class AdminController implements Initializable {
         staffEmail_col.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStaffEmail()));
         position_col.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPosition()));
         salary_col.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getSalary()).asObject());
-        isActive_col.setCellValueFactory(cellData -> new SimpleBooleanProperty(cellData.getValue().isEmployed()).asObject());
         FullTime_col.setCellValueFactory(cellData -> new SimpleBooleanProperty(cellData.getValue().isFullTime()).asObject());
         Benefits_col.setCellValueFactory(cellData -> new SimpleBooleanProperty(cellData.getValue().isHasBenefits()).asObject());
+
+        FullTime_col.setCellFactory(column -> new TableCell<Staff, Boolean>() {
+            @Override
+            protected void updateItem(Boolean item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(item ? "Full Time" : "Half Time");
+                }
+            }
+        });
+
+        Benefits_col.setCellFactory(column -> new TableCell<Staff, Boolean>() {
+            @Override
+            protected void updateItem(Boolean item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    setText(item ? "YES" : "NO");
+                }
+            }
+        });
 
         reservationTable1.setItems(staffListData);
     }
