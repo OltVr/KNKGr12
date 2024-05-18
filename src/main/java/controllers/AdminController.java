@@ -262,6 +262,7 @@ public class AdminController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Failed to add staff.");
             alert.showAndWait();
         }
+        showStaffList();
     }
 
     // ROOM MANAGEMENT
