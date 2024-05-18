@@ -233,7 +233,7 @@ public class AdminController implements Initializable {
     }
 
     @FXML
-    private void handleAddStaff(){
+    private void handleAddStaff() {
         String firstName = txtStaffFirstName.getText();
         String lastName = txtStaffLastName.getText();
         String email = txtStaffEmail.getText();
@@ -255,10 +255,15 @@ public class AdminController implements Initializable {
 
         InsertStaffDto staffData = new InsertStaffDto(firstName, lastName, email, position, salary, isFullTime, hasBenefits);
 
-        AdminService.addStaff(staffData);
+        boolean isSuccess = AdminService.addStaff(staffData);
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Staff was added successfully.");
-        alert.showAndWait();
+        if (isSuccess) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Staff was added successfully.");
+            alert.showAndWait();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Failed to add staff.");
+            alert.showAndWait();
+        }
     }
 
     // ROOM MANAGEMENT

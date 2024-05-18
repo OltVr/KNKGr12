@@ -46,9 +46,9 @@ public class AdminRepository {
     public static boolean insertStaff(InsertStaffDto staffData) {
         Connection conn = DatabaseUtil.getConnection();
         String query = """
-                INSERT INTO STAFF (firstName, lastName, email, position, salary, isFullTime, hasBenefits)
-                VALUE (?, ?, ?, ?, ?, ?, ?)
-                """;
+            INSERT INTO STAFF (firstName, lastName, email, position, salary, isFullTime, hasBenefits)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+            """;
         try {
             PreparedStatement pst = conn.prepareStatement(query);
             pst.setString(1, staffData.getStaffFirstName());
@@ -60,12 +60,12 @@ public class AdminRepository {
             pst.setBoolean(7, staffData.isHasBenefits());
             pst.execute();
             pst.close();
+            conn.close();
             return true;
         } catch (Exception e) {
             System.out.println("[ERROR] SQL did not execute " + e.getMessage());
             return false;
         }
-
     }
     private static Room getRoomFromResultSet(ResultSet result) {
         try {
