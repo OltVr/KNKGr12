@@ -1,7 +1,7 @@
 package service;
 
 
-import Repository.AdminRepository;
+
 import javafx.collections.ObservableList;
 import model.Room;
 import model.User;
@@ -9,6 +9,9 @@ import model.dto.LoginUserDto;
 import Repository.UserRepository;
 import model.dto.CreateUserDto;
 import model.dto.UserDto;
+
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class UserService {
     public static boolean signUp(UserDto userData){
@@ -68,5 +71,11 @@ public class UserService {
 
     public static ObservableList<Room> listCityViewRooms() {
         return UserRepository.listCityViewRooms();
+    }
+
+    //TODO: Check if this code is where it should be. We may need to create a reserve service
+    public static double totalPrice(LocalDate start, LocalDate end, double price){
+        long days= ChronoUnit.DAYS.between(start,end);
+        return days*price;
     }
 }

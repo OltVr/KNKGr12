@@ -46,13 +46,13 @@
                         <Font name="Montserrat ExtraBold" size="19.0" />
                      </font>
                   </Text>
-                  <DatePicker layoutX="215.0" layoutY="276.0" styleClass="dateclass" stylesheets="@../css/Login.css" />
+                  <DatePicker fx:id="checkInDate" layoutX="215.0" layoutY="276.0" onAction="#resetCheckOutDate" styleClass="dateclass" stylesheets="@../css/Login.css" />
                   <Text layoutX="215.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%checkIn" wrappingWidth="161.5999984741211">
                      <font>
                         <Font name="Montserrat Medium" size="19.0" />
                      </font>
                   </Text>
-                  <DatePicker layoutX="456.0" layoutY="275.0" styleClass="dateclass" stylesheets="@../css/Login.css" />
+                  <DatePicker fx:id="checkOutDate" layoutX="456.0" layoutY="275.0" onAction="#getPrices" styleClass="dateclass" stylesheets="@../css/Login.css" />
                   <Text layoutX="456.0" layoutY="260.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%checkOut" wrappingWidth="161.5999984741211">
                      <font>
                         <Font name="Montserrat Medium" size="19.0" />
@@ -68,7 +68,7 @@
                         <Font name="Montserrat Medium" size="29.0" />
                      </font>
                   </Text>
-                  <Text fx:id="totalPrice" layoutX="432.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="103.5999984741211">
+                  <Text fx:id="lblTotalPrice" layoutX="432.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="103.5999984741211">
                      <font>
                         <Font name="Montserrat Medium" size="29.0" />
                      </font>
