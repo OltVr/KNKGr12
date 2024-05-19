@@ -4,14 +4,12 @@ import database.DatabaseUtil;
 
 import model.Room;
 import model.User;
+import model.dto.CreateReservationDto;
 import model.dto.CreateUserDto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Timestamp;
+import java.sql.*;
 
 
 public class UserRepository {
@@ -121,5 +119,28 @@ public class UserRepository {
             return list;
         }
     }
+
+    public static boolean reserve(CreateReservationDto reservationData) {
+        Connection conn = DatabaseUtil.getConnection();
+        String query = """
+                INSERT INTO RESERVATION (email, roomNumber,checkInDate ,checkOutDate)
+                VALUE (?, ?, ?, ?)
+                """;
+        //String query = "INSERT INTO USER VALUE (?, ?, ?, ?, ?)";
+        try {
+            PreparedStatement pst = conn.prepareStatement(query);
+            pst.setString(1, reservationData.getUserEmail());
+            pst.setInt(2, reservationData.getRoomNumber());
+            pst.setDate(3, Date.valueOf(reservationData.getCheckInDate()));
+            pst.setDate(4, Date.valueOf(reservationData.getCheckOutDate()));
+            pst.execute();
+            pst.close();
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
+
+    }
+
 
 }

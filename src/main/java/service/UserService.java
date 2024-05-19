@@ -5,6 +5,7 @@ package service;
 import javafx.collections.ObservableList;
 import model.Room;
 import model.User;
+import model.dto.CreateReservationDto;
 import model.dto.LoginUserDto;
 import Repository.UserRepository;
 import model.dto.CreateUserDto;
@@ -77,5 +78,9 @@ public class UserService {
     public static double totalPrice(LocalDate start, LocalDate end, double price){
         long days= ChronoUnit.DAYS.between(start,end);
         return days*price;
+    }
+
+    public static boolean makeReservation(CreateReservationDto reservationDto){
+        return UserRepository.reserve(reservationDto);
     }
 }

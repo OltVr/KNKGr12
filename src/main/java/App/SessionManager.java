@@ -31,6 +31,13 @@ public class SessionManager {
         }
     }
 
+    public static String getUserEmail(){
+        if (currentUser!= null){
+            return currentUser.getEmail();
+        }
+        return null;
+    }
+
     public static String getUserId(){
         if(currentUser != null){
             return currentUser.getEmail();
@@ -49,10 +56,16 @@ public class SessionManager {
     }
 
     public static int getSelectedRoomNumber(){
-        return selectedRoom.getRoomNumber();
+        if (selectedRoom!=null) {
+            return selectedRoom.getRoomNumber();
+        }
+        return 0;
     }
     public static double getPrice(){
-       return selectedRoom.getPrice();
+        if(selectedRoom!=null) {
+            return selectedRoom.getPrice();
+        }
+        return 0;
     }
 
 }

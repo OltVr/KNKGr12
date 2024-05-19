@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.text.Text;
+import model.dto.CreateReservationDto;
 import service.UserService;
 
 import java.time.LocalDate;
@@ -73,7 +74,7 @@ public class ReserveController {
 
     }
 
-    //FIXME: Think where the code(s) below should be put. Is it in the services?
+
 
     @FXML
     private void resetCheckOutDate(){
@@ -81,6 +82,10 @@ public class ReserveController {
             LocalDate date = checkOutDate.getValue();
             if (date.isEqual(checkInDate.getValue()) || date.isBefore(checkInDate.getValue())) {
                 checkOutDate.setValue(null);
+            }
+            else {
+                double totalprice = UserService.totalPrice(checkInDate.getValue(), date, SessionManager.getPrice());
+                lblTotalPrice.setText(String.valueOf(totalprice));
             }
         }catch (NullPointerException ne){
             ne.getMessage();
@@ -94,8 +99,25 @@ public class ReserveController {
             double totalprice = UserService.totalPrice(startDate, endDate, SessionManager.getPrice());
             lblTotalPrice.setText(String.valueOf(totalprice));
         }
-        else{
+        else if(endDate.isBefore(startDate)){
             lblTotalPrice.setText("0.00");
+        }
+    }
+
+    @FXML
+    private void handleReserve(ActionEvent ae){
+        CreateReservationDto reservation= new CreateReservationDto(
+                SessionManager.getUserEmail(),
+                SessionManager.getSelectedRoomNumber(),
+                checkInDate.getValue(),
+                checkOutDate.getValue()
+        );
+        if(!UserService.makeReservation(reservation)){
+            System.out.println("[RESERVATION] Failed to reserve! Insert a popup");
+        }
+        else {
+            System.out.println("[RESERVATION] Reservation is complete! Insert a popup");
+            Navigator.navigate(ae,Navigator.HOME_PAGE);
         }
     }
 
