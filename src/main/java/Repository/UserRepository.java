@@ -2,12 +2,14 @@ package Repository;
 
 import database.DatabaseUtil;
 
+import model.Reservation;
 import model.Room;
 import model.User;
 import model.dto.CreateReservationDto;
 import model.dto.CreateUserDto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import java.sql.Date;
 
 import java.sql.*;
 
@@ -140,6 +142,54 @@ public class UserRepository {
             return false;
         }
 
+    }
+
+    public static ObservableList<Reservation> listReservationRooms() {
+        ObservableList<Reservation> list = FXCollections.observableArrayList();
+        String query = "SELECT * FROM reservations WHERE isActive = True";
+        try (Connection connection = DatabaseUtil.getConnection();
+             PreparedStatement pst = connection.prepareStatement(query);
+             ResultSet result = pst.executeQuery()) {
+
+            while (result.next()) {
+                Reservation reservation = new Reservation(
+                        result.getInt("reservationID"),
+                        result.getString("email"),
+                        result.getInt("roomNumber"),
+                        result.getDate("reservationDate"),
+                        result.getDate("checkInDate"),
+                        result.getDate("checkOutDate"),
+                        result.getDouble("totalPrice"));
+                list.add(reservation);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public static ObservableList<Reservation> listHistoryRooms() {
+        ObservableList<Reservation> list = FXCollections.observableArrayList();
+        String query = "SELECT * FROM history WHERE isCompleted = True";
+        try (Connection connection = DatabaseUtil.getConnection();
+             PreparedStatement pst = connection.prepareStatement(query);
+             ResultSet result = pst.executeQuery()) {
+
+            while (result.next()) {
+                Reservation reservation = new Reservation(
+                        result.getInt("reservationID"),
+                        result.getString("email"),
+                        result.getInt("roomNumber"),
+                        result.getDate("reservationDate"),
+                        result.getDate("checkInDate"),
+                        result.getDate("checkOutDate"),
+                        result.getDouble("totalPrice"));
+                list.add(reservation);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 
 
