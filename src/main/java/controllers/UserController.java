@@ -13,10 +13,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import model.Reservation;
 import model.Room;
 import service.UserService;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -36,8 +38,6 @@ public class UserController implements Initializable {
 
     @FXML
     private TableView<Room> seaTable;
-
-
     @FXML
     private TableColumn<Room, Integer> seaViewRoomNumber_col;
     @FXML
@@ -48,6 +48,7 @@ public class UserController implements Initializable {
     private TableColumn<Room, Double> seaViewPrice_col;
     @FXML
     private TableColumn<Room, Integer> seaViewCapacity_col;
+
 
     @FXML
     private TableView<Room> cityTable;
@@ -64,6 +65,37 @@ public class UserController implements Initializable {
     @FXML
     private Text txtfirstName;
     private String anchorPane = "Home";
+
+    @FXML
+    private TableView<Reservation> reservationTable;
+    @FXML
+    private TableColumn<Room, Text> reservationRoom_col;
+    @FXML
+    private TableColumn<Room, Date> reservationDate_col;
+    @FXML
+    private TableColumn<Room, Integer> reservationBedNum_col;
+    @FXML
+    private TableColumn<Room, Text> reservationPrice_col;
+    @FXML
+    private TableColumn<Room, DatePicker> reservationCheckIn_col;
+    @FXML
+    private TableColumn<Room, DatePicker> reservationCheckOut_col;
+
+
+    @FXML
+    private TableView<Reservation> historyTable;
+    @FXML
+    private TableColumn<Room, Text> historyRoom_col;
+    @FXML
+    private TableColumn<Room, Date> historyDate_col;
+    @FXML
+    private TableColumn<Room, Integer> historyBedNum_col;
+    @FXML
+    private TableColumn<Room, Text> historyPrice_col;
+    @FXML
+    private TableColumn<Room, DatePicker> historyCheckIn_col;
+    @FXML
+    private TableColumn<Room, DatePicker> historyCheckOut_col;
 
     public void showFirstName(){
         String emri= SessionManager.getUserName();
@@ -119,7 +151,10 @@ public class UserController implements Initializable {
         showSeaViewRooms();
         showCityViewRooms();
         showFirstName();
+        showReservationRooms();
+        showHistoryRooms();
     }
+
     @FXML
     public void handleCheckSeaView(MouseEvent me){
         setAllPanesInvisible();
@@ -134,10 +169,10 @@ public class UserController implements Initializable {
         anchorPane = "CityView";
         Navigator.setCurrentVisibleSection("#cityViewPane");
     }
-    @FXML
-    public void handleProceeding(MouseEvent me) {
-        Navigator.navigate(me, Navigator.PROCEEDING_PAGE);
-    }
+//    @FXML
+//    public void handleProceeding(MouseEvent me) {
+//        Navigator.navigate(me, Navigator.PROCEEDING_PAGE);
+//    }
 
     private void showSeaViewRooms() {
         ObservableList<Room> listData = UserService.listSeaViewRooms();
@@ -195,6 +230,37 @@ public class UserController implements Initializable {
         }
     }
 
+
+    @FXML
+    public void handleCancelReservation(MouseEvent me) {
+        Navigator.navigate(me, Navigator.HOME_PAGE);
+    }
+
+    private void showReservationRooms() {
+        ObservableList<Reservation> listData = UserService.listReservationRooms();
+
+        reservationRoom_col.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
+        reservationDate_col.setCellValueFactory(new PropertyValueFactory<>("date"));
+        reservationBedNum_col.setCellValueFactory(new PropertyValueFactory<>("bedNumber"));
+        reservationPrice_col.setCellValueFactory(new PropertyValueFactory<>("price"));
+        reservationCheckIn_col.setCellValueFactory(new PropertyValueFactory<>("checkInDate"));
+        reservationCheckOut_col.setCellValueFactory(new PropertyValueFactory<>("checkOutDate"));
+
+        reservationTable.setItems(listData);
+    }
+
+    private void showHistoryRooms() {
+        ObservableList<Reservation> listData = UserService.listHistoryRooms();
+
+        historyRoom_col.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
+        historyDate_col.setCellValueFactory(new PropertyValueFactory<>("date"));
+        historyBedNum_col.setCellValueFactory(new PropertyValueFactory<>("bedNumber"));
+        historyPrice_col.setCellValueFactory(new PropertyValueFactory<>("price"));
+        historyCheckIn_col.setCellValueFactory(new PropertyValueFactory<>("checkInDate"));
+        historyCheckOut_col.setCellValueFactory(new PropertyValueFactory<>("checkOutDate"));
+
+        historyTable.setItems(listData);
+    }
 
 
 
