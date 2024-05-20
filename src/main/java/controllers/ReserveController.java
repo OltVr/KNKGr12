@@ -10,6 +10,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import model.Room;
 import model.dto.CreateReservationDto;
@@ -128,4 +129,7 @@ public class ReserveController {
     }
 
 
+    public void handleProceeding(MouseEvent me) {
+        Navigator.navigate(me, Navigator.PROCEEDING_PAGE);
+    }
 }
