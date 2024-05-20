@@ -11,7 +11,7 @@ public class Reservation {
     private Date checkOutDate;
     private double totalPrice;
 
-    public Reservation(int reservationID, String email, int roomNumber, Date reservationDate, Date checkInDate, Date checkOutDate, int totalPrice) {
+    public Reservation(int reservationID, String email, int roomNumber, Date reservationDate, Date checkInDate, Date checkOutDate, double totalPrice) {
         this.reservationID = reservationID;
         this.email = email;
         this.roomNumber = roomNumber;
