@@ -139,6 +139,7 @@ public class UserRepository {
             pst.close();
             return true;
         } catch (SQLException e) {
+            System.out.println("[SQL] "+e.getMessage());
             return false;
         }
 
@@ -146,11 +147,11 @@ public class UserRepository {
 
     public static ObservableList<Reservation> listReservationRooms() {
         ObservableList<Reservation> list = FXCollections.observableArrayList();
-        String query = "SELECT * FROM reservations WHERE isActive = True";
-        try (Connection connection = DatabaseUtil.getConnection();
+        String query = "SELECT * FROM RESERVATION WHERE checkInDate >= CURDATE()";
+        Connection connection = DatabaseUtil.getConnection();
+        try (
              PreparedStatement pst = connection.prepareStatement(query);
              ResultSet result = pst.executeQuery()) {
-
             while (result.next()) {
                 Reservation reservation = new Reservation(
                         result.getInt("reservationID"),
@@ -162,16 +163,19 @@ public class UserRepository {
                         result.getDouble("totalPrice"));
                 list.add(reservation);
             }
+            return list;
         } catch (SQLException e) {
+            System.out.println("[SQL RESER] "+ e.getMessage());
             e.printStackTrace();
+            return list;
         }
-        return list;
     }
 
     public static ObservableList<Reservation> listHistoryRooms() {
         ObservableList<Reservation> list = FXCollections.observableArrayList();
-        String query = "SELECT * FROM history WHERE isCompleted = True";
-        try (Connection connection = DatabaseUtil.getConnection();
+        String query = "SELECT * FROM RESERVATION WHERE checkOutDate <= CURDATE()";
+        Connection connection = DatabaseUtil.getConnection();
+        try (
              PreparedStatement pst = connection.prepareStatement(query);
              ResultSet result = pst.executeQuery()) {
 
@@ -186,10 +190,13 @@ public class UserRepository {
                         result.getDouble("totalPrice"));
                 list.add(reservation);
             }
+            return list;
         } catch (SQLException e) {
+            System.out.println("[SQL HIST] "+ e.getMessage());
             e.printStackTrace();
+            return list;
         }
-        return list;
+
     }
 
 
