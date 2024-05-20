@@ -97,6 +97,16 @@ public class UserController implements Initializable {
     @FXML
     private TableColumn<Room, DatePicker> historyCheckOut_col;
 
+    @FXML
+    private Text txtUserReservations;
+
+    public void showUserReservations(){
+        String email=SessionManager.getUserEmail();
+        if (email != null){
+            txtUserReservations.setText(String.valueOf(UserService.updateUserReservations()));
+        }
+    }
+
     public void showFirstName(){
         String emri= SessionManager.getUserName();
         if (emri != null) {
@@ -153,6 +163,7 @@ public class UserController implements Initializable {
         showFirstName();
         showReservationRooms();
         showHistoryRooms();
+        showUserReservations();
     }
 
     @FXML

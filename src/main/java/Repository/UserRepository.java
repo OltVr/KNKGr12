@@ -199,5 +199,26 @@ public class UserRepository {
 
     }
 
+    public static int getReservationCountForUser(String email){
+        Connection connection = null;
+        PreparedStatement statement=null;
+        ResultSet resultSet=null;
+        int count = 0;
+
+        try {
+            String query="SELECT COUNT(*) AS reservation_count FROM reservation res JOIN user u ON res.email = u.email WHERE u.email = ?";
+            connection=DatabaseUtil.getConnection();
+            statement=connection.prepareStatement(query);
+            statement.setString(1,email);
+            resultSet=statement.executeQuery();
+
+            if(resultSet.next()){
+                count=resultSet.getInt("reservation_count");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return count;
+    }
 
 }
