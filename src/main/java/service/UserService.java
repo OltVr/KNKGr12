@@ -76,8 +76,14 @@ public class UserService {
 
     //TODO: Check if this code is where it should be. We may need to create a reserve service
     public static double totalPrice(LocalDate start, LocalDate end, double price){
-        long days= ChronoUnit.DAYS.between(start,end);
-        return days*price;
+        try {
+            long days= ChronoUnit.DAYS.between(start,end);
+            return days*price;
+        }catch (Exception e){
+            e.getMessage();
+            return 0;
+        }
+
     }
 
     public static boolean makeReservation(CreateReservationDto reservationDto){

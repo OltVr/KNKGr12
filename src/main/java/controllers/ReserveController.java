@@ -82,6 +82,7 @@ public class ReserveController {
             LocalDate date = checkOutDate.getValue();
             if (date.isEqual(checkInDate.getValue()) || date.isBefore(checkInDate.getValue())) {
                 checkOutDate.setValue(null);
+                lblTotalPrice.setText("0.00");
             }
             else {
                 double totalprice = UserService.totalPrice(checkInDate.getValue(), date, SessionManager.getPrice());
