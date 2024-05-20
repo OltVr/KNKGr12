@@ -92,13 +92,13 @@ public class UserService {
         return UserRepository.reserve(reservationDto);
     }
 
-    public static ObservableList<Reservation> listReservationRooms() {
-        return UserRepository.listReservationRooms();
+    public static ObservableList<Reservation> listReservationRooms(String email) {
+        return UserRepository.listReservationRooms(email);
     }
 
-    public static ObservableList<Reservation> listHistoryRooms() {
-        return UserRepository.listHistoryRooms();
+    public static ObservableList<Reservation> listHistoryRooms(String email) {
+        return UserRepository.listHistoryRooms(email);
     }
 
-    public static int updateUserReservations(){return UserRepository.getReservationCountForUser(SessionManager.getUserEmail());}
+    public static int updateUserReservations(String email){return UserRepository.getReservationCountForUser(email);}
 }
