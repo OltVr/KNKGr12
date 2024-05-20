@@ -5,11 +5,9 @@ import App.SessionManager;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.DateCell;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import model.Room;
 import model.dto.CreateReservationDto;
@@ -21,6 +19,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class ReserveController {
+    public Button btnReserve;
     private ResourceBundle bundle;
     @FXML
     private Text rsrvRoom;
@@ -128,4 +127,7 @@ public class ReserveController {
     }
 
 
+    public void handleProceeding(MouseEvent me) {
+        Navigator.navigate(me, Navigator.PROCEEDING_PAGE);
+    }
 }

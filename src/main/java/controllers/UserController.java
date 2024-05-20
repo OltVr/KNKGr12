@@ -97,6 +97,16 @@ public class UserController implements Initializable {
     @FXML
     private TableColumn<Room, DatePicker> historyCheckOut_col;
 
+    @FXML
+    private Text txtUserReservations;
+
+    public void showUserReservations(){
+        String email=SessionManager.getUserEmail();
+        if (email != null){
+            txtUserReservations.setText(String.valueOf(UserService.updateUserReservations(SessionManager.getUserEmail())));
+        }
+    }
+
     public void showFirstName(){
         String emri= SessionManager.getUserName();
         if (emri != null) {
@@ -153,6 +163,7 @@ public class UserController implements Initializable {
         showFirstName();
         showReservationRooms();
         showHistoryRooms();
+        showUserReservations();
     }
 
     @FXML
@@ -169,10 +180,10 @@ public class UserController implements Initializable {
         anchorPane = "CityView";
         Navigator.setCurrentVisibleSection("#cityViewPane");
     }
-//    @FXML
-//    public void handleProceeding(MouseEvent me) {
-//        Navigator.navigate(me, Navigator.PROCEEDING_PAGE);
-//    }
+    @FXML
+    public void handleProceeding(MouseEvent me) {
+        Navigator.navigate(me, Navigator.PROCEEDING_PAGE);
+    }
 
     private void showSeaViewRooms() {
         ObservableList<Room> listData = UserService.listSeaViewRooms();
@@ -237,12 +248,11 @@ public class UserController implements Initializable {
     }
 
     private void showReservationRooms() {
-        ObservableList<Reservation> listData = UserService.listReservationRooms();
+        ObservableList<Reservation> listData = UserService.listReservationRooms(SessionManager.getUserEmail());
 
         reservationRoom_col.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
-        reservationDate_col.setCellValueFactory(new PropertyValueFactory<>("date"));
-        reservationBedNum_col.setCellValueFactory(new PropertyValueFactory<>("bedNumber"));
-        reservationPrice_col.setCellValueFactory(new PropertyValueFactory<>("price"));
+        reservationDate_col.setCellValueFactory(new PropertyValueFactory<>("reservationDate"));
+        reservationPrice_col.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
         reservationCheckIn_col.setCellValueFactory(new PropertyValueFactory<>("checkInDate"));
         reservationCheckOut_col.setCellValueFactory(new PropertyValueFactory<>("checkOutDate"));
 
@@ -250,12 +260,11 @@ public class UserController implements Initializable {
     }
 
     private void showHistoryRooms() {
-        ObservableList<Reservation> listData = UserService.listHistoryRooms();
+        ObservableList<Reservation> listData = UserService.listHistoryRooms(SessionManager.getUserEmail());
 
         historyRoom_col.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
-        historyDate_col.setCellValueFactory(new PropertyValueFactory<>("date"));
-        historyBedNum_col.setCellValueFactory(new PropertyValueFactory<>("bedNumber"));
-        historyPrice_col.setCellValueFactory(new PropertyValueFactory<>("price"));
+        historyDate_col.setCellValueFactory(new PropertyValueFactory<>("reservationDate"));
+        historyPrice_col.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
         historyCheckIn_col.setCellValueFactory(new PropertyValueFactory<>("checkInDate"));
         historyCheckOut_col.setCellValueFactory(new PropertyValueFactory<>("checkOutDate"));
 

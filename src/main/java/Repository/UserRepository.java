@@ -139,58 +139,91 @@ public class UserRepository {
             pst.close();
             return true;
         } catch (SQLException e) {
+            System.out.println("[SQL] "+e.getMessage());
             return false;
         }
 
     }
 
-    public static ObservableList<Reservation> listReservationRooms() {
+    public static ObservableList<Reservation> listReservationRooms(String email) {
         ObservableList<Reservation> list = FXCollections.observableArrayList();
-        String query = "SELECT * FROM reservations WHERE isActive = True";
-        try (Connection connection = DatabaseUtil.getConnection();
-             PreparedStatement pst = connection.prepareStatement(query);
-             ResultSet result = pst.executeQuery()) {
-
-            while (result.next()) {
-                Reservation reservation = new Reservation(
-                        result.getInt("reservationID"),
-                        result.getString("email"),
-                        result.getInt("roomNumber"),
-                        result.getDate("reservationDate"),
-                        result.getDate("checkInDate"),
-                        result.getDate("checkOutDate"),
-                        result.getDouble("totalPrice"));
-                list.add(reservation);
+        String query = "SELECT * FROM RESERVATION WHERE checkInDate >= CURDATE() AND email = ?";
+        Connection connection = DatabaseUtil.getConnection();
+        try (
+                PreparedStatement pst = connection.prepareStatement(query);
+        ) {
+            pst.setString(1, email);
+            try (ResultSet result = pst.executeQuery()) {
+                while (result.next()) {
+                    Reservation reservation = new Reservation(
+                            result.getInt("reservationID"),
+                            result.getString("email"),
+                            result.getInt("roomNumber"),
+                            result.getDate("reservationDate"),
+                            result.getDate("checkInDate"),
+                            result.getDate("checkOutDate"),
+                            result.getDouble("totalPrice"));
+                    list.add(reservation);
+                }
             }
+            return list;
         } catch (SQLException e) {
+            System.out.println("[SQL RESER] "+ e.getMessage());
             e.printStackTrace();
+            return list;
         }
-        return list;
     }
 
-    public static ObservableList<Reservation> listHistoryRooms() {
+    public static ObservableList<Reservation> listHistoryRooms(String email) {
         ObservableList<Reservation> list = FXCollections.observableArrayList();
-        String query = "SELECT * FROM history WHERE isCompleted = True";
-        try (Connection connection = DatabaseUtil.getConnection();
-             PreparedStatement pst = connection.prepareStatement(query);
-             ResultSet result = pst.executeQuery()) {
-
-            while (result.next()) {
-                Reservation reservation = new Reservation(
-                        result.getInt("reservationID"),
-                        result.getString("email"),
-                        result.getInt("roomNumber"),
-                        result.getDate("reservationDate"),
-                        result.getDate("checkInDate"),
-                        result.getDate("checkOutDate"),
-                        result.getDouble("totalPrice"));
-                list.add(reservation);
+        String query = "SELECT * FROM RESERVATION WHERE checkOutDate <= CURDATE() and email = ?";
+        Connection connection = DatabaseUtil.getConnection();
+        try (
+                PreparedStatement pst = connection.prepareStatement(query);
+        ) {
+            pst.setString(1, email);
+            try (ResultSet result = pst.executeQuery()) {
+                while (result.next()) {
+                    Reservation reservation = new Reservation(
+                            result.getInt("reservationID"),
+                            result.getString("email"),
+                            result.getInt("roomNumber"),
+                            result.getDate("reservationDate"),
+                            result.getDate("checkInDate"),
+                            result.getDate("checkOutDate"),
+                            result.getDouble("totalPrice"));
+                    list.add(reservation);
+                }
             }
+            return list;
         } catch (SQLException e) {
+            System.out.println("[SQL HIST] "+ e.getMessage());
             e.printStackTrace();
+            return list;
         }
-        return list;
+
     }
 
+    public static int getReservationCountForUser(String email){
+        Connection connection = null;
+        PreparedStatement statement=null;
+        ResultSet resultSet=null;
+        int count = 0;
+
+        try {
+            String query="SELECT COUNT(*) AS reservation_count FROM reservation res JOIN user u ON res.email = u.email WHERE u.email = ?";
+            connection=DatabaseUtil.getConnection();
+            statement=connection.prepareStatement(query);
+            statement.setString(1,email);
+            resultSet=statement.executeQuery();
+
+            if(resultSet.next()){
+                count=resultSet.getInt("reservation_count");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return count;
+    }
 
 }

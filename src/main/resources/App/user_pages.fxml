@@ -300,12 +300,11 @@
                               </Text>
                               <TableView fx:id="reservationTable" layoutX="29.0" layoutY="228.0" prefHeight="172.0" prefWidth="760.0" styleClass="stylish-detailed-table-view" stylesheets="@../css/table.css">
                                  <columns>
-                                    <TableColumn fx:id="reservationRoom_col" prefWidth="97.0" text="%colRoom" />
-                                    <TableColumn fx:id="reservationDate_col" prefWidth="129.60003662109375" text="%colDate" />
-                                    <TableColumn fx:id="reservationBedNum_col" prefWidth="158.39999389648438" text="%colBeds" />
-                                    <TableColumn fx:id="reservationPrice_col" prefWidth="100.800048828125" text="%colPrice" />
-                                    <TableColumn fx:id="reservationCheckIn_col" prefWidth="120.800048828125" text="CheckIn" />
-                                    <TableColumn fx:id="reservationCheckOut_col" prefWidth="153.5999755859375" text="CheckOut" />
+                                    <TableColumn fx:id="reservationRoom_col" prefWidth="111.0" text="%colRoom" />
+                                    <TableColumn fx:id="reservationDate_col" prefWidth="150.0" text="%colDate" />
+                                    <TableColumn fx:id="reservationPrice_col" prefWidth="138.0" text="%colPrice" />
+                                    <TableColumn fx:id="reservationCheckIn_col" prefWidth="137.0" text="CheckIn" />
+                                    <TableColumn fx:id="reservationCheckOut_col" prefWidth="222.0" text="CheckOut" />
                                  </columns>
                               </TableView>
                               <Button layoutX="155.0" layoutY="482.0" mnemonicParsing="false" onMouseClicked="#handleCancelReservation" prefHeight="32.0" prefWidth="508.0" styleClass="btn-red" stylesheets="@../css/Login.css" text="%btnCancelRes" />
@@ -343,7 +342,6 @@
                                  <columns>
                                     <TableColumn fx:id="historyRoom_col" prefWidth="74.0" text="%colRoom" />
                                     <TableColumn fx:id="historyDate_col" prefWidth="103.20001220703125" text="%colDate" />
-                                    <TableColumn fx:id="historyBedNum_col" prefWidth="91.20001220703125" text="%colBeds" />
                                     <TableColumn fx:id="historyPrice_col" minWidth="0.0" prefWidth="54.0" text="%colPrice" />
                                     <TableColumn fx:id="historyCheckIn_col" prefWidth="70.0" text="CheckIn" />
                                     <TableColumn fx:id="historyCheckOut_col" prefWidth="75.0" text="CheckOut" />
@@ -370,7 +368,7 @@
                                           <Font name="Montserrat ExtraBold" size="18.0" />
                                        </font>
                                     </Text>
-                                    <Text fill="WHITE" layoutX="75.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="36">
+                                    <Text fx:id="txtUserReservations" fill="WHITE" layoutX="75.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="36">
                                        <font>
                                           <Font name="Montserrat ExtraBold" size="55.0" />
                                        </font>
