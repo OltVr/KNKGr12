@@ -3,6 +3,7 @@ package service;
 
 
 import javafx.collections.ObservableList;
+import model.Reservation;
 import model.Room;
 import model.User;
 import model.dto.CreateReservationDto;
@@ -88,5 +89,13 @@ public class UserService {
 
     public static boolean makeReservation(CreateReservationDto reservationDto){
         return UserRepository.reserve(reservationDto);
+    }
+
+    public static ObservableList<Reservation> listReservationRooms() {
+        return UserRepository.listSeaViewRooms();
+    }
+
+    public static ObservableList<Reservation> listHistoryRooms() {
+        return UserRepository.listCityViewRooms();
     }
 }
