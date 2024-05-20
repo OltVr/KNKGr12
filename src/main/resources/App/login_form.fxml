@@ -26,7 +26,7 @@
                </children></AnchorPane>
             <AnchorPane layoutX="355.0" prefHeight="580.0" prefWidth="515.0" styleClass="white-bg" stylesheets="@../css/Login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.1999999999999318" AnchorPane.topAnchor="0.0">
                <children>
-                  <PasswordField fx:id="pwdLoginPassword" layoutX="107.0" layoutY="296.0" prefHeight="35.0" prefWidth="300.0" promptText="Password" styleClass="textfield" stylesheets="@../css/Login.css" />
+                  <PasswordField fx:id="pwdLoginPassword" layoutX="107.0" layoutY="296.0" prefHeight="35.0" prefWidth="300.0" promptText="%Password" styleClass="textfield" stylesheets="@../css/Login.css" />
                   <Text fill="#30353e" layoutX="211.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login">
                      <font>
                         <Font name="Montserrat Light" size="20.0" />
