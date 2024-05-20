@@ -92,10 +92,10 @@ public class UserService {
     }
 
     public static ObservableList<Reservation> listReservationRooms() {
-        return UserRepository.listSeaViewRooms();
+        return UserRepository.listReservationRooms();
     }
 
     public static ObservableList<Reservation> listHistoryRooms() {
-        return UserRepository.listCityViewRooms();
+        return UserRepository.listHistoryRooms();
     }
 }
