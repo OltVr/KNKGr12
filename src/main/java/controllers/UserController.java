@@ -169,10 +169,10 @@ public class UserController implements Initializable {
         anchorPane = "CityView";
         Navigator.setCurrentVisibleSection("#cityViewPane");
     }
-//    @FXML
-//    public void handleProceeding(MouseEvent me) {
-//        Navigator.navigate(me, Navigator.PROCEEDING_PAGE);
-//    }
+    @FXML
+    public void handleProceeding(MouseEvent me) {
+        Navigator.navigate(me, Navigator.PROCEEDING_PAGE);
+    }
 
     private void showSeaViewRooms() {
         ObservableList<Room> listData = UserService.listSeaViewRooms();
