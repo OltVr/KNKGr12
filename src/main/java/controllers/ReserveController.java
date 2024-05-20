@@ -2,15 +2,21 @@ package controllers;
 
 import App.Navigator;
 import App.SessionManager;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
+import model.Room;
 import model.dto.CreateReservationDto;
 import service.UserService;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -73,7 +79,6 @@ public class ReserveController {
         }
 
     }
-
 
 
     @FXML
