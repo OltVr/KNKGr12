@@ -103,7 +103,7 @@ public class UserController implements Initializable {
     public void showUserReservations(){
         String email=SessionManager.getUserEmail();
         if (email != null){
-            txtUserReservations.setText(String.valueOf(UserService.updateUserReservations(SessionManager.getUserEmail())));
+            txtUserReservations.setText(String.valueOf(UserService.updateUserReservations()));
         }
     }
 
@@ -248,10 +248,11 @@ public class UserController implements Initializable {
     }
 
     private void showReservationRooms() {
-        ObservableList<Reservation> listData = UserService.listReservationRooms(SessionManager.getUserEmail());
+        ObservableList<Reservation> listData = UserService.listReservationRooms();
 
         reservationRoom_col.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
         reservationDate_col.setCellValueFactory(new PropertyValueFactory<>("reservationDate"));
+        reservationBedNum_col.setCellValueFactory(new PropertyValueFactory<>("bedNumber"));
         reservationPrice_col.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
         reservationCheckIn_col.setCellValueFactory(new PropertyValueFactory<>("checkInDate"));
         reservationCheckOut_col.setCellValueFactory(new PropertyValueFactory<>("checkOutDate"));
@@ -260,10 +261,11 @@ public class UserController implements Initializable {
     }
 
     private void showHistoryRooms() {
-        ObservableList<Reservation> listData = UserService.listHistoryRooms(SessionManager.getUserEmail());
+        ObservableList<Reservation> listData = UserService.listHistoryRooms();
 
         historyRoom_col.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
         historyDate_col.setCellValueFactory(new PropertyValueFactory<>("reservationDate"));
+        historyBedNum_col.setCellValueFactory(new PropertyValueFactory<>("bedNumber"));
         historyPrice_col.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
         historyCheckIn_col.setCellValueFactory(new PropertyValueFactory<>("checkInDate"));
         historyCheckOut_col.setCellValueFactory(new PropertyValueFactory<>("checkOutDate"));
