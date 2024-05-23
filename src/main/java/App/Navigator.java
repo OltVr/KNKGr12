@@ -24,6 +24,8 @@ public class Navigator {
 
     // Variable to keep track of the currently visible section
     private static String currentVisibleSection;
+    private static String previousPage;
+    private static String previousVisibleSection;
 
     public static void navigate(Stage stage, String page) {
         FXMLLoader loader = new FXMLLoader(
@@ -55,6 +57,18 @@ public class Navigator {
         Stage stage = (Stage) node.getScene().getWindow();
         navigate(stage, page);
     }
+    public static String getPreviousPage() {
+        return previousPage;
+    }
+
+
+    public static void navigate(String page, ResourceBundle bundle) {
+        previousPage = currentPage; // Update the previous page
+        currentPage = page;
+        Navigator.bundle = bundle;
+
+        // Logic to update the UI
+    }
 
     public static void changeLanguage(Event e, String localeCode) {
         locale = new Locale(localeCode);
@@ -73,6 +87,7 @@ public class Navigator {
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+
 
             // Restore visibility state
             if (currentVisibleSection != null) {
@@ -134,5 +149,9 @@ public class Navigator {
 
     public static void setCurrentVisibleSection(String sectionId) {
         currentVisibleSection = sectionId;
+    }
+
+    public static void setPreviousVisibleSection(String sectionId) {
+        previousVisibleSection = sectionId;
     }
 }

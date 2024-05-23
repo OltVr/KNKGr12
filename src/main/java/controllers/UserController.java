@@ -96,6 +96,7 @@ public class UserController implements Initializable {
     @FXML
     private Text txtUserReservations;
 
+
     public void showUserReservations(){
         String email=SessionManager.getUserEmail();
         if (email != null){
@@ -268,5 +269,25 @@ public class UserController implements Initializable {
     }
 
 
+    @FXML
+    private void handleBack() {
+        setAllPanesInvisible();
+
+        String previousPage = Navigator.getPreviousPage();
+
+        if (previousPage != null) {
+            switch (previousPage) {
+                case "cityView":
+                    cityViewPane.setVisible(true);
+                    Navigator.setCurrentVisibleSection("#cityViewPane");
+                    break;
+                case "seaView":
+                    seaViewPane.setVisible(true);
+                    Navigator.setCurrentVisibleSection("#seaViewPane");
+                    break;
+                // Add other cases as necessary
+            }
+        }
+    }
 
 }
