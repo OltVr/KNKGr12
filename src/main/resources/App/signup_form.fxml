@@ -19,11 +19,11 @@
    <children>
       <AnchorPane prefHeight="423.0" prefWidth="637.0">
          <children>
-            <AnchorPane layoutX="-15.0" prefHeight="580.0" prefWidth="857.0" styleClass="white-bg" stylesheets="@../css/Login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane prefHeight="580.0" prefWidth="857.0" styleClass="white-bg" stylesheets="@../css/Login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <AnchorPane layoutY="44.0" prefHeight="111.0" prefWidth="879.0" styleClass="left-form" stylesheets="@../css/Login.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
-                        <Text fill="WHITE" layoutX="300.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%lblSignUp">
+                        <Text fill="WHITE" layoutX="287.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-center" text="%lblSignUp" textAlignment="CENTER">
                            <font>
                               <Font name="Montserrat Regular" size="63.0" />
                            </font>

@@ -381,3 +381,14 @@
     -fx-text-fill: green;
     -fx-alignment: center;
 }
+.text-center {
+    -fx-text-alignment: center;
+}
+
+.text-left {
+    -fx-text-alignment: left;
+}
+
+.text-right {
+    -fx-text-alignment: right;
+}
