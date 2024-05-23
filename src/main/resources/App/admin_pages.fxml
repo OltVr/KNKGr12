@@ -30,19 +30,19 @@
    <children>
       <MenuBar prefHeight="26.0" prefWidth="1039.0">
          <menus>
-            <Menu fx:id="dashboardMenu" mnemonicParsing="false" text="Options">
+            <Menu fx:id="dashboardMenu" mnemonicParsing="false" text="%Options">
                <items>
-                  <MenuItem text="Dashboard" onAction="#handleDashboard"/>
-                  <MenuItem text="Guests" onAction="#handleGuests"/>
-                  <MenuItem text="Rooms" onAction="#handleRooms"/>
-                  <MenuItem text="Reservations" onAction="#handleReservations"/>
-                  <MenuItem text="Staff" onAction="#handleStaff"/>
+                  <MenuItem text="%Dashboard" onAction="#handleDashboard"/>
+                  <MenuItem text="%guests" onAction="#handleGuests"/>
+                  <MenuItem text="%rooms" onAction="#handleRooms"/>
+                  <MenuItem text="%Reservations" onAction="#handleReservations"/>
+                  <MenuItem text="%btnStaff" onAction="#handleStaff"/>
 
                </items>
             </Menu>
-            <Menu fx:id="helpMenu" mnemonicParsing="false"  text="Help" >
+            <Menu fx:id="helpMenu" mnemonicParsing="false"  text="%Help" >
                <items>
-                  <MenuItem text="Contact" onAction="#handleHelp"/>
+                  <MenuItem text="%Contact" onAction="#handleHelp"/>
                </items>
             </Menu>
          </menus>
