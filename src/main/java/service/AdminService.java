@@ -1,81 +1,81 @@
 package service;
 
+import Repository.*;
 import javafx.collections.ObservableList;
 import model.Room;
 import model.Staff;
 import model.User;
 import model.dto.InsertRoomDto;
-import Repository.AdminRepository;
 import model.dto.InsertStaffDto;
 import model.Reservation;
 
 public class AdminService {
     public static boolean addRoom(InsertRoomDto roomData){
-       Room room=AdminRepository.getRoom(roomData.getRoomNumber(), roomData.getFloorNumber());
+       Room room = RoomRepository.getRoom(roomData.getRoomNumber(), roomData.getFloorNumber());
        if (room==null){
-           return AdminRepository.insertRoom(roomData);
+           return RoomRepository.insertRoom(roomData);
        }
        return false;
     }
 
     public static boolean addStaff(InsertStaffDto staffData){
-            return AdminRepository.insertStaff(staffData);
+            return StaffRepository.insertStaff(staffData);
     }
 
     public static int newUsers() {
-        return AdminRepository.newUsers();
+        return UserRepository.countNewUsers();
     }
 
     public static int RoomsBooked() {
-        return AdminRepository.RoomsBooked();
+        return RoomRepository.countRoomsBookedToday();
     }
 
     public static double TotalIncome() {
-        return AdminRepository.TotalIncome();
+        return AdminRepository.calculateTotalIncome();
     }
 
     public static ObservableList<Room> ListRoom() {
-        return AdminRepository.ListRoom();
+        return RoomRepository.ListRoom();
     }
 
     public static ObservableList<Reservation> ListReservations() {
-        return AdminRepository.ListReservations();
+        return ReservationRepository.ListReservations();
     }
 
     public static boolean deleteReservation(int reservationID) {
-        return AdminRepository.deleteReservation(reservationID);
+        return ReservationRepository.deleteReservation(reservationID);
     }
 
     public static ObservableList<Reservation> searchReservations(String searchTerm) {
-        return AdminRepository.searchReservations(searchTerm);
+        return ReservationRepository.searchReservations(searchTerm);
     }
 
     public static ObservableList<User> searchUsers(String searchTerm) {
-        return AdminRepository.searchUsers(searchTerm);
+        return UserRepository.searchUsers(searchTerm);
     }
 
     public static ObservableList<User> ListUser() {
-        return AdminRepository.ListUser();
+        return UserRepository.ListUser();
     }
 
     public static boolean deleteRoom(int roomNumber, int floorNumber) {
-        return AdminRepository.deleteRoom(roomNumber, floorNumber);
+        return RoomRepository.deleteRoom(roomNumber, floorNumber);
     }
 
     public static boolean deleteUser(String email){
-        return AdminRepository.deleteUser(email);
+        return UserRepository.deleteUser(email);
     }
 
     public static boolean updateRoom(InsertRoomDto roomData) {
-        return AdminRepository.updateRoom(roomData);
+        return RoomRepository.updateRoom(roomData);
     }
 
-    public static ObservableList<Staff> ListStaff(){return AdminRepository.ListStaff();}
+    public static ObservableList<Staff> ListStaff(){return StaffRepository.ListStaff();}
 
     public static ObservableList<Staff> searchStaff(String searchTerm){
-        return AdminRepository.searchStaff(searchTerm);
+        return StaffRepository.searchStaff(searchTerm);
     }
 
-    public static boolean deleteStaff(String email){return AdminRepository.deleteStaff(email);}
+    public static boolean deleteStaff(String email){return StaffRepository.deleteStaff(email);}
 
 }
