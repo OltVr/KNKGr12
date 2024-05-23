@@ -145,26 +145,23 @@ public class UserRepository {
 
     }
 
-    public static ObservableList<Reservation> listReservationRooms(String email) {
+    public static ObservableList<Reservation> listReservationRooms() {
         ObservableList<Reservation> list = FXCollections.observableArrayList();
-        String query = "SELECT * FROM RESERVATION WHERE checkInDate >= CURDATE() AND email = ?";
+        String query = "SELECT * FROM RESERVATION WHERE checkInDate >= CURDATE()";
         Connection connection = DatabaseUtil.getConnection();
         try (
-                PreparedStatement pst = connection.prepareStatement(query);
-        ) {
-            pst.setString(1, email);
-            try (ResultSet result = pst.executeQuery()) {
-                while (result.next()) {
-                    Reservation reservation = new Reservation(
-                            result.getInt("reservationID"),
-                            result.getString("email"),
-                            result.getInt("roomNumber"),
-                            result.getDate("reservationDate"),
-                            result.getDate("checkInDate"),
-                            result.getDate("checkOutDate"),
-                            result.getDouble("totalPrice"));
-                    list.add(reservation);
-                }
+             PreparedStatement pst = connection.prepareStatement(query);
+             ResultSet result = pst.executeQuery()) {
+            while (result.next()) {
+                Reservation reservation = new Reservation(
+                        result.getInt("reservationID"),
+                        result.getString("email"),
+                        result.getInt("roomNumber"),
+                        result.getDate("reservationDate"),
+                        result.getDate("checkInDate"),
+                        result.getDate("checkOutDate"),
+                        result.getDouble("totalPrice"));
+                list.add(reservation);
             }
             return list;
         } catch (SQLException e) {
@@ -174,26 +171,24 @@ public class UserRepository {
         }
     }
 
-    public static ObservableList<Reservation> listHistoryRooms(String email) {
+    public static ObservableList<Reservation> listHistoryRooms() {
         ObservableList<Reservation> list = FXCollections.observableArrayList();
-        String query = "SELECT * FROM RESERVATION WHERE checkOutDate <= CURDATE() and email = ?";
+        String query = "SELECT * FROM RESERVATION WHERE checkOutDate <= CURDATE()";
         Connection connection = DatabaseUtil.getConnection();
         try (
-                PreparedStatement pst = connection.prepareStatement(query);
-        ) {
-            pst.setString(1, email);
-            try (ResultSet result = pst.executeQuery()) {
-                while (result.next()) {
-                    Reservation reservation = new Reservation(
-                            result.getInt("reservationID"),
-                            result.getString("email"),
-                            result.getInt("roomNumber"),
-                            result.getDate("reservationDate"),
-                            result.getDate("checkInDate"),
-                            result.getDate("checkOutDate"),
-                            result.getDouble("totalPrice"));
-                    list.add(reservation);
-                }
+             PreparedStatement pst = connection.prepareStatement(query);
+             ResultSet result = pst.executeQuery()) {
+
+            while (result.next()) {
+                Reservation reservation = new Reservation(
+                        result.getInt("reservationID"),
+                        result.getString("email"),
+                        result.getInt("roomNumber"),
+                        result.getDate("reservationDate"),
+                        result.getDate("checkInDate"),
+                        result.getDate("checkOutDate"),
+                        result.getDouble("totalPrice"));
+                list.add(reservation);
             }
             return list;
         } catch (SQLException e) {
