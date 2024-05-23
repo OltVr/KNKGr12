@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReserveController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReserveController">
    <children>
       <AnchorPane prefHeight="423.0" prefWidth="637.0">
          <children>
@@ -79,7 +79,7 @@
                      </font>
                   </Button>
                   <Button layoutX="408.0" layoutY="523.0" mnemonicParsing="false" onAction="#handleChangeLanguage" prefHeight="35.0" prefWidth="53.0" text="%lang" />
-                  <Button alignment="CENTER_RIGHT" layoutX="734.0" layoutY="149.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="31.0" prefWidth="89.0" styleClass="btn4" stylesheets="@../css/Login.css" text="Go back" />
+                  <Button alignment="CENTER_RIGHT" layoutX="734.0" layoutY="149.0" mnemonicParsing="false" onAction="#handleBack" prefHeight="31.0" prefWidth="89.0" styleClass="btn4" stylesheets="@../css/Login.css" text="%btnBack" />
                   <ImageView fitHeight="24.0" fitWidth="19.0" layoutX="739.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../icons/back.png" />

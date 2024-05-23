@@ -70,6 +70,10 @@ public class UserService {
         return UserRepository.getUserByEmail(email);
     }
 
+    public static boolean cancelReservation(int reservationID){
+        return ReservationRepository.cancelReservation(reservationID);
+    }
+
     public static boolean userExists(String email) {
         return UserRepository.userExists(email);
     }
@@ -82,7 +86,6 @@ public class UserService {
         return RoomRepository.listCityViewRooms();
     }
 
-    //TODO: Check if this code is where it should be. We may need to create a reserve service
     public static double totalPrice(LocalDate start, LocalDate end, double price){
         try {
             long days= ChronoUnit.DAYS.between(start,end);

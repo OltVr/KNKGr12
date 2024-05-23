@@ -181,4 +181,20 @@ public class ReservationRepository {
         }
         return count;
     }
+
+    public static boolean cancelReservation(int reservationID) {
+        String query = "DELETE FROM RESERVATION WHERE reservationID = ?";
+        Connection connection = DatabaseUtil.getConnection();
+        try {
+            PreparedStatement pst = connection.prepareStatement(query);
+            pst.setInt(1, reservationID);
+            pst.executeUpdate();
+            pst.close();
+            return true;
+        } catch (SQLException e) {
+            System.out.println("[DB ERROR] " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

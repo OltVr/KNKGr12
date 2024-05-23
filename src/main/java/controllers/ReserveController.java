@@ -30,24 +30,6 @@ public class ReserveController {
     @FXML
     private DatePicker checkOutDate;
 
-    private UserController userController;
-
-    // Setters for dependency injection
-    public void setUserController(UserController userController) {
-        this.userController = userController;
-    }
-
-    // Method to show reservation popup
-    public void showReservationPopup() {
-        Navigator.setPreviousVisibleSection("somePageId"); // Set the previous page before navigating
-        Navigator.navigate("reservePopup", bundle);
-        // Logic to show reservation popup
-    }
-
-    // Method to hide reservation popup
-    public void hideReservationPopup() {
-        // Logic to hide reservation popup
-    }
 
     @FXML
     private void initialize(){
