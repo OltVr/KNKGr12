@@ -503,8 +503,12 @@ public class AdminController implements Initializable {
         int roomNumber= Integer.parseInt(txtRoom.getText());
         int floorNumber= Integer.parseInt(txtFloor.getText());
         if (AdminService.deleteRoom(roomNumber,floorNumber)){
-            showRoomList();
-            clear();
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this room?", ButtonType.YES, ButtonType.NO);
+            alert.showAndWait();
+            if (alert.getResult() == ButtonType.YES) {
+                showRoomList();
+                clear();
+            }
         }
         else {
             showAlert("Error", "Couldn't find room.");
