@@ -576,7 +576,7 @@ public class AdminController implements Initializable {
                     setText(item ? "Full Time" : "Half Time");
                 }
             }
-        });
+        }); 
 
         Benefits_col.setCellFactory(column -> new TableCell<Staff, Boolean>() {
             @Override

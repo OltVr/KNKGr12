@@ -3,6 +3,8 @@ package service;
 
 
 import App.SessionManager;
+import Repository.ReservationRepository;
+import Repository.RoomRepository;
 import javafx.collections.ObservableList;
 import model.Reservation;
 import model.Room;
@@ -34,11 +36,11 @@ public class UserService {
                 salt,
                 passwordHash
         );
-    return UserRepository.create(createUserData);
+    return UserRepository.createUser(createUserData);
     }
 
     public static boolean login( LoginUserDto loginData){
-        User user = UserRepository.getByEmail(loginData.getEmail());
+        User user = UserRepository.getUserByEmail(loginData.getEmail());
         if(user == null){
             return false;
         }
@@ -55,7 +57,7 @@ public class UserService {
 
     public static boolean loginAdmin( LoginUserDto loginData){
         if (login(loginData)){
-            User user = UserRepository.getByEmail(loginData.getEmail());
+            User user = UserRepository.getUserByEmail(loginData.getEmail());
             if(user == null){
                 return false;
             }
@@ -65,15 +67,15 @@ public class UserService {
     }
 
     public static User getUserEmail(String email){
-        return UserRepository.getByEmail(email);
+        return UserRepository.getUserByEmail(email);
     }
 
     public static ObservableList<Room> listSeaViewRooms() {
-        return UserRepository.listSeaViewRooms();
+        return RoomRepository.listSeaViewRooms();
     }
 
     public static ObservableList<Room> listCityViewRooms() {
-        return UserRepository.listCityViewRooms();
+        return RoomRepository.listCityViewRooms();
     }
 
     //TODO: Check if this code is where it should be. We may need to create a reserve service
@@ -89,16 +91,16 @@ public class UserService {
     }
 
     public static boolean makeReservation(CreateReservationDto reservationDto){
-        return UserRepository.reserve(reservationDto);
+        return ReservationRepository.reserve(reservationDto);
     }
 
     public static ObservableList<Reservation> listReservationRooms() {
-        return UserRepository.listReservationRooms();
+        return ReservationRepository.listUserReservations();
     }
 
     public static ObservableList<Reservation> listHistoryRooms() {
-        return UserRepository.listHistoryRooms();
+        return ReservationRepository.listUserReservationHistory();
     }
 
-    public static int updateUserReservations(){return UserRepository.getReservationCountForUser(SessionManager.getUserEmail());}
+    public static int updateUserReservations(){return ReservationRepository.getReservationCountForUser(SessionManager.getUserEmail());}
 }
