@@ -70,6 +70,10 @@ public class UserService {
         return UserRepository.getUserByEmail(email);
     }
 
+    public static boolean userExists(String email) {
+        return UserRepository.userExists(email);
+    }
+
     public static ObservableList<Room> listSeaViewRooms() {
         return RoomRepository.listSeaViewRooms();
     }
