@@ -70,6 +70,7 @@ public class SignupController {
     private void handleSignUp(ActionEvent ae) {
         String email = txtSignUpEmail.getText();
         String password = pwdSignUpPassword.getText();
+        String confirmPassword = pwdSignUpConfirmPassword.getText();
 
         // Validate email
         if (!email.matches(EMAIL_REGEX)) {
@@ -77,12 +78,24 @@ public class SignupController {
             return;
         }
 
+        // Check if email already exists
+        if (UserService.userExists(email)) {
+            showAlert("Email Already Exists", "The email address is already registered. Please use a different email.");
+            return;
+        }
+
         // Validate password
         if (!password.matches(PASSWORD_REGEX)) {
-
             showAlert("Invalid Password", "Password requires at least 1 digit, lowercase & uppercase letter, special character, and minimum length of 8 characters.");
             return;
         }
+
+        // Check if passwords match
+        if(!password.matches(confirmPassword)){
+            showAlert("Sign Up Failed! ", "Passwords do not match.");
+            return;
+        }
+
 
         // Other signup logic
         UserDto userSignUpData = new UserDto(
