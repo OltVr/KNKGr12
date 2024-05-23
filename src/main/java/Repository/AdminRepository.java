@@ -33,4 +33,13 @@ public class AdminRepository {
             return 0;
         }
     }
+    public static ResultSet getDailyIncomeData() throws SQLException {
+        Connection connect = DatabaseUtil.getConnection();
+        String query = "SELECT res.reservationDate, SUM(DATEDIFF(res.checkOutDate, res.checkInDate) * r.price) AS total_price " +
+                "FROM rooms r JOIN reservation res ON r.roomNumber = res.roomNumber " +
+                "WHERE res.reservationDate >= CURDATE() - INTERVAL 7 DAY " +
+                "GROUP BY res.reservationDate";
+        PreparedStatement statement = connect.prepareStatement(query);
+        return statement.executeQuery();
+    }
 }

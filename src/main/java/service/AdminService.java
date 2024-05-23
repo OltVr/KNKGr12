@@ -2,12 +2,16 @@ package service;
 
 import Repository.*;
 import javafx.collections.ObservableList;
+import javafx.scene.chart.XYChart;
 import model.Room;
 import model.Staff;
 import model.User;
 import model.dto.InsertRoomDto;
 import model.dto.InsertStaffDto;
 import model.Reservation;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class AdminService {
     public static boolean addRoom(InsertRoomDto roomData){
@@ -78,4 +82,16 @@ public class AdminService {
 
     public static boolean deleteStaff(String email){return StaffRepository.deleteStaff(email);}
 
+    public static XYChart.Series<String, Number> getDailyIncomeSeries() {
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        try {
+            ResultSet result = AdminRepository.getDailyIncomeData();
+            while (result.next()) {
+                series.getData().add(new XYChart.Data<>(result.getString("reservationDate"), result.getInt("total_price")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return series;
+    }
 }

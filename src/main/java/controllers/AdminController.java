@@ -185,23 +185,8 @@ public class AdminController implements Initializable {
 
     // ADMIN DASHBOARD
     private void populateChart(){
-        Connection connect=null;
-        PreparedStatement statement=null;
-        ResultSet result=null;
-        XYChart.Series chart=new XYChart.Series();
-        try{
-            String query="SELECT res.reservationDate, SUM(DATEDIFF(res.checkOutDate, res.checkInDate) * r.price) AS total_price FROM rooms r JOIN reservation res ON r.roomNumber = res.roomNumber WHERE res.reservationDate >= CURDATE() - INTERVAL 7 DAY GROUP BY res.reservationDate";
-            connect= DatabaseUtil.getConnection();
-            statement=connect.prepareStatement(query);
-            result=statement.executeQuery();
-
-            while(result.next()){
-                chart.getData().add(new XYChart.Data(result.getString(1), result.getInt(2)));
-            }
-            chartDashboard.getData().add(chart);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        XYChart.Series<String, Number> series = AdminService.getDailyIncomeSeries();
+        chartDashboard.getData().add(series);
     }
 
     private void updateNewUsers(){
