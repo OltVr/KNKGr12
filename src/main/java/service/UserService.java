@@ -2,7 +2,7 @@ package service;
 
 
 
-import App.SessionManager;
+
 import Repository.ReservationRepository;
 import Repository.RoomRepository;
 import javafx.collections.ObservableList;
@@ -102,5 +102,5 @@ public class UserService {
         return ReservationRepository.listUserReservationHistory();
     }
 
-    public static int updateUserReservations(){return ReservationRepository.getReservationCountForUser(SessionManager.getUserEmail());}
+    public static int updateUserReservations(String email){return ReservationRepository.getReservationCountForUser(email);}
 }

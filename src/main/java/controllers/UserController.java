@@ -99,7 +99,7 @@ public class UserController implements Initializable {
     public void showUserReservations(){
         String email=SessionManager.getUserEmail();
         if (email != null){
-            txtUserReservations.setText(String.valueOf(UserService.updateUserReservations()));
+            txtUserReservations.setText(String.valueOf(UserService.updateUserReservations(SessionManager.getUserEmail())));
         }
     }
 

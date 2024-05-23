@@ -16,6 +16,7 @@ import service.UserService;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ReserveController {
@@ -118,11 +119,20 @@ public class ReserveController {
                 checkOutDate.getValue()
         );
         if(!UserService.makeReservation(reservation)){
-            System.out.println("[RESERVATION] Failed to reserve! Insert a popup");
+            Alert alert=new Alert(Alert.AlertType.ERROR,"Reservation failed, please try again!",ButtonType.OK);
+            Optional<ButtonType> result=alert.showAndWait();
+            if (result.get() == ButtonType.OK){
+                alert.close();
+            }
         }
         else {
-            System.out.println("[RESERVATION] Reservation is complete! Insert a popup");
-            Navigator.navigate(ae,Navigator.HOME_PAGE);
+            Alert alert=new Alert(Alert.AlertType.CONFIRMATION,"Reservation is made successfully, thanks for choosing us.",ButtonType.OK);
+            Optional<ButtonType> result=alert.showAndWait();
+            if (result.get() == ButtonType.OK){
+                alert.close();
+                Navigator.navigate(ae,Navigator.HOME_PAGE);
+            }
+
         }
     }
 
