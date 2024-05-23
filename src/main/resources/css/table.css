@@ -123,8 +123,7 @@
 }
 
 .compact-stylish-table-view .table-row-cell {
-    -fx-border-color: #cccccc;
-    -fx-table-cell-border-color: #cccccc;
+
     -fx-font-size: 10px;
     -fx-padding: 5px;
 }
