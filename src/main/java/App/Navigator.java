@@ -47,6 +47,7 @@ public class Navigator {
             stage.show();
             currentPage = page;
         } catch (IOException ioe) {
+            System.out.println("[DEBUG]" + ioe.getMessage());
             ioe.printStackTrace();
         }
     }

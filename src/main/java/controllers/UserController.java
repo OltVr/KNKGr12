@@ -73,8 +73,6 @@ public class UserController implements Initializable {
     @FXML
     private TableColumn<Room, Date> reservationDate_col;
     @FXML
-    private TableColumn<Room, Integer> reservationBedNum_col;
-    @FXML
     private TableColumn<Room, Text> reservationPrice_col;
     @FXML
     private TableColumn<Room, DatePicker> reservationCheckIn_col;
@@ -88,8 +86,6 @@ public class UserController implements Initializable {
     private TableColumn<Room, Text> historyRoom_col;
     @FXML
     private TableColumn<Room, Date> historyDate_col;
-    @FXML
-    private TableColumn<Room, Integer> historyBedNum_col;
     @FXML
     private TableColumn<Room, Text> historyPrice_col;
     @FXML
@@ -243,8 +239,8 @@ public class UserController implements Initializable {
 
 
     @FXML
-    public void handleCancelReservation(MouseEvent me) {
-        Navigator.navigate(me, Navigator.HOME_PAGE);
+    public void handleCancelReservation(){
+        System.out.println("[RESERVATION2]:");
     }
 
     private void showReservationRooms() {
@@ -252,7 +248,6 @@ public class UserController implements Initializable {
 
         reservationRoom_col.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
         reservationDate_col.setCellValueFactory(new PropertyValueFactory<>("reservationDate"));
-        reservationBedNum_col.setCellValueFactory(new PropertyValueFactory<>("bedNumber"));
         reservationPrice_col.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
         reservationCheckIn_col.setCellValueFactory(new PropertyValueFactory<>("checkInDate"));
         reservationCheckOut_col.setCellValueFactory(new PropertyValueFactory<>("checkOutDate"));
@@ -265,7 +260,6 @@ public class UserController implements Initializable {
 
         historyRoom_col.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
         historyDate_col.setCellValueFactory(new PropertyValueFactory<>("reservationDate"));
-        historyBedNum_col.setCellValueFactory(new PropertyValueFactory<>("bedNumber"));
         historyPrice_col.setCellValueFactory(new PropertyValueFactory<>("totalPrice"));
         historyCheckIn_col.setCellValueFactory(new PropertyValueFactory<>("checkInDate"));
         historyCheckOut_col.setCellValueFactory(new PropertyValueFactory<>("checkOutDate"));
