@@ -51,12 +51,12 @@ public class AdminService {
         return ReservationRepository.deleteReservation(reservationID);
     }
 
-    public static ObservableList<Reservation> searchReservations(String searchTerm, ReservationFilter filter) {
-        return ReservationRepository.searchReservations(searchTerm, filter);
+    public static ObservableList<Reservation> searchReservations(String query, ReservationFilter filter) {
+        return ReservationRepository.searchReservations(query, filter);
     }
 
-    public static ObservableList<User> searchUsers(String searchTerm) {
-        return UserRepository.searchUsers(searchTerm);
+    public static ObservableList<User> searchUsers(String query) {
+        return UserRepository.searchUsers(query);
     }
 
     public static ObservableList<User> ListUser() {
@@ -77,8 +77,8 @@ public class AdminService {
 
     public static ObservableList<Staff> ListStaff(){return StaffRepository.ListStaff();}
 
-    public static ObservableList<Staff> searchStaff(String searchTerm){
-        return StaffRepository.searchStaff(searchTerm);
+    public static ObservableList<Staff> searchStaff(String query){
+        return StaffRepository.searchStaff(query);
     }
 
     public static boolean deleteStaff(String email){return StaffRepository.deleteStaff(email);}
