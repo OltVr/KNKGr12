@@ -44,13 +44,11 @@ public class UserRepository {
         return false;
     }
 
-    public static ObservableList<User> searchUsers(String searchTerm) {
+    public static ObservableList<User> searchUsers(String query) {
         ObservableList<User> userList = FXCollections.observableArrayList();
-        String query = "SELECT * FROM user WHERE email LIKE ?";
         Connection connection = DatabaseUtil.getConnection();
         try {
             PreparedStatement pst = connection.prepareStatement(query);
-            pst.setString(1, "%" + searchTerm + "%");
             ResultSet result = pst.executeQuery();
             while (result.next()) {
                 User user = new User(

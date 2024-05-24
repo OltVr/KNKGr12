@@ -24,6 +24,7 @@ import model.dto.InsertRoomDto;
 import model.dto.InsertStaffDto;
 import model.Reservation;
 import model.filter.StaffFilter;
+import model.filter.UserFilter;
 import service.AdminService;
 import javafx.scene.control.Alert;
 
@@ -421,7 +422,9 @@ public class AdminController implements Initializable {
     private void handleSearchUser() {
         String searchTerm = searchFieldUser.getText().trim();
         if (!searchTerm.isEmpty()) {
-            ObservableList<User> searchResults = AdminService.searchUsers(searchTerm);
+            UserFilter userFilter = new UserFilter(searchTerm);
+            String query = userFilter.buildQuery();
+            ObservableList<User> searchResults = AdminService.searchUsers(query);
             if (!searchResults.isEmpty()) {
                 userTable.setItems(searchResults);
             } else {
