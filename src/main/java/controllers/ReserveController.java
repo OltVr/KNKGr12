@@ -119,16 +119,17 @@ public class ReserveController {
                 checkOutDate.getValue()
         );
         if(!UserService.makeReservation(reservation)){
-            Alert alert=new Alert(Alert.AlertType.ERROR,"Reservation failed, please try again!",ButtonType.OK);
-            Optional<ButtonType> result=alert.showAndWait();
-            if (result.get() == ButtonType.OK){
+
+            Alert alert=new Alert(Alert.AlertType.ERROR,"Reservation failed, please try again!!!",ButtonType.OK);
+            Optional<ButtonType> rez=alert.showAndWait();
+            if (rez.get() == ButtonType.OK){
                 alert.close();
             }
         }
         else {
-            Alert alert=new Alert(Alert.AlertType.CONFIRMATION,"Reservation is made successfully, thanks for choosing us.",ButtonType.OK);
-            Optional<ButtonType> result=alert.showAndWait();
-            if (result.get() == ButtonType.OK){
+            Alert alert=new Alert(Alert.AlertType.CONFIRMATION,"Reservation is made successfully, thanks for choosing us. ",ButtonType.OK);
+            Optional<ButtonType> rez=alert.showAndWait();
+            if (rez.get() == ButtonType.OK){
                 alert.close();
                 Navigator.navigate(ae,Navigator.HOME_PAGE);
             }
