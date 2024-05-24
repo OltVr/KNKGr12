@@ -44,7 +44,6 @@ public class ReserveController {
         }
         rsrvRoom.setText(String.valueOf(SessionManager.getSelectedRoomNumber()));
         lblTotalPrice.setText("0.00");
-        checkInDate.setValue(LocalDate.now());
         checkInDate.setDayCellFactory(picker -> new DateCell(){
             @Override
             public void updateItem(LocalDate date, boolean empty){
@@ -125,8 +124,11 @@ public class ReserveController {
                 checkInDate.getValue(),
                 checkOutDate.getValue()
         );
+        if(checkOutDate.getValue()==null){
+            Alert alert=new Alert(Alert.AlertType.WARNING,"Please select a check out date first!",ButtonType.OK);
+            alert.show();
+        }
         if(!UserService.makeReservation(reservation)){
-
             Alert alert=new Alert(Alert.AlertType.ERROR,"Reservation failed, please try again!",ButtonType.OK);
             Optional<ButtonType> rez=alert.showAndWait();
             if (rez.get() == ButtonType.OK){
