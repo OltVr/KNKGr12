@@ -52,6 +52,15 @@ public class SignupController {
             bundle = ResourceBundle.getBundle("translations.content_en", locale);
         }
     }
+
+    @FXML
+    private void handleHelp(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Contact Us");
+        alert.setHeaderText(null);
+        alert.setContentText("For support, please contact us:\n\nEmail: support@royalrest.com\nPhone: +383 45 117 755");
+        alert.showAndWait();
+    }
     @FXML
     private void handleChangeLanguage(ActionEvent ae) {
 

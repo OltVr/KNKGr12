@@ -9,8 +9,22 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReserveController">
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.layout.VBox?>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="872.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReserveController">
+   <children>
+      <MenuBar prefHeight="26.0" prefWidth="862.0">
+         <menus>
+            <Menu fx:id="helpMenu" mnemonicParsing="false" text="%Help">
+               <items>
+                  <MenuItem onAction="#handleHelp" text="%Contact" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="423.0" prefWidth="637.0">
          <children>
@@ -91,3 +105,5 @@
       </AnchorPane>
    </children>
 </StackPane>
+   </children>
+</VBox>
