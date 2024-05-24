@@ -29,7 +29,7 @@
          </Menu>
          <Menu fx:id="helpMenu" mnemonicParsing="false"  text="%Help" >
             <items>
-               <MenuItem text="%Contact" />
+               <MenuItem text="%Contact" onAction="#handleHelp"/>
             </items>
          </Menu>
       </menus>

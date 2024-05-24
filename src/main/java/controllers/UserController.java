@@ -144,6 +144,14 @@ public class UserController implements Initializable {
         anchorPane = "History";
         Navigator.setCurrentVisibleSection("#historyPane");
     }
+    @FXML
+    private void handleHelp(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Contact Us");
+        alert.setHeaderText(null);
+        alert.setContentText("For support, please contact us:\n\nEmail: support@royalrest.com\nPhone: +383 45 117 755");
+        alert.showAndWait();
+    }
 
     @FXML
     private void handleLogOut(ActionEvent ae) {
