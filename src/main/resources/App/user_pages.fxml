@@ -22,9 +22,9 @@
       <menus>
          <Menu fx:id="dashboardMenu" mnemonicParsing="false" text="%Options">
             <items>
-               <MenuItem text="btnHome" onAction="#handleHome" />
-               <MenuItem text="btnReservations" onAction="#handleReservations"/>
-               <MenuItem text="btnHistory" onAction="#handleHistory"/>
+               <MenuItem text="%btnHome" onAction="#handleHome" />
+               <MenuItem text="%btnReservations" onAction="#handleReservations"/>
+               <MenuItem text="%btnHistory" onAction="#handleHistory"/>
             </items>
          </Menu>
          <Menu fx:id="helpMenu" mnemonicParsing="false"  text="%Help" >
