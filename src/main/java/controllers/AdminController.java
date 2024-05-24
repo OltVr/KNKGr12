@@ -23,6 +23,7 @@ import model.User;
 import model.dto.InsertRoomDto;
 import model.dto.InsertStaffDto;
 import model.Reservation;
+import model.filter.StaffFilter;
 import service.AdminService;
 import javafx.scene.control.Alert;
 
@@ -614,10 +615,12 @@ public class AdminController implements Initializable {
     }
 
     @FXML
-    private void handleSearchStaff(){
+    private void handleSearchStaff() {
         String searchTerm = searchFieldStaff.getText().trim();
         if (!searchTerm.isEmpty()) {
-            ObservableList<Staff> searchResults = AdminService.searchStaff(searchTerm);
+            StaffFilter staffFilter = new StaffFilter(searchTerm);
+            String query = staffFilter.buildQuery();
+            ObservableList<Staff> searchResults = AdminService.searchStaff(query);
             if (!searchResults.isEmpty()) {
                 reservationTable1.setItems(searchResults);
             } else {

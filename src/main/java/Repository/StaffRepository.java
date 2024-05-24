@@ -65,13 +65,11 @@ public class StaffRepository {
         }
     }
 
-    public static ObservableList<Staff> searchStaff(String searchTerm) {
+    public static ObservableList<Staff> searchStaff(String query) {
         ObservableList<Staff> staffList = FXCollections.observableArrayList();
-        String query = "SELECT * FROM staff WHERE email LIKE ?";
         Connection connection = DatabaseUtil.getConnection();
         try {
             PreparedStatement pst = connection.prepareStatement(query);
-            pst.setString(1, "%" + searchTerm + "%");
             ResultSet result = pst.executeQuery();
             while (result.next()) {
                 Staff staff = new Staff(
@@ -84,7 +82,8 @@ public class StaffRepository {
                         result.getBoolean("isEmployed"),
                         result.getBoolean("isFullTime"),
                         result.getBoolean("hasBenefits"),
-                        result.getTimestamp("createdAt"));
+                        result.getTimestamp("createdAt")
+                );
                 staffList.add(staff);
             }
             return staffList;
