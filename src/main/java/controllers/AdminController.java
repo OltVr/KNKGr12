@@ -23,6 +23,7 @@ import model.User;
 import model.dto.InsertRoomDto;
 import model.dto.InsertStaffDto;
 import model.Reservation;
+import model.filter.ReservationFilter;
 import model.filter.StaffFilter;
 import model.filter.UserFilter;
 import service.AdminService;
@@ -405,15 +406,30 @@ public class AdminController implements Initializable {
     private void handleSearchReservation() {
         String searchTerm = searchField.getText().trim();
         if (!searchTerm.isEmpty()) {
-            ObservableList<Reservation> searchResults = AdminService.searchReservations(searchTerm);
-            if (!searchResults.isEmpty()) {
-                reservationTable.setItems(searchResults);
-            } else {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION, "No reservations found for the given ID");
-                alert.showAndWait();
+            try {
+                Integer reservationID = Integer.parseInt(searchTerm);
+                ReservationFilter reservationFilter = new ReservationFilter(null, reservationID);
+                String query = reservationFilter.buildQuery();
+                ObservableList<Reservation> searchResults = AdminService.searchReservations(query, reservationFilter);
+                if (!searchResults.isEmpty()) {
+                    reservationTable.setItems(searchResults);
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION, "No reservations found for the given ID");
+                    alert.showAndWait();
+                }
+            } catch (NumberFormatException e) {
+                ReservationFilter reservationFilter = new ReservationFilter(searchTerm, null);
+                String query = reservationFilter.buildQuery();
+                ObservableList<Reservation> searchResults = AdminService.searchReservations(query, reservationFilter);
+                if (!searchResults.isEmpty()) {
+                    reservationTable.setItems(searchResults);
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION, "No reservations found for the given email");
+                    alert.showAndWait();
+                }
             }
         } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING, "Please enter a reservation ID.");
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Please enter a reservation ID or email.");
             alert.showAndWait();
         }
     }

@@ -5,6 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Reservation;
 import model.dto.CreateReservationDto;
+import model.filter.ReservationFilter;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -34,14 +35,19 @@ public class ReservationRepository {
             return -1; // Default to -1 nese fails
         }
     }
-    public static ObservableList<Reservation> searchReservations(String searchTerm) {
+    public static ObservableList<Reservation> searchReservations(String query, ReservationFilter filter) {
         ObservableList<Reservation> list = FXCollections.observableArrayList();
-        String query = "SELECT * FROM reservation WHERE email LIKE ? OR reservationID = ?";
         Connection connection = DatabaseUtil.getConnection();
         try {
             PreparedStatement pst = connection.prepareStatement(query);
-            pst.setString(1, "%" + searchTerm + "%");
-            pst.setInt(2, tryParseInt(searchTerm));
+            int paramIndex = 1;
+            if (filter.getUserEmail() != null && !filter.getUserEmail().isEmpty()) {
+                pst.setString(paramIndex++, filter.getUserEmail() + "%");
+            }
+            if (filter.getReservationID() != null) {
+                pst.setInt(paramIndex++, filter.getReservationID());
+            }
+
             ResultSet result = pst.executeQuery();
             while (result.next()) {
                 Reservation reservation = new Reservation(

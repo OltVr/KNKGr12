@@ -9,6 +9,7 @@ import model.User;
 import model.dto.InsertRoomDto;
 import model.dto.InsertStaffDto;
 import model.Reservation;
+import model.filter.ReservationFilter;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -50,8 +51,8 @@ public class AdminService {
         return ReservationRepository.deleteReservation(reservationID);
     }
 
-    public static ObservableList<Reservation> searchReservations(String searchTerm) {
-        return ReservationRepository.searchReservations(searchTerm);
+    public static ObservableList<Reservation> searchReservations(String searchTerm, ReservationFilter filter) {
+        return ReservationRepository.searchReservations(searchTerm, filter);
     }
 
     public static ObservableList<User> searchUsers(String searchTerm) {
