@@ -302,6 +302,10 @@ public class AdminController implements Initializable {
         pane = "Dashboard";
         Navigator.setCurrentVisibleSection("#dashboardPane");
     }
+    @FXML
+    private void handleHelp(){
+        //navigate te popupi per help kur te bojme
+    }
 
     @FXML
     private void handleReservations() {
