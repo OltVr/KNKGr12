@@ -39,7 +39,7 @@ public class RoomRepository {
     }
 
 
-    // QEKJO SKA QUERY, A MOS DUHET ME KON DIKUN TJETER JO NE REPO?
+    // QEKJO SKA QUERY, A MOS DUHET ME KON DIKUN TJETER JO NE REPO? JO, prapseprap po komunikon me databaze
     private static Room getRoomFromResultSet(ResultSet result) {
         try {
             int roomNumber = result.getInt("roomNumber");

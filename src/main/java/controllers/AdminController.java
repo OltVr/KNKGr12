@@ -88,6 +88,8 @@ public class AdminController implements Initializable {
     @FXML
     private TableColumn<Room, String> capacity_col;
     @FXML
+    private TableColumn<Room, String> bedNumber_col;
+    @FXML
     private TableColumn<Room, String> Available_col;
 
     //Tabela User
@@ -360,6 +362,7 @@ public class AdminController implements Initializable {
         floorNumber_col.setCellValueFactory(new PropertyValueFactory<>("floorNumber"));
         roomType_col.setCellValueFactory(new PropertyValueFactory<>("roomType"));
         capacity_col.setCellValueFactory(new PropertyValueFactory<>("capacity"));
+        bedNumber_col.setCellValueFactory(new PropertyValueFactory<>("bedNumber"));
         price_col.setCellValueFactory(new PropertyValueFactory<>("price"));
         Available_col.setCellValueFactory(cellData -> {
             Room room = cellData.getValue();
