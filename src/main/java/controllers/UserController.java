@@ -189,7 +189,16 @@ public class UserController implements Initializable {
     }
     @FXML
     public void handleProceeding(MouseEvent me) {
-        Navigator.navigate(me, Navigator.PROCEEDING_PAGE);
+        Room selectedRoom = seaTable.getSelectionModel().getSelectedItem();
+        if (selectedRoom != null) {
+            Navigator.navigate(me, Navigator.PROCEEDING_PAGE);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("No Room Selected");
+            alert.setHeaderText(null);
+            alert.setContentText("Please select a room to proceed.");
+            alert.showAndWait();
+        }
     }
 
     private void showSeaViewRooms() {
