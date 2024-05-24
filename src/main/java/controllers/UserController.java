@@ -15,6 +15,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import model.Reservation;
 import model.Room;
+import model.User;
+import service.AdminService;
 import service.UserService;
 
 import java.net.URL;
@@ -95,6 +97,7 @@ public class UserController implements Initializable {
 
     @FXML
     private Text txtUserReservations;
+
 
     public void showUserReservations(){
         String email=SessionManager.getUserEmail();
@@ -240,7 +243,20 @@ public class UserController implements Initializable {
 
     @FXML
     public void handleCancelReservation(){
-        System.out.println("[RESERVATION2]:");
+       Reservation selectedReservation = reservationTable.getSelectionModel().getSelectedItem();
+        if (selectedReservation != null) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to cancel this reservation?", ButtonType.YES, ButtonType.NO);
+            alert.showAndWait();
+            if (alert.getResult() == ButtonType.YES) {
+                boolean success = UserService.cancelReservation(selectedReservation.getReservationID());
+                if (success) {
+                    reservationTable.getItems().remove(selectedReservation);
+                }
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "No reservation selected!");
+            alert.showAndWait();
+        }
     }
 
     private void showReservationRooms() {
@@ -266,7 +282,5 @@ public class UserController implements Initializable {
 
         historyTable.setItems(listData);
     }
-
-
 
 }

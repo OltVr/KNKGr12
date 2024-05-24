@@ -141,4 +141,9 @@ public class ReserveController {
     public void handleProceeding(MouseEvent me) {
         Navigator.navigate(me, Navigator.PROCEEDING_PAGE);
     }
+
+    @FXML
+    private void handleBack(ActionEvent ae){
+        Navigator.navigate(ae, Navigator.HOME_PAGE);
+    }
 }
