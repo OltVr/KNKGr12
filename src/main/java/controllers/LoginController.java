@@ -69,9 +69,8 @@ public class LoginController {
             boolean isLogin= UserService.login(loginUserData);
 
             if (!isLogin){
-                login_failed.toFront();
-                login_failed.setVisible(true);
-
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Login Failed! Check your credentials and try again.");
+                alert.show();
 
             }
             else{

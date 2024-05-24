@@ -249,6 +249,7 @@ public class AdminController implements Initializable {
         showStaffList();
     }
 
+
     // ROOM MANAGEMENT
     @FXML
     private void handleAddRoom(){
@@ -261,12 +262,15 @@ public class AdminController implements Initializable {
                 Double.parseDouble(this.txtPrice.getText())
         );
 
-        boolean b = AdminService.addRoom(RoomData);
-        if (!(b)) {
-            showAlert("Room not added", "A room with this number already exists");
-        } else {
+        boolean isSuccess = AdminService.addRoom(RoomData);
+        if (isSuccess) {
             showRoomList();
             clear();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Room was added successfully.");
+            alert.showAndWait();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Failed to add room. Check if this room already exists.");
+            alert.showAndWait();
         }
 
     }
@@ -542,7 +546,7 @@ public class AdminController implements Initializable {
         if (AdminService.updateRoom(RoomData)){
             showRoomList();
             clear();
-            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Table was updated successfully.");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Room was updated successfully.");
             alert.showAndWait();
         }
         else {
