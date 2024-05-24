@@ -9,15 +9,14 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import model.Reservation;
 import model.Room;
 import model.dto.CreateReservationDto;
+import service.ReserveService;
 import service.UserService;
 
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class ReserveController {
     public Button btnReserve;
@@ -35,7 +34,7 @@ public class ReserveController {
     @FXML
     private void initialize(){
         Locale locale = Locale.getDefault();
-
+        List<Reservation> reservations = ReserveService.getReservationsForRoom(SessionManager.getSelectedRoomNumber());
         if (locale.getLanguage().equals("sq")){
             bundle= ResourceBundle.getBundle("translations.content", locale);
         }
@@ -50,7 +49,7 @@ public class ReserveController {
             @Override
             public void updateItem(LocalDate date, boolean empty){
                 super.updateItem(date, empty);
-                if(date.isBefore(LocalDate.now())){
+                if(date.isBefore(LocalDate.now())|| isDateUnavailable(date, reservations)){
                     setDisable(true);
                     setStyle("-fx-background-color: #ffc0cb;");
                 }
@@ -60,7 +59,7 @@ public class ReserveController {
             @Override
             public void updateItem(LocalDate date, boolean empty){
                 super.updateItem(date, empty);
-                if (date.isBefore(checkInDate.getValue()) || date.isEqual(checkInDate.getValue())){
+                if ((date.isBefore(checkInDate.getValue()) || date.isEqual(checkInDate.getValue()))|| isDateUnavailable(date, reservations)){
                     setDisable(true);
                     setStyle("-fx-background-color: #ffc0cb");
                 }
@@ -153,5 +152,14 @@ public class ReserveController {
     @FXML
     private void handleBack(ActionEvent ae){
         Navigator.navigate(ae, Navigator.HOME_PAGE);
+    }
+    private boolean isDateUnavailable(LocalDate date, List<Reservation> reservations) {
+        for (Reservation reservation : reservations) {
+            if ((date.isEqual(reservation.getCheckInDate().toLocalDate()) || date.isAfter(reservation.getCheckInDate().toLocalDate())) &&
+                    date.isBefore(reservation.getCheckOutDate().toLocalDate())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

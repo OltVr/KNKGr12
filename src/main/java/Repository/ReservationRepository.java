@@ -7,6 +7,9 @@ import model.Reservation;
 import model.dto.CreateReservationDto;
 
 import java.sql.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ReservationRepository {
     // ADMIN SIDE
@@ -196,5 +199,33 @@ public class ReservationRepository {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public static List<Reservation> getReservationsForRoom(int roomNumber) {
+        List<Reservation> reservations = new ArrayList<>();
+        String query = "SELECT * FROM reservation WHERE roomNumber = ?";
+
+        try {
+            Connection connection = DatabaseUtil.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, roomNumber);
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                Reservation reservation = new Reservation(
+                        result.getInt("reservationID"),
+                        result.getString("email"),
+                        result.getInt("roomNumber"),
+                        result.getDate("reservationDate"),
+                        result.getDate("checkInDate"),
+                        result.getDate("checkOutDate"),
+                        result.getDouble("totalPrice"));
+                reservations.add(reservation);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return reservations;
     }
 }

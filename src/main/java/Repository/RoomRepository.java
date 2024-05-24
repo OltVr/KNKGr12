@@ -162,7 +162,7 @@ public class RoomRepository {
     // USER SIDE
     public static ObservableList<Room> listSeaViewRooms() {
         ObservableList<Room> list = FXCollections.observableArrayList();
-        String query = "SELECT * FROM rooms WHERE roomType = 'Sea View' AND isAvailable = True";
+        String query = "SELECT * FROM rooms WHERE roomType = 'Sea View'";
         Connection connection = DatabaseUtil.getConnection();
         try {
             PreparedStatement pst = connection.prepareStatement(query);
@@ -187,7 +187,7 @@ public class RoomRepository {
 
     public static ObservableList<Room> listCityViewRooms() {
         ObservableList<Room> list = FXCollections.observableArrayList();
-        String query = "SELECT * FROM rooms WHERE roomType = 'City View' AND isAvailable = True";
+        String query = "SELECT * FROM rooms WHERE roomType = 'City View'";
         Connection connection = DatabaseUtil.getConnection();
         try {
             PreparedStatement pst = connection.prepareStatement(query);
