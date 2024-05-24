@@ -128,7 +128,7 @@ public class ReserveController {
         );
         if(!UserService.makeReservation(reservation)){
 
-            Alert alert=new Alert(Alert.AlertType.ERROR,"Reservation failed, please try again!!!",ButtonType.OK);
+            Alert alert=new Alert(Alert.AlertType.ERROR,"Reservation failed, please try again!",ButtonType.OK);
             Optional<ButtonType> rez=alert.showAndWait();
             if (rez.get() == ButtonType.OK){
                 alert.close();
