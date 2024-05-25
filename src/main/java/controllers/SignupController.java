@@ -122,7 +122,7 @@ public class SignupController {
             root.setBottom(statusBar);
             BorderPane.setAlignment(statusBar, Pos.CENTER);
 
-            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(5), event -> {
+            Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(3), event -> {
                 statusBar.setVisible(false);
 
                 Navigator.navigate(ae, Navigator.LOGIN_PAGE);
