@@ -16,15 +16,30 @@ public class ReservationFilter extends Filter{
     }
     @Override
     public String buildQuery() {
-        String query = "SELECT * FROM reservation WHERE 1=1";
+        String query = "SELECT * FROM reservation";
+        boolean firstCondition = true;
 
         if (this.userEmail != null && !this.userEmail.isEmpty()) {
-            query+=" AND email LIKE ?";
+            if (firstCondition) {
+                query += " WHERE";
+                firstCondition = false;
+            } else {
+                query += " AND";
+            }
+            query += " email LIKE ?";
         }
+
         if (this.reservationID != null) {
-            query+=" AND reservationID = ?";
+            if (firstCondition) {
+                query += " WHERE";
+                firstCondition = false;
+            } else {
+                query += " AND";
+            }
+            query += " reservationID = ?";
         }
 
         return query;
     }
+
 }
