@@ -5,13 +5,21 @@ public class StaffFilter extends Filter{
     public StaffFilter(String staffEmail){
         this.staffEmail=staffEmail;
     }
-    @Override
     public String buildQuery() {
-        StringBuilder query = new StringBuilder("SELECT * FROM staff WHERE 1=1");
+        String query = "SELECT * FROM staff";
+        boolean firstCondition = true;
+
         if (this.staffEmail != null) {
-            query.append(" AND email LIKE '").append(this.staffEmail).append("%'");
+            if (firstCondition) {
+                query += " WHERE";
+                firstCondition = false;
+            } else {
+                query += " AND";
+            }
+            query += " email LIKE '" + this.staffEmail + "%'";
         }
-        return query.toString();
+
+        return query;
     }
 
 }
