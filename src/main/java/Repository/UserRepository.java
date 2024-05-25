@@ -30,8 +30,9 @@ public class UserRepository {
 
     public static boolean userExists(String email) {
         String query = "SELECT COUNT(*) FROM user WHERE email = ?";
-        try (Connection connection = DatabaseUtil.getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
+        Connection connection = DatabaseUtil.getConnection();
+        try {
+            PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, email);
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
