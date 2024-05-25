@@ -119,7 +119,7 @@ public class ReservationRepository {
 
     public static ObservableList<Reservation> listUserReservations() {
         ObservableList<Reservation> list = FXCollections.observableArrayList();
-        String query = "SELECT * FROM RESERVATION WHERE checkInDate >= CURDATE() AND email = ?";
+        String query = "SELECT * FROM RESERVATION WHERE checkOutDate >= CURDATE() AND email = ?";
         Connection connection = DatabaseUtil.getConnection();
         try (
                 PreparedStatement pst = connection.prepareStatement(query)) {
@@ -148,7 +148,7 @@ public class ReservationRepository {
 
     public static ObservableList<Reservation> listUserReservationHistory() {
         ObservableList<Reservation> list = FXCollections.observableArrayList();
-        String query = "SELECT * FROM RESERVATION WHERE checkOutDate <= CURDATE() AND email = ?";
+        String query = "SELECT * FROM RESERVATION WHERE checkOutDate < CURDATE() AND email = ?";
         Connection connection = DatabaseUtil.getConnection();
         try (
                 PreparedStatement pst = connection.prepareStatement(query)) {
