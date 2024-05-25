@@ -224,7 +224,21 @@ public class AdminController implements Initializable {
         String firstName = txtStaffFirstName.getText();
         String lastName = txtStaffLastName.getText();
         String email = txtStaffEmail.getText();
-        double salary = Double.parseDouble(txtStaffSalary.getText());
+        String salaryText = txtStaffSalary.getText();
+
+        if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || salaryText.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Fill all staff information fields first.");
+            alert.showAndWait();
+            return;
+        }
+        double salary;
+        try {
+            salary = Double.parseDouble(salaryText);
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Please enter a valid salary.");
+            alert.showAndWait();
+            return;
+        }
 
         String position = "";
         if (radioManager.isSelected()) {
@@ -254,20 +268,39 @@ public class AdminController implements Initializable {
         showStaffList();
     }
 
-
     // ROOM MANAGEMENT
     @FXML
-    private void handleAddRoom(){
-        InsertRoomDto RoomData = new InsertRoomDto(
-                Integer.parseInt(this.txtRoom.getText()),
-                Integer.parseInt(this.txtFloor.getText()),
-                this.roomType.getSelectionModel().getSelectedItem(),
-                this.Capacity.getSelectionModel().getSelectedItem(),
-                this.Beds.getSelectionModel().getSelectedItem(),
-                Double.parseDouble(this.txtPrice.getText())
-        );
+    private void handleAddRoom() {
+        String roomText = this.txtRoom.getText();
+        String floorText = this.txtFloor.getText();
+        String roomType = this.roomType.getSelectionModel().getSelectedItem();
+        Integer capacity = this.Capacity.getSelectionModel().getSelectedItem();
+        Integer beds = this.Beds.getSelectionModel().getSelectedItem();
+        String priceText = this.txtPrice.getText();
 
-        boolean isSuccess = AdminService.addRoom(RoomData);
+        // Check if any required fields are empty or selections are null
+        if (roomText.isEmpty() || floorText.isEmpty() || roomType == null || capacity == null || beds == null || priceText.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Fill all room information fields first.");
+            alert.showAndWait();
+            return;
+        }
+
+        int roomNumber;
+        int floorNumber;
+        double price;
+        try {
+            roomNumber = Integer.parseInt(roomText);
+            floorNumber = Integer.parseInt(floorText);
+            price = Double.parseDouble(priceText);
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Please enter valid numeric values for room number, floor, and price.");
+            alert.showAndWait();
+            return;
+        }
+
+        InsertRoomDto roomData = new InsertRoomDto(roomNumber, floorNumber, roomType, capacity, beds, price);
+
+        boolean isSuccess = AdminService.addRoom(roomData);
         if (isSuccess) {
             showRoomList();
             clear();
@@ -277,7 +310,6 @@ public class AdminController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Failed to add room. Check if this room already exists.");
             alert.showAndWait();
         }
-
     }
 
     // Nderrimi i faqeve me visibility prej scenebuilder
@@ -519,19 +551,39 @@ public class AdminController implements Initializable {
     }
 
     @FXML
-    private void handleDeleteRoom(){
-        int roomNumber= Integer.parseInt(txtRoom.getText());
-        int floorNumber= Integer.parseInt(txtFloor.getText());
-        if (AdminService.deleteRoom(roomNumber,floorNumber)){
+    private void handleDeleteRoom() {
+        String roomText = txtRoom.getText();
+        String floorText = txtFloor.getText();
+
+        // Check if any required fields are empty
+        if (roomText.isEmpty() || floorText.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Please fill in both the room number and floor number.");
+            alert.showAndWait();
+            return;
+        }
+
+        // Try to parse the room number and floor number and catch any potential NumberFormatException
+        int roomNumber;
+        int floorNumber;
+        try {
+            roomNumber = Integer.parseInt(roomText);
+            floorNumber = Integer.parseInt(floorText);
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Please enter valid numeric values for room number and floor number.");
+            alert.showAndWait();
+            return;
+        }
+
+        if (AdminService.deleteRoom(roomNumber, floorNumber)) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this room?", ButtonType.YES, ButtonType.NO);
             alert.showAndWait();
             if (alert.getResult() == ButtonType.YES) {
                 showRoomList();
                 clear();
             }
-        }
-        else {
-            showAlert("Error", "Couldn't find room.");
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Couldn't find room.");
+            alert.showAndWait();
         }
     }
     @FXML
@@ -556,24 +608,43 @@ public class AdminController implements Initializable {
     }
 
     @FXML
-    private void handleUpdate(){
-        InsertRoomDto RoomData = new InsertRoomDto(
-                Integer.parseInt(this.txtRoom.getText()),
-                Integer.parseInt(this.txtFloor.getText()),
-                this.roomType.getSelectionModel().getSelectedItem(),
-                this.Capacity.getSelectionModel().getSelectedItem(),
-                this.Beds.getSelectionModel().getSelectedItem(),
-                Double.parseDouble(this.txtPrice.getText())
-        );
+    private void handleUpdate() {
+        String roomText = this.txtRoom.getText();
+        String floorText = this.txtFloor.getText();
+        String roomType = this.roomType.getSelectionModel().getSelectedItem();
+        Integer capacity = this.Capacity.getSelectionModel().getSelectedItem(); // assuming Capacity is a ChoiceBox<Integer>
+        Integer beds = this.Beds.getSelectionModel().getSelectedItem(); // assuming Beds is a ChoiceBox<Integer>
+        String priceText = this.txtPrice.getText();
 
-        if (AdminService.updateRoom(RoomData)){
+        if (roomText.isEmpty() || floorText.isEmpty() || roomType == null || capacity == null || beds == null || priceText.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Fill all room information fields first.");
+            alert.showAndWait();
+            return;
+        }
+
+        int roomNumber;
+        int floorNumber;
+        double price;
+        try {
+            roomNumber = Integer.parseInt(roomText);
+            floorNumber = Integer.parseInt(floorText);
+            price = Double.parseDouble(priceText);
+        } catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Please enter valid numeric values for room number, floor, and price.");
+            alert.showAndWait();
+            return;
+        }
+
+        InsertRoomDto roomData = new InsertRoomDto(roomNumber, floorNumber, roomType, capacity, beds, price);
+
+        if (AdminService.updateRoom(roomData)) {
             showRoomList();
             clear();
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Room was updated successfully.");
             alert.showAndWait();
-        }
-        else {
-            showAlert("Error", "The room either does not exist or there was a database error.");
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "The room either does not exist or there was a database error.");
+            alert.showAndWait();
         }
     }
 
