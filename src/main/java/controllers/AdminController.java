@@ -278,7 +278,7 @@ public class AdminController implements Initializable {
         Integer beds = this.Beds.getSelectionModel().getSelectedItem();
         String priceText = this.txtPrice.getText();
 
-        // Check if any required fields are empty or selections are null
+
         if (roomText.isEmpty() || floorText.isEmpty() || roomType == null || capacity == null || beds == null || priceText.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Fill all room information fields first.");
             alert.showAndWait();
@@ -541,7 +541,7 @@ public class AdminController implements Initializable {
     @FXML
     private void  roomSelect(){
         Room room = roomTable.getSelectionModel().getSelectedItem();
-//        int num = roomTable.getSelectionModel().getSelectedIndex();
+
 
         if (room!=null){
         txtRoom.setText(String.valueOf(room.getRoomNumber()));
@@ -555,14 +555,14 @@ public class AdminController implements Initializable {
         String roomText = txtRoom.getText();
         String floorText = txtFloor.getText();
 
-        // Check if any required fields are empty
+
         if (roomText.isEmpty() || floorText.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Please fill in both the room number and floor number.");
             alert.showAndWait();
             return;
         }
 
-        // Try to parse the room number and floor number and catch any potential NumberFormatException
+
         int roomNumber;
         int floorNumber;
         try {
